@@ -11,6 +11,7 @@ const ProductCard = ({
   listItems,
   addItemToList,
   removeItemFromList,
+  clearCart,
 }) => {
   /**
    * Try to use only one modal between the buy and the show
@@ -42,6 +43,7 @@ const ProductCard = ({
           products={listItems}
           addItemToList={addItemToList}
           removeItemFromList={removeItemFromList}
+          clearCart={clearCart}
           show={showCart}
           setOpen={setShowCart}
         />

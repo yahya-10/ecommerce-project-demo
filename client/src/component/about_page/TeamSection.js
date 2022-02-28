@@ -59,8 +59,8 @@ const TeamSection = () => {
               role="list"
               className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
             >
-              {people.map((person) => (
-                <li key={person.name}>
+              {people.map((person, i) => (
+                <li key={i}>
                   <div className="flex items-center space-x-4 lg:space-x-6">
                     <img
                       className="w-16 h-16 rounded-full lg:w-20 lg:h-20"

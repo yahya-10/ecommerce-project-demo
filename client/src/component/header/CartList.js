@@ -1,4 +1,4 @@
-const CartList = ({ listItems, addItemToList, removeItemFromList }) => {
+const CartList = ({ listItems }) => {
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -31,6 +31,12 @@ const CartList = ({ listItems, addItemToList, removeItemFromList }) => {
                   >
                     Quantity
                   </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Total price
+                  </th>
                   <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Edit</span>
                   </th>
@@ -56,19 +62,13 @@ const CartList = ({ listItems, addItemToList, removeItemFromList }) => {
                             <div className="text-sm font-medium text-gray-900">
                               {item.name}
                             </div>
-                            {/*<div className="text-sm text-gray-500">
-                            {person.email}
-                </div>*/}
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                          {item.price}
+                          ${item.price}
                         </div>
-                        {/*<div className="text-sm text-gray-500">
-                        {person.department}
-            </div>*/}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {item.isAvailable ? (
@@ -83,6 +83,11 @@ const CartList = ({ listItems, addItemToList, removeItemFromList }) => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <p className="text-gray-900">{item.quantity}</p>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <p className="text-gray-900">
+                          ${item.quantity * item.price}
+                        </p>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a

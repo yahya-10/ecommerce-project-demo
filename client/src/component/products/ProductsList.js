@@ -6,6 +6,7 @@ const ProductsList = ({
   listItems,
   addItemToList,
   removeItemFromList,
+  clearCart,
 }) => {
   return (
     <div className="bg-gray-50">
@@ -20,6 +21,7 @@ const ProductsList = ({
               listItems={listItems}
               addItemToList={addItemToList}
               removeItemFromList={removeItemFromList}
+              clearCart={clearCart}
             />
           ))}
         </div>

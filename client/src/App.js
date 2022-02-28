@@ -14,6 +14,7 @@ import Contact from "./component/Contact";
 import ProductsList from "./component/products/ProductsList";
 import AboutPage from "./component/about_page/AboutPage";
 import CartList from "./component/header/CartList";
+import SolutionsPage from "./component/solution_page/SolutionsPage";
 
 const App = () => {
   const [listItems, setListItems] = useState([]);
@@ -50,6 +51,9 @@ const App = () => {
     }
   };
 
+  //Clear cart
+  const clearCart = () => setListItems([]);
+
   return (
     <div>
       <Header
@@ -71,10 +75,12 @@ const App = () => {
               listItems={listItems}
               addItemToList={handleAddItemToList}
               removeItemFromList={handleRemoveItemFromList}
+              clearCart={clearCart}
             />
           }
         />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/solutions" element={<SolutionsPage />} />
         <Route
           path="/store/cart"
           element={<CartList listItems={listItems} />}

@@ -8,6 +8,7 @@ const CartModal = ({
   setOpen,
   addItemToList,
   removeItemFromList,
+  clearCart,
 }) => {
   //Calculate the total amount to pay
   const totalPrice = products.reduce(
@@ -144,18 +145,18 @@ const CartModal = ({
                     <div className="mt-6">
                       <a
                         href="#"
-                        className="flex items-center justify-center rounded-md border border-transparent bg-red-400 px-6 py-3 text-base font-medium text-gray-900 shadow-sm hover:bg-red-500"
-                      >
-                        Clear Cart
-                      </a>
-                    </div>
-                    <div className="mt-6">
-                      <a
-                        href="#"
                         className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                       >
                         Checkout
                       </a>
+                    </div>
+                    <div className="mt-6">
+                      <button
+                        className="flex items-center justify-center rounded-md border border-transparent bg-red-400 px-6 py-3 text-base font-medium text-gray-900 shadow-sm hover:bg-red-500"
+                        onClick={clearCart}
+                      >
+                        Clear Cart
+                      </button>
                     </div>
                     <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                       <p>

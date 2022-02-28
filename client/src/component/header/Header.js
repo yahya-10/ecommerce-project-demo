@@ -7,7 +7,7 @@ import { ShoppingCartIcon } from "@heroicons/react/solid";
 import comunikcrmLogo from "../../assets/comunikcrm.png";
 
 const navigation = [
-  { name: "Solutions", href: "#" },
+  { name: "Solutions", href: "/solutions" },
   { name: "Store", href: "/store" },
   { name: "About Us", href: "/about" },
   { name: "Support", href: "/contact" },
@@ -115,27 +115,18 @@ const Header = ({ listItems }) => {
                   </div>
                 </div>
                 <div className="hidden md:flex md:space-x-10">
-                  {navigation.map((item) =>
-                    item.name === "Store" ||
-                    item.name === "Support" ||
-                    item.name === "About Us" ? (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className="font-medium text-gray-500 hover:text-gray-900"
-                      >
-                        {item.name}
-                      </Link>
-                    ) : (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="font-medium text-gray-500 hover:text-gray-900"
-                      >
-                        {item.name}
-                      </a>
-                    )
-                  )}
+                  {/* <HeaderSolution className="font-medium text-gray-500 hover:text-gray-900">
+                    Solutions
+                  </HeaderSolution> */}
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className="font-medium text-gray-500 hover:text-gray-900"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
                 </div>
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                   <span className="inline-flex rounded-md shadow">
