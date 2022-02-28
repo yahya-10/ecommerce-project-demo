@@ -6,14 +6,20 @@ import CartModal from "./CartModal";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { EyeIcon } from "@heroicons/react/solid";
 
-const ProductCard = ({ product, addItemToList }) => {
+const ProductCard = ({
+  product,
+  listItems,
+  addItemToList,
+  removeItemFromList,
+}) => {
   /**
    * Try to use only one modal between the buy and the show
    * details button  to not use 2 modals!!!!!!
+   *
+   * Also cart should be called only once!!!!! (DONE)
    */
   const [showSlide, setShowSlide] = useState(false);
   const [showCart, setShowCart] = useState(false);
-  const [cart, setCart] = useState([]);
 
   if (showSlide) {
     return (
@@ -29,18 +35,21 @@ const ProductCard = ({ product, addItemToList }) => {
     setShowCart(true);
   };
 
-  const handleCart = (product) => {
-    setCart([...cart, product]);
-  };
-
   {
     if (showCart) {
       return (
-        <CartModal products={cart} show={showCart} setOpen={setShowCart} />
+        <CartModal
+          products={listItems}
+          addItemToList={addItemToList}
+          removeItemFromList={removeItemFromList}
+          show={showCart}
+          setOpen={setShowCart}
+        />
       );
     }
   }
-  console.log(cart);
+
+  // console.log(listItems);
   return (
     <div key={product.id} href={product.href} className="group">
       <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
@@ -51,14 +60,16 @@ const ProductCard = ({ product, addItemToList }) => {
         />
       </div>
       <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
-      <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
+      <p className="mt-1 text-lg font-medium text-gray-900">{`$${product.price}`}</p>
       <button
         type="button"
         className="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-green-400 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         onClick={() => {
           addItemToList(product);
           handleShowCart();
-          handleCart(product);
+          {
+            /*handleCart(product);*/
+          }
         }}
       >
         Buy Now

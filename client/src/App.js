@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { Routes, Route } from "react-router-dom";
 
+import { ProductsExample } from "./ProductsExample";
+
 import Header from "./component/header/Header";
 import BreadCrumbs from "./component/header/BreadCrumbs";
 import LandingPage from "./component/LandingPage";
@@ -16,14 +18,45 @@ import CartList from "./component/header/CartList";
 const App = () => {
   const [listItems, setListItems] = useState([]);
 
-  //Update the cart with new selected items 
-  const handleAddItemToList = (item) => {
-    setListItems([...listItems, item]);
+  //Add item to the list and increment the quantity
+  const handleAddItemToList = (product) => {
+    const itemExist = listItems.find((item) => item.id === product.id);
+    if (itemExist) {
+      setListItems(
+        listItems.map((item) =>
+          item.id === product.id
+            ? { ...itemExist, quantity: itemExist.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setListItems([...listItems, { ...product, quantity: 1 }]);
+    }
+  };
+
+  //Decrement the quantity and remove the item from list
+  const handleRemoveItemFromList = (product) => {
+    const itemExist = listItems.find((item) => item.id === product.id);
+    if (itemExist.quantity === 1) {
+      setListItems(listItems.filter((item) => item.id !== product.id));
+    } else {
+      setListItems(
+        listItems.map((item) =>
+          item.id === product.id
+            ? { ...itemExist, quantity: itemExist.quantity - 1 }
+            : item
+        )
+      );
+    }
   };
 
   return (
     <div>
-      <Header listItems={listItems} />
+      <Header
+        AddItemToList={handleAddItemToList}
+        RemoveItemFromList={handleRemoveItemFromList}
+        listItems={listItems}
+      />
       <BreadCrumbs />
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
@@ -32,7 +65,14 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/store"
-          element={<ProductsList addItemToList={handleAddItemToList} />}
+          element={
+            <ProductsList
+              ProductsExample={ProductsExample}
+              listItems={listItems}
+              addItemToList={handleAddItemToList}
+              removeItemFromList={handleRemoveItemFromList}
+            />
+          }
         />
         <Route path="/about" element={<AboutPage />} />
         <Route

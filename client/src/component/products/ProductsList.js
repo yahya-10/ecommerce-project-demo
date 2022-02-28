@@ -1,9 +1,12 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 
-import { ProductsExample } from "./ProductsExample";
-
-const ProductsList = ({ addItemToList }) => {
+const ProductsList = ({
+  ProductsExample,
+  listItems,
+  addItemToList,
+  removeItemFromList,
+}) => {
   return (
     <div className="bg-gray-50">
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -14,7 +17,9 @@ const ProductsList = ({ addItemToList }) => {
             <ProductCard
               key={product.id}
               product={product}
+              listItems={listItems}
               addItemToList={addItemToList}
+              removeItemFromList={removeItemFromList}
             />
           ))}
         </div>
