@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import { ProductsExample } from "./ProductsExample";
 
 import { useToken } from "./custom_hooks/useToken";
+import { isLoggedIn } from "./utils";
 
 import Header from "./component/header/Header";
 import BreadCrumbs from "./component/header/BreadCrumbs";
@@ -24,6 +25,17 @@ const App = () => {
   const [listItems, setListItems] = useState([]);
 
   const { token, setToken } = useToken();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const { pathname } = window.location;
+    if (!isLoggedIn()) {
+      if (pathname !== "/") {
+        navigate.push(`/redirect${pathname}`, { redirectURL: pathname });
+      }
+    }
+  }, []);
 
   //Add item to the list and increment the quantity
   const handleAddItemToList = (product) => {
@@ -59,7 +71,7 @@ const App = () => {
 
   //Clear cart
   const clearCart = () => setListItems([]);
-  // console.log(token);
+  console.log(window.location.pathname);
   return (
     <div>
       <Header
