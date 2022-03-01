@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import { Link } from "react-router-dom";
 
+import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import LoginSVG from "../../assets/loginSVG.png";
 
 const loginUser = async (credentials) => {
@@ -18,6 +19,8 @@ const loginUser = async (credentials) => {
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState();
+  const [showingPwd, setShowingPwd] = useState(false);
   //Land the page from the start on mounting the component.
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,6 +28,11 @@ const Login = ({ setToken }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (email === "" || password === "") {
+      setError("This field id required!!");
+      return;
+    }
+
     const token = await loginUser({
       email,
       password,
@@ -157,6 +165,7 @@ const Login = ({ setToken }) => {
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
+                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
                   </div>
 
                   <div className="space-y-1">
@@ -170,14 +179,28 @@ const Login = ({ setToken }) => {
                       <input
                         id="password"
                         name="password"
-                        type="password"
+                        type={showingPwd ? "text" : "password"}
                         autoComplete="current-password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
+                      {showingPwd ? (
+                        <EyeIcon
+                          className="ml-2 -mr-0.5 h-4 w-4"
+                          aria-hidden="true"
+                          onClick={() => setShowingPwd(false)}
+                        />
+                      ) : (
+                        <EyeOffIcon
+                          className="ml-2 -mr-0.5 h-4 w-4"
+                          aria-hidden="true"
+                          onClick={() => setShowingPwd(true)}
+                        />
+                      )}
                     </div>
+                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
                   </div>
 
                   <div className="flex items-center justify-between">
