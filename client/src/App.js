@@ -17,6 +17,8 @@ import ProductsList from "./component/products/ProductsList";
 import AboutPage from "./component/about_page/AboutPage";
 import CartList from "./component/header/CartList";
 import SolutionsPage from "./component/solution_page/SolutionsPage";
+import PrivateRoute from "./routes/PrivateRoute";
+import Checkout from "./checkout/Checkout";
 
 const App = () => {
   const [listItems, setListItems] = useState([]);
@@ -89,6 +91,9 @@ const App = () => {
           path="/store/cart"
           element={<CartList listItems={listItems} />}
         />
+        <Route path="/checkout" exact element={<PrivateRoute />}>
+          <Route path="/checkout" exact element={<Checkout />} />
+        </Route>
       </Routes>
       <Footer />
     </div>

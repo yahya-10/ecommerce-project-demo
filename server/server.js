@@ -9,15 +9,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/login", (req, res) => {
   try {
-    const { email, password } = req.body;
-
-    // if (email && password) {
     res.send({
       token: "test123",
     });
-    // }
-
-    // res.send({ message: "acces denied" });
   } catch (error) {
     console.error(error);
   }
