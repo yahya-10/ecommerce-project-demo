@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 
 import { ProductsExample } from "./ProductsExample";
 
+import { useToken } from "./custom_hooks/useToken";
+
 import Header from "./component/header/Header";
 import BreadCrumbs from "./component/header/BreadCrumbs";
 import LandingPage from "./component/LandingPage";
@@ -18,6 +20,8 @@ import SolutionsPage from "./component/solution_page/SolutionsPage";
 
 const App = () => {
   const [listItems, setListItems] = useState([]);
+
+  const { token, setToken } = useToken();
 
   //Add item to the list and increment the quantity
   const handleAddItemToList = (product) => {
@@ -53,7 +57,7 @@ const App = () => {
 
   //Clear cart
   const clearCart = () => setListItems([]);
-
+  // console.log(token);
   return (
     <div>
       <Header
@@ -64,7 +68,7 @@ const App = () => {
       <BreadCrumbs />
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route

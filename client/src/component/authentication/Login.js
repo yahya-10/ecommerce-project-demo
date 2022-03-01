@@ -1,15 +1,36 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import { Link } from "react-router-dom";
 
 import LoginSVG from "../../assets/loginSVG.png";
 
-const Login = () => {
+const loginUser = async (credentials) => {
+  return fetch("http://localhost:5000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+};
 
+const Login = ({ setToken }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   //Land the page from the start on mounting the component.
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = await loginUser({
+      email,
+      password,
+    });
+    setToken(token);
+  };
 
   return (
     <>
@@ -130,6 +151,8 @@ const Login = () => {
                         name="email"
                         type="email"
                         autoComplete="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
@@ -149,6 +172,8 @@ const Login = () => {
                         name="password"
                         type="password"
                         autoComplete="current-password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
@@ -191,6 +216,7 @@ const Login = () => {
                     <button
                       type="submit"
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={handleSubmit}
                     >
                       Sign in
                     </button>
@@ -211,6 +237,10 @@ const Login = () => {
       </div>
     </>
   );
+};
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
 };
 
 export default Login;
