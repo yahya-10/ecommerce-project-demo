@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import { logOut } from "../../utils";
+
 import { Popover } from "@headlessui/react";
 import { MenuIcon } from "@heroicons/react/outline";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
@@ -13,7 +15,12 @@ const navigation = [
   { name: "Support", href: "/contact" },
 ];
 
-const Header = ({ listItems }) => {
+const Header = ({ listItems, isLoggedIn }) => {
+  // const handleLogout = () => {
+  //   sessionStorage.clear()
+  // }
+
+  // console.log(isLoggedIn);
   return (
     <div>
       <div className="relative bg-gray-50 overflow-hidden">
@@ -129,14 +136,28 @@ const Header = ({ listItems }) => {
                   ))}
                 </div>
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-                  <span className="inline-flex rounded-md shadow">
-                    <Link
-                      to="/login"
-                      className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
+                  {isLoggedIn ? (
+                    <span
+                      className="inline-flex rounded-md shadow"
+                      onClick={logOut}
                     >
-                      Log in
-                    </Link>
-                  </span>
+                      <Link
+                        to="/login"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
+                      >
+                        Logout
+                      </Link>
+                    </span>
+                  ) : (
+                    <span className="inline-flex rounded-md shadow">
+                      <Link
+                        to="/login"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
+                      >
+                        Login
+                      </Link>
+                    </span>
+                  )}
                   <span className="inline-flex rounded-md shadow">
                     <Link
                       to="/store/cart"

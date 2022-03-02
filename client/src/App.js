@@ -20,6 +20,7 @@ import CartList from "./component/header/CartList";
 import SolutionsPage from "./component/solution_page/SolutionsPage";
 import PrivateRoute from "./routes/PrivateRoute";
 import Checkout from "./checkout/Checkout";
+import UserProfile from "./component/user_profile/UserProfile";
 
 const App = () => {
   const [listItems, setListItems] = useState([]);
@@ -28,14 +29,14 @@ const App = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const { pathname } = window.location;
-    if (!isLoggedIn()) {
-      if (pathname !== "/") {
-        navigate.push(`/redirect${pathname}`, { redirectURL: pathname });
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   const { pathname } = window.location;
+  //   if (!isLoggedIn()) {
+  //     if (pathname !== "/") {
+  //       navigate.push(`/redirect${pathname}`, { redirectURL: pathname });
+  //     }
+  //   }
+  // }, []);
 
   //Add item to the list and increment the quantity
   const handleAddItemToList = (product) => {
@@ -71,12 +72,13 @@ const App = () => {
 
   //Clear cart
   const clearCart = () => setListItems([]);
-  console.log(window.location.pathname);
+  // console.log(window.location.pathname);
   return (
     <div>
       <Header
         AddItemToList={handleAddItemToList}
         RemoveItemFromList={handleRemoveItemFromList}
+        isLoggedIn={isLoggedIn()}
         listItems={listItems}
       />
       <BreadCrumbs />
@@ -105,6 +107,9 @@ const App = () => {
         />
         <Route path="/checkout" exact element={<PrivateRoute />}>
           <Route path="/checkout" exact element={<Checkout />} />
+        </Route>
+        <Route path="profile" exact element={<PrivateRoute />}>
+          <Route path="/profile" exact element={<UserProfile />} />
         </Route>
       </Routes>
       <Footer />

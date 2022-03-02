@@ -4,3 +4,7 @@ export const isLoggedIn = () => {
   }
   return false;
 };
+
+export const logOut = () => {
+  sessionStorage.removeItem("token");
+};

@@ -20,5 +20,5 @@ app.use("/login", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`app is tistening on port ${PORT}`);
+  console.log(`app is listening on port ${PORT}`);
 });

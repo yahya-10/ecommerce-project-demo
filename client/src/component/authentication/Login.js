@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import LoginSVG from "../../assets/loginSVG.png";
@@ -26,6 +26,8 @@ const Login = ({ setToken }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email === "" || password === "") {
@@ -38,6 +40,7 @@ const Login = ({ setToken }) => {
       password,
     });
     setToken(token);
+    navigate(`/profile`);
   };
 
   return (

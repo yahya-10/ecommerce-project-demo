@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 
+import { isLoggedIn } from "../utils";
+
 import HeroSection from "./HeroSection";
 import LogoClouds from "./LogoClouds";
 
@@ -292,7 +294,7 @@ const LandingPage = () => {
                             </div>
                           </div>
                           <Link
-                            to="/register"
+                            to="/checkout"
                             className={classNames(
                               plan.featured
                                 ? "bg-indigo-600 text-white hover:bg-indigo-700"
