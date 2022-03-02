@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 const bodyParser = require("body-parser");
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 const app = express();
 
@@ -14,6 +16,28 @@ app.use("/login", (req, res) => {
     });
   } catch (error) {
     console.error(error);
+  }
+});
+
+app.post("/payment", async (req, res) => {
+  const { amount, id, currency } = req.body;
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      paymentMethod: id,
+      currency,
+    });
+
+    res.json({
+      clientSecret: paymentIntent.client_secret,
+      success: true,
+    });
+  } catch (error) {
+    console.error(error);
+    res.json({
+      message: error.message,
+      success: false,
+    });
   }
 });
 

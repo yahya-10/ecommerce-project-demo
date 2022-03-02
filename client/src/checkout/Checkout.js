@@ -2,26 +2,48 @@ import {
   useStripe,
   useElements,
   PaymentElement,
+  CardElement,
 } from "@stripe/react-stripe-js";
-
-// import Checkout from "./Checkout";
 
 const Checkout = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     if (!stripe || !elements) return;
 
-    const result = await stripe.confirmPayment({
-      elements,
-      confirmParams: {},
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(CardElement),
     });
+    if (!error) {
+      try {
+        let { id } = paymentMethod;
+        const response = await fetch("http://localhost:5000/payment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: 2000,
+            paymentMethod: id,
+            currency: "USD",
+          }),
+        }).then((data) => data.json());
 
-    if (result.error) console.log(result.error.message);
+        if (response.data.success) {
+          console.log("Successful payment");
+        }
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
   };
-  console.log("stripe", stripe);
+
+  // console.log("data", userData);
+
   return (
     <form onSubmit={handleSubmit}>
       <PaymentElement />

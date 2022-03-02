@@ -7,21 +7,20 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import "./index.css";
+import "@stripe/stripe-js";
 
-const stripePromise = loadStripe(
-  "pk_test_51ISLrtEXKHL1myveddk8qi9zjGfZIGQKNQFxxTPpJonoe2yWyE6wqf6WKUW1ajR2eNr3WiFdHaDKLAfVylaiDsrv00HOOnLeO1"
-);
+const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_KEY}`);
 
-const options = {
-  // passing the client secret obtained from the server
-  clientSecret: "{{CLIENT_SECRET}}",
-};
+// const options = {
+//   // passing the client secret obtained from the server
+//   clientSecret: "{{CLIENT_SECRET}}",
+// };
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Elements stripe={stripePromise} options={options}>
+  <Elements stripe={stripePromise}>
+    <BrowserRouter>
       <App />
-    </Elements>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </Elements>,
   document.getElementById("root")
 );
