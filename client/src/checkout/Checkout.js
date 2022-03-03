@@ -1,11 +1,13 @@
-import {
-  useStripe,
-  useElements,
-  PaymentElement,
-  CardElement,
-} from "@stripe/react-stripe-js";
+import { useState } from "react";
+
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import axios from "axios";
+
+import CardInput from "./CardInput";
 
 const Checkout = () => {
+  const [email, setEmail] = useState("");
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -14,30 +16,25 @@ const Checkout = () => {
 
     if (!stripe || !elements) return;
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement),
+    const response = await axios.post("http://localhost:5000/payment", {
+      email: email,
     });
-    if (!error) {
-      try {
-        let { id } = paymentMethod;
-        const response = await fetch("http://localhost:5000/payment", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            amount: 2000,
-            paymentMethod: id,
-            currency: "USD",
-          }),
-        }).then((data) => data.json());
+    const clientSecret = response.data["client_secret"];
 
-        if (response.data.success) {
-          console.log("Successful payment");
-        }
-      } catch (error) {
-        console.log("error", error);
+    const result = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+        billing_details: {
+          email: email,
+        },
+      },
+    });
+
+    if (result.error) {
+      console.log(result.error.message);
+    } else {
+      if (result.paymentIntent.status === "succeeded") {
+        console.log("Money is in the Bank");
       }
     }
   };
@@ -46,7 +43,12 @@ const Checkout = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <PaymentElement />
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <CardInput />
       <button disabled={!stripe}>Submit</button>
     </form>
   );

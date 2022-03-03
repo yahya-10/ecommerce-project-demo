@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/login", (req, res) => {
+app.use("/login", cors(), (req, res) => {
   try {
     res.send({
       token: "test123",
@@ -20,25 +20,19 @@ app.use("/login", (req, res) => {
 });
 
 app.post("/payment", async (req, res) => {
-  const { amount, id, currency } = req.body;
-  try {
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount,
-      paymentMethod: id,
-      currency,
-    });
+  const { email } = req.body;
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: 5000,
+    currency: "USD",
+    receipt_email: email,
+    metadata: {
+      integration_check: "accept_a_payment",
+    },
+  });
 
-    res.json({
-      clientSecret: paymentIntent.client_secret,
-      success: true,
-    });
-  } catch (error) {
-    console.error(error);
-    res.json({
-      message: error.message,
-      success: false,
-    });
-  }
+  res.json({
+    client_secret: paymentIntent["client_secret"],
+  });
 });
 
 const PORT = process.env.PORT || 5000;
