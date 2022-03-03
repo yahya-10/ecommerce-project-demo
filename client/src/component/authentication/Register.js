@@ -1,15 +1,42 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Hero from "../../assets/hero.png";
 
-const Register = () => {
+const registerUser = async (userData) => {
+  return fetch("http://localhost:5000/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userData),
+  }).then((data) => data.json());
+};
+
+const Register = ({ setToken }) => {
+  const [fullName, setFullName] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   //Land the page from the start on mounting the component.
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
+
+  const navigate = useNavigate();
+
+  const handleRegister = async (user) => {
+    const token = await registerUser({
+      fullName: user.fullName,
+      companyName: user.companyName,
+      email: user.email,
+      // id: userData.id,
+    });
+    setToken(token);
+    navigate("/profile");
+  };
 
   return (
     <>
@@ -129,6 +156,8 @@ const Register = () => {
                         id="fullName"
                         name="fullName"
                         type="fullName"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
                         autoComplete="fullName"
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -147,6 +176,8 @@ const Register = () => {
                         id="companyName"
                         name="companyName"
                         type="text"
+                        value={companyName}
+                        onChange={(e) => setCompanyName(e.target.value)}
                         autoComplete=""
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -165,6 +196,8 @@ const Register = () => {
                         id="email"
                         name="email"
                         type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         autoComplete="email"
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -184,6 +217,8 @@ const Register = () => {
                         id="password"
                         name="password"
                         type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         autoComplete="current-password"
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -227,8 +262,9 @@ const Register = () => {
                     <button
                       type="submit"
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={handleRegister}
                     >
-                      Sign in
+                      Sign Up
                     </button>
                   </div>
                 </form>

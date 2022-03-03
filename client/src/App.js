@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { Routes, Route, useNavigate } from "react-router-dom";
 
@@ -24,19 +24,18 @@ import UserProfile from "./component/user_profile/UserProfile";
 
 const App = () => {
   const [listItems, setListItems] = useState([]);
+  const [userData, setUserData] = useState([
+    {
+      fullName: "",
+      companyName: "",
+      email: "",
+      id: Date.now(),
+    },
+  ]);
 
   const { token, setToken } = useToken();
 
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const { pathname } = window.location;
-  //   if (!isLoggedIn()) {
-  //     if (pathname !== "/") {
-  //       navigate.push(`/redirect${pathname}`, { redirectURL: pathname });
-  //     }
-  //   }
-  // }, []);
 
   //Add item to the list and increment the quantity
   const handleAddItemToList = (product) => {
@@ -72,7 +71,7 @@ const App = () => {
 
   //Clear cart
   const clearCart = () => setListItems([]);
-  // console.log(window.location.pathname);
+  console.log(userData);
   return (
     <div>
       <Header
@@ -81,11 +80,11 @@ const App = () => {
         isLoggedIn={isLoggedIn()}
         listItems={listItems}
       />
-      <BreadCrumbs />
+      {isLoggedIn ? null : <BreadCrumbs />}
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register setToken={setToken} />} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/store"
@@ -109,7 +108,11 @@ const App = () => {
           <Route path="/checkout" exact element={<Checkout />} />
         </Route>
         <Route path="profile" exact element={<PrivateRoute />}>
-          <Route path="/profile" exact element={<UserProfile />} />
+          <Route
+            path="/profile"
+            exact
+            element={<UserProfile userData={userData} />}
+          />
         </Route>
       </Routes>
       <Footer />

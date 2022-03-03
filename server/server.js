@@ -12,7 +12,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/login", cors(), (req, res) => {
   try {
     res.send({
-      token: "test123",
+      token: "testToken123",
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+app.use("/register", cors(), (req, res) => {
+  try {
+    res.send({
+      token: "testToken123",
     });
   } catch (error) {
     console.error(error);

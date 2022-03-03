@@ -3,17 +3,23 @@ import { CardElement } from "@stripe/react-stripe-js";
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
-      color: "#32325d",
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSmoothing: "antialiased",
+      iconColor: "#c4f0ff",
+      color: "black",
+      fontWeight: 500,
+      fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
       fontSize: "16px",
+      fontSmoothing: "antialiased",
+
+      ":-webkit-autofill": {
+        color: "#fce883",
+      },
       "::placeholder": {
-        color: "#aab7c4",
+        color: "#87BBFD",
       },
     },
     invalid: {
-      color: "#fa755a",
-      iconColor: "#fa755a",
+      iconColor: "#FFC7EE",
+      color: "#FFC7EE",
     },
   },
 };
