@@ -4,7 +4,7 @@ import { logOut } from "../../utils";
 
 import { Popover } from "@headlessui/react";
 import { MenuIcon } from "@heroicons/react/outline";
-import { ShoppingCartIcon } from "@heroicons/react/solid";
+import { UserIcon } from "@heroicons/react/solid";
 
 import comunikcrmLogo from "../../assets/comunikcrm.png";
 
@@ -16,11 +16,6 @@ const navigation = [
 ];
 
 const Header = ({ listItems, isLoggedIn }) => {
-  // const handleLogout = () => {
-  //   sessionStorage.clear()
-  // }
-
-  // console.log(isLoggedIn);
   return (
     <div>
       <div className="relative bg-gray-50 overflow-hidden">
@@ -136,7 +131,7 @@ const Header = ({ listItems, isLoggedIn }) => {
                   ))}
                 </div>
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-                  {isLoggedIn ? (
+                  {isLoggedIn() ? (
                     <span
                       className="inline-flex rounded-md shadow"
                       onClick={logOut}
@@ -163,12 +158,12 @@ const Header = ({ listItems, isLoggedIn }) => {
                       to="/store/cart"
                       className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                     >
-                      <ShoppingCartIcon
+                      <UserIcon
                         className="flex-shrink-0 h-5 w-5"
                         aria-hidden="true"
                       />
                       {/* Display the number of items in the cart*/}
-                      <span>{listItems.length}</span>
+                      {/* <span>{listItems.length}</span> */}
                     </Link>
                   </span>
                 </div>

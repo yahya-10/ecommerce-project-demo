@@ -14,7 +14,7 @@ const registerUser = async (userData) => {
   }).then((data) => data.json());
 };
 
-const Register = ({ setToken }) => {
+const Register = ({ setToken, handleAddNewUser }) => {
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,12 +27,13 @@ const Register = ({ setToken }) => {
 
   const navigate = useNavigate();
 
-  const handleRegister = async (user) => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
     const token = await registerUser({
-      fullName: user.fullName,
-      companyName: user.companyName,
-      email: user.email,
-      // id: userData.id,
+      fullName,
+      companyName,
+      email,
+      password,
     });
     setToken(token);
     navigate("/profile");

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import { ProductsExample } from "./ProductsExample";
 
@@ -8,7 +8,6 @@ import { useToken } from "./custom_hooks/useToken";
 import { isLoggedIn } from "./utils";
 
 import Header from "./component/header/Header";
-import BreadCrumbs from "./component/header/BreadCrumbs";
 import LandingPage from "./component/LandingPage";
 import Login from "./component/authentication/Login";
 import Register from "./component/authentication/Register";
@@ -24,18 +23,13 @@ import UserProfile from "./component/user_profile/UserProfile";
 
 const App = () => {
   const [listItems, setListItems] = useState([]);
-  const [userData, setUserData] = useState([
-    {
-      fullName: "",
-      companyName: "",
-      email: "",
-      id: Date.now(),
-    },
-  ]);
+  const [users, setUsers] = useState([]);
 
   const { token, setToken } = useToken();
 
-  const navigate = useNavigate();
+  const handleAddNewUser = (newUser) => {
+    setUsers([...users, { ...newUser, id: Date.now() }]);
+  };
 
   //Add item to the list and increment the quantity
   const handleAddItemToList = (product) => {
@@ -71,20 +65,24 @@ const App = () => {
 
   //Clear cart
   const clearCart = () => setListItems([]);
-  console.log(userData);
+  // console.log("App.js", isLoggedIn());
   return (
     <div>
       <Header
         AddItemToList={handleAddItemToList}
         RemoveItemFromList={handleRemoveItemFromList}
-        isLoggedIn={isLoggedIn()}
         listItems={listItems}
+        isLoggedIn={isLoggedIn}
       />
-      {isLoggedIn ? null : <BreadCrumbs />}
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/register" element={<Register setToken={setToken} />} />
+        <Route
+          path="/register"
+          element={
+            <Register handleAddNewUser={handleAddNewUser} setToken={setToken} />
+          }
+        />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/store"
@@ -108,11 +106,7 @@ const App = () => {
           <Route path="/checkout" exact element={<Checkout />} />
         </Route>
         <Route path="profile" exact element={<PrivateRoute />}>
-          <Route
-            path="/profile"
-            exact
-            element={<UserProfile userData={userData} />}
-          />
+          <Route path="/profile" exact element={<UserProfile />} />
         </Route>
       </Routes>
       <Footer />

@@ -5,6 +5,8 @@ export const isLoggedIn = () => {
   return false;
 };
 
+// console.log("utils/index.js", isLoggedIn());
+
 export const logOut = () => {
   sessionStorage.removeItem("token");
 };

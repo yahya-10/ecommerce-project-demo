@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import { Link, useNavigate } from "react-router-dom";
+import { isLoggedIn } from "../../utils";
 
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import LoginSVG from "../../assets/loginSVG.png";
@@ -21,12 +22,16 @@ const Login = ({ setToken }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
   const [showingPwd, setShowingPwd] = useState(false);
-  //Land the page from the start on mounting the component.
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const navigate = useNavigate();
+
+  //Land the page from the start on mounting the component.
+  /*useEffect(() => {
+    // window.scrollTo(0, 0);
+    if (isLoggedIn() && isLoggedIn() !== "undefined") {
+      navigate("/profile");
+    }
+  }, []);*/
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +47,7 @@ const Login = ({ setToken }) => {
     setToken(token);
     navigate(`/profile`);
   };
-
+  // console.log(isLoggedIn());
   return (
     <>
       <div className="min-h-full flex bg-gray-50">
