@@ -4,6 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Hero from "../../assets/hero.png";
 
+/**
+ *
+ * @param {*} userData
+ * @returns Give acces to a new user
+ */
+
+// Call the login user API
 const registerUser = async (userData) => {
   return fetch("http://localhost:5000/register", {
     method: "POST",
@@ -27,6 +34,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
 
   const navigate = useNavigate();
 
+  // If user passes the right data, he'll be redirected to the personal profile
   const handleRegister = async (e) => {
     e.preventDefault();
     const token = await registerUser({

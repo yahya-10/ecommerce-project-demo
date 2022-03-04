@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 
-import { isLoggedIn } from "../utils";
-
 import HeroSection from "./HeroSection";
 import LogoClouds from "./LogoClouds";
+
+/**
+ * @public
+ * this is the landing page where the user can browse in a different pages.
+ */
 
 const plans = [
   {

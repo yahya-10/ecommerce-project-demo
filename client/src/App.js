@@ -21,6 +21,12 @@ import PrivateRoute from "./routes/PrivateRoute";
 import Checkout from "./checkout/Checkout";
 import UserProfile from "./component/user_profile/UserProfile";
 
+/**
+ *
+ * @returns Component
+ * This component defines all the different routes of the platform. Authorized and unauthorized routes
+ */
+
 const App = () => {
   const [listItems, setListItems] = useState([]);
   const [users, setUsers] = useState([]);

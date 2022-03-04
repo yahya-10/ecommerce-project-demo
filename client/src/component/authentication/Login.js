@@ -2,11 +2,17 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import { Link, useNavigate } from "react-router-dom";
-import { isLoggedIn } from "../../utils";
 
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import LoginSVG from "../../assets/loginSVG.png";
 
+/**
+ *
+ * @param {*} credentials
+ * @returns Access to dashboard via token
+ */
+
+// Call the login user API
 const loginUser = async (credentials) => {
   return fetch("http://localhost:5000/login", {
     method: "POST",
@@ -25,14 +31,7 @@ const Login = ({ setToken }) => {
 
   const navigate = useNavigate();
 
-  //Land the page from the start on mounting the component.
-  /*useEffect(() => {
-    // window.scrollTo(0, 0);
-    if (isLoggedIn() && isLoggedIn() !== "undefined") {
-      navigate("/profile");
-    }
-  }, []);*/
-
+  // Give access to user if passed the right credentials
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email === "" || password === "") {

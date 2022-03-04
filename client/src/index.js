@@ -9,6 +9,11 @@ import App from "./App";
 import "./index.css";
 import "@stripe/stripe-js";
 
+/**
+ * -Entry point of the react application.
+ * -`Elements` a stripe wrapper gives access to all the stripe object in every part of the application.
+ */
+
 const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_KEY}`);
 
 // const options = {

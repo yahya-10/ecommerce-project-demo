@@ -1,24 +1,21 @@
 import { Fragment, useState, useEffect } from "react";
+
+import { Link } from "react-router-dom";
+
 import { Dialog, Transition } from "@headlessui/react";
 import {
   CalendarIcon,
   CogIcon,
   HomeIcon,
-  MapIcon,
   MenuIcon,
-  SearchCircleIcon,
-  SpeakerphoneIcon,
-  UserGroupIcon,
   ViewGridAddIcon,
   XIcon,
 } from "@heroicons/react/outline";
-import {
-  ChevronLeftIcon,
-  FilterIcon,
-  MailIcon,
-  PhoneIcon,
-  SearchIcon,
-} from "@heroicons/react/solid";
+
+/**
+ * @private
+ * in the profile user should fill a form of the pruchase order.
+ */
 
 const user = {
   name: "Tom Cook",
@@ -28,274 +25,10 @@ const user = {
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
   { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  // { name: "Teams", href: "#", icon: UserGroupIcon, current: false },
-  // { name: "Directory", href: "#", icon: SearchCircleIcon, current: true },
-  // { name: "Announcements", href: "#", icon: SpeakerphoneIcon, current: false },
-  // { name: "Office Map", href: "#", icon: MapIcon, current: false },
 ];
 const secondaryNavigation = [
   { name: "Apps", href: "#", icon: ViewGridAddIcon },
   { name: "Settings", href: "#", icon: CogIcon },
-];
-const tabs = [
-  { name: "Profile", href: "#", current: true },
-  { name: "Calendar", href: "#", current: false },
-  { name: "Recognition", href: "#", current: false },
-];
-const profile = {
-  name: "Ricardo Cooper",
-  imageUrl:
-    "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-  coverImageUrl:
-    "https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-  about: `
-    <p>Tincidunt quam neque in cursus viverra orci, dapibus nec tristique. Nullam ut sit dolor consectetur urna, dui cras nec sed. Cursus risus congue arcu aenean posuere aliquam.</p>
-    <p>Et vivamus lorem pulvinar nascetur non. Pulvinar a sed platea rhoncus ac mauris amet. Urna, sem pretium sit pretium urna, senectus vitae. Scelerisque fermentum, cursus felis dui suspendisse velit pharetra. Augue et duis cursus maecenas eget quam lectus. Accumsan vitae nascetur pharetra rhoncus praesent dictum risus suspendisse.</p>
-  `,
-  fields: {
-    Phone: "(555) 123-4567",
-    Email: "ricardocooper@example.com",
-    Title: "Senior Front-End Developer",
-    Team: "Product Development",
-    Location: "San Francisco",
-    Sits: "Oasis, 4th floor",
-    Salary: "$145,000",
-    Birthday: "June 8, 1990",
-  },
-};
-const directory = {
-  A: [
-    {
-      id: 1,
-      name: "Leslie Abbott",
-      role: "Co-Founder / CEO",
-      imageUrl:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 2,
-      name: "Hector Adams",
-      role: "VP, Marketing",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 3,
-      name: "Blake Alexander",
-      role: "Account Coordinator",
-      imageUrl:
-        "https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 4,
-      name: "Fabricio Andrews",
-      role: "Senior Art Director",
-      imageUrl:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  ],
-  B: [
-    {
-      id: 5,
-      name: "Angela Beaver",
-      role: "Chief Strategy Officer",
-      imageUrl:
-        "https://images.unsplash.com/photo-1501031170107-cfd33f0cbdcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 6,
-      name: "Yvette Blanchard",
-      role: "Studio Artist",
-      imageUrl:
-        "https://images.unsplash.com/photo-1506980595904-70325b7fdd90?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 7,
-      name: "Lawrence Brooks",
-      role: "Content Specialist",
-      imageUrl:
-        "https://images.unsplash.com/photo-1513910367299-bce8d8a0ebf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  ],
-  C: [
-    {
-      id: 8,
-      name: "Jeffrey Clark",
-      role: "Senior Art Director",
-      imageUrl:
-        "https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 9,
-      name: "Kathryn Cooper",
-      role: "Associate Creative Director",
-      imageUrl:
-        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  ],
-  E: [
-    {
-      id: 10,
-      name: "Alicia Edwards",
-      role: "Junior Copywriter",
-      imageUrl:
-        "https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 11,
-      name: "Benjamin Emerson",
-      role: "Director, Print Operations",
-      imageUrl:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 12,
-      name: "Jillian Erics",
-      role: "Designer",
-      imageUrl:
-        "https://images.unsplash.com/photo-1504703395950-b89145a5425b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 13,
-      name: "Chelsea Evans",
-      role: "Human Resources Manager",
-      imageUrl:
-        "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  ],
-  G: [
-    {
-      id: 14,
-      name: "Michael Gillard",
-      role: "Co-Founder / CTO",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 15,
-      name: "Dries Giuessepe",
-      role: "Manager, Business Relations",
-      imageUrl:
-        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  ],
-  M: [
-    {
-      id: 16,
-      name: "Jenny Harrison",
-      role: "Studio Artist",
-      imageUrl:
-        "https://images.unsplash.com/photo-1507101105822-7472b28e22ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 17,
-      name: "Lindsay Hatley",
-      role: "Front-end Developer",
-      imageUrl:
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 18,
-      name: "Anna Hill",
-      role: "Partner, Creative",
-      imageUrl:
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  ],
-  S: [
-    {
-      id: 19,
-      name: "Courtney Samuels",
-      role: "Designer",
-      imageUrl:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 20,
-      name: "Tom Simpson",
-      role: "Director, Product Development",
-      imageUrl:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  ],
-  T: [
-    {
-      id: 21,
-      name: "Floyd Thompson",
-      role: "Principal Designer",
-      imageUrl:
-        "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 22,
-      name: "Leonard Timmons",
-      role: "Senior Designer",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 23,
-      name: "Whitney Trudeau",
-      role: "Copywriter",
-      imageUrl:
-        "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  ],
-  W: [
-    {
-      id: 24,
-      name: "Kristin Watson",
-      role: "VP, Human Resources",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    {
-      id: 25,
-      name: "Emily Wilson",
-      role: "VP, User Experience",
-      imageUrl:
-        "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  ],
-  Y: [
-    {
-      id: 26,
-      name: "Emma Young",
-      role: "Senior Front-end Developer",
-      imageUrl:
-        "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  ],
-};
-const team = [
-  {
-    name: "Leslie Alexander",
-    handle: "lesliealexander",
-    role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Michael Foster",
-    handle: "michaelfoster",
-    role: "Co-Founder / CTO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Dries Vincent",
-    handle: "driesvincent",
-    role: "Manager, Business Relations",
-    imageUrl:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Lindsay Walton",
-    handle: "lindsaywalton",
-    role: "Front-end Developer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
 ];
 
 function classNames(...classes) {
@@ -453,13 +186,7 @@ const UserProfile = () => {
             {/* Sidebar component, swap this element with another sidebar if you like */}
             <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-100">
               <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-                <div className="flex items-center flex-shrink-0 px-4">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-pink-500-mark-gray-900-text.svg"
-                    alt="Workflow"
-                  />
-                </div>
+                {/* <div className="flex items-center flex-shrink-0 px-4"></div> */}
                 <nav className="mt-5 flex-1" aria-label="Sidebar">
                   <div className="px-2 space-y-1">
                     {navigation.map((item) => (
@@ -514,13 +241,13 @@ const UserProfile = () => {
                     <div>
                       <img
                         className="inline-block h-9 w-9 rounded-full"
-                        src={user.imageUrl}
+                        src=""
                         alt=""
                       />
                     </div>
                     <div className="ml-3">
                       <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                        {user.name}
+                        user name
                       </p>
                       <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
                         View profile
@@ -554,257 +281,488 @@ const UserProfile = () => {
               </div>
             </div>
           </div>
-          <div className="flex-1 relative z-0 flex overflow-hidden">
-            <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
-              {/* Breadcrumb */}
-              <nav
-                className="flex items-start px-4 py-3 sm:px-6 lg:px-8 xl:hidden"
-                aria-label="Breadcrumb"
-              >
-                <a
-                  href="#"
-                  className="inline-flex items-center space-x-3 text-sm font-medium text-gray-900"
-                >
-                  <ChevronLeftIcon
-                    className="-ml-2 h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                  <span>Directory</span>
-                </a>
-              </nav>
-
-              <article>
-                {/* Profile header */}
+          {/* Form  */}
+          <form className="space-y-8 divide-y divide-gray-200 ml-5 mr-5 mt-5">
+            <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+              <div>
                 <div>
-                  <div>
-                    <img
-                      className="h-32 w-full object-cover lg:h-48"
-                      src={profile.coverImageUrl}
-                      alt=""
-                    />
-                  </div>
-                  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
-                      <div className="flex">
-                        <img
-                          className="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32"
-                          src={profile.imageUrl}
-                          alt=""
-                        />
-                      </div>
-                      <div className="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
-                        <div className="sm:hidden 2xl:block mt-6 min-w-0 flex-1">
-                          <h1 className="text-2xl font-bold text-gray-900 truncate">
-                            {profile.name}
-                          </h1>
-                        </div>
-                        <div className="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
-                          <button
-                            type="button"
-                            className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
-                          >
-                            <MailIcon
-                              className="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                              aria-hidden="true"
-                            />
-                            <span>Message</span>
-                          </button>
-                          <button
-                            type="button"
-                            className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
-                          >
-                            <PhoneIcon
-                              className="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                              aria-hidden="true"
-                            />
-                            <span>Call</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="hidden sm:block 2xl:hidden mt-6 min-w-0 flex-1">
-                      <h1 className="text-2xl font-bold text-gray-900 truncate">
-                        {profile.name}
-                      </h1>
-                    </div>
-                  </div>
+                  <h3 className="text-lg leading-6 font-medium text-gray-900">
+                    Profile
+                  </h3>
+                  <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                    This information will be displayed publicly so be careful
+                    what you share.
+                  </p>
                 </div>
 
-                {/* Tabs */}
-                <div className="mt-6 sm:mt-2 2xl:mt-5">
-                  <div className="border-b border-gray-200">
-                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                      <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-                        {tabs.map((tab) => (
-                          <a
-                            key={tab.name}
-                            href={tab.href}
-                            className={classNames(
-                              tab.current
-                                ? "border-pink-500 text-gray-900"
-                                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
-                              "whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
-                            )}
-                            aria-current={tab.current ? "page" : undefined}
-                          >
-                            {tab.name}
-                          </a>
-                        ))}
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Description list */}
-                <div className="mt-6 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                  <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                    {Object.keys(profile.fields).map((field) => (
-                      <div key={field} className="sm:col-span-1">
-                        <dt className="text-sm font-medium text-gray-500">
-                          {field}
-                        </dt>
-                        <dd className="mt-1 text-sm text-gray-900">
-                          {profile.fields[field]}
-                        </dd>
-                      </div>
-                    ))}
-                    <div className="sm:col-span-2">
-                      <dt className="text-sm font-medium text-gray-500">
-                        About
-                      </dt>
-                      <dd
-                        className="mt-1 max-w-prose text-sm text-gray-900 space-y-5"
-                        dangerouslySetInnerHTML={{ __html: profile.about }}
-                      />
-                    </div>
-                  </dl>
-                </div>
-
-                {/* Team member list */}
-                <div className="mt-8 max-w-5xl mx-auto px-4 pb-12 sm:px-6 lg:px-8">
-                  <h2 className="text-sm font-medium text-gray-500">
-                    Team members
-                  </h2>
-                  <div className="mt-1 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    {team.map((person) => (
-                      <div
-                        key={person.handle}
-                        className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-pink-500"
-                      >
-                        <div className="flex-shrink-0">
-                          <img
-                            className="h-10 w-10 rounded-full"
-                            src={person.imageUrl}
-                            alt=""
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <a href="#" className="focus:outline-none">
-                            <span
-                              className="absolute inset-0"
-                              aria-hidden="true"
-                            />
-                            <p className="text-sm font-medium text-gray-900">
-                              {person.name}
-                            </p>
-                            <p className="text-sm text-gray-500 truncate">
-                              {person.role}
-                            </p>
-                          </a>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            </main>
-            <aside className="hidden xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-gray-200">
-              <div className="px-6 pt-6 pb-4">
-                <h2 className="text-lg font-medium text-gray-900">Directory</h2>
-                <p className="mt-1 text-sm text-gray-600">
-                  Search directory of 3,018 employees
-                </p>
-                <form className="mt-6 flex space-x-4" action="#">
-                  <div className="flex-1 min-w-0">
-                    <label htmlFor="search" className="sr-only">
-                      Search
-                    </label>
-                    <div className="relative rounded-md shadow-sm">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <SearchIcon
-                          className="h-5 w-5 text-gray-400"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <input
-                        type="search"
-                        name="search"
-                        id="search"
-                        className="focus:ring-pink-500 focus:border-pink-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                        placeholder="Search"
-                      />
-                    </div>
-                  </div>
-                  <button
-                    type="submit"
-                    className="inline-flex justify-center px-3.5 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
-                  >
-                    <FilterIcon
-                      className="h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
-                    <span className="sr-only">Search</span>
-                  </button>
-                </form>
-              </div>
-              {/* Directory list */}
-              <nav
-                className="flex-1 min-h-0 overflow-y-auto"
-                aria-label="Directory"
-              >
-                {Object.keys(directory).map((letter) => (
-                  <div key={letter} className="relative">
-                    <div className="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                      <h3>{letter}</h3>
-                    </div>
-                    <ul
-                      role="list"
-                      className="relative z-0 divide-y divide-gray-200"
+                <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="username"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      {directory[letter].map((person) => (
-                        <li key={person.id}>
-                          <div className="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-pink-500">
-                            <div className="flex-shrink-0">
-                              <img
-                                className="h-10 w-10 rounded-full"
-                                src={person.imageUrl}
-                                alt=""
+                      Username
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <div className="max-w-lg flex rounded-md shadow-sm">
+                        <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                          workcation.com/
+                        </span>
+                        <input
+                          type="text"
+                          name="username"
+                          id="username"
+                          autoComplete="username"
+                          className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="about"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      About
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <textarea
+                        id="about"
+                        name="about"
+                        rows={3}
+                        className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
+                        defaultValue={""}
+                      />
+                      <p className="mt-2 text-sm text-gray-500">
+                        Write a few sentences about yourself.
+                      </p>
+                    </div>
+                  </div>
+                  {/* Photo section */}
+                  {/* <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="photo"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Photo
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <div className="flex items-center">
+                        <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                          <svg
+                            className="h-full w-full text-gray-300"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                          </svg>
+                        </span>
+                        <button
+                          type="button"
+                          className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        >
+                          Change
+                        </button>
+                      </div>
+                    </div>
+                  </div> */}
+                  {/* cover section */}
+                  {/* <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="cover-photo"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      Cover photo
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <div className="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <div className="space-y-1 text-center">
+                          <svg
+                            className="mx-auto h-12 w-12 text-gray-400"
+                            stroke="currentColor"
+                            fill="none"
+                            viewBox="0 0 48 48"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                              strokeWidth={2}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          <div className="flex text-sm text-gray-600">
+                            <label
+                              htmlFor="file-upload"
+                              className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                            >
+                              <span>Upload a file</span>
+                              <input
+                                id="file-upload"
+                                name="file-upload"
+                                type="file"
+                                className="sr-only"
                               />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <a href="#" className="focus:outline-none">
-                                {/* Extend touch target to entire panel */}
-                                <span
-                                  className="absolute inset-0"
-                                  aria-hidden="true"
+                            </label>
+                            <p className="pl-1">or drag and drop</p>
+                          </div>
+                          <p className="text-xs text-gray-500">
+                            PNG, JPG, GIF up to 10MB
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div> */}
+                </div>
+              </div>
+
+              <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+                <div>
+                  <h3 className="text-lg leading-6 font-medium text-gray-900">
+                    Personal Information
+                  </h3>
+                  <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                    Use a permanent address where you can receive mail.
+                  </p>
+                </div>
+                <div className="space-y-6 sm:space-y-5">
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="first-name"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      First name
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <input
+                        type="text"
+                        name="first-name"
+                        id="first-name"
+                        autoComplete="given-name"
+                        className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="last-name"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      Last name
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <input
+                        type="text"
+                        name="last-name"
+                        id="last-name"
+                        autoComplete="family-name"
+                        className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      Email address
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="country"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      Country
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <select
+                        id="country"
+                        name="country"
+                        autoComplete="country-name"
+                        className="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                      >
+                        <option>United States</option>
+                        <option>Canada</option>
+                        <option>Mexico</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="street-address"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      Street address
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <input
+                        type="text"
+                        name="street-address"
+                        id="street-address"
+                        autoComplete="street-address"
+                        className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="city"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      City
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <input
+                        type="text"
+                        name="city"
+                        id="city"
+                        autoComplete="address-level2"
+                        className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="region"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      State / Province
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <input
+                        type="text"
+                        name="region"
+                        id="region"
+                        autoComplete="address-level1"
+                        className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                    <label
+                      htmlFor="postal-code"
+                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    >
+                      ZIP / Postal code
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <input
+                        type="text"
+                        name="postal-code"
+                        id="postal-code"
+                        autoComplete="postal-code"
+                        className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="divide-y divide-gray-200 pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+                <div>
+                  <h3 className="text-lg leading-6 font-medium text-gray-900">
+                    Notifications
+                  </h3>
+                  <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                    We'll always let you know about important changes, but you
+                    pick what else you want to hear about.
+                  </p>
+                </div>
+                <div className="space-y-6 sm:space-y-5 divide-y divide-gray-200">
+                  <div className="pt-6 sm:pt-5">
+                    <div role="group" aria-labelledby="label-email">
+                      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+                        <div>
+                          <div
+                            className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
+                            id="label-email"
+                          >
+                            By Email
+                          </div>
+                        </div>
+                        <div className="mt-4 sm:mt-0 sm:col-span-2">
+                          <div className="max-w-lg space-y-4">
+                            <div className="relative flex items-start">
+                              <div className="flex items-center h-5">
+                                <input
+                                  id="comments"
+                                  name="comments"
+                                  type="checkbox"
+                                  className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
                                 />
-                                <p className="text-sm font-medium text-gray-900">
-                                  {person.name}
+                              </div>
+                              <div className="ml-3 text-sm">
+                                <label
+                                  htmlFor="comments"
+                                  className="font-medium text-gray-700"
+                                >
+                                  Comments
+                                </label>
+                                <p className="text-gray-500">
+                                  Get notified when someones posts a comment on
+                                  a posting.
                                 </p>
-                                <p className="text-sm text-gray-500 truncate">
-                                  {person.role}
-                                </p>
-                              </a>
+                              </div>
+                            </div>
+                            <div>
+                              <div className="relative flex items-start">
+                                <div className="flex items-center h-5">
+                                  <input
+                                    id="candidates"
+                                    name="candidates"
+                                    type="checkbox"
+                                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                  />
+                                </div>
+                                <div className="ml-3 text-sm">
+                                  <label
+                                    htmlFor="candidates"
+                                    className="font-medium text-gray-700"
+                                  >
+                                    Candidates
+                                  </label>
+                                  <p className="text-gray-500">
+                                    Get notified when a candidate applies for a
+                                    job.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div className="relative flex items-start">
+                                <div className="flex items-center h-5">
+                                  <input
+                                    id="offers"
+                                    name="offers"
+                                    type="checkbox"
+                                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                  />
+                                </div>
+                                <div className="ml-3 text-sm">
+                                  <label
+                                    htmlFor="offers"
+                                    className="font-medium text-gray-700"
+                                  >
+                                    Offers
+                                  </label>
+                                  <p className="text-gray-500">
+                                    Get notified when a candidate accepts or
+                                    rejects an offer.
+                                  </p>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </li>
-                      ))}
-                    </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </nav>
-            </aside>
-          </div>
+                  <div className="pt-6 sm:pt-5">
+                    <div role="group" aria-labelledby="label-notifications">
+                      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+                        <div>
+                          <div
+                            className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
+                            id="label-notifications"
+                          >
+                            Push Notifications
+                          </div>
+                        </div>
+                        <div className="sm:col-span-2">
+                          <div className="max-w-lg">
+                            <p className="text-sm text-gray-500">
+                              These are delivered via SMS to your mobile phone.
+                            </p>
+                            <div className="mt-4 space-y-4">
+                              <div className="flex items-center">
+                                <input
+                                  id="push-everything"
+                                  name="push-notifications"
+                                  type="radio"
+                                  className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                                />
+                                <label
+                                  htmlFor="push-everything"
+                                  className="ml-3 block text-sm font-medium text-gray-700"
+                                >
+                                  Everything
+                                </label>
+                              </div>
+                              <div className="flex items-center">
+                                <input
+                                  id="push-email"
+                                  name="push-notifications"
+                                  type="radio"
+                                  className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                                />
+                                <label
+                                  htmlFor="push-email"
+                                  className="ml-3 block text-sm font-medium text-gray-700"
+                                >
+                                  Same as email
+                                </label>
+                              </div>
+                              <div className="flex items-center">
+                                <input
+                                  id="push-nothing"
+                                  name="push-notifications"
+                                  type="radio"
+                                  className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                                />
+                                <label
+                                  htmlFor="push-nothing"
+                                  className="ml-3 block text-sm font-medium text-gray-700"
+                                >
+                                  No push notifications
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-5">
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Cancel
+                </button>
+                <Link to="/checkout">
+                  <button
+                    type="submit"
+                    className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Checkout
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </>

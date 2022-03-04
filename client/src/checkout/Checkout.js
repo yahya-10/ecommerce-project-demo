@@ -5,6 +5,13 @@ import axios from "axios";
 
 import CardInput from "./CardInput";
 
+/**
+ *@private
+ * This component handles the payment.
+ * An alert-message will popup if everything went right
+ *
+ */
+
 const Checkout = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState({
@@ -18,6 +25,7 @@ const Checkout = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Disable form submission until Stripe.js has loaded.
     if (!stripe || !elements) return;
     if (!email) {
       setError({ emailError: "This field is required" });

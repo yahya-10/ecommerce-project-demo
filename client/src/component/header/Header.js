@@ -4,12 +4,19 @@ import { logOut } from "../../utils";
 
 import { Popover } from "@headlessui/react";
 import { MenuIcon } from "@heroicons/react/outline";
-import { LoginIcon, LogoutIcon } from "@heroicons/react/solid";
+import { ShoppingCartIcon } from "@heroicons/react/solid";
 
 import comunikcrmLogo from "../../assets/comunikcrm.png";
 
+/**
+ * @public
+ * This a navbar component where user can navigate through different pages.
+ * @param {Function} isLoggedIn - Certain UI will load based on the returned value of
+ * this function
+ */
+
 const navigation = [
-  { name: "Solutions", href: "/solutions" },
+  { name: "Solutions", href: "/" },
   { name: "Store", href: "/store" },
   { name: "About Us", href: "/about" },
   { name: "Support", href: "/contact" },
@@ -140,12 +147,7 @@ const Header = ({ listItems, isLoggedIn }) => {
                         to="/login"
                         className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                       >
-                        <span className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
-                          <LogoutIcon
-                            className="flex-shrink-0 h-5 w-5"
-                            aria-hidden="true"
-                          />
-                        </span>
+                        Logout
                       </Link>
                     </span>
                   ) : (
@@ -154,28 +156,24 @@ const Header = ({ listItems, isLoggedIn }) => {
                         to="/login"
                         className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                       >
-                        <span className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
-                          <LoginIcon
-                            className="flex-shrink-0 h-5 w-5"
-                            aria-hidden="true"
-                          />
-                        </span>
+                        Login
                       </Link>
                     </span>
                   )}
+                  {/* Shopping cart icon */}
                   {/* <div className="inline-flex rounded-md shadow">
                     <Link
                       to="/store/cart"
                       className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                     >
-                    <span className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
-                      <UserIcon
-                        className="flex-shrink-0 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    </span>
-                    Display the number of items in the cart
-                    <span>{listItems.length}</span>
+                      <span className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
+                        <ShoppingCartIcon
+                          className="flex-shrink-0 h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      </span> */}
+                  {/* Display the number of items in the cart */}
+                  {/* <span>{listItems.length}</span>
                     </Link>
                   </div> */}
                 </div>

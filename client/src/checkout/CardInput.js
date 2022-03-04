@@ -1,5 +1,12 @@
 import { CardElement } from "@stripe/react-stripe-js";
 
+/**
+ * Prebuilt UI component for validating user's payment.
+ * @private
+ * @param {object}  options -  CSS styles
+ * @returns Component
+ */
+
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {

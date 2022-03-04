@@ -6,9 +6,13 @@ const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 const app = express();
 
+// Prevent form cross-origin blocking
 app.use(cors());
+
+// Parse the data
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Route that enables the user to login
 app.use("/login", cors(), (req, res) => {
   try {
     res.send({
@@ -19,6 +23,7 @@ app.use("/login", cors(), (req, res) => {
   }
 });
 
+// Route that enables the user to register
 app.use("/register", cors(), (req, res) => {
   try {
     res.send({
@@ -29,6 +34,7 @@ app.use("/register", cors(), (req, res) => {
   }
 });
 
+// Payment route
 app.post("/payment", async (req, res) => {
   const { email } = req.body;
   const paymentIntent = await stripe.paymentIntents.create({
