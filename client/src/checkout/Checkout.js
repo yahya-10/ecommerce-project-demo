@@ -53,7 +53,8 @@ const Checkout = () => {
       setError({ paymentError: result.error.message });
     } else {
       if (result.paymentIntent.status === "succeeded") {
-        alert(`${email} Money is in the Bank`);
+        alert(`${email} Transaction Succeeded`);
+        console.log(result);
       }
     }
   };

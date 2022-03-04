@@ -71,6 +71,7 @@ const App = () => {
 
   //Clear cart
   const clearCart = () => setListItems([]);
+
   // console.log("App.js", isLoggedIn());
   return (
     <div>

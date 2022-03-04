@@ -297,7 +297,7 @@ const LandingPage = () => {
                             </div>
                           </div>
                           <Link
-                            to="/checkout"
+                            to="/profile"
                             className={classNames(
                               plan.featured
                                 ? "bg-indigo-600 text-white hover:bg-indigo-700"

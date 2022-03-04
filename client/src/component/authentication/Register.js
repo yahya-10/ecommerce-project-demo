@@ -26,6 +26,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   //Land the page from the start on mounting the component.
   useEffect(() => {
@@ -37,6 +38,15 @@ const Register = ({ setToken, handleAddNewUser }) => {
   // If user passes the right data, he'll be redirected to the personal profile
   const handleRegister = async (e) => {
     e.preventDefault();
+    if (
+      fullName === "" ||
+      companyName === "" ||
+      email === "" ||
+      password === ""
+    ) {
+      setError("This field is inquired");
+      return;
+    }
     const token = await registerUser({
       fullName,
       companyName,
@@ -172,6 +182,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
+                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
                   </div>
                   <div>
                     <label
@@ -192,6 +203,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
+                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
                   </div>
                   <div>
                     <label
@@ -212,6 +224,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
+                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
                   </div>
 
                   <div className="space-y-1">
@@ -233,6 +246,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
+                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
                   </div>
 
                   <div className="flex items-center justify-between">
