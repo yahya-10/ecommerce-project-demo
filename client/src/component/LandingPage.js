@@ -22,6 +22,9 @@ const plans = [
       { id: 1, value: "Basic invoicing" },
       { id: 2, value: "Easy to use accounting" },
       { id: 3, value: "Mutli-accounts" },
+      { id: 4, value: "Tax planning toolkit" },
+      { id: 5, value: "VAT & VATMOSS filing" },
+      { id: 6, value: "Free bank transfers" },
     ],
   },
   {
@@ -52,6 +55,8 @@ const plans = [
       { id: 2, value: "Easy to use accounting" },
       { id: 3, value: "Mutli-accounts" },
       { id: 4, value: "Tax planning toolkit" },
+      { id: 5, value: "VAT & VATMOSS filing" },
+      { id: 6, value: "Free bank transfers" },
     ],
   },
 ];

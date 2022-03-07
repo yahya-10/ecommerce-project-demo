@@ -1,28 +1,27 @@
-import { Fragment, useState, useEffect } from "react";
-
-import { Link } from "react-router-dom";
+import { Fragment, useState } from "react";
 
 import { Dialog, Transition } from "@headlessui/react";
 import {
   CalendarIcon,
-  CogIcon,
   HomeIcon,
   MenuIcon,
-  ViewGridAddIcon,
   XIcon,
 } from "@heroicons/react/outline";
+import { useFormik } from "formik";
+
 import SelectedSubscription from "./SelectedSubscription";
+import Validators from "./Validators";
 
 /**
  * @private
  * in the profile user should fill a form of the pruchase order.
  */
 
-const user = {
-  name: "Tom Cook",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
+// const user = {
+//   name: "Tom Cook",
+//   imageUrl:
+//     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+// };
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
   { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
@@ -36,6 +35,7 @@ const UserProfile = ({ selectedPackage }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [disableFields, setDisableFields] = useState(false);
+  // Client data state
   const [businessData, setBusinessData] = useState({
     companyName: "",
     about: "",
@@ -49,20 +49,27 @@ const UserProfile = ({ selectedPackage }) => {
     zip: "",
   });
 
+  const { validationSchema } = Validators();
+
+  // Validate client's data
   const handleValidate = (e) => {
     e.preventDefault();
     setToggle(true);
     setDisableFields(true);
   };
 
+  // Reset the inputs and enable the form fields
   const handleReset = () => {
     setToggle(false);
     setDisableFields(false);
   };
 
+  // handle the change of the inputs
   const handleChange = (e) => {
     setBusinessData({ ...businessData, [e.target.name]: e.target.value });
   };
+
+  // console.log("userProfile", validationSchema);
 
   return (
     <>
@@ -158,27 +165,6 @@ const UserProfile = ({ selectedPackage }) => {
                     />
                   </nav>
                 </div>
-                <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-                  <a href="#" className="flex-shrink-0 group block">
-                    <div className="flex items-center">
-                      <div>
-                        <img
-                          className="inline-block h-10 w-10 rounded-full"
-                          src={user.imageUrl}
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
-                          {user.name}
-                        </p>
-                        <p className="text-sm font-medium text-gray-500 group-hover:text-gray-700">
-                          View profile
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
               </div>
             </Transition.Child>
             <div className="flex-shrink-0 w-14" aria-hidden="true">
@@ -193,7 +179,6 @@ const UserProfile = ({ selectedPackage }) => {
             {/* Sidebar component, swap this element with another sidebar if you like */}
             <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-100">
               <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-                {/* <div className="flex items-center flex-shrink-0 px-4"></div> */}
                 <nav className="mt-5 flex-1" aria-label="Sidebar">
                   <div className="px-2 space-y-1">
                     {navigation.map((item) => (
@@ -299,6 +284,7 @@ const UserProfile = ({ selectedPackage }) => {
                           autoComplete="companyname"
                           disabled={disableFields}
                           onChange={handleChange}
+                          value={businessData.companyName}
                           className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                         />
                       </div>
@@ -319,8 +305,8 @@ const UserProfile = ({ selectedPackage }) => {
                         rows={3}
                         disabled={disableFields}
                         onChange={handleChange}
+                        value={businessData.about}
                         className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
-                        defaultValue={""}
                       />
                       <p className="mt-2 text-sm text-gray-500">
                         Write a few sentences about yourself.
@@ -355,6 +341,7 @@ const UserProfile = ({ selectedPackage }) => {
                         autoComplete="given-name"
                         disabled={disableFields}
                         onChange={handleChange}
+                        value={businessData.firstName}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -375,6 +362,7 @@ const UserProfile = ({ selectedPackage }) => {
                         autoComplete="family-name"
                         disabled={disableFields}
                         onChange={handleChange}
+                        value={businessData.lastName}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -395,6 +383,7 @@ const UserProfile = ({ selectedPackage }) => {
                         autoComplete="email"
                         disabled={disableFields}
                         onChange={handleChange}
+                        value={businessData.emailAddress}
                         className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -414,6 +403,7 @@ const UserProfile = ({ selectedPackage }) => {
                         autoComplete="country-name"
                         disabled={disableFields}
                         onChange={handleChange}
+                        value={businessData.country}
                         className="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       >
                         <option>United States</option>
@@ -441,6 +431,7 @@ const UserProfile = ({ selectedPackage }) => {
                         autoComplete="street-address"
                         disabled={disableFields}
                         onChange={handleChange}
+                        value={businessData.streetAddress}
                         className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -461,6 +452,7 @@ const UserProfile = ({ selectedPackage }) => {
                         autoComplete="address-level2"
                         disabled={disableFields}
                         onChange={handleChange}
+                        value={businessData.city}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -481,6 +473,7 @@ const UserProfile = ({ selectedPackage }) => {
                         autoComplete="address-level1"
                         disabled={disableFields}
                         onChange={handleChange}
+                        value={businessData.state}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -501,6 +494,7 @@ const UserProfile = ({ selectedPackage }) => {
                         autoComplete="postal-code"
                         disabled={disableFields}
                         onChange={handleChange}
+                        value={businessData.zip}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -516,21 +510,13 @@ const UserProfile = ({ selectedPackage }) => {
                   >
                     Reset
                   </button>
-                  {/* <Link to="/checkout"> */}
-                  {/* <Link to="/checkout"> */}
                   <button
-                    // type="submit"
                     className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     onClick={handleValidate}
                   >
                     Validate
                   </button>
-                  {/* </Link> */}
-                  {/* </Link> */}
                 </div>
-              </div>
-              <div style={{ color: "red" }}>
-                Suggestion: detailed Offer Card
               </div>
               {toggle && (
                 <SelectedSubscription
@@ -540,6 +526,7 @@ const UserProfile = ({ selectedPackage }) => {
               )}
             </div>
           </form>
+          {/* </Formik> */}
         </div>
       </div>
     </>

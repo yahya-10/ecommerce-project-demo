@@ -82,7 +82,7 @@ const App = () => {
   //Clear cart
   const clearCart = () => setListItems([]);
 
-  console.log("App.js", selectedPackage);
+  // console.log("App.js", selectedPackage);
   return (
     <div>
       <Header

@@ -53,6 +53,7 @@ const checklist = [
 ];
 
 const SelectedSubscription = ({ data, selectedPackage }) => {
+  // console.log(selectedPackage.mainFeatures);
   return (
     <>
       {/* Split brand panel */}
@@ -61,6 +62,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
           <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-r from-cyan-600 to-green-400" />
         </div>
         <div className="relative max-w-7xl mx-auto lg:grid lg:grid-cols-2 lg:px-8">
+          {/* Applicant information summary */}
           <div className="bg-white  sm:py-24 sm:px-6 lg:px-0 lg:pr-8">
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
               <div className="px-4 py-5 sm:px-6">
@@ -174,6 +176,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
               </div>
             </div>
           </div>
+          {/* Selected package */}
           <div className="bg-gradient-to-r from-cyan-600 to-green-400 py-16 px-4 sm:py-24 sm:px-6 lg:bg-none lg:flex lg:items-center lg:justify-end lg:px-0 lg:pl-8">
             <div className="max-w-lg mx-auto w-full space-y-8 lg:mx-0">
               <div>
@@ -213,16 +216,16 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
                 role="list"
                 className="rounded overflow-hidden grid gap-px sm:grid-cols-2"
               >
-                {checklist.map((item) => (
+                {selectedPackage.mainFeatures.map((item, i) => (
                   <li
-                    key={item}
+                    key={i}
                     className="bg-cyan-700 bg-opacity-50 py-4 px-4 flex items-center text-base text-white"
                   >
                     <CheckIcon
                       className="h-6 w-6 text-cyan-200"
                       aria-hidden="true"
                     />
-                    <span className="ml-3">{item}</span>
+                    <span className="ml-3">{item.value}</span>
                   </li>
                 ))}
               </ul>
