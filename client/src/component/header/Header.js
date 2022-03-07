@@ -1,15 +1,12 @@
-import { useEffect } from "react";
-
 import { Link } from "react-router-dom";
 
-// import { logOut } from "../../utils";
+import { logOut } from "../../utils";
 
 import { Popover } from "@headlessui/react";
 import { MenuIcon } from "@heroicons/react/outline";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 
 import comunikcrmLogo from "../../assets/comunikcrm.png";
-// import { ControlAuth } from "../../utils";
 
 /**
  * @public
@@ -26,11 +23,6 @@ const navigation = [
 ];
 
 const Header = ({ listItems, isLoggedIn }) => {
-  const logOut = () => {
-    sessionStorage.removeItem("token");
-  };
-
-  // console.log(isLoggedIn());
   return (
     <div>
       <div className="relative bg-gray-50 overflow-hidden">

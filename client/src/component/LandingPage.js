@@ -12,6 +12,7 @@ import LogoClouds from "./LogoClouds";
 
 const plans = [
   {
+    id: 20,
     title: "Starter",
     featured: false,
     description: "All your essential business finances, taken care of.",
@@ -24,6 +25,7 @@ const plans = [
     ],
   },
   {
+    id: 21,
     title: "Scale",
     featured: true,
     description: "The best financial services for your thriving business.",
@@ -39,6 +41,7 @@ const plans = [
     ],
   },
   {
+    id: 22,
     title: "Growth",
     featured: false,
     description: "Convenient features to take your business to the next level.",
@@ -182,7 +185,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const LandingPage = () => {
+const LandingPage = ({ handleSelectPackage }) => {
+  // const selectPackage = (id) => {
+  //   console.log(id);
+  // };
+
   return (
     <>
       <div className="mb-5">
@@ -252,6 +259,7 @@ const LandingPage = () => {
                         "pt-6 px-6 pb-3 rounded-lg lg:px-8 lg:pt-12"
                       )}
                     >
+                      {/* {console.log(plan.id)} */}
                       <div>
                         <h3
                           className={classNames(
@@ -298,6 +306,7 @@ const LandingPage = () => {
                           </div>
                           <Link
                             to="/profile"
+                            onClick={() => handleSelectPackage(plan)}
                             className={classNames(
                               plan.featured
                                 ? "bg-indigo-600 text-white hover:bg-indigo-700"

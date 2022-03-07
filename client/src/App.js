@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -30,6 +30,7 @@ import UserProfile from "./component/user_profile/UserProfile";
 const App = () => {
   const [listItems, setListItems] = useState([]);
   const [users, setUsers] = useState([]);
+  const [selectedPackage, setSelectedPackage] = useState();
 
   const { token, setToken } = useToken();
 
@@ -69,10 +70,19 @@ const App = () => {
     }
   };
 
+  //Pass the selected package to the user profile
+  const handleSelectedPackage = (subscription) => {
+    setSelectedPackage(subscription);
+  };
+
+  // useEffect(() => {
+  //   handleSelectedPackage();
+  // }, [selectedPackage]);
+
   //Clear cart
   const clearCart = () => setListItems([]);
 
-  // console.log("App.js", isLoggedIn());
+  console.log("App.js", selectedPackage);
   return (
     <div>
       <Header
@@ -82,7 +92,11 @@ const App = () => {
         isLoggedIn={isLoggedIn}
       />
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
+        <Route
+          exact
+          path="/"
+          element={<LandingPage handleSelectPackage={handleSelectedPackage} />}
+        />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route
           path="/register"
@@ -113,7 +127,11 @@ const App = () => {
           <Route path="/checkout" exact element={<Checkout />} />
         </Route>
         <Route path="profile" exact element={<PrivateRoute />}>
-          <Route path="/profile" exact element={<UserProfile />} />
+          <Route
+            path="/profile"
+            exact
+            element={<UserProfile selectedPackage={selectedPackage} />}
+          />
         </Route>
       </Routes>
       <Footer />

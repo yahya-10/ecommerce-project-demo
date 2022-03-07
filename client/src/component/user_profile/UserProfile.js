@@ -32,12 +32,37 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const UserProfile = () => {
+const UserProfile = ({ selectedPackage }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [toggle, setToggle] = useState(false);
+  const [disableFields, setDisableFields] = useState(false);
+  const [businessData, setBusinessData] = useState({
+    companyName: "",
+    about: "",
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+    country: "",
+    streetAddress: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const handleValidate = (e) => {
+    e.preventDefault();
+    setToggle(true);
+    setDisableFields(true);
+  };
+
+  const handleReset = () => {
+    setToggle(false);
+    setDisableFields(false);
+  };
+
+  const handleChange = (e) => {
+    setBusinessData({ ...businessData, [e.target.name]: e.target.value });
+  };
 
   return (
     <>
@@ -269,9 +294,11 @@ const UserProfile = () => {
                         </span>
                         <input
                           type="text"
-                          name="username"
-                          id="username"
-                          autoComplete="username"
+                          name="companyName"
+                          id="companyname"
+                          autoComplete="companyname"
+                          disabled={disableFields}
+                          onChange={handleChange}
                           className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                         />
                       </div>
@@ -290,6 +317,8 @@ const UserProfile = () => {
                         id="about"
                         name="about"
                         rows={3}
+                        disabled={disableFields}
+                        onChange={handleChange}
                         className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                         defaultValue={""}
                       />
@@ -321,9 +350,11 @@ const UserProfile = () => {
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
                         type="text"
-                        name="first-name"
+                        name="firstName"
                         id="first-name"
                         autoComplete="given-name"
+                        disabled={disableFields}
+                        onChange={handleChange}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -339,9 +370,11 @@ const UserProfile = () => {
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
                         type="text"
-                        name="last-name"
+                        name="lastName"
                         id="last-name"
                         autoComplete="family-name"
+                        disabled={disableFields}
+                        onChange={handleChange}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -357,9 +390,11 @@ const UserProfile = () => {
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
                         id="email"
-                        name="email"
+                        name="emailAddress"
                         type="email"
                         autoComplete="email"
+                        disabled={disableFields}
+                        onChange={handleChange}
                         className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -377,6 +412,8 @@ const UserProfile = () => {
                         id="country"
                         name="country"
                         autoComplete="country-name"
+                        disabled={disableFields}
+                        onChange={handleChange}
                         className="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       >
                         <option>United States</option>
@@ -399,9 +436,11 @@ const UserProfile = () => {
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
                         type="text"
-                        name="street-address"
-                        id="street-address"
+                        name="streetAddress"
+                        id="streetAddress"
                         autoComplete="street-address"
+                        disabled={disableFields}
+                        onChange={handleChange}
                         className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -420,6 +459,8 @@ const UserProfile = () => {
                         name="city"
                         id="city"
                         autoComplete="address-level2"
+                        disabled={disableFields}
+                        onChange={handleChange}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -435,9 +476,11 @@ const UserProfile = () => {
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
                         type="text"
-                        name="region"
+                        name="state"
                         id="region"
                         autoComplete="address-level1"
+                        disabled={disableFields}
+                        onChange={handleChange}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -453,9 +496,11 @@ const UserProfile = () => {
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
                         type="text"
-                        name="postal-code"
+                        name="zip"
                         id="postal-code"
                         autoComplete="postal-code"
+                        disabled={disableFields}
+                        onChange={handleChange}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -467,23 +512,32 @@ const UserProfile = () => {
                   <button
                     type="button"
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    onClick={handleReset}
                   >
                     Reset
                   </button>
                   {/* <Link to="/checkout"> */}
+                  {/* <Link to="/checkout"> */}
                   <button
-                    type="submit"
+                    // type="submit"
                     className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    onClick={handleValidate}
                   >
                     Validate
                   </button>
+                  {/* </Link> */}
                   {/* </Link> */}
                 </div>
               </div>
               <div style={{ color: "red" }}>
                 Suggestion: detailed Offer Card
               </div>
-              <SelectedSubscription />
+              {toggle && (
+                <SelectedSubscription
+                  selectedPackage={selectedPackage}
+                  data={businessData}
+                />
+              )}
             </div>
           </form>
         </div>

@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 /**
  *
  * @returns {boolean} function to check if the user's token exists or not
@@ -19,21 +21,14 @@ export const logOut = () => {
   sessionStorage.removeItem("token");
 };
 
-// import { useState } from "react";
-
 // export const ControlAuth = () => {
 //   const [isAuth, setIsAuth] = useState(false);
 
-//   if (sessionStorage.getItem("token")) {
-//     setIsAuth(true);
-//   } else {
-//     setIsAuth(false);
-//   }
-
-//   const logOut = () => {
-//     sessionStorage.removeItem("token");
-//     setIsAuth(false);
-//   };
+//   useEffect(() => {
+//     if (sessionStorage.getItem("token")) {
+//       setIsAuth(true);
+//     }
+//   }, []);
 
 //   return { isAuth };
 // };

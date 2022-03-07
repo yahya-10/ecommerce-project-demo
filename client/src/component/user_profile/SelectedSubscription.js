@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import {
   CalendarIcon,
   CheckIcon,
@@ -50,7 +52,7 @@ const checklist = [
   "14 days free",
 ];
 
-const SelectedSubscription = () => {
+const SelectedSubscription = ({ data, selectedPackage }) => {
   return (
     <>
       {/* Split brand panel */}
@@ -76,7 +78,7 @@ const SelectedSubscription = () => {
                       Full name
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      Client Name
+                      {`${data.firstName} ${data.lastName}`}
                     </dd>
                   </div>
                   <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -84,7 +86,7 @@ const SelectedSubscription = () => {
                       Application for
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      Selected Package
+                      {selectedPackage.title}
                     </dd>
                   </div>
                   <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -92,7 +94,7 @@ const SelectedSubscription = () => {
                       Email address
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      clientName@example.com
+                      {data.emailAddress}
                     </dd>
                   </div>
                   <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -104,15 +106,20 @@ const SelectedSubscription = () => {
                     </dd>
                   </div>
                   <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">About</dt>
+                    <dt className="text-sm font-medium text-gray-500">
+                      Addresss
+                    </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      Fugiat ipsum ipsum deserunt culpa aute sint do nostrud
-                      anim incididunt cillum culpa consequat. Excepteur qui
-                      ipsum aliquip consequat sint. Sit id mollit nulla mollit
-                      nostrud in ea officia proident. Irure nostrud pariatur
-                      mollit ad adipisicing reprehenderit deserunt qui eu.
+                      {`${data.streetAddress} ${data.city} ${data.state} ${data.zip} ${data.country}`}
                     </dd>
                   </div>
+                  <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className="text-sm font-medium text-gray-500">About</dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {data.about}
+                    </dd>
+                  </div>
+
                   <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className="text-sm font-medium text-gray-500">
                       Attachments
@@ -174,7 +181,7 @@ const SelectedSubscription = () => {
                 <p className="relative grid grid-cols-2">
                   <span className="flex flex-col text-center">
                     <span className="text-5xl font-extrabold text-white tracking-tight">
-                      $99
+                      ${selectedPackage.priceMonthly}
                     </span>
                     <span className="mt-2 text-base font-medium text-cyan-100">
                       Setup fee
@@ -219,8 +226,8 @@ const SelectedSubscription = () => {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#"
+              <Link
+                to="/checkout"
                 className="w-full bg-white border border-transparent rounded-md py-4 px-8 flex items-center justify-center text-lg leading-6 font-medium text-cyan-700 hover:bg-cyan-50 md:px-10"
               >
                 <span className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
@@ -230,13 +237,7 @@ const SelectedSubscription = () => {
                   />
                 </span>
                 Buy Now
-              </a>
-              <a
-                href="#"
-                className="block text-center text-base font-medium text-cyan-100 hover:text-white"
-              >
-                Try Workflow Lite for free
-              </a>
+              </Link>
             </div>
           </div>
         </div>
