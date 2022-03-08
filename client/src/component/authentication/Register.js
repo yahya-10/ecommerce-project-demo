@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import Hero from "../../assets/hero.png";
 
@@ -28,6 +30,14 @@ const Register = ({ setToken, handleAddNewUser }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const requiredMessage = "This field is required";
+  const validationSchema = Yup.object({
+    companyName: Yup.string().required(requiredMessage),
+    fullName: Yup.string().required(requiredMessage),
+    email: Yup.string().email().required(requiredMessage),
+    password: Yup.string().required(requiredMessage).min(8).max(12),
+  });
+
   //Land the page from the start on mounting the component.
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,27 +45,27 @@ const Register = ({ setToken, handleAddNewUser }) => {
 
   const navigate = useNavigate();
 
-  // If user passes the right data, he'll be redirected to the personal profile
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    if (
-      fullName === "" ||
-      companyName === "" ||
-      email === "" ||
-      password === ""
-    ) {
-      setError("This field is inquired");
-      return;
-    }
-    const token = await registerUser({
-      fullName,
-      companyName,
-      email,
-      password,
-    });
-    setToken(token);
-    navigate("/profile");
-  };
+  const formik = useFormik({
+    initialValues: {
+      fullName: "",
+      companyName: "",
+      email: "",
+      password: "",
+    },
+    onSubmit: async () => {
+      const token = await registerUser({
+        fullName,
+        companyName,
+        email,
+        password,
+      });
+      setToken(token);
+      navigate("/profile");
+    },
+    validationSchema: validationSchema,
+  });
+
+  // console.log("values", formik.errors);
 
   return (
     <>
@@ -162,7 +172,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
               </div>
 
               <div className="mt-6">
-                <form action="#" method="POST" className="space-y-6">
+                <form onSubmit={formik.handleSubmit} className="space-y-6">
                   <div>
                     <label
                       htmlFor="fullname"
@@ -175,14 +185,17 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         id="fullName"
                         name="fullName"
                         type="fullName"
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
+                        value={formik.values.fullName}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         autoComplete="fullName"
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
-                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
+                    {formik.touched.fullName && formik.errors.fullName ? (
+                      <h6 style={{ color: "red" }}>{formik.errors.fullName}</h6>
+                    ) : null}
                   </div>
                   <div>
                     <label
@@ -196,14 +209,19 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         id="companyName"
                         name="companyName"
                         type="text"
-                        value={companyName}
-                        onChange={(e) => setCompanyName(e.target.value)}
+                        value={formik.values.companyName}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         autoComplete=""
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
-                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
+                    {formik.touched.companyName && formik.errors.companyName ? (
+                      <h6 style={{ color: "red" }}>
+                        {formik.errors.companyName}
+                      </h6>
+                    ) : null}
                   </div>
                   <div>
                     <label
@@ -217,14 +235,17 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         id="email"
                         name="email"
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         autoComplete="email"
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
-                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
+                    {formik.touched.email && formik.errors.email ? (
+                      <h6 style={{ color: "red" }}>{formik.errors.email}</h6>
+                    ) : null}
                   </div>
 
                   <div className="space-y-1">
@@ -239,14 +260,17 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         id="password"
                         name="password"
                         type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={formik.values.password}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         autoComplete="current-password"
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
-                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
+                    {formik.touched.password && formik.errors.password ? (
+                      <h6 style={{ color: "red" }}>{formik.errors.password}</h6>
+                    ) : null}
                   </div>
 
                   <div className="flex items-center justify-between">
@@ -285,7 +309,6 @@ const Register = ({ setToken, handleAddNewUser }) => {
                     <button
                       type="submit"
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      onClick={handleRegister}
                     >
                       Sign Up
                     </button>

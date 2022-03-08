@@ -8,9 +8,10 @@ import {
   XIcon,
 } from "@heroicons/react/outline";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import SelectedSubscription from "./SelectedSubscription";
-import Validators from "./Validators";
+import Steps from "./Steps";
 
 /**
  * @private
@@ -35,28 +36,20 @@ const UserProfile = ({ selectedPackage }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [disableFields, setDisableFields] = useState(false);
-  // Client data state
-  const [businessData, setBusinessData] = useState({
-    companyName: "",
-    about: "",
-    firstName: "",
-    lastName: "",
-    emailAddress: "",
-    country: "",
-    streetAddress: "",
-    city: "",
-    state: "",
-    zip: "",
+
+  const requiredMessage = "This field is required";
+  const validationSchema = Yup.object({
+    companyName: Yup.string().required(requiredMessage),
+    about: Yup.string().required(requiredMessage),
+    firstName: Yup.string().required(requiredMessage),
+    lastName: Yup.string().required(requiredMessage),
+    emailAddress: Yup.string().email().required(requiredMessage),
+    country: Yup.string().required(requiredMessage),
+    streetAddress: Yup.string().required(requiredMessage),
+    city: Yup.string().required(requiredMessage),
+    state: Yup.string().required(requiredMessage),
+    zip: Yup.string().required(requiredMessage),
   });
-
-  const { validationSchema } = Validators();
-
-  // Validate client's data
-  const handleValidate = (e) => {
-    e.preventDefault();
-    setToggle(true);
-    setDisableFields(true);
-  };
 
   // Reset the inputs and enable the form fields
   const handleReset = () => {
@@ -64,15 +57,35 @@ const UserProfile = ({ selectedPackage }) => {
     setDisableFields(false);
   };
 
-  // handle the change of the inputs
-  const handleChange = (e) => {
-    setBusinessData({ ...businessData, [e.target.name]: e.target.value });
+  const formik = useFormik({
+    initialValues: {
+      companyName: "",
+      about: "",
+      firstName: "",
+      lastName: "",
+      emailAddress: "",
+      country: "",
+      streetAddress: "",
+      city: "",
+      state: "",
+      zip: "",
+    },
+    onSubmit: () => {
+      setToggle(true);
+      setDisableFields(true);
+    },
+    validationSchema: validationSchema,
+  });
+
+  const styles = {
+    color: "red",
+    fontSize: "2 rem",
   };
-
-  // console.log("userProfile", validationSchema);
-
   return (
     <>
+      <div className="mb-5">
+        <Steps />
+      </div>
       <div className="h-full flex">
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
@@ -252,7 +265,10 @@ const UserProfile = ({ selectedPackage }) => {
             </div>
           </div>
           {/* Form  */}
-          <form className="space-y-8 divide-y divide-gray-200 ml-5 mr-5 mt-5">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="space-y-8 divide-y divide-gray-200 ml-5 mr-5 mt-5"
+          >
             <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
               <div>
                 <div>
@@ -283,10 +299,15 @@ const UserProfile = ({ selectedPackage }) => {
                           id="companyname"
                           autoComplete="companyname"
                           disabled={disableFields}
-                          onChange={handleChange}
-                          value={businessData.companyName}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.companyName}
                           className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                         />
+                        {formik.touched.companyName &&
+                        formik.errors.companyName ? (
+                          <div style={styles}>{formik.errors.companyName}</div>
+                        ) : null}
                       </div>
                     </div>
                   </div>
@@ -304,10 +325,14 @@ const UserProfile = ({ selectedPackage }) => {
                         name="about"
                         rows={3}
                         disabled={disableFields}
-                        onChange={handleChange}
-                        value={businessData.about}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.about}
                         className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                       />
+                      {formik.touched.about && formik.errors.about ? (
+                        <div style={styles}>{formik.errors.about}</div>
+                      ) : null}
                       <p className="mt-2 text-sm text-gray-500">
                         Write a few sentences about yourself.
                       </p>
@@ -340,10 +365,14 @@ const UserProfile = ({ selectedPackage }) => {
                         id="first-name"
                         autoComplete="given-name"
                         disabled={disableFields}
-                        onChange={handleChange}
-                        value={businessData.firstName}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.firstName}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
+                      {formik.touched.firstName && formik.errors.firstName ? (
+                        <div style={styles}>{formik.errors.firstName}</div>
+                      ) : null}
                     </div>
                   </div>
 
@@ -361,10 +390,14 @@ const UserProfile = ({ selectedPackage }) => {
                         id="last-name"
                         autoComplete="family-name"
                         disabled={disableFields}
-                        onChange={handleChange}
-                        value={businessData.lastName}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.lastName}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
+                      {formik.touched.lastName && formik.errors.lastName ? (
+                        <div style={styles}>{formik.errors.lastName}</div>
+                      ) : null}
                     </div>
                   </div>
 
@@ -382,10 +415,15 @@ const UserProfile = ({ selectedPackage }) => {
                         type="email"
                         autoComplete="email"
                         disabled={disableFields}
-                        onChange={handleChange}
-                        value={businessData.emailAddress}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.emailAddress}
                         className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
                       />
+                      {formik.touched.emailAddress &&
+                      formik.errors.emailAddress ? (
+                        <div style={styles}>{formik.errors.emailAddress}</div>
+                      ) : null}
                     </div>
                   </div>
 
@@ -402,8 +440,9 @@ const UserProfile = ({ selectedPackage }) => {
                         name="country"
                         autoComplete="country-name"
                         disabled={disableFields}
-                        onChange={handleChange}
-                        value={businessData.country}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.country}
                         className="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       >
                         <option>United States</option>
@@ -413,6 +452,9 @@ const UserProfile = ({ selectedPackage }) => {
                         <option>Ivory Coast</option>
                         <option>China</option>
                       </select>
+                      {formik.touched.country && formik.errors.country ? (
+                        <p style={styles}>{formik.errors.country}</p>
+                      ) : null}
                     </div>
                   </div>
 
@@ -430,10 +472,15 @@ const UserProfile = ({ selectedPackage }) => {
                         id="streetAddress"
                         autoComplete="street-address"
                         disabled={disableFields}
-                        onChange={handleChange}
-                        value={businessData.streetAddress}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.streetAddress}
                         className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
                       />
+                      {formik.touched.streetAddress &&
+                      formik.errors.streetAddress ? (
+                        <div style={styles}>{formik.errors.streetAddress}</div>
+                      ) : null}
                     </div>
                   </div>
 
@@ -451,10 +498,14 @@ const UserProfile = ({ selectedPackage }) => {
                         id="city"
                         autoComplete="address-level2"
                         disabled={disableFields}
-                        onChange={handleChange}
-                        value={businessData.city}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.city}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
+                      {formik.touched.city && formik.errors.city ? (
+                        <div style={styles}>{formik.errors.city}</div>
+                      ) : null}
                     </div>
                   </div>
 
@@ -472,10 +523,14 @@ const UserProfile = ({ selectedPackage }) => {
                         id="region"
                         autoComplete="address-level1"
                         disabled={disableFields}
-                        onChange={handleChange}
-                        value={businessData.state}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.state}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
+                      {formik.touched.state && formik.errors.state ? (
+                        <div style={styles}>{formik.errors.state}</div>
+                      ) : null}
                     </div>
                   </div>
 
@@ -493,10 +548,14 @@ const UserProfile = ({ selectedPackage }) => {
                         id="postal-code"
                         autoComplete="postal-code"
                         disabled={disableFields}
-                        onChange={handleChange}
-                        value={businessData.zip}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.zip}
                         className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                       />
+                      {formik.touched.zip && formik.errors.zip ? (
+                        <div style={styles}>{formik.errors.zip}</div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -511,8 +570,8 @@ const UserProfile = ({ selectedPackage }) => {
                     Reset
                   </button>
                   <button
+                    type="submit"
                     className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={handleValidate}
                   >
                     Validate
                   </button>
@@ -521,12 +580,11 @@ const UserProfile = ({ selectedPackage }) => {
               {toggle && (
                 <SelectedSubscription
                   selectedPackage={selectedPackage}
-                  data={businessData}
+                  data={formik.values}
                 />
               )}
             </div>
           </form>
-          {/* </Formik> */}
         </div>
       </div>
     </>

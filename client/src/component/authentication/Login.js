@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
 
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import LoginSVG from "../../assets/loginSVG.png";
@@ -26,7 +27,7 @@ const loginUser = async (credentials) => {
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState();
+  const [error, setError] = useState({});
   const [showingPwd, setShowingPwd] = useState(false);
 
   const navigate = useNavigate();
@@ -34,19 +35,40 @@ const Login = ({ setToken }) => {
   // Give access to user if passed the right credentials
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email === "" || password === "") {
-      setError("This field id required!!");
-      return;
-    }
 
-    const token = await loginUser({
-      email,
-      password,
-    });
-    setToken(token);
-    navigate(`/profile`);
+    setError(validate(email, password));
+    if (Object.keys(error).length !== 0) {
+      return;
+    } else {
+      const token = await loginUser({
+        email,
+        password,
+      });
+      setToken(token);
+      navigate(`/profile`);
+    }
   };
-  // console.log(isLoggedIn());
+
+  const validate = () => {
+    const errors = {};
+    const regex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!email) {
+      errors.email = "this field is required!!";
+    } else if (!regex.test(email)) {
+      errors.email = "This is not a valid email format";
+    }
+    if (!password) {
+      errors.password = "Password is required";
+    } else if (password.length < 8 || password.length > 12) {
+      errors.password = "Password must be between 8 and 12 chars";
+    }
+    console.log(regex.test(email));
+    console.log(password.length);
+    return errors;
+  };
+
+  console.log("object.keys.length", Object.keys(error).length);
   return (
     <>
       <div className="min-h-full flex bg-gray-50">
@@ -172,7 +194,8 @@ const Login = ({ setToken }) => {
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
-                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
+                    {/* {error && <h6 style={{ color: "red" }}>{error}</h6>} */}
+                    <p>{error.email}</p>
                   </div>
 
                   <div className="space-y-1">
@@ -207,7 +230,8 @@ const Login = ({ setToken }) => {
                         />
                       )}
                     </div>
-                    {error && <h6 style={{ color: "red" }}>{error}</h6>}
+                    {/* {error && <h6 style={{ color: "red" }}>{error}</h6>} */}
+                    <p>{error.password}</p>
                   </div>
 
                   <div className="flex items-center justify-between">
