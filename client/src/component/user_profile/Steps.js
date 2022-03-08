@@ -5,30 +5,26 @@ import { CheckIcon } from "@heroicons/react/solid";
 const steps = [
   {
     id: "01",
-    name: "Create account",
-    description: "Vitae sed mi luctus laoreet.",
-    href: "#",
+    name: "Create an account",
+    description: "Make your experience personal",
     status: "complete",
   },
   {
     id: "02",
     name: "Application form",
-    description: "Cursus semper viverra.",
-    href: "#",
+    description: "Fill form for better UX",
     status: "current",
   },
   {
     id: "03",
     name: "Account validation",
-    description: "Penatibus eu quis ante.",
-    href: "#",
+    description: "Guaranteeing security",
     status: "upcoming",
   },
   {
     id: "04",
     name: "Start purchasing",
-    description: "Penatibus eu quis ante.",
-    href: "#",
+    description: "Benefit our services",
     status: "upcoming",
   },
 ];
@@ -58,7 +54,7 @@ const Steps = () => {
                 )}
               >
                 {step.status === "complete" ? (
-                  <a href={step.href} className="group">
+                  <div className="group">
                     <span
                       className="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gray-200 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"
                       aria-hidden="true"
@@ -86,9 +82,9 @@ const Steps = () => {
                         </span>
                       </span>
                     </span>
-                  </a>
+                  </div>
                 ) : step.status === "current" ? (
-                  <a href={step.href} aria-current="step">
+                  <div aria-current="step">
                     <span
                       className="absolute top-0 left-0 w-1 h-full bg-indigo-600 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"
                       aria-hidden="true"
@@ -113,9 +109,9 @@ const Steps = () => {
                         </span>
                       </span>
                     </span>
-                  </a>
+                  </div>
                 ) : (
-                  <a href={step.href} className="group">
+                  <div className="group">
                     <span
                       className="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gray-200 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"
                       aria-hidden="true"
@@ -140,7 +136,7 @@ const Steps = () => {
                         </span>
                       </span>
                     </span>
-                  </a>
+                  </div>
                 )}
 
                 {stepIdx !== 0 ? (

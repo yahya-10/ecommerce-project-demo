@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 
 import { Dialog, Transition } from "@headlessui/react";
 import {
@@ -25,7 +25,7 @@ import Steps from "./Steps";
 // };
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
+  // { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
 ];
 
 function classNames(...classes) {
@@ -36,6 +36,10 @@ const UserProfile = ({ selectedPackage }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [disableFields, setDisableFields] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const requiredMessage = "This field is required";
   const validationSchema = Yup.object({
