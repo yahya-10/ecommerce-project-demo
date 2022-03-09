@@ -1,0 +1,31 @@
+[
+  {
+    "footer_slogan": "Making the world a better place through constructing elegant hierarchies."
+  },
+  {
+    "solutions": {
+      "marketing": "Marketing",
+      "analytics": "Analytics",
+      "commerce": "Commerce",
+      "insights": "Insights"
+    },
+    "support": {
+      "pricing": "Pricing",
+      "documentation": "Documentation",
+      "guides": "Guides",
+      "status": "API Status"
+    },
+    "company": {
+      "about": "About",
+      "blog": "Blog",
+      "jobs": "Jobs",
+      "press": "Press",
+      "partners": "Partners"
+    },
+    "legal": {
+      "claim": "Claim",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
+  }
+]

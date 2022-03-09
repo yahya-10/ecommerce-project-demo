@@ -101,13 +101,6 @@ const UserValidationPage = () => {
       <Steps stage={"03"} />
       <div className="bg-white">
         <main className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex-shrink-0 pt-16">
-            <img
-              className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
-              alt="Workflow"
-            />
-          </div>
           <div className="max-w-xl mx-auto py-16 sm:py-24">
             <div className="text-center">
               <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
