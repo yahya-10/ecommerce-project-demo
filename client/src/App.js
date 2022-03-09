@@ -75,10 +75,6 @@ const App = () => {
     setSelectedPackage(subscription);
   };
 
-  // useEffect(() => {
-  //   handleSelectedPackage();
-  // }, [selectedPackage]);
-
   //Clear cart
   const clearCart = () => setListItems([]);
 

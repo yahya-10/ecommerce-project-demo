@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import LoginSVG from "../../assets/loginSVG.png";
+import WithScroll from "../../highOrderComponent/WithScroll";
 
 /**
  *
@@ -30,45 +32,31 @@ const Login = ({ setToken }) => {
   const [error, setError] = useState({});
   const [showingPwd, setShowingPwd] = useState(false);
 
+  const requiredMessage = "This field is required";
+  const validationSchema = Yup.object({
+    email: Yup.string().email().required(requiredMessage),
+    password: Yup.string().required(requiredMessage).min(8).max(12),
+  });
+
   const navigate = useNavigate();
 
-  // Give access to user if passed the right credentials
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    setError(validate(email, password));
-    if (Object.keys(error).length !== 0) {
-      return;
-    } else {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: async () => {
       const token = await loginUser({
         email,
         password,
       });
       setToken(token);
       navigate(`/profile`);
-    }
-  };
+    },
+    validationSchema: validationSchema,
+  });
 
-  const validate = () => {
-    const errors = {};
-    const regex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!email) {
-      errors.email = "this field is required!!";
-    } else if (!regex.test(email)) {
-      errors.email = "This is not a valid email format";
-    }
-    if (!password) {
-      errors.password = "Password is required";
-    } else if (password.length < 8 || password.length > 12) {
-      errors.password = "Password must be between 8 and 12 chars";
-    }
-    console.log(regex.test(email));
-    console.log(password.length);
-    return errors;
-  };
-
-  console.log("object.keys.length", Object.keys(error).length);
+  console.log("login form validation");
   return (
     <>
       <div className="min-h-full flex bg-gray-50">
@@ -174,7 +162,7 @@ const Login = ({ setToken }) => {
               </div>
 
               <div className="mt-6">
-                <form action="#" method="POST" className="space-y-6">
+                <form onSubmit={formik.handleSubmit} className="space-y-6">
                   <div>
                     <label
                       htmlFor="email"
@@ -188,14 +176,16 @@ const Login = ({ setToken }) => {
                         name="email"
                         type="email"
                         autoComplete="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
-                    {/* {error && <h6 style={{ color: "red" }}>{error}</h6>} */}
-                    <p>{error.email}</p>
+                    {formik.touched.email && formik.errors.email ? (
+                      <h6 style={{ color: "red" }}>{formik.errors.email}</h6>
+                    ) : null}
                   </div>
 
                   <div className="space-y-1">
@@ -211,8 +201,9 @@ const Login = ({ setToken }) => {
                         name="password"
                         type={showingPwd ? "text" : "password"}
                         autoComplete="current-password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={formik.values.password}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
@@ -230,8 +221,9 @@ const Login = ({ setToken }) => {
                         />
                       )}
                     </div>
-                    {/* {error && <h6 style={{ color: "red" }}>{error}</h6>} */}
-                    <p>{error.password}</p>
+                    {formik.touched.password && formik.errors.password ? (
+                      <h6 style={{ color: "red" }}>{formik.errors.password}</h6>
+                    ) : null}
                   </div>
 
                   <div className="flex items-center justify-between">
@@ -270,7 +262,7 @@ const Login = ({ setToken }) => {
                     <button
                       type="submit"
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      onClick={handleSubmit}
+                      // onClick={handleSubmit}
                     >
                       Sign in
                     </button>
@@ -297,4 +289,4 @@ Login.propTypes = {
   setToken: PropTypes.func.isRequired,
 };
 
-export default Login;
+export default WithScroll(Login);

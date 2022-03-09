@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import WithScroll from "../../highOrderComponent/WithScroll";
 import Hero from "../../assets/hero.png";
 
 /**
@@ -39,9 +40,9 @@ const Register = ({ setToken, handleAddNewUser }) => {
   });
 
   //Land the page from the start on mounting the component.
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const navigate = useNavigate();
 
@@ -331,4 +332,4 @@ const Register = ({ setToken, handleAddNewUser }) => {
   );
 };
 
-export default Register;
+export default WithScroll(Register);

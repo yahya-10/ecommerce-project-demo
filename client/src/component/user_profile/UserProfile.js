@@ -12,6 +12,7 @@ import * as Yup from "yup";
 
 import SelectedSubscription from "./SelectedSubscription";
 import Steps from "./Steps";
+import WithScroll from "../../highOrderComponent/WithScroll";
 
 /**
  * @private
@@ -36,10 +37,6 @@ const UserProfile = ({ selectedPackage }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [disableFields, setDisableFields] = useState(false);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const requiredMessage = "This field is required";
   const validationSchema = Yup.object({
@@ -595,4 +592,4 @@ const UserProfile = ({ selectedPackage }) => {
   );
 };
 
-export default UserProfile;
+export default WithScroll(UserProfile);
