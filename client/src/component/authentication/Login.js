@@ -56,7 +56,7 @@ const Login = ({ setToken }) => {
     validationSchema: validationSchema,
   });
 
-  console.log("login form validation");
+  // console.log("login form validation");
   return (
     <>
       <div className="min-h-full flex bg-gray-50">
@@ -289,4 +289,4 @@ Login.propTypes = {
   setToken: PropTypes.func.isRequired,
 };
 
-export default WithScroll(Login);
+export default Login;

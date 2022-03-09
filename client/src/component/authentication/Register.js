@@ -39,11 +39,6 @@ const Register = ({ setToken, handleAddNewUser }) => {
     password: Yup.string().required(requiredMessage).min(8).max(12),
   });
 
-  //Land the page from the start on mounting the component.
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
-
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -332,4 +327,4 @@ const Register = ({ setToken, handleAddNewUser }) => {
   );
 };
 
-export default WithScroll(Register);
+export default Register;

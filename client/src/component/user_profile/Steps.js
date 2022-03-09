@@ -1,39 +1,46 @@
-import React from "react";
+import { useState } from "react";
 
 import { CheckIcon } from "@heroicons/react/solid";
-
-const steps = [
-  {
-    id: "01",
-    name: "Create an account",
-    description: "Make your experience personal",
-    status: "complete",
-  },
-  {
-    id: "02",
-    name: "Application form",
-    description: "Fill form for better UX",
-    status: "current",
-  },
-  {
-    id: "03",
-    name: "Account validation",
-    description: "Guaranteeing security",
-    status: "upcoming",
-  },
-  {
-    id: "04",
-    name: "Start purchasing",
-    description: "Benefit our services",
-    status: "upcoming",
-  },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Steps = () => {
+const Steps = ({ stage }) => {
+  const [isComplete, setIsComplete] = useState(false);
+  const url = new URL(window.location.href);
+  const pathname = url.pathname;
+  const steps = [
+    {
+      id: "01",
+      name: "Create an account",
+      description: "Make your experience personal",
+      isComplete: true,
+    },
+    {
+      id: "02",
+      name: "Application form",
+      description: "Fill form for better UX",
+      isComplete,
+      // status: "current",
+    },
+    {
+      id: "03",
+      name: "Account validation",
+      description: "Guaranteeing security",
+      isComplete,
+      // status: "upcoming",
+    },
+    {
+      id: "04",
+      name: "Start purchasing",
+      description: "Benefit our services",
+      isComplete,
+      // status: "upcoming",
+    },
+  ];
+  // parseInt(step.id) === parseInt(stage) - 1
+  // console.log(pathname);
   return (
     <div className="lg:border-t lg:border-b lg:border-gray-200">
       <nav
@@ -46,6 +53,7 @@ const Steps = () => {
         >
           {steps.map((step, stepIdx) => (
             <li key={step.id} className="relative overflow-hidden lg:flex-1">
+              {/* {console.log(stepIdx)} */}
               <div
                 className={classNames(
                   stepIdx === 0 ? "border-b-0 rounded-t-md" : "",
@@ -53,7 +61,7 @@ const Steps = () => {
                   "border border-gray-200 overflow-hidden lg:border-0"
                 )}
               >
-                {step.status === "complete" ? (
+                {stepIdx + 1 < parseInt(stage) ? (
                   <div className="group">
                     <span
                       className="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gray-200 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"
@@ -83,7 +91,7 @@ const Steps = () => {
                       </span>
                     </span>
                   </div>
-                ) : step.status === "current" ? (
+                ) : step.id === stage ? (
                   <div aria-current="step">
                     <span
                       className="absolute top-0 left-0 w-1 h-full bg-indigo-600 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"

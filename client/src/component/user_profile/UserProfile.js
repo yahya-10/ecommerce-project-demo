@@ -26,7 +26,6 @@ import WithScroll from "../../highOrderComponent/WithScroll";
 // };
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  // { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
 ];
 
 function classNames(...classes) {
@@ -82,10 +81,13 @@ const UserProfile = ({ selectedPackage }) => {
     color: "red",
     fontSize: "2 rem",
   };
+
+  // console.log("SelectedSubs", selectedPackage);
+
   return (
     <>
       <div className="mb-5">
-        <Steps />
+        <Steps stage={"02"} />
       </div>
       <div className="h-full flex">
         <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -592,4 +594,4 @@ const UserProfile = ({ selectedPackage }) => {
   );
 };
 
-export default WithScroll(UserProfile);
+export default UserProfile;

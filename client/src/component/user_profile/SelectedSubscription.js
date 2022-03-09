@@ -53,7 +53,7 @@ const checklist = [
 ];
 
 const SelectedSubscription = ({ data, selectedPackage }) => {
-  // console.log(selectedPackage.mainFeatures);
+  // console.log("SelectedSubs", selectedPackage);
   return (
     <>
       {/* Split brand panel */}
@@ -230,7 +230,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
                 ))}
               </ul>
               <Link
-                to="/checkout"
+                to="/validation-stage"
                 className="w-full bg-white border border-transparent rounded-md py-4 px-8 flex items-center justify-center text-lg leading-6 font-medium text-cyan-700 hover:bg-cyan-50 md:px-10"
               >
                 <span className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">

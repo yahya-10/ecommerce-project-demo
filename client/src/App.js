@@ -20,6 +20,7 @@ import SolutionsPage from "./component/solution_page/SolutionsPage";
 import PrivateRoute from "./routes/PrivateRoute";
 import Checkout from "./checkout/Checkout";
 import UserProfile from "./component/user_profile/UserProfile";
+import UserValidationPage from "./component/user_profile/UserValidationPage";
 
 /**
  *
@@ -122,11 +123,18 @@ const App = () => {
         <Route path="/checkout" exact element={<PrivateRoute />}>
           <Route path="/checkout" exact element={<Checkout />} />
         </Route>
-        <Route path="profile" exact element={<PrivateRoute />}>
+        <Route path="/profile" exact element={<PrivateRoute />}>
           <Route
             path="/profile"
             exact
             element={<UserProfile selectedPackage={selectedPackage} />}
+          />
+        </Route>
+        <Route path="/validation-stage" exact element={<PrivateRoute />}>
+          <Route
+            path="/validation-stage"
+            exact
+            element={<UserValidationPage />}
           />
         </Route>
       </Routes>
