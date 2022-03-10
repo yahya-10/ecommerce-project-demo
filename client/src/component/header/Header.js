@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { logOut } from "../../utils";
@@ -16,15 +17,17 @@ import { useTranslation } from "react-i18next";
  * this function
  */
 
-const Header = ({ listItems, isLoggedIn }) => {
-  const { t } = useTranslation();
+const Header = ({ isLoggedIn }) => {
+  const [t, i18n] = useTranslation();
 
   const navigation = [
-    { name: "Solutions", href: "/" },
+    { name: "solutions", href: "/" },
     { name: "Store", href: "/store" },
     { name: "About Us", href: "/about" },
     { name: "Support", href: "/contact" },
   ];
+
+  // console.log(i18n.language);
 
   return (
     <div>
@@ -115,7 +118,7 @@ const Header = ({ listItems, isLoggedIn }) => {
                       <img
                         className="h-8 w-auto sm:h-10"
                         src={comunikcrmLogo}
-                        alt=""
+                        alt="comunik_logo"
                       />
                     </Link>
                     <div className="-mr-2 flex items-center md:hidden">

@@ -3,6 +3,7 @@ import React from "react";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { useTranslation } from "react-i18next";
 
 const navigation = [
   { name: "Solutions", href: "#" },
@@ -12,6 +13,10 @@ const navigation = [
 ];
 
 const HeroSection = () => {
+  const { t, i18n } = useTranslation();
+
+  console.log(t("main_title"));
+
   return (
     <div className="relative bg-gray-50 overflow-hidden py-3">
       <div
@@ -113,9 +118,7 @@ const HeroSection = () => {
             </span>
           </h1>
           <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-            fugiat aliqua.
+            {t("under_main_title")}
           </p>
           <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
             <div className="rounded-md shadow">
