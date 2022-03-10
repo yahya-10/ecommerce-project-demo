@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
@@ -191,9 +192,9 @@ function classNames(...classes) {
 }
 
 const LandingPage = ({ handleSelectPackage }) => {
-  // const selectPackage = (id) => {
-  //   console.log(id);
-  // };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

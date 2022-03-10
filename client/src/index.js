@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { BrowserRouter } from "react-router-dom";
+import axios from "axios";
 
 import App from "./App";
 import "./index.css";
@@ -17,6 +18,9 @@ import "@stripe/stripe-js";
 const stripePromise = loadStripe(
   `pk_test_51ISLrtEXKHL1myveddk8qi9zjGfZIGQKNQFxxTPpJonoe2yWyE6wqf6WKUW1ajR2eNr3WiFdHaDKLAfVylaiDsrv00HOOnLeO1`
 );
+
+axios.defaults.headers.common["Accept-Language"] =
+  localStorage.getItem("lang") || "en";
 
 ReactDOM.render(
   <Elements stripe={stripePromise}>

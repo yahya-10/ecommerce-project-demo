@@ -1,0 +1,23 @@
+[
+  {
+    "heroSection": {
+      "mainTitle": "Data to enrich your business",
+      "underMainTitle": "A set of applications around what you value most: your customer.",
+      "buttons": {
+        "leftButton": "Get Started",
+        "rightButton": "Live Demo"
+      }
+    }
+  },
+  {
+    "logoCloud": "The world's most innovative companies collaborate with us"
+  },
+  {
+    "faq": {
+      "primaryTitle": "Frequently asked questions",
+      "underPrimaryTitle": "Can’t find the answer you’re looking for? Reach out to our customer support team.",
+      "secondaryTitle": "We would like to hear from you",
+      "underSecondaryTitle": "Whether you have a question about features, testing, pricing, need a demo or anything else, our team is ready to answer all your questions"
+    }
+  }
+]

@@ -57,6 +57,10 @@ const UserProfile = ({ selectedPackage }) => {
     setDisableFields(false);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       companyName: "",

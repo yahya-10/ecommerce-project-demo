@@ -1,0 +1,31 @@
+[
+  {
+    "footer_slogan": "Rendre le monde meilleur en construisant des hiérarchies élégantes."
+  },
+  {
+    "solutions": {
+      "marketing": "Marketing",
+      "analytics": "Analytique",
+      "commerce": "Commerce",
+      "insights": ""
+    },
+    "support": {
+      "pricing": "",
+      "documentation": "Documentation",
+      "guides": "Guides",
+      "status": ""
+    },
+    "company": {
+      "about": "À propos",
+      "blog": "Blog",
+      "jobs": "Emplois",
+      "press": "Presse",
+      "partners": "Partenaires"
+    },
+    "legal": {
+      "claim": "Réclamation",
+      "privacy": "Confidentialité",
+      "terms": "Conditions"
+    }
+  }
+]

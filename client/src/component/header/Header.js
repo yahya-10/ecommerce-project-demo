@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 
 import { logOut } from "../../utils";
+import comunikcrmLogo from "../../assets/comunikcrm.png";
+import LangDropDown from "./LangDropDown";
 
 import { Popover } from "@headlessui/react";
 import { MenuIcon } from "@heroicons/react/outline";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
-
-import comunikcrmLogo from "../../assets/comunikcrm.png";
+import { useTranslation } from "react-i18next";
 
 /**
  * @public
@@ -15,14 +16,16 @@ import comunikcrmLogo from "../../assets/comunikcrm.png";
  * this function
  */
 
-const navigation = [
-  { name: "Solutions", href: "/" },
-  { name: "Store", href: "/store" },
-  { name: "About Us", href: "/about" },
-  { name: "Support", href: "/contact" },
-];
-
 const Header = ({ listItems, isLoggedIn }) => {
+  const { t } = useTranslation();
+
+  const navigation = [
+    { name: "Solutions", href: "/" },
+    { name: "Store", href: "/store" },
+    { name: "About Us", href: "/about" },
+    { name: "Support", href: "/contact" },
+  ];
+
   return (
     <div>
       <div className="relative bg-gray-50 overflow-hidden">
@@ -164,6 +167,7 @@ const Header = ({ listItems, isLoggedIn }) => {
                       </Link>
                     </span>
                   )}
+                  <LangDropDown />
                   {/* Shopping cart icon */}
                   {/* <div className="inline-flex rounded-md shadow">
                     <Link

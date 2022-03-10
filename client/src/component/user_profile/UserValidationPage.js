@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import Steps from "./Steps";
 
 import { ChevronRightIcon } from "@heroicons/react/solid";
@@ -8,6 +8,7 @@ import {
   RssIcon,
   ViewListIcon,
 } from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
 
 const links = [
   {
@@ -96,6 +97,10 @@ const social = [
 ];
 
 const UserValidationPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Steps stage={"03"} />
@@ -160,17 +165,17 @@ const UserValidationPage = () => {
                 ))}
               </ul>
               <div className="mt-8">
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="text-base font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Or go back home<span aria-hidden="true"> &rarr;</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </main>
-        <footer className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+        {/* <footer className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-t border-gray-200 py-12 text-center md:flex md:justify-between">
             <p className="text-base text-gray-400">
               &copy; Workflow, Inc. All rights reserved.
@@ -188,7 +193,7 @@ const UserValidationPage = () => {
               ))}
             </div>
           </div>
-        </footer>
+        </footer> */}
       </div>
     </>
   );
