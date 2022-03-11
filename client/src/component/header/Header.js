@@ -21,10 +21,10 @@ const Header = ({ isLoggedIn }) => {
   const { t } = useTranslation();
 
   const navigation = [
-    { name: "solutions", href: "/" },
-    { name: "Store", href: "/store" },
-    { name: "About Us", href: "/about" },
-    { name: "Support", href: "/contact" },
+    { name: t("nav_solution"), href: "/" },
+    { name: t("nav_store"), href: "/store" },
+    { name: t("nav_about_us"), href: "/about" },
+    { name: t("nav_support"), href: "/contact" },
   ];
 
   return (
