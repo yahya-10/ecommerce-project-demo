@@ -18,23 +18,29 @@ const resources = {
     translation: translationFR,
   },
 };
-console.log(resources.es);
 
 i18next
   .use(HttpApi)
-  .use(new LanguageDetector(null, { lookupLocalStorage: "lang" }))
+  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    fallbackLng: ["en", "es", "fr"],
+    supportedLngs: ["en", "es", "fr"],
     debug: false,
     resources,
     detection: {
-      order: ["localStorage"],
-      // lookupLocalStorage: "lng",
+      order: ["localStorage", "navigator"],
+      caches: ["localStorage"],
     },
 
     react: {
       useSuspense: false,
     },
+    // backend: {
+    //   loadPath: "../locales/{{lng}}.json",
+    // },
   });
+
+// console.log(i18next.backend);
 
 export default i18next;

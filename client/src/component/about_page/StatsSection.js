@@ -1,8 +1,12 @@
 import React from "react";
 
+import { useTranslation } from "react-i18next";
+
 import { UsersIcon } from "@heroicons/react/outline";
 
 const StatsSection = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="relative bg-indigo-400">
       <div className="h-56 bg-indigo-600 sm:h-72 lg:absolute lg:left-0 lg:h-full lg:w-1/2">
@@ -20,7 +24,7 @@ const StatsSection = () => {
             </div>
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Deliver what your customers want every time
+            {t("stats_section_title")}
           </h2>
           <p className="mt-6 text-lg text-white">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore

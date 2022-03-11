@@ -8,6 +8,8 @@ import {
   RssIcon,
   ViewListIcon,
 } from "@heroicons/react/outline";
+
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const links = [
@@ -97,6 +99,8 @@ const social = [
 ];
 
 const UserValidationPage = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -109,18 +113,18 @@ const UserValidationPage = () => {
           <div className="max-w-xl mx-auto py-16 sm:py-24">
             <div className="text-center">
               <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
-                Thank you
+                {t("validation_greeting")}
               </p>
               <h1 className="mt-2 text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
-                We're carefully reviewing your application
+                {t("validation_header")}
               </h1>
               <p className="mt-2 text-lg text-gray-500">
-                A member of ou team will contact you ASAP
+                {t("validation_under_header")}
               </p>
             </div>
             <div className="mt-12">
               <h2 className="text-sm font-semibold text-gray-500 tracking-wide uppercase">
-                Popular pages
+                {t("popular_pages")}
               </h2>
               <ul
                 role="list"
@@ -169,31 +173,13 @@ const UserValidationPage = () => {
                   to="/"
                   className="text-base font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  Or go back home<span aria-hidden="true"> &rarr;</span>
+                  {t("home_redirect")}
+                  <span aria-hidden="true"> &rarr;</span>
                 </Link>
               </div>
             </div>
           </div>
         </main>
-        {/* <footer className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-t border-gray-200 py-12 text-center md:flex md:justify-between">
-            <p className="text-base text-gray-400">
-              &copy; Workflow, Inc. All rights reserved.
-            </p>
-            <div className="mt-6 flex justify-center space-x-8 md:mt-0">
-              {social.map((item, itemIdx) => (
-                <a
-                  key={itemIdx}
-                  href={item.href}
-                  className="inline-flex text-gray-400 hover:text-gray-500"
-                >
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
-                </a>
-              ))}
-            </div>
-          </div>
-        </footer> */}
       </div>
     </>
   );

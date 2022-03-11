@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import LoginSVG from "../../assets/loginSVG.png";
-import WithScroll from "../../highOrderComponent/WithScroll";
+import WithScroll from "../../HOC/WithScroll";
 
 /**
  *
@@ -38,7 +39,12 @@ const Login = ({ setToken }) => {
     password: Yup.string().required(requiredMessage).min(8).max(12),
   });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const formik = useFormik({
     initialValues: {
@@ -64,15 +70,18 @@ const Login = ({ setToken }) => {
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
               <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-                Sign in to your account
+                {/* Sign in to your account */}
+                {t("login_title")}
               </h2>
               <p className="mt-2 text-sm text-gray-600">
-                Or{" "}
+                {/* Or */}
+                {t("or")}{" "}
                 <Link
                   to="/register"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  start your 14-day free trial
+                  {/* start your 14-day free trial */}
+                  {t("free_trial")}
                 </Link>
               </p>
             </div>
@@ -81,7 +90,8 @@ const Login = ({ setToken }) => {
               <div>
                 <div>
                   <p className="text-sm font-medium text-gray-700">
-                    Sign in with
+                    {/* Sign in with */}
+                    {t("sign_with")}
                   </p>
 
                   <div className="mt-1 grid grid-cols-3 gap-3">
@@ -155,7 +165,8 @@ const Login = ({ setToken }) => {
                   </div>
                   <div className="relative flex justify-center text-sm">
                     <span className="px-2 bg-white text-gray-500">
-                      Or continue with
+                      {/* Or continue with */}
+                      {t("second_option")}
                     </span>
                   </div>
                 </div>
@@ -168,7 +179,8 @@ const Login = ({ setToken }) => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Email address
+                      {/* Email address */}
+                      {t("email")}
                     </label>
                     <div className="mt-1">
                       <input
@@ -193,7 +205,8 @@ const Login = ({ setToken }) => {
                       htmlFor="password"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Password
+                      {/* Password */}
+                      {t("password")}
                     </label>
                     <div className="mt-1">
                       <input
@@ -238,7 +251,8 @@ const Login = ({ setToken }) => {
                         htmlFor="remember-me"
                         className="ml-2 block text-sm text-gray-900"
                       >
-                        Remember me
+                        {/* Remember me */}
+                        {t("remember_me")}
                       </label>
                     </div>
 
@@ -247,13 +261,15 @@ const Login = ({ setToken }) => {
                         href="#"
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                       >
-                        Forgot your password?
+                        {/* Forgot your password? */}
+                        {t("password_reset")}
                       </a>{" "}
                       <Link
                         to="/register"
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                       >
-                        Sign Up
+                        {/* Sign Up */}
+                        {t("sign_up")}
                       </Link>
                     </div>
                   </div>
@@ -264,7 +280,8 @@ const Login = ({ setToken }) => {
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       // onClick={handleSubmit}
                     >
-                      Sign in
+                      {/* Sign in */}
+                      {t("sign_in")}
                     </button>
                   </div>
                 </form>

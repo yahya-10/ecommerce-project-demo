@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
+import { useTranslation } from "react-i18next";
 
 import HeroSection from "./HeroSection";
 import LogoClouds from "./LogoClouds";
@@ -196,6 +197,8 @@ const LandingPage = ({ handleSelectPackage }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="mb-5">
@@ -217,12 +220,15 @@ const LandingPage = ({ handleSelectPackage }) => {
 
               <div className="relative max-w-2xl mx-auto pt-16 px-4 text-center sm:pt-32 sm:px-6 lg:max-w-7xl lg:px-8">
                 <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl">
-                  <span className="block lg:inline">Simple pricing,</span>
-                  <span className="block lg:inline">no commitment.</span>
+                  <span className="block lg:inline">
+                    {t("pricing_section_title_st_half")}
+                  </span>
+                  <span className="block lg:inline">
+                    {t("pricing_section_title_nd_half")}
+                  </span>
                 </h2>
                 <p className="mt-4 text-xl text-indigo-600">
-                  Everything you need, nothing you don't. Pick a plan that best
-                  suits your business.
+                  {t("pricing_section_under_title")}
                 </p>
               </div>
 
@@ -235,13 +241,13 @@ const LandingPage = ({ handleSelectPackage }) => {
                     type="button"
                     className="relative bg-white py-2 px-6 border-indigo-700 rounded-md shadow-sm text-sm font-medium text-indigo-700 whitespace-nowrap hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-700 focus:ring-white focus:z-10"
                   >
-                    Monthly billing
+                    {t("monthly_billing")}
                   </button>
                   <button
                     type="button"
                     className="ml-0.5 relative py-2 px-6 border border-transparent rounded-md text-sm font-medium text-indigo-200 whitespace-nowrap hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-700 focus:ring-white focus:z-10"
                   >
-                    Yearly billing
+                    {t("yearly_billing")}
                   </button>
                 </div>
               </div>
@@ -265,7 +271,6 @@ const LandingPage = ({ handleSelectPackage }) => {
                         "pt-6 px-6 pb-3 rounded-lg lg:px-8 lg:pt-12"
                       )}
                     >
-                      {/* {console.log(plan.id)} */}
                       <div>
                         <h3
                           className={classNames(
@@ -306,7 +311,7 @@ const LandingPage = ({ handleSelectPackage }) => {
                                   "text-sm"
                                 )}
                               >
-                                Billed yearly (${plan.priceYearly})
+                                {t("billed_yearly")} (${plan.priceYearly})
                               </p>
                             </div>
                           </div>
@@ -320,7 +325,7 @@ const LandingPage = ({ handleSelectPackage }) => {
                               "mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full"
                             )}
                           >
-                            Buy {plan.title}
+                            {t("pricing_section_buy")} {plan.title}
                           </Link>
                         </div>
                       </div>
@@ -874,24 +879,22 @@ const LandingPage = ({ handleSelectPackage }) => {
                   id="faq-heading"
                   className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
                 >
-                  Frequently asked questions
+                  {t("faq_primary_title")}
                 </h2>
                 <p className="mt-4 text-gray-400">
-                  Ac euismod vel sit maecenas id pellentesque eu sed
-                  consectetur. Malesuada adipiscing sagittis vel nulla nec.
-                  Urna, sed a lectus elementum blandit et.
+                  {t("faq_under_primary_title")}
                 </p>
               </div>
               <div className="mt-20">
                 <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10">
-                  {faqs.map((faq) => (
-                    <div key={faq.id}>
-                      <dt className="font-semibold text-white">
-                        {faq.question}
-                      </dt>
-                      <dd className="mt-3 text-gray-400">{faq.answer}</dd>
-                    </div>
-                  ))}
+                  <div>
+                    <dt className="font-semibold text-white">
+                      {t("faq_secondary_title")}
+                    </dt>
+                    <dd className="mt-3 text-gray-400">
+                      {t("faq_under_secondary_title")}
+                    </dd>
+                  </div>
                 </dl>
               </div>
             </div>

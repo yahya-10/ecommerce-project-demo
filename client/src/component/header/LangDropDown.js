@@ -3,18 +3,19 @@ import React from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import i18n from "i18next";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const LangDropDown = () => {
-  const onChange = (option) => {
-    localStorage.setItem("lang", option.target.value);
-    window.location.reload();
-  };
+  // const onChange = (option) => {
+  //   localStorage.setItem("lang", option.target.value);
+  //   window.location.reload();
+  // };
 
-  const lang = localStorage.getItem("lang" || "English");
+  const lang = localStorage.getItem("i18nextLng");
 
   return (
     <Menu as="div" className="relative inline-block ml-3 text-left">
@@ -34,18 +35,18 @@ const LangDropDown = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-transparent ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-transparent ring-1 ring-black ring-opacity-5 focus:outline-none cursor-pointer">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
                 <option
                   //   href="#"
-                  value="English"
+                  value="en"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
-                  onClick={onChange}
+                  onClick={() => i18n.changeLanguage("en")}
                 >
                   English
                 </option>
@@ -54,12 +55,12 @@ const LangDropDown = () => {
             <Menu.Item>
               {({ active }) => (
                 <option
-                  value="Français"
+                  value="fr"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
-                  onClick={onChange}
+                  onClick={() => i18n.changeLanguage("fr")}
                 >
                   Français
                 </option>
@@ -68,12 +69,12 @@ const LangDropDown = () => {
             <Menu.Item>
               {({ active }) => (
                 <option
-                  value="Español"
+                  value="es"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
-                  onClick={onChange}
+                  onClick={() => i18n.changeLanguage("es")}
                 >
                   Español
                 </option>

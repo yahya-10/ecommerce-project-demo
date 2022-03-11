@@ -1,11 +1,14 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import StatsSection from "./StatsSection";
 import TeamSection from "./TeamSection";
 
 const AboutPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="">
       <main
@@ -17,17 +20,17 @@ const AboutPage = () => {
       >
         <div className="max-w-7xl mx-auto px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48">
           <h1 className="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">
-            Do UC what you say.
+            Do UC what you say
           </h1>
           <p className="mt-2 text-lg font-medium text-black text-opacity-50">
-            A modern, reliable, scalable, open and secure solution.
+            {t("about_page_header")}
           </p>
           <div className="mt-6">
             <Link
               to="/"
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-black text-opacity-75 bg-white bg-opacity-75 sm:bg-opacity-25 sm:hover:bg-opacity-50"
             >
-              Get started
+              {t("about_page_btn")}
             </Link>
           </div>
         </div>
@@ -36,50 +39,24 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
           <div className="text-base max-w-prose mx-auto lg:max-w-none">
             <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
-              Transactions
+              {t("about_page_transaction")}
             </h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              What makes us different
+              {t("about_page_banner_st_title")}
             </p>
           </div>
           <div className="relative z-10 text-base max-w-prose mx-auto lg:max-w-5xl lg:mx-0 lg:pr-72">
-            <p className="text-lg text-gray-500">
-              Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum
-              urna sed consectetur neque tristique pellentesque. Blandit amet,
-              sed aenean erat arcu morbi. Cursus faucibus nunc nisl netus morbi
-              vel porttitor vitae ut. Amet vitae fames senectus vitae.
-            </p>
+            <p className="text-lg text-gray-500">{t("about_us_section")}</p>
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
             <div className="relative z-10">
               <div className="prose prose-indigo text-gray-500 mx-auto lg:max-w-none">
-                <p>
-                  Sollicitudin tristique eros erat odio sed vitae, consequat
-                  turpis elementum. Lorem nibh vel, eget pretium arcu vitae.
-                  Eros eu viverra donec ut volutpat donec laoreet quam urna.
-                </p>
-                <ul>
-                  <li>Quis elit egestas venenatis mattis dignissim.</li>
-                  <li>
-                    Cras cras lobortis vitae vivamus ultricies facilisis tempus.
-                  </li>
-                  <li>Orci in sit morbi dignissim metus diam arcu pretium.</li>
-                </ul>
-                <p>
-                  Rhoncus nisl, libero egestas diam fermentum dui. At quis
-                  tincidunt vel ultricies. Vulputate aliquet velit faucibus
-                  semper. Pellentesque in venenatis vestibulum consectetur nibh
-                  id. In id ut tempus egestas. Enim sit aliquam nec, a. Morbi
-                  enim fermentum lacus in. Viverra.
-                </p>
-                <h3>We’re here to help</h3>
-                <p>
-                  Tincidunt integer commodo, cursus etiam aliquam neque, et.
-                  Consectetur pretium in volutpat, diam. Montes, magna cursus
-                  nulla feugiat dignissim id lobortis amet. Laoreet sem est
-                  phasellus eu proin massa, lectus. Diam rutrum posuere donec
-                  ultricies non morbi. Mi a platea auctor mi.
-                </p>
+                <div className="text-base max-w-prose mx-auto lg:max-w-none">
+                  <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    {t("about_page_banner_nd_title")}
+                  </p>
+                  <p>{t("certificate_section")}</p>
+                </div>
               </div>
               <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
                 <div className="rounded-md shadow">
@@ -87,7 +64,7 @@ const AboutPage = () => {
                     to="/contact"
                     className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
                   >
-                    Contact sales
+                    {t("contact_sales_btn")}
                   </Link>
                 </div>
                 <div className="rounded-md shadow ml-4">
@@ -95,7 +72,7 @@ const AboutPage = () => {
                     href="#"
                     className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                   >
-                    Learn more
+                    {t("learn_more_btn")}
                   </a>
                 </div>
               </div>

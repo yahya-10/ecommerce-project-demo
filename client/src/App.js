@@ -79,6 +79,10 @@ const App = () => {
   //Clear cart
   const clearCart = () => setListItems([]);
 
+  useEffect(() => {
+    isLoggedIn();
+  }, []);
+
   // console.log("App.js", selectedPackage);
   return (
     <div>

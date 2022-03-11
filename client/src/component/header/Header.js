@@ -18,7 +18,7 @@ import { useTranslation } from "react-i18next";
  */
 
 const Header = ({ isLoggedIn }) => {
-  const [t, i18n] = useTranslation();
+  const { t } = useTranslation();
 
   const navigation = [
     { name: "solutions", href: "/" },
@@ -26,8 +26,6 @@ const Header = ({ isLoggedIn }) => {
     { name: "About Us", href: "/about" },
     { name: "Support", href: "/contact" },
   ];
-
-  // console.log(i18n.language);
 
   return (
     <div>
@@ -143,6 +141,7 @@ const Header = ({ isLoggedIn }) => {
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                   {isLoggedIn() ? (
                     <div className="flex items-center space-x-4 lg:space-x-6">
+                      {console.log(isLoggedIn())}
                       <span
                         className="inline-flex rounded-md shadow"
                         onClick={logOut}
@@ -151,7 +150,7 @@ const Header = ({ isLoggedIn }) => {
                           to="/login"
                           className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                         >
-                          Logout
+                          {t("log_out")}
                         </Link>
                       </span>
                       <img
@@ -166,7 +165,7 @@ const Header = ({ isLoggedIn }) => {
                         to="/login"
                         className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                       >
-                        Login
+                        {t("log_in")}
                       </Link>
                     </span>
                   )}

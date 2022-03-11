@@ -7,40 +7,29 @@ function classNames(...classes) {
 }
 
 const Steps = ({ stage }) => {
-  const [isComplete, setIsComplete] = useState(false);
-  const url = new URL(window.location.href);
-  const pathname = url.pathname;
   const steps = [
     {
       id: "01",
       name: "Create an account",
       description: "Make your experience personal",
-      isComplete: true,
     },
     {
       id: "02",
       name: "Application form",
       description: "Fill form for better UX",
-      isComplete,
-      // status: "current",
     },
     {
       id: "03",
       name: "Account validation",
       description: "Guaranteeing security",
-      isComplete,
-      // status: "upcoming",
     },
     {
       id: "04",
       name: "Start purchasing",
       description: "Benefit our services",
-      isComplete,
-      // status: "upcoming",
     },
   ];
-  // parseInt(step.id) === parseInt(stage) - 1
-  // console.log(pathname);
+
   return (
     <div className="lg:border-t lg:border-b lg:border-gray-200">
       <nav
@@ -53,7 +42,6 @@ const Steps = ({ stage }) => {
         >
           {steps.map((step, stepIdx) => (
             <li key={step.id} className="relative overflow-hidden lg:flex-1">
-              {/* {console.log(stepIdx)} */}
               <div
                 className={classNames(
                   stepIdx === 0 ? "border-b-0 rounded-t-md" : "",

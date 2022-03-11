@@ -8,11 +8,12 @@ import {
   XIcon,
 } from "@heroicons/react/outline";
 import { useFormik } from "formik";
+import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 
 import SelectedSubscription from "./SelectedSubscription";
 import Steps from "./Steps";
-import WithScroll from "../../highOrderComponent/WithScroll";
+import WithScroll from "../../HOC/WithScroll";
 
 /**
  * @private
@@ -36,6 +37,8 @@ const UserProfile = ({ selectedPackage }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [disableFields, setDisableFields] = useState(false);
+
+  const { t } = useTranslation();
 
   const requiredMessage = "This field is required";
   const validationSchema = Yup.object({
@@ -280,20 +283,21 @@ const UserProfile = ({ selectedPackage }) => {
               <div>
                 <div>
                   <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    Business
+                    {/* Business */}
+                    {t("form_top_header_title")}
                   </h3>
                   <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                    Some business information if needed.
+                    {t("form_top_header_under_title")}
                   </p>
                 </div>
 
                 <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
                   <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                     <label
-                      htmlFor="username"
+                      htmlFor="companyname"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      Company Name
+                      {t("form_company_name")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <div className="max-w-lg flex rounded-md shadow-sm">
@@ -324,7 +328,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="about"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      About
+                      {t("form_about")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <textarea
@@ -341,7 +345,7 @@ const UserProfile = ({ selectedPackage }) => {
                         <div style={styles}>{formik.errors.about}</div>
                       ) : null}
                       <p className="mt-2 text-sm text-gray-500">
-                        Write a few sentences about yourself.
+                        {t("form_about_desc")}
                       </p>
                     </div>
                   </div>
@@ -351,10 +355,10 @@ const UserProfile = ({ selectedPackage }) => {
               <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
                 <div>
                   <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    Personal Information
+                    {t("form_mid_header_title")}
                   </h3>
                   <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                    Use a permanent address where you can receive mail.
+                    {t("form_mid_header_under_title")}
                   </p>
                 </div>
                 <div className="space-y-6 sm:space-y-5">
@@ -363,7 +367,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="first-name"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      First name
+                      {t("form_st_name")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -388,7 +392,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="last-name"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      Last name
+                      {t("form_last_name")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -413,7 +417,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      Email address
+                      {t("email")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -439,7 +443,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="country"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      Country
+                      {t("form_country")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <select
@@ -470,7 +474,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="street-address"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      Street address
+                      {t("form_str_address")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -496,7 +500,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="city"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      City
+                      {t("form_city")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -521,7 +525,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="region"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      State / Province
+                      {t("form_state")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -546,7 +550,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="postal-code"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      ZIP / Postal code
+                      {t("form_zip")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -574,13 +578,13 @@ const UserProfile = ({ selectedPackage }) => {
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     onClick={handleReset}
                   >
-                    Reset
+                    {t("form_reset")}
                   </button>
                   <button
                     type="submit"
                     className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    Validate
+                    {t("form_validate")}
                   </button>
                 </div>
               </div>
