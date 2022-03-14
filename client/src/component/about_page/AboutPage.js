@@ -23,14 +23,14 @@ const AboutPage = () => {
             Do UC what you say
           </h1>
           <p className="mt-2 text-lg font-medium text-black text-opacity-50">
-            {t("about_page_header")}
+            {t("about_page.about_page_header")}
           </p>
           <div className="mt-6">
             <Link
               to="/"
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-black text-opacity-75 bg-white bg-opacity-75 sm:bg-opacity-25 sm:hover:bg-opacity-50"
             >
-              {t("about_page_btn")}
+              {t("about_page.about_page_btn")}
             </Link>
           </div>
         </div>
@@ -39,23 +39,25 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
           <div className="text-base max-w-prose mx-auto lg:max-w-none">
             <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
-              {t("about_page_transaction")}
+              {t("about_page.about_page_transaction")}
             </h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {t("about_page_banner_st_title")}
+              {t("about_page.about_page_banner_st_title")}
             </p>
           </div>
           <div className="relative z-10 text-base max-w-prose mx-auto lg:max-w-5xl lg:mx-0 lg:pr-72">
-            <p className="text-lg text-gray-500">{t("about_us_section")}</p>
+            <p className="text-lg text-gray-500">
+              {t("about_page.about_us_section")}
+            </p>
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
             <div className="relative z-10">
               <div className="prose prose-indigo text-gray-500 mx-auto lg:max-w-none">
                 <div className="text-base max-w-prose mx-auto lg:max-w-none">
                   <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    {t("about_page_banner_nd_title")}
+                    {t("about_page.about_page_banner_nd_title")}
                   </p>
-                  <p>{t("certificate_section")}</p>
+                  <p>{t("about_page.certificate_section")}</p>
                 </div>
               </div>
               <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
@@ -64,7 +66,7 @@ const AboutPage = () => {
                     to="/contact"
                     className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
                   >
-                    {t("contact_sales_btn")}
+                    {t("about_page.contact_sales_btn")}
                   </Link>
                 </div>
                 <div className="rounded-md shadow ml-4">
@@ -72,7 +74,7 @@ const AboutPage = () => {
                     href="#"
                     className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                   >
-                    {t("learn_more_btn")}
+                    {t("about_page.learn_more_btn")}
                   </a>
                 </div>
               </div>

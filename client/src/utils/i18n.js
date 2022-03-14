@@ -36,11 +36,6 @@ i18next
     react: {
       useSuspense: false,
     },
-    // backend: {
-    //   loadPath: "../locales/{{lng}}.json",
-    // },
   });
-
-// console.log(i18next.backend);
 
 export default i18next;

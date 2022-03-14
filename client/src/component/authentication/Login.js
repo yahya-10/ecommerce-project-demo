@@ -71,17 +71,17 @@ const Login = ({ setToken }) => {
             <div>
               <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
                 {/* Sign in to your account */}
-                {t("login_title")}
+                {t("login.login_title")}
               </h2>
               <p className="mt-2 text-sm text-gray-600">
                 {/* Or */}
-                {t("or")}{" "}
+                {t("login.or")}{" "}
                 <Link
                   to="/register"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   {/* start your 14-day free trial */}
-                  {t("free_trial")}
+                  {t("login.free_trial")}
                 </Link>
               </p>
             </div>
@@ -91,7 +91,7 @@ const Login = ({ setToken }) => {
                 <div>
                   <p className="text-sm font-medium text-gray-700">
                     {/* Sign in with */}
-                    {t("sign_with")}
+                    {t("login.sign_with")}
                   </p>
 
                   <div className="mt-1 grid grid-cols-3 gap-3">
@@ -166,7 +166,7 @@ const Login = ({ setToken }) => {
                   <div className="relative flex justify-center text-sm">
                     <span className="px-2 bg-white text-gray-500">
                       {/* Or continue with */}
-                      {t("second_option")}
+                      {t("login.second_option")}
                     </span>
                   </div>
                 </div>
@@ -180,7 +180,7 @@ const Login = ({ setToken }) => {
                       className="block text-sm font-medium text-gray-700"
                     >
                       {/* Email address */}
-                      {t("email")}
+                      {t("login.email")}
                     </label>
                     <div className="mt-1">
                       <input
@@ -206,7 +206,7 @@ const Login = ({ setToken }) => {
                       className="block text-sm font-medium text-gray-700"
                     >
                       {/* Password */}
-                      {t("password")}
+                      {t("login.password")}
                     </label>
                     <div className="mt-1">
                       <input
@@ -252,7 +252,7 @@ const Login = ({ setToken }) => {
                         className="ml-2 block text-sm text-gray-900"
                       >
                         {/* Remember me */}
-                        {t("remember_me")}
+                        {t("login.remember_me")}
                       </label>
                     </div>
 
@@ -262,14 +262,14 @@ const Login = ({ setToken }) => {
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                       >
                         {/* Forgot your password? */}
-                        {t("password_reset")}
+                        {t("login.password_reset")}
                       </a>{" "}
                       <Link
                         to="/register"
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                       >
                         {/* Sign Up */}
-                        {t("sign_up")}
+                        {t("login.sign_up")}
                       </Link>
                     </div>
                   </div>
@@ -281,7 +281,7 @@ const Login = ({ setToken }) => {
                       // onClick={handleSubmit}
                     >
                       {/* Sign in */}
-                      {t("sign_in")}
+                      {t("login.sign_in")}
                     </button>
                   </div>
                 </form>

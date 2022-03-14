@@ -24,7 +24,7 @@ const StatsSection = () => {
             </div>
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            {t("stats_section_title")}
+            {t("about_page.stats_section_title")}
           </h2>
           <p className="mt-6 text-lg text-white">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore

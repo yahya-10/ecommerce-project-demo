@@ -77,17 +77,17 @@ const Register = ({ setToken, handleAddNewUser }) => {
             <div>
               <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
                 {/* Sign up for an amazing experience */}
-                {t("signup_title")}
+                {t("signup.signup_title")}
               </h2>
               <p className="mt-2 text-sm text-gray-600">
                 {/* Or */}
-                {t("or")}{" "}
+                {t("login.or")}{" "}
                 <Link
                   to="/login"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   {/* Sign in here */}
-                  {t("login_redirect")}
+                  {t("signup.login_redirect")}
                 </Link>
               </p>
             </div>
@@ -97,7 +97,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                 <div>
                   <p className="text-sm font-medium text-gray-700">
                     {/* Sign up with */}
-                    {t("signup_with")}
+                    {t("signup.signup_with")}
                   </p>
 
                   <div className="mt-1 grid grid-cols-3 gap-3">
@@ -172,7 +172,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                   <div className="relative flex justify-center text-sm">
                     <span className="px-2 bg-white text-gray-500">
                       {/* Or continue with */}
-                      {t("second_option")}
+                      {t("login.second_option")}
                     </span>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                       className="block text-sm font-medium text-gray-700"
                     >
                       {/* Full Name */}
-                      {t("full_name")}
+                      {t("signup.full_name")}
                     </label>
                     <div className="mt-1">
                       <input
@@ -211,7 +211,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                       className="block text-sm font-medium text-gray-700"
                     >
                       {/* Your Company */}
-                      {t("company_name")}
+                      {t("signup.company_name")}
                     </label>
                     <div className="mt-1">
                       <input
@@ -238,7 +238,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                       className="block text-sm font-medium text-gray-700"
                     >
                       {/* Email address */}
-                      {t("email")}
+                      {t("login.email")}
                     </label>
                     <div className="mt-1">
                       <input
@@ -264,7 +264,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                       className="block text-sm font-medium text-gray-700"
                     >
                       {/* Password */}
-                      {t("password")}
+                      {t("login.password")}
                     </label>
                     <div className="mt-1">
                       <input
@@ -297,7 +297,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         className="ml-2 block text-sm text-gray-900"
                       >
                         {/* Remember me */}
-                        {t("remember_me")}
+                        {t("login.remember_me")}
                       </label>
                     </div>
                   </div>
@@ -308,7 +308,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       {/* Sign Up */}
-                      {t("sign_up")}
+                      {t("login.sign_up")}
                     </button>
                   </div>
                 </form>

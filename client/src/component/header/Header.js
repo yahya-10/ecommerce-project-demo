@@ -21,10 +21,10 @@ const Header = ({ isLoggedIn }) => {
   const { t } = useTranslation();
 
   const navigation = [
-    { name: t("nav_solution"), href: "/" },
-    { name: t("nav_store"), href: "/store" },
-    { name: t("nav_about_us"), href: "/about" },
-    { name: t("nav_support"), href: "/contact" },
+    { name: t("header.nav_solution"), href: "/" },
+    { name: t("header.nav_store"), href: "/store" },
+    { name: t("header.nav_about_us"), href: "/about" },
+    { name: t("header.nav_support"), href: "/contact" },
   ];
 
   return (
@@ -150,7 +150,7 @@ const Header = ({ isLoggedIn }) => {
                           to="/login"
                           className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                         >
-                          {t("log_out")}
+                          {t("header.log_out")}
                         </Link>
                       </span>
                       <img
@@ -165,7 +165,7 @@ const Header = ({ isLoggedIn }) => {
                         to="/login"
                         className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                       >
-                        {t("log_in")}
+                        {t("header.log_in")}
                       </Link>
                     </span>
                   )}

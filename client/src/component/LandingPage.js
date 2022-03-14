@@ -6,187 +6,12 @@ import { useTranslation } from "react-i18next";
 
 import HeroSection from "./HeroSection";
 import LogoClouds from "./LogoClouds";
+import { t } from "i18next";
 
 /**
  * @public
  * this is the landing page where the user can browse in a different pages.
  */
-
-const plans = [
-  {
-    id: 20,
-    title: "Starter",
-    featured: false,
-    description: "All your essential business finances, taken care of.",
-    priceMonthly: 5,
-    priceYearly: 56,
-    mainFeatures: [
-      { id: 1, value: "Basic invoicing" },
-      { id: 2, value: "Easy to use accounting" },
-      { id: 3, value: "Mutli-accounts" },
-      { id: 4, value: "Tax planning toolkit" },
-      { id: 5, value: "VAT & VATMOSS filing" },
-      { id: 6, value: "Free bank transfers" },
-    ],
-  },
-  {
-    id: 21,
-    title: "Scale",
-    featured: true,
-    description: "The best financial services for your thriving business.",
-    priceMonthly: 19,
-    priceYearly: 220,
-    mainFeatures: [
-      { id: 1, value: "Advanced invoicing" },
-      { id: 2, value: "Easy to use accounting" },
-      { id: 3, value: "Mutli-accounts" },
-      { id: 4, value: "Tax planning toolkit" },
-      { id: 5, value: "VAT & VATMOSS filing" },
-      { id: 6, value: "Free bank transfers" },
-    ],
-  },
-  {
-    id: 22,
-    title: "Growth",
-    featured: false,
-    description: "Convenient features to take your business to the next level.",
-    priceMonthly: 12,
-    priceYearly: 140,
-    mainFeatures: [
-      { id: 1, value: "Basic invoicing" },
-      { id: 2, value: "Easy to use accounting" },
-      { id: 3, value: "Mutli-accounts" },
-      { id: 4, value: "Tax planning toolkit" },
-      { id: 5, value: "VAT & VATMOSS filing" },
-      { id: 6, value: "Free bank transfers" },
-    ],
-  },
-];
-const features = [
-  {
-    title: "Tax Savings",
-    tiers: [
-      { title: "starter", value: true },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: true },
-    ],
-  },
-  {
-    title: "Easy to use accounting",
-    tiers: [
-      { title: "starter", value: true },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: true },
-    ],
-  },
-  {
-    title: "Multi-accounts",
-    tiers: [
-      { title: "starter", value: "3 accounts" },
-      { title: "popular", featured: true, value: "Unlimited accounts" },
-      { title: "intermediate", value: "7 accounts" },
-    ],
-  },
-  {
-    title: "Invoicing",
-    tiers: [
-      { title: "starter", value: "3 invoices" },
-      { title: "popular", featured: true, value: "Unlimited invoices" },
-      { title: "intermediate", value: "10 invoices" },
-    ],
-  },
-  {
-    title: "Exclusive offers",
-    tiers: [
-      { title: "starter", value: false },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: true },
-    ],
-  },
-  {
-    title: "6 months free advisor",
-    tiers: [
-      { title: "starter", value: false },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: true },
-    ],
-  },
-  {
-    title: "Mobile and web access",
-    tiers: [
-      { title: "starter", value: false },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: false },
-    ],
-  },
-];
-const perks = [
-  {
-    title: "24/7 customer support",
-    tiers: [
-      { title: "starter", value: true },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: true },
-    ],
-  },
-  {
-    title: "Instant notifications",
-    tiers: [
-      { title: "starter", value: true },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: true },
-    ],
-  },
-  {
-    title: "Budgeting tools",
-    tiers: [
-      { title: "starter", value: true },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: true },
-    ],
-  },
-  {
-    title: "Digital receipts",
-    tiers: [
-      { title: "starter", value: true },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: true },
-    ],
-  },
-  {
-    title: "Pots to separate money",
-    tiers: [
-      { title: "starter", value: false },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: true },
-    ],
-  },
-  {
-    title: "Free bank transfers",
-    tiers: [
-      { title: "starter", value: false },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: false },
-    ],
-  },
-  {
-    title: "Business debit card",
-    tiers: [
-      { title: "starter", value: false },
-      { title: "popular", featured: true, value: true },
-      { title: "intermediate", value: false },
-    ],
-  },
-];
-const faqs = [
-  {
-    id: 1,
-    question: "What's the best thing about Switzerland?",
-    answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-  // More questions...
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -198,6 +23,174 @@ const LandingPage = ({ handleSelectPackage }) => {
   }, []);
 
   const { t } = useTranslation();
+  const plans = [
+    {
+      id: 20,
+      title: "Starter",
+      featured: false,
+      description: t("plans.starter_plan_desc"),
+      priceMonthly: 5,
+      priceYearly: 56,
+      mainFeatures: [
+        { id: 1, value: t("plans.starter_value_1") },
+        { id: 2, value: t("plans.starter_value_2") },
+        { id: 3, value: t("plans.starter_value_3") },
+        { id: 4, value: t("plans.starter_value_4") },
+        { id: 5, value: t("plans.starter_value_5") },
+        { id: 6, value: t("plans.starter_value_6") },
+      ],
+    },
+    {
+      id: 21,
+      title: "Scale",
+      featured: true,
+      description: t("plans.scale_plan_desc"),
+      priceMonthly: 19,
+      priceYearly: 220,
+      mainFeatures: [
+        { id: 1, value: t("plans.scale_value_1") },
+        { id: 2, value: t("plans.scale_value_2") },
+        { id: 3, value: t("plans.scale_value_3") },
+        { id: 4, value: t("plans.scale_value_4") },
+        { id: 5, value: t("plans.scale_value_5") },
+        { id: 6, value: t("plans.scale_value_6") },
+      ],
+    },
+    {
+      id: 22,
+      title: "Growth",
+      featured: false,
+      description: t("plans.growth_plan_desc"),
+      priceMonthly: 12,
+      priceYearly: 140,
+      mainFeatures: [
+        { id: 1, value: t("plans.growth_value_1") },
+        { id: 2, value: t("plans.growth_value_2") },
+        { id: 3, value: t("plans.growth_value_3") },
+        { id: 4, value: t("plans.growth_value_4") },
+        { id: 5, value: t("plans.growth_value_5") },
+        { id: 6, value: t("plans.growth_value_6") },
+      ],
+    },
+  ];
+
+  const features = [
+    {
+      title: t("features.title_1"),
+      tiers: [
+        { title: "starter", value: true },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: true },
+      ],
+    },
+    {
+      title: t("features.title_2"),
+      tiers: [
+        { title: "starter", value: true },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: true },
+      ],
+    },
+    {
+      title: t("features.title_3"),
+      tiers: [
+        { title: "starter", value: "3 accounts" },
+        { title: "popular", featured: true, value: "Unlimited accounts" },
+        { title: "intermediate", value: "7 accounts" },
+      ],
+    },
+    {
+      title: t("features.title_4"),
+      tiers: [
+        { title: "starter", value: "3 invoices" },
+        { title: "popular", featured: true, value: "Unlimited invoices" },
+        { title: "intermediate", value: "10 invoices" },
+      ],
+    },
+    {
+      title: t("features.title_5"),
+      tiers: [
+        { title: "starter", value: false },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: true },
+      ],
+    },
+    {
+      title: t("features.title_6"),
+      tiers: [
+        { title: "starter", value: false },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: true },
+      ],
+    },
+    {
+      title: t("features.title_7"),
+      tiers: [
+        { title: "starter", value: false },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: false },
+      ],
+    },
+  ];
+
+  const perks = [
+    {
+      title: t("perks.title_1"),
+      tiers: [
+        { title: "starter", value: true },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: true },
+      ],
+    },
+    {
+      title: t("perks.title_2"),
+      tiers: [
+        { title: "starter", value: true },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: true },
+      ],
+    },
+    {
+      title: t("perks.title_3"),
+      tiers: [
+        { title: "starter", value: true },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: true },
+      ],
+    },
+    {
+      title: t("perks.title_4"),
+      tiers: [
+        { title: "starter", value: true },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: true },
+      ],
+    },
+    {
+      title: t("perks.title_5"),
+      tiers: [
+        { title: "starter", value: false },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: true },
+      ],
+    },
+    {
+      title: t("perks.title_6"),
+      tiers: [
+        { title: "starter", value: false },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: false },
+      ],
+    },
+    {
+      title: t("perks.title_7"),
+      tiers: [
+        { title: "starter", value: false },
+        { title: "popular", featured: true, value: true },
+        { title: "intermediate", value: false },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -221,14 +214,14 @@ const LandingPage = ({ handleSelectPackage }) => {
               <div className="relative max-w-2xl mx-auto pt-16 px-4 text-center sm:pt-32 sm:px-6 lg:max-w-7xl lg:px-8">
                 <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl">
                   <span className="block lg:inline">
-                    {t("pricing_section_title_st_half")}
+                    {t("pricing_section.pricing_section_title_st_half")}
                   </span>
                   <span className="block lg:inline">
-                    {t("pricing_section_title_nd_half")}
+                    {t("pricing_section.pricing_section_title_nd_half")}
                   </span>
                 </h2>
                 <p className="mt-4 text-xl text-indigo-600">
-                  {t("pricing_section_under_title")}
+                  {t("pricing_section.pricing_section_under_title")}
                 </p>
               </div>
 
@@ -241,13 +234,13 @@ const LandingPage = ({ handleSelectPackage }) => {
                     type="button"
                     className="relative bg-white py-2 px-6 border-indigo-700 rounded-md shadow-sm text-sm font-medium text-indigo-700 whitespace-nowrap hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-700 focus:ring-white focus:z-10"
                   >
-                    {t("monthly_billing")}
+                    {t("pricing_section.monthly_billing")}
                   </button>
                   <button
                     type="button"
                     className="ml-0.5 relative py-2 px-6 border border-transparent rounded-md text-sm font-medium text-indigo-200 whitespace-nowrap hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-700 focus:ring-white focus:z-10"
                   >
-                    {t("yearly_billing")}
+                    {t("pricing_section.yearly_billing")}
                   </button>
                 </div>
               </div>
@@ -311,7 +304,8 @@ const LandingPage = ({ handleSelectPackage }) => {
                                   "text-sm"
                                 )}
                               >
-                                {t("billed_yearly")} (${plan.priceYearly})
+                                {t("pricing_section.billed_yearly")} ($
+                                {plan.priceYearly})
                               </p>
                             </div>
                           </div>
@@ -325,7 +319,8 @@ const LandingPage = ({ handleSelectPackage }) => {
                               "mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full"
                             )}
                           >
-                            {t("pricing_section_buy")} {plan.title}
+                            {t("pricing_section.pricing_section_buy")}{" "}
+                            {plan.title}
                           </Link>
                         </div>
                       </div>
@@ -879,20 +874,20 @@ const LandingPage = ({ handleSelectPackage }) => {
                   id="faq-heading"
                   className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
                 >
-                  {t("faq_primary_title")}
+                  {t("faq.faq_primary_title")}
                 </h2>
                 <p className="mt-4 text-gray-400">
-                  {t("faq_under_primary_title")}
+                  {t("faq.faq_under_primary_title")}
                 </p>
               </div>
               <div className="mt-20">
                 <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10">
                   <div>
                     <dt className="font-semibold text-white">
-                      {t("faq_secondary_title")}
+                      {t("faq.faq_secondary_title")}
                     </dt>
                     <dd className="mt-3 text-gray-400">
-                      {t("faq_under_secondary_title")}
+                      {t("faq.faq_under_secondary_title")}
                     </dd>
                   </div>
                 </dl>

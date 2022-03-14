@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { useTranslation } from "react-i18next";
+
 import { CheckIcon } from "@heroicons/react/solid";
 
 function classNames(...classes) {
@@ -7,26 +9,28 @@ function classNames(...classes) {
 }
 
 const Steps = ({ stage }) => {
+  const { t } = useTranslation();
+
   const steps = [
     {
       id: "01",
-      name: "Create an account",
-      description: "Make your experience personal",
+      name: t("steps.step_name_1"),
+      description: t("steps.step_desc_1"),
     },
     {
       id: "02",
-      name: "Application form",
-      description: "Fill form for better UX",
+      name: t("steps.step_name_2"),
+      description: t("steps.step_desc_2"),
     },
     {
       id: "03",
-      name: "Account validation",
-      description: "Guaranteeing security",
+      name: t("steps.step_name_3"),
+      description: t("steps.step_desc_3"),
     },
     {
       id: "04",
-      name: "Start purchasing",
-      description: "Benefit our services",
+      name: t("steps.step_name_4"),
+      description: t("steps.step_desc_4"),
     },
   ];
 

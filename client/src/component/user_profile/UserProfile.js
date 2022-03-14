@@ -25,9 +25,6 @@ import WithScroll from "../../HOC/WithScroll";
 //   imageUrl:
 //     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 // };
-const navigation = [
-  { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -53,6 +50,15 @@ const UserProfile = ({ selectedPackage }) => {
     state: Yup.string().required(requiredMessage),
     zip: Yup.string().required(requiredMessage),
   });
+
+  const navigation = [
+    {
+      name: t("user_form.navigation"),
+      href: "#",
+      icon: HomeIcon,
+      current: true,
+    },
+  ];
 
   // Reset the inputs and enable the form fields
   const handleReset = () => {
@@ -284,10 +290,10 @@ const UserProfile = ({ selectedPackage }) => {
                 <div>
                   <h3 className="text-lg leading-6 font-medium text-gray-900">
                     {/* Business */}
-                    {t("form_top_header_title")}
+                    {t("user_form.form_top_header_title")}
                   </h3>
                   <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                    {t("form_top_header_under_title")}
+                    {t("user_form.form_top_header_under_title")}
                   </p>
                 </div>
 
@@ -297,7 +303,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="companyname"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      {t("form_company_name")}
+                      {t("user_form.form_company_name")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <div className="max-w-lg flex rounded-md shadow-sm">
@@ -328,7 +334,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="about"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      {t("form_about")}
+                      {t("user_form.form_about")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <textarea
@@ -345,7 +351,7 @@ const UserProfile = ({ selectedPackage }) => {
                         <div style={styles}>{formik.errors.about}</div>
                       ) : null}
                       <p className="mt-2 text-sm text-gray-500">
-                        {t("form_about_desc")}
+                        {t("user_form.form_about_desc")}
                       </p>
                     </div>
                   </div>
@@ -355,10 +361,10 @@ const UserProfile = ({ selectedPackage }) => {
               <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
                 <div>
                   <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    {t("form_mid_header_title")}
+                    {t("user_form.form_mid_header_title")}
                   </h3>
                   <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                    {t("form_mid_header_under_title")}
+                    {t("user_form.form_mid_header_under_title")}
                   </p>
                 </div>
                 <div className="space-y-6 sm:space-y-5">
@@ -367,7 +373,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="first-name"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      {t("form_st_name")}
+                      {t("user_form.form_st_name")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -392,7 +398,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="last-name"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      {t("form_last_name")}
+                      {t("user_form.form_last_name")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -443,7 +449,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="country"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      {t("form_country")}
+                      {t("user_form.form_country")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <select
@@ -474,7 +480,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="street-address"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      {t("form_str_address")}
+                      {t("user_form.form_str_address")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -500,7 +506,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="city"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      {t("form_city")}
+                      {t("user_form.form_city")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -525,7 +531,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="region"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      {t("form_state")}
+                      {t("user_form.form_state")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -550,7 +556,7 @@ const UserProfile = ({ selectedPackage }) => {
                       htmlFor="postal-code"
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
-                      {t("form_zip")}
+                      {t("user_form.form_zip")}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <input
@@ -578,13 +584,13 @@ const UserProfile = ({ selectedPackage }) => {
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     onClick={handleReset}
                   >
-                    {t("form_reset")}
+                    {t("user_form.form_reset")}
                   </button>
                   <button
                     type="submit"
                     className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    {t("form_validate")}
+                    {t("user_form.form_validate")}
                   </button>
                 </div>
               </div>

@@ -113,18 +113,18 @@ const UserValidationPage = () => {
           <div className="max-w-xl mx-auto py-16 sm:py-24">
             <div className="text-center">
               <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
-                {t("validation_greeting")}
+                {t("validation_section.validation_greeting")}
               </p>
               <h1 className="mt-2 text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
-                {t("validation_header")}
+                {t("validation_section.validation_header")}
               </h1>
               <p className="mt-2 text-lg text-gray-500">
-                {t("validation_under_header")}
+                {t("validation_section.validation_under_header")}
               </p>
             </div>
             <div className="mt-12">
               <h2 className="text-sm font-semibold text-gray-500 tracking-wide uppercase">
-                {t("popular_pages")}
+                {t("validation_section.popular_pages")}
               </h2>
               <ul
                 role="list"
@@ -173,7 +173,7 @@ const UserValidationPage = () => {
                   to="/"
                   className="text-base font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  {t("home_redirect")}
+                  {t("validation_section.home_redirect")}
                   <span aria-hidden="true"> &rarr;</span>
                 </Link>
               </div>

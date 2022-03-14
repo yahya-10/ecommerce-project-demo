@@ -50,9 +50,11 @@ const TeamSection = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
           <div className="space-y-5 sm:space-y-4">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-              {t("team_section_title")}
+              {t("about_page.team_section_title")}
             </h2>
-            <p className="text-xl text-gray-500">{t("team_section_desc")}</p>
+            <p className="text-xl text-gray-500">
+              {t("about_page.team_section_desc")}
+            </p>
           </div>
           <div className="lg:col-span-2">
             <ul
