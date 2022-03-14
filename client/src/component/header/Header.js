@@ -148,7 +148,7 @@ const Header = ({ isLoggedIn }) => {
                       >
                         <Link
                           to="/login"
-                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
                         >
                           {t("header.log_out")}
                         </Link>
@@ -163,7 +163,7 @@ const Header = ({ isLoggedIn }) => {
                     <span className="inline-flex rounded-md shadow">
                       <Link
                         to="/login"
-                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
                       >
                         {t("header.log_in")}
                       </Link>

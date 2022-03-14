@@ -10,11 +10,6 @@ function classNames(...classes) {
 }
 
 const LangDropDown = () => {
-  // const onChange = (option) => {
-  //   localStorage.setItem("lang", option.target.value);
-  //   window.location.reload();
-  // };
-
   const lang = localStorage.getItem("i18nextLng");
 
   return (
@@ -40,11 +35,10 @@ const LangDropDown = () => {
             <Menu.Item>
               {({ active }) => (
                 <option
-                  //   href="#"
                   value="en"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    "block px-4 py-1 text-sm"
                   )}
                   onClick={() => i18n.changeLanguage("en")}
                 >
@@ -58,7 +52,7 @@ const LangDropDown = () => {
                   value="fr"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    "block px-4 py-1 text-sm"
                   )}
                   onClick={() => i18n.changeLanguage("fr")}
                 >
@@ -72,7 +66,7 @@ const LangDropDown = () => {
                   value="es"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    "block px-4 py-1 text-sm"
                   )}
                   onClick={() => i18n.changeLanguage("es")}
                 >
@@ -80,21 +74,6 @@ const LangDropDown = () => {
                 </option>
               )}
             </Menu.Item>
-            {/* <form method="POST" action="#">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    type="submit"
-                    className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block w-full text-left px-4 py-2 text-sm"
-                    )}
-                  >
-                    Sign out
-                  </button>
-                )}
-              </Menu.Item>
-            </form> */}
           </div>
         </Menu.Items>
       </Transition>

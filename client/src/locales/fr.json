@@ -111,6 +111,8 @@
   },
   "sum_section": {
     "modal_msg_title": "Sélectionnez un package",
+    "modal_msg_desc": "Vous devez d'abord choisir un paquet dans notre collection.",
+    "modal_btn": "Retourner aux collections",
     "applicant_info": "Les informations du demandeur",
     "summary": "Coordonnées et candidature.",
     "application_for": "Demande pour",

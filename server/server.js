@@ -47,6 +47,7 @@ app.post("/payment", async (req, res) => {
     metadata: {
       integration_check: "accept_a_payment",
     },
+    // usage: "on_session",
   });
 
   res.json({

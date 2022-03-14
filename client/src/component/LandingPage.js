@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 
 import HeroSection from "./HeroSection";
 import LogoClouds from "./LogoClouds";
-import { t } from "i18next";
 
 /**
  * @public
@@ -259,8 +258,8 @@ const LandingPage = ({ handleSelectPackage }) => {
                       key={plan.title}
                       className={classNames(
                         plan.featured
-                          ? "bg-white ring-2 ring-indigo-700 shadow-md"
-                          : "bg-indigo-700 lg:bg-transparent",
+                          ? "bg-gradient-to-b from-gray-300 to-white ring-2 ring-indigo-700 shadow-md"
+                          : "bg-gradient-to-b from-blue-500 to-gray-500 lg:bg-transparent",
                         "pt-6 px-6 pb-3 rounded-lg lg:px-8 lg:pt-12"
                       )}
                     >

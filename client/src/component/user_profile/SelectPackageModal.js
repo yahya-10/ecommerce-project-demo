@@ -64,8 +64,7 @@ const SelectPackageModal = () => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Consequatur amet labore.
+                      {t("sum_section.modal_msg_desc")}
                     </p>
                   </div>
                 </div>
@@ -77,7 +76,7 @@ const SelectPackageModal = () => {
                     className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                     onClick={() => setOpen(false)}
                   >
-                    Go back to dashboard
+                    {t("sum_section.modal_btn")}
                   </button>
                 </Link>
               </div>

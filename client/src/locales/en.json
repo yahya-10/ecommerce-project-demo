@@ -111,6 +111,8 @@
   },
   "sum_section": {
     "modal_msg_title": "Select a package",
+    "modal_msg_desc": "You should select a package from our collection first.",
+    "modal_btn": "Go back to collections",
     "applicant_info": "Applicant Information",
     "summary": "Personal details and application.",
     "application_for": "Application for",

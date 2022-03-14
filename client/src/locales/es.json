@@ -112,6 +112,8 @@
   },
   "sum_section": {
     "modal_msg_title": "Seleccione un paquete",
+    "modal_msg_desc": "Primero debe seleccionar un paquete de nuestra colección.",
+    "modal_btn": "Volver a las colecciones",
     "applicant_info": "Información del candidato",
     "summary": "Datos personales y aplicación.",
     "application_for": "Solicitud de",
