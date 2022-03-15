@@ -63,6 +63,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
       });
       setToken(token);
       navigate("/profile");
+      window.location.reload();
     },
     validationSchema: validationSchema,
   });
