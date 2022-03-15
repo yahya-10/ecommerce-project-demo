@@ -39,11 +39,20 @@ const Login = ({ setToken }) => {
     password: Yup.string().required(requiredMessage).min(8).max(12),
   });
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //
+  // }, []);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const isAuth = sessionStorage.getItem("token");
+    if (isAuth && isAuth !== "undefined") {
+      navigate(`/`);
+    }
+  }, []);
+
   const { t } = useTranslation();
 
   const formik = useFormik({

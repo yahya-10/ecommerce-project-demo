@@ -45,6 +45,10 @@ const Register = ({ setToken, handleAddNewUser }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    const isAuth = sessionStorage.getItem("token");
+    if (isAuth && isAuth !== "undefined") {
+      navigate(`/`);
+    }
   }, []);
 
   const formik = useFormik({
