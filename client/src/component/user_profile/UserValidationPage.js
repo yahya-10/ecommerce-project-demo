@@ -36,6 +36,13 @@ const UserValidationPage = () => {
                 {t("validation_section.home_redirect")}
                 <span aria-hidden="true"> &rarr;</span>
               </Link>
+              <Link
+                to="/checkout"
+                className="text-base font-medium text-red-400 hover:text-red-600"
+              >
+                Temporary button
+                <span aria-hidden="true"> &rarr;</span>
+              </Link>
             </div>
           </div>
         </main>
