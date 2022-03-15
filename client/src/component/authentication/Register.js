@@ -77,17 +77,14 @@ const Register = ({ setToken, handleAddNewUser }) => {
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
               <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-                {/* Sign up for an amazing experience */}
                 {t("signup.signup_title")}
               </h2>
               <p className="mt-2 text-sm text-gray-600">
-                {/* Or */}
                 {t("login.or")}{" "}
                 <Link
                   to="/login"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  {/* Sign in here */}
                   {t("signup.login_redirect")}
                 </Link>
               </p>
@@ -97,7 +94,6 @@ const Register = ({ setToken, handleAddNewUser }) => {
               <div>
                 <div>
                   <p className="text-sm font-medium text-gray-700">
-                    {/* Sign up with */}
                     {t("signup.signup_with")}
                   </p>
 
@@ -172,7 +168,6 @@ const Register = ({ setToken, handleAddNewUser }) => {
                   </div>
                   <div className="relative flex justify-center text-sm">
                     <span className="px-2 bg-white text-gray-500">
-                      {/* Or continue with */}
                       {t("login.second_option")}
                     </span>
                   </div>
@@ -186,7 +181,6 @@ const Register = ({ setToken, handleAddNewUser }) => {
                       htmlFor="fullname"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      {/* Full Name */}
                       {t("signup.full_name")}
                     </label>
                     <div className="mt-1">
@@ -194,6 +188,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         id="fullName"
                         name="fullName"
                         type="fullName"
+                        data-testid="fullname"
                         value={formik.values.fullName}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -211,7 +206,6 @@ const Register = ({ setToken, handleAddNewUser }) => {
                       htmlFor="companyname"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      {/* Your Company */}
                       {t("signup.company_name")}
                     </label>
                     <div className="mt-1">
@@ -219,6 +213,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         id="companyName"
                         name="companyName"
                         type="text"
+                        data-testid="companyname"
                         value={formik.values.companyName}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -238,7 +233,6 @@ const Register = ({ setToken, handleAddNewUser }) => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      {/* Email address */}
                       {t("login.email")}
                     </label>
                     <div className="mt-1">
@@ -246,6 +240,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         id="email"
                         name="email"
                         type="email"
+                        data-testid="email"
                         value={formik.values.email}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -264,7 +259,6 @@ const Register = ({ setToken, handleAddNewUser }) => {
                       htmlFor="password"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      {/* Password */}
                       {t("login.password")}
                     </label>
                     <div className="mt-1">
@@ -272,6 +266,7 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         id="password"
                         name="password"
                         type="password"
+                        data-testid="password"
                         value={formik.values.password}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -297,7 +292,6 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         htmlFor="remember-me"
                         className="ml-2 block text-sm text-gray-900"
                       >
-                        {/* Remember me */}
                         {t("login.remember_me")}
                       </label>
                     </div>
@@ -308,7 +302,6 @@ const Register = ({ setToken, handleAddNewUser }) => {
                       type="submit"
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                      {/* Sign Up */}
                       {t("login.sign_up")}
                     </button>
                   </div>
