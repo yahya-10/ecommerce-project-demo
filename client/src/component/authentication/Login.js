@@ -57,12 +57,13 @@ const Login = ({ setToken }) => {
         password,
       });
       setToken(token);
+
       navigate(`/profile`);
+      window.location.reload();
     },
     validationSchema: validationSchema,
   });
 
-  // console.log("login form validation");
   return (
     <>
       <div className="min-h-full flex bg-gray-50">
@@ -70,17 +71,14 @@ const Login = ({ setToken }) => {
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
               <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-                {/* Sign in to your account */}
                 {t("login.login_title")}
               </h2>
               <p className="mt-2 text-sm text-gray-600">
-                {/* Or */}
                 {t("login.or")}{" "}
                 <Link
                   to="/register"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  {/* start your 14-day free trial */}
                   {t("login.free_trial")}
                 </Link>
               </p>
@@ -90,7 +88,6 @@ const Login = ({ setToken }) => {
               <div>
                 <div>
                   <p className="text-sm font-medium text-gray-700">
-                    {/* Sign in with */}
                     {t("login.sign_with")}
                   </p>
 
@@ -165,7 +162,6 @@ const Login = ({ setToken }) => {
                   </div>
                   <div className="relative flex justify-center text-sm">
                     <span className="px-2 bg-white text-gray-500">
-                      {/* Or continue with */}
                       {t("login.second_option")}
                     </span>
                   </div>
@@ -179,7 +175,6 @@ const Login = ({ setToken }) => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      {/* Email address */}
                       {t("login.email")}
                     </label>
                     <div className="mt-1">
@@ -205,7 +200,6 @@ const Login = ({ setToken }) => {
                       htmlFor="password"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      {/* Password */}
                       {t("login.password")}
                     </label>
                     <div className="mt-1">
@@ -251,7 +245,6 @@ const Login = ({ setToken }) => {
                         htmlFor="remember-me"
                         className="ml-2 block text-sm text-gray-900"
                       >
-                        {/* Remember me */}
                         {t("login.remember_me")}
                       </label>
                     </div>
@@ -261,14 +254,12 @@ const Login = ({ setToken }) => {
                         href="#"
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                       >
-                        {/* Forgot your password? */}
                         {t("login.password_reset")}
                       </a>{" "}
                       <Link
                         to="/register"
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                       >
-                        {/* Sign Up */}
                         {t("login.sign_up")}
                       </Link>
                     </div>
@@ -278,9 +269,7 @@ const Login = ({ setToken }) => {
                     <button
                       type="submit"
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      // onClick={handleSubmit}
                     >
-                      {/* Sign in */}
                       {t("login.sign_in")}
                     </button>
                   </div>

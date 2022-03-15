@@ -19,6 +19,7 @@ export const isLoggedIn = () => {
 
 export const logOut = () => {
   sessionStorage.removeItem("token");
+  window.location.reload();
 };
 
 // export const ControlAuth = () => {

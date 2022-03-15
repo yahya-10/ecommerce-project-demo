@@ -27,6 +27,8 @@ const Header = ({ isLoggedIn }) => {
     { name: t("header.nav_support"), href: "/contact" },
   ];
 
+  console.log(isLoggedIn());
+
   return (
     <div>
       <div className="relative bg-gray-50 overflow-hidden">
