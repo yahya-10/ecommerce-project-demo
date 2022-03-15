@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const tokenGenerator = require("uuid-token-generator");
 require("dotenv").config();
 const bodyParser = require("body-parser");
 // const stripe = require("stripe")(process.env.STRIPE_KEY);
@@ -18,8 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Route that enables the user to login
 app.use("/login", cors(), (req, res) => {
   try {
+    const tokGen = new tokenGenerator();
     res.send({
-      token: "testToken123",
+      token: tokGen.generate(),
     });
   } catch (error) {
     console.error(error);
@@ -29,8 +31,9 @@ app.use("/login", cors(), (req, res) => {
 // Route that enables the user to register
 app.use("/register", cors(), (req, res) => {
   try {
+    const tokGen = new tokenGenerator();
     res.send({
-      token: "testToken123",
+      token: tokGen.generate(),
     });
   } catch (error) {
     console.error(error);
