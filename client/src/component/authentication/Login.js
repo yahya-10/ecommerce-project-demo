@@ -182,6 +182,7 @@ const Login = ({ setToken }) => {
                         id="email"
                         name="email"
                         type="email"
+                        data-testid="email"
                         autoComplete="email"
                         value={formik.values.email}
                         onChange={formik.handleChange}
@@ -207,6 +208,7 @@ const Login = ({ setToken }) => {
                         id="password"
                         name="password"
                         type={showingPwd ? "text" : "password"}
+                        data-testid="password"
                         autoComplete="current-password"
                         value={formik.values.password}
                         onChange={formik.handleChange}
@@ -292,8 +294,8 @@ const Login = ({ setToken }) => {
   );
 };
 
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
+// Login.propTypes = {
+//   setToken: PropTypes.func.isRequired,
+// };
 
 export default Login;
