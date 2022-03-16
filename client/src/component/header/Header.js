@@ -9,6 +9,7 @@ import { Popover } from "@headlessui/react";
 import { MenuIcon } from "@heroicons/react/outline";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 /**
  * @public

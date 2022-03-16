@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 import HeroSection from "./HeroSection";
 import LogoClouds from "./LogoClouds";
@@ -254,7 +255,11 @@ const LandingPage = ({ handleSelectPackage }) => {
 
                 <div className="relative space-y-6 lg:space-y-0 lg:grid lg:grid-cols-3">
                   {plans.map((plan) => (
-                    <div
+                    <motion.div
+                      whileHover={{
+                        scale: 1.05,
+                        transition: { duration: 0.2 },
+                      }}
                       key={plan.title}
                       className={classNames(
                         plan.featured
@@ -358,7 +363,7 @@ const LandingPage = ({ handleSelectPackage }) => {
                           </li>
                         ))}
                       </ul>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
