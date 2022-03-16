@@ -85,7 +85,7 @@
   },
   "signup": {
     "signup_title": "Inscrivez-vous pour une expérience extraordinaire",
-    "login_redirect": "Inscrivez-vous ici",
+    "login_redirect": "S'identifier ici",
     "signup_with": "S'inscrire avec",
     "full_name": "Nom complet",
     "company_name": "Votre entreprise"

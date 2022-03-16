@@ -83,7 +83,7 @@ const App = () => {
     isLoggedIn();
   }, []);
 
-  // console.log("App.js", selectedPackage);
+  console.log("App.js", selectedPackage);
   return (
     <div>
       <Header

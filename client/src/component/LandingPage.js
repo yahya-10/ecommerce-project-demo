@@ -871,7 +871,10 @@ const LandingPage = ({ handleSelectPackage }) => {
           </div>
 
           {/* FAQs */}
-          <section aria-labelledby="faq-heading" className="bg-gray-900">
+          <section
+            aria-labelledby="faq-heading"
+            className="bg-gradient-to-b from-gray-900 via-fuchsia-800 to-gray-900"
+          >
             <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
               <div className="max-w-2xl lg:mx-auto lg:text-center">
                 <h2
@@ -880,7 +883,7 @@ const LandingPage = ({ handleSelectPackage }) => {
                 >
                   {t("faq.faq_primary_title")}
                 </h2>
-                <p className="mt-4 text-gray-400">
+                <p className="mt-4 text-gray-200">
                   {t("faq.faq_under_primary_title")}
                 </p>
               </div>
@@ -890,7 +893,7 @@ const LandingPage = ({ handleSelectPackage }) => {
                     <dt className="font-semibold text-white">
                       {t("faq.faq_secondary_title")}
                     </dt>
-                    <dd className="mt-3 text-gray-400">
+                    <dd className="mt-3 text-gray-200">
                       {t("faq.faq_under_secondary_title")}
                     </dd>
                   </div>

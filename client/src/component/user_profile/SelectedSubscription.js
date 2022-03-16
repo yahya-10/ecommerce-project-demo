@@ -67,7 +67,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
         ) : (
           <div>
             <div className="absolute inset-0" aria-hidden="true">
-              <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-r from-cyan-600 to-green-400" />
+              <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500" />
             </div>
             <div className="relative max-w-7xl mx-auto lg:grid lg:grid-cols-2 lg:px-8">
               {/* Applicant information summary */}

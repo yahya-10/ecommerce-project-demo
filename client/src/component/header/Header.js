@@ -28,7 +28,7 @@ const Header = ({ isLoggedIn }) => {
     { name: t("header.nav_support"), href: "/contact" },
   ];
 
-  console.log(isLoggedIn());
+  // console.log(isLoggedIn());
 
   return (
     <div>
@@ -144,7 +144,7 @@ const Header = ({ isLoggedIn }) => {
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                   {isLoggedIn() ? (
                     <div className="flex items-center space-x-4 lg:space-x-6">
-                      {console.log(isLoggedIn())}
+                      {/* {console.log(isLoggedIn())} */}
                       <span
                         className="inline-flex rounded-md shadow"
                         onClick={logOut}
