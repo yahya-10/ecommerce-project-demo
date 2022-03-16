@@ -16,10 +16,11 @@ app.use(cors());
 // Parse the data
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const tokGen = new tokenGenerator();
+
 // Route that enables the user to login
 app.use("/login", cors(), (req, res) => {
   try {
-    const tokGen = new tokenGenerator();
     res.send({
       token: tokGen.generate(),
     });
@@ -31,7 +32,6 @@ app.use("/login", cors(), (req, res) => {
 // Route that enables the user to register
 app.use("/register", cors(), (req, res) => {
   try {
-    const tokGen = new tokenGenerator();
     res.send({
       token: tokGen.generate(),
     });
