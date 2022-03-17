@@ -21,6 +21,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import Checkout from "./checkout/Checkout";
 import UserProfile from "./component/user_profile/UserProfile";
 import UserValidationPage from "./component/user_profile/UserValidationPage";
+import SuccessfullPayment from "./checkout/SuccessfullPayment";
 
 /**
  *
@@ -83,11 +84,10 @@ const App = () => {
     isLoggedIn();
   }, []);
 
-  console.log("App.js", selectedPackage);
+  // console.log("App.js", selectedPackage);
   return (
     <div>
       <Header
-        // style={{ zIndex: "1000" }}
         AddItemToList={handleAddItemToList}
         RemoveItemFromList={handleRemoveItemFromList}
         listItems={listItems}
@@ -140,6 +140,17 @@ const App = () => {
             path="/validation-stage"
             exact
             element={<UserValidationPage />}
+          />
+        </Route>
+        <Route
+          path="/checkout/successfull_payment"
+          exact
+          element={<PrivateRoute />}
+        >
+          <Route
+            path="/checkout/successfull_payment"
+            exact
+            element={<SuccessfullPayment />}
           />
         </Route>
       </Routes>

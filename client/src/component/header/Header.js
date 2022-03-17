@@ -153,11 +153,19 @@ const Header = ({ isLoggedIn }) => {
                         </Link>
                       </span>
                       <Link to="/profile">
-                        <img
+                        {/* <img
                           className="w-16 h-16 rounded-full lg:w-12 lg:h-12"
                           src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt="spacex"
-                        />
+                        /> */}
+                        <span className="inline-block relative">
+                          <img
+                            className="h-14 w-14 rounded-full"
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt=""
+                          />
+                          <span className="absolute top-0 right-0 block h-4 w-4 rounded-full ring-2 ring-white bg-green-400" />
+                        </span>
                       </Link>
                     </div>
                   ) : (

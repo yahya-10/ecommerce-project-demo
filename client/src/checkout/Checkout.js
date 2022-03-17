@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import CardInput from "./CardInput";
@@ -23,6 +24,7 @@ const Checkout = () => {
 
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -56,8 +58,9 @@ const Checkout = () => {
       setError({ paymentError: result.error.message });
     } else {
       if (result.paymentIntent.status === "succeeded") {
-        alert(`${email} Transaction Succeeded`);
-        console.log(result);
+        // alert(`${email} Transaction Succeeded`);
+        navigate("/checkout/successfull_payment");
+        // console.log(result);
       }
     }
     setIsLoading(false);
