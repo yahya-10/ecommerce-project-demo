@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import { logOut } from "../../utils";
@@ -7,7 +7,7 @@ import LangDropDown from "./LangDropDown";
 
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { ShoppingCartIcon } from "@heroicons/react/solid";
+// import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
 
 /**

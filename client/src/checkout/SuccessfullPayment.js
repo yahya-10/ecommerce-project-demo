@@ -1,5 +1,5 @@
-import React from "react";
 import Steps from "../component/user_profile/Steps";
+import Notification from "./Notification";
 
 const SuccessfullPayment = () => {
   const projects = [
@@ -17,6 +17,7 @@ const SuccessfullPayment = () => {
   return (
     <>
       <Steps stage={"05"} />
+      <Notification />
       <div className="mt-5 px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
@@ -44,7 +45,7 @@ const SuccessfullPayment = () => {
                   scope="col"
                   className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 md:pl-0"
                 >
-                  Project
+                  Purchases
                 </th>
                 <th
                   scope="col"
