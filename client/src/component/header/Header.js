@@ -1,15 +1,14 @@
-import { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.png";
 import LangDropDown from "./LangDropDown";
 
-import { Popover } from "@headlessui/react";
-import { MenuIcon } from "@heroicons/react/outline";
+import { Popover, Transition } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 
 /**
  * @public
@@ -27,8 +26,6 @@ const Header = ({ isLoggedIn }) => {
     { name: t("header.nav_about_us"), href: "/about" },
     { name: t("header.nav_support"), href: "/contact" },
   ];
-
-  // console.log(isLoggedIn());
 
   return (
     <div>
@@ -144,7 +141,6 @@ const Header = ({ isLoggedIn }) => {
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                   {isLoggedIn() ? (
                     <div className="flex items-center space-x-4 lg:space-x-6">
-                      {/* {console.log(isLoggedIn())} */}
                       <span
                         className="inline-flex rounded-md shadow"
                         onClick={logOut}
@@ -194,6 +190,82 @@ const Header = ({ isLoggedIn }) => {
                 </div>
               </nav>
             </div>
+            <Transition
+              as={Fragment}
+              enter="duration-200 ease-out"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="duration-100 ease-in"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Popover.Panel
+                focus
+                className=" top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+              >
+                <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+                  <div className="pt-5 pb-6 px-5">
+                    <div className="flex items-center space-between">
+                      <div className="-mr-2">
+                        <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                          <span className="sr-only">Close menu</span>
+                          <XIcon className="h-6 w-6" aria-hidden="true" />
+                        </Popover.Button>
+                      </div>
+                    </div>
+                    <div className="mt-6">
+                      <nav className="grid gap-y-8">
+                        {navigation.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                          >
+                            <span className="ml-3 text-base font-medium text-gray-900">
+                              {item.name}
+                            </span>
+                          </a>
+                        ))}
+                        <LangDropDown />
+                      </nav>
+                    </div>
+                  </div>
+                  <div className="py-6 px-5 space-y-6">
+                    {isLoggedIn() ? (
+                      <div className="flex items-center space-x-4 lg:space-x-6">
+                        <span
+                          className="inline-flex rounded-md shadow"
+                          onClick={logOut}
+                        >
+                          <Link
+                            to="/login"
+                            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
+                          >
+                            {t("header.log_out")}
+                          </Link>
+                        </span>
+                        <Link to="/profile">
+                          <img
+                            className="w-16 h-16 rounded-full lg:w-12 lg:h-12"
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="spacex"
+                          />
+                        </Link>
+                      </div>
+                    ) : (
+                      <span className="inline-flex rounded-md shadow">
+                        <Link
+                          to="/login"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
+                        >
+                          {t("header.log_in")}
+                        </Link>
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </Popover.Panel>
+            </Transition>
           </Popover>
         </div>
       </div>

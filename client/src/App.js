@@ -87,6 +87,7 @@ const App = () => {
   return (
     <div>
       <Header
+        // style={{ zIndex: "1000" }}
         AddItemToList={handleAddItemToList}
         RemoveItemFromList={handleRemoveItemFromList}
         listItems={listItems}
