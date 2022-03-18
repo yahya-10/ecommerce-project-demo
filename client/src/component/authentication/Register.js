@@ -200,7 +200,11 @@ const Register = ({ setToken, handleAddNewUser }) => {
               </div>
 
               <div className="mt-6">
-                <form onSubmit={formik.handleSubmit} className="space-y-6">
+                <form
+                  onSubmit={formik.handleSubmit}
+                  id="submit"
+                  className="space-y-6"
+                >
                   <div>
                     <label
                       htmlFor="fullname"

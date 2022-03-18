@@ -284,6 +284,7 @@ const UserProfile = ({ selectedPackage }) => {
           <form
             onSubmit={formik.handleSubmit}
             className="space-y-8 divide-y divide-gray-200 ml-5 mr-5 mt-5"
+            id="submit"
           >
             <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
               <div>
@@ -313,7 +314,7 @@ const UserProfile = ({ selectedPackage }) => {
                         <input
                           type="text"
                           name="companyName"
-                          id="companyname"
+                          id="company-name"
                           autoComplete="companyname"
                           disabled={disableFields}
                           onChange={formik.handleChange}
@@ -486,7 +487,7 @@ const UserProfile = ({ selectedPackage }) => {
                       <input
                         type="text"
                         name="streetAddress"
-                        id="streetAddress"
+                        id="street-address"
                         autoComplete="street-address"
                         disabled={disableFields}
                         onChange={formik.handleChange}
@@ -537,7 +538,7 @@ const UserProfile = ({ selectedPackage }) => {
                       <input
                         type="text"
                         name="state"
-                        id="region"
+                        id="state"
                         autoComplete="address-level1"
                         disabled={disableFields}
                         onChange={formik.handleChange}
@@ -562,7 +563,7 @@ const UserProfile = ({ selectedPackage }) => {
                       <input
                         type="text"
                         name="zip"
-                        id="postal-code"
+                        id="zip"
                         autoComplete="postal-code"
                         disabled={disableFields}
                         onChange={formik.handleChange}
