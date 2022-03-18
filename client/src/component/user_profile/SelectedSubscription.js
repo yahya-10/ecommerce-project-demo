@@ -65,7 +65,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
           // <Link to="/">select a package first</Link>
           <SelectPackageModal />
         ) : (
-          <div>
+          <div id="selectedSubs-div">
             <div className="absolute inset-0" aria-hidden="true">
               <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500" />
             </div>
