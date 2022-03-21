@@ -33,6 +33,7 @@ const App = () => {
   const [listItems, setListItems] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState();
+  // const [theme, setTheme] = useState("light");
 
   const { token, setToken } = useToken();
 
@@ -92,6 +93,8 @@ const App = () => {
         RemoveItemFromList={handleRemoveItemFromList}
         listItems={listItems}
         isLoggedIn={isLoggedIn}
+        // theme={theme}
+        // setTheme={setTheme}
       />
       <Routes>
         <Route

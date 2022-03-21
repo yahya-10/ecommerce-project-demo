@@ -1,12 +1,14 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.png";
+import { useThemeHandler } from "../../custom_hooks/useThemeHandler";
 import LangDropDown from "./LangDropDown";
 
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 // import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
 
@@ -20,6 +22,8 @@ import { useTranslation } from "react-i18next";
 const Header = ({ isLoggedIn }) => {
   const { t } = useTranslation();
 
+  const [storedTheme, setTheme] = useThemeHandler("theme");
+
   const navigation = [
     { name: t("header.nav_solution"), href: "/" },
     { name: t("header.nav_store"), href: "/store" },
@@ -27,9 +31,11 @@ const Header = ({ isLoggedIn }) => {
     { name: t("header.nav_support"), href: "/contact" },
   ];
 
+  console.log(storedTheme);
+
   return (
     <div>
-      <div className="relative bg-gray-50 overflow-hidden">
+      <div className="relative bg-gray-50 dark:bg-gray-600 overflow-hidden">
         <div
           className="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full"
           aria-hidden="true"
@@ -153,14 +159,9 @@ const Header = ({ isLoggedIn }) => {
                         </Link>
                       </span>
                       <Link to="/profile">
-                        {/* <img
-                          className="w-16 h-16 rounded-full lg:w-12 lg:h-12"
-                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt="spacex"
-                        /> */}
                         <span className="inline-block relative">
                           <img
-                            className="h-14 w-14 rounded-full"
+                            className="h-12 w-12 rounded-full"
                             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                             alt=""
                           />
@@ -179,6 +180,22 @@ const Header = ({ isLoggedIn }) => {
                     </span>
                   )}
                   <LangDropDown />
+                  {storedTheme === "dark" ? (
+                    <SunIcon
+                      style={{ color: "#fcec05" }}
+                      className="h-6 w-6 ml-3"
+                      aria-hidden="true"
+                      onClick={() => setTheme("light")}
+                    />
+                  ) : (
+                    <MoonIcon
+                      style={{ color: "#2b313b" }}
+                      className="h-6 w-6 ml-3"
+                      aria-hidden="true"
+                      onClick={() => setTheme("dark")}
+                    />
+                  )}
+
                   {/* Shopping cart icon */}
                   {/* <div className="inline-flex rounded-md shadow">
                     <Link
@@ -235,6 +252,7 @@ const Header = ({ isLoggedIn }) => {
                           </a>
                         ))}
                         <LangDropDown />
+                        <MoonIcon className="h-6 w-6" aria-hidden="true" />
                       </nav>
                     </div>
                   </div>
