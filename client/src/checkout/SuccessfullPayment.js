@@ -1,5 +1,8 @@
+import { useRef } from "react";
 import Steps from "../component/user_profile/Steps";
 import Notification from "./Notification";
+
+import ReactToPrint from "react-to-print";
 
 const SuccessfullPayment = () => {
   const projects = [
@@ -13,12 +16,14 @@ const SuccessfullPayment = () => {
     // More projects...
   ];
 
-  console.log("successfull payment comp");
+  let componentRef = useRef();
+
+  // console.log("successfull payment comp");
   return (
     <>
       <Steps stage={"05"} />
       <Notification />
-      <div className="mt-5 px-4 sm:px-6 lg:px-8">
+      <div id="printable-area" className="mt-5 px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
             <h1 className="text-xl font-semibold text-gray-900">Invoice</h1>
@@ -28,17 +33,27 @@ const SuccessfullPayment = () => {
               <time dateTime="2022-08-31">August 31, 2022</time>.
             </p>
           </div>
-          <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-            >
-              Print
-            </button>
-          </div>
+          <ReactToPrint
+            trigger={() => {
+              return (
+                <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+                  <button
+                    type="button"
+                    className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+                  >
+                    Print
+                  </button>
+                </div>
+              );
+            }}
+            content={() => componentRef}
+          />
         </div>
         <div className="-mx-4 mt-8 flex flex-col sm:-mx-6 md:mx-0">
-          <table className="min-w-full divide-y divide-gray-300">
+          <table
+            ref={(el) => (componentRef = el)}
+            className="min-w-full divide-y divide-gray-300"
+          >
             <thead>
               <tr>
                 <th

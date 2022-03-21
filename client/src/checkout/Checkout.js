@@ -56,12 +56,10 @@ const Checkout = () => {
 
     if (result.error) {
       setError({ paymentError: result.error.message });
-    } else {
-      if (result.paymentIntent.status === "succeeded") {
-        // alert(`${email} Transaction Succeeded`);
-        navigate("/checkout/successfull_payment");
-        // console.log(result);
-      }
+    } else if (result.paymentIntent.status === "succeeded") {
+      // alert(`${email} Transaction Succeeded`);
+      navigate("/checkout/successfull_payment");
+      // console.log(result);
     }
     setIsLoading(false);
   };
