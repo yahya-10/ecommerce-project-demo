@@ -20,7 +20,10 @@
     "monthly_billing": "Facturación mensual",
     "yearly_billing": "Facturación anual",
     "pricing_section_buy": "Compre",
-    "billed_yearly": "facturado anualmente"
+    "billed_yearly": "facturado anualmente",
+    "billed_monthly": "Facturado mensualmente",
+    "year": "año",
+    "month": "mes"
   },
   "plans": {
     "starter_plan_desc": "Todas las finanzas esenciales de su negocio, atendidas.",

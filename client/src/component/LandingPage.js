@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
@@ -18,6 +18,8 @@ function classNames(...classes) {
 }
 
 const LandingPage = ({ handleSelectPackage }) => {
+  const [monthlyPlan, setMonthlyPlan] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -233,12 +235,14 @@ const LandingPage = ({ handleSelectPackage }) => {
                   <button
                     type="button"
                     className="relative bg-white py-2 px-6 border-indigo-700 rounded-md shadow-sm text-sm font-medium text-indigo-700 whitespace-nowrap hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-700 focus:ring-white focus:z-10"
+                    onClick={() => setMonthlyPlan(true)}
                   >
                     {t("pricing_section.monthly_billing")}
                   </button>
                   <button
                     type="button"
                     className="ml-0.5 relative py-2 px-6 border border-transparent rounded-md text-sm font-medium text-indigo-200 whitespace-nowrap hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-700 focus:ring-white focus:z-10"
+                    onClick={() => setMonthlyPlan(false)}
                   >
                     {t("pricing_section.yearly_billing")}
                   </button>
@@ -287,7 +291,9 @@ const LandingPage = ({ handleSelectPackage }) => {
                                 "text-4xl font-extrabold tracking-tight"
                               )}
                             >
-                              ${plan.priceMonthly}
+                              {monthlyPlan
+                                ? `$${plan.priceMonthly}`
+                                : `$${plan.priceYearly}`}
                             </p>
                             <div className="ml-4">
                               <p
@@ -298,7 +304,10 @@ const LandingPage = ({ handleSelectPackage }) => {
                                   "text-sm"
                                 )}
                               >
-                                USD / mo
+                                USD /{" "}
+                                {monthlyPlan
+                                  ? `${t("pricing_section.month")}`
+                                  : `${t("pricing_section.year")}`}
                               </p>
                               <p
                                 className={classNames(
@@ -308,8 +317,14 @@ const LandingPage = ({ handleSelectPackage }) => {
                                   "text-sm"
                                 )}
                               >
-                                {t("pricing_section.billed_yearly")} ($
-                                {plan.priceYearly})
+                                {/* {t("pricing_section.billed_yearly")} */}
+                                {!monthlyPlan
+                                  ? `$${plan.priceMonthly} ${t(
+                                      "pricing_section.billed_monthly"
+                                    )}`
+                                  : `$${plan.priceYearly} ${t(
+                                      "pricing_section.billed_yearly"
+                                    )}`}
                               </p>
                             </div>
                           </div>
@@ -330,7 +345,7 @@ const LandingPage = ({ handleSelectPackage }) => {
                       </div>
                       <h4 className="sr-only">Features</h4>
                       <ul
-                        role="list"
+                        // role="list"
                         className={classNames(
                           plan.featured
                             ? "border-gray-200 divide-gray-200"

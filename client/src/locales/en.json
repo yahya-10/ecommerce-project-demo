@@ -20,7 +20,10 @@
     "monthly_billing": "Monthly billing",
     "yearly_billing": "Yearly billing",
     "pricing_section_buy": "Buy",
-    "billed_yearly": "Billed yearly"
+    "billed_yearly": "Billed yearly",
+    "billed_monthly": "Billed monthly",
+    "year": "year",
+    "month": "month"
   },
   "plans": {
     "starter_plan_desc": "All your essential business finances, taken care of.",
