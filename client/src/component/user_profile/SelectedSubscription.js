@@ -3,14 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import SelectPackageModal from "./SelectPackageModal";
 
-import {
-  CalendarIcon,
-  CheckIcon,
-  PlusIcon,
-  ViewBoardsIcon,
-  ViewListIcon,
-} from "@heroicons/react/outline";
-import { UsersIcon } from "@heroicons/react/outline";
+import { CheckIcon, PlusIcon } from "@heroicons/react/outline";
 import { PaperClipIcon } from "@heroicons/react/solid";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 
@@ -18,40 +11,40 @@ import { ShoppingCartIcon } from "@heroicons/react/solid";
  * This component
  */
 
-const features = [
-  {
-    name: "List view",
-    description:
-      "Nunc a, lacinia sed risus neque, arcu, rhoncus. Id mauris justo facilisis aliquam platea vestibulum condimentum morbi.",
-    icon: ViewListIcon,
-  },
-  {
-    name: "Boards",
-    description:
-      "Purus lobortis volutpat posuere id integer nunc tellus. Non mauris malesuada feugiat massa mi pellentesque cum est. Pharetra a varius urna rhoncus, tempor rutrum.",
-    icon: ViewBoardsIcon,
-  },
-  {
-    name: "Calendar",
-    description:
-      "Purus lobortis volutpat posuere id integer nunc tellus. Non mauris malesuada feugiat massa mi pellentesque cum est. Pharetra a varius urna rhoncus, tempor rutrum.",
-    icon: CalendarIcon,
-  },
-  {
-    name: "Teams",
-    description:
-      "Tincidunt sollicitudin interdum nunc sit risus at bibendum vitae. Urna, quam ut sit justo non, consectetur et varius.",
-    icon: UsersIcon,
-  },
-];
-const checklist = [
-  "Unlimited projects",
-  "No per user fees",
-  "Unlimited storage",
-  "24/7 support",
-  "Cancel any time",
-  "14 days free",
-];
+// const features = [
+//   {
+//     name: "List view",
+//     description:
+//       "Nunc a, lacinia sed risus neque, arcu, rhoncus. Id mauris justo facilisis aliquam platea vestibulum condimentum morbi.",
+//     icon: ViewListIcon,
+//   },
+//   {
+//     name: "Boards",
+//     description:
+//       "Purus lobortis volutpat posuere id integer nunc tellus. Non mauris malesuada feugiat massa mi pellentesque cum est. Pharetra a varius urna rhoncus, tempor rutrum.",
+//     icon: ViewBoardsIcon,
+//   },
+//   {
+//     name: "Calendar",
+//     description:
+//       "Purus lobortis volutpat posuere id integer nunc tellus. Non mauris malesuada feugiat massa mi pellentesque cum est. Pharetra a varius urna rhoncus, tempor rutrum.",
+//     icon: CalendarIcon,
+//   },
+//   {
+//     name: "Teams",
+//     description:
+//       "Tincidunt sollicitudin interdum nunc sit risus at bibendum vitae. Urna, quam ut sit justo non, consectetur et varius.",
+//     icon: UsersIcon,
+//   },
+// ];
+// const checklist = [
+//   "Unlimited projects",
+//   "No per user fees",
+//   "Unlimited storage",
+//   "24/7 support",
+//   "Cancel any time",
+//   "14 days free",
+// ];
 
 const SelectedSubscription = ({ data, selectedPackage }) => {
   const { t } = useTranslation();
@@ -137,10 +130,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
                           Attachments
                         </dt>
                         <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                          <ul
-                            role="list"
-                            className="border border-gray-200 rounded-md divide-y divide-gray-200"
-                          >
+                          <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
                             <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                               <div className="w-0 flex-1 flex items-center">
                                 <PaperClipIcon
@@ -153,7 +143,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
                               </div>
                               <div className="ml-4 flex-shrink-0">
                                 <a
-                                  href="#"
+                                  href="/"
                                   className="font-medium text-indigo-600 hover:text-indigo-500"
                                 >
                                   Download
@@ -172,7 +162,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
                               </div>
                               <div className="ml-4 flex-shrink-0">
                                 <a
-                                  href="#"
+                                  href="/"
                                   className="font-medium text-indigo-600 hover:text-indigo-500"
                                 >
                                   Download
@@ -222,10 +212,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
                       </span>
                     </p>
                   </div>
-                  <ul
-                    role="list"
-                    className="rounded overflow-hidden grid gap-px sm:grid-cols-2"
-                  >
+                  <ul className="rounded overflow-hidden grid gap-px sm:grid-cols-2">
                     {selectedPackage.mainFeatures.map((item, i) => (
                       <li
                         key={i}

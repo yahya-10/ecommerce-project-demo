@@ -20,7 +20,7 @@ describe("Login form submission", () => {
     cy.get("#state").type("test");
     cy.get("#zip").type("test");
     cy.get("#submit").submit();
-    cy.get("#validate-btn").click();
+    cy.get("#validate-btn").should("contain.text", "Validate").click();
     cy.get(":first-child").should("exist");
   });
 });
