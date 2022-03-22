@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.png";
-import { useThemeHandler } from "../../custom_hooks/useThemeHandler";
+// import { useThemeHandler } from "../../custom_hooks/useThemeHandler";
 import LangDropDown from "./LangDropDown";
 
 import { Popover, Transition } from "@headlessui/react";
@@ -19,10 +19,8 @@ import { useTranslation } from "react-i18next";
  * this function
  */
 
-const Header = ({ isLoggedIn }) => {
+const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
   const { t } = useTranslation();
-
-  const [storedTheme, setTheme] = useThemeHandler("theme");
 
   const navigation = [
     { name: t("header.nav_solution"), href: "/" },
@@ -31,11 +29,17 @@ const Header = ({ isLoggedIn }) => {
     { name: t("header.nav_support"), href: "/contact" },
   ];
 
-  console.log(storedTheme);
+  // console.log(storedTheme);
 
   return (
     <div>
-      <div className="relative bg-gray-50 dark:bg-gray-600 overflow-hidden">
+      <div
+        className={`${
+          storedTheme === "light"
+            ? "relative bg-gray-50 overflow-hidden"
+            : "relative bg-gray-800 overflow-hidden"
+        }`}
+      >
         <div
           className="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full"
           aria-hidden="true"
@@ -62,7 +66,12 @@ const Header = ({ isLoggedIn }) => {
                     y={0}
                     width={4}
                     height={4}
-                    className="text-gray-200"
+                    // className="text-gray-200"
+                    className={`${
+                      storedTheme === "light"
+                        ? "text-gray-200"
+                        : "text-gray-800"
+                    }`}
                     fill="currentColor"
                   />
                 </pattern>
@@ -94,7 +103,11 @@ const Header = ({ isLoggedIn }) => {
                     y={0}
                     width={4}
                     height={4}
-                    className="text-gray-200"
+                    className={`${
+                      storedTheme === "light"
+                        ? "text-gray-200"
+                        : "text-gray-800"
+                    }`}
                     fill="currentColor"
                   />
                 </pattern>
@@ -138,7 +151,12 @@ const Header = ({ isLoggedIn }) => {
                     <Link
                       key={item.name}
                       to={item.href}
-                      className="font-medium text-gray-500 hover:text-gray-900"
+                      // className="font-medium text-gray-500 hover:text-gray-900"
+                      className={`${
+                        storedTheme === "light"
+                          ? "font-medium text-gray-500 hover:text-gray-900"
+                          : "font-medium text-gray-100 hover:text-gray-400"
+                      }`}
                     >
                       {item.name}
                     </Link>
@@ -179,7 +197,7 @@ const Header = ({ isLoggedIn }) => {
                       </Link>
                     </span>
                   )}
-                  <LangDropDown />
+                  <LangDropDown storedTheme={storedTheme} />
                   {storedTheme === "dark" ? (
                     <SunIcon
                       style={{ color: "#fcec05" }}

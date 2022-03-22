@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 
 import HeroSection from "./HeroSection";
 import LogoClouds from "./LogoClouds";
+import LandingPageChart from "./charts/LandingPageChart";
 
 /**
  * @public
@@ -17,7 +18,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const LandingPage = ({ handleSelectPackage }) => {
+const LandingPage = ({ handleSelectPackage, storedTheme }) => {
   const [monthlyPlan, setMonthlyPlan] = useState(false);
 
   useEffect(() => {
@@ -193,28 +194,45 @@ const LandingPage = ({ handleSelectPackage }) => {
       ],
     },
   ];
-
+  // console.log(storedTheme);
   return (
     <>
-      <div className="mb-5">
-        <HeroSection />
+      <div>
+        <HeroSection storedTheme={storedTheme} />
       </div>
       <div>
         <LogoClouds />
       </div>
-      <div className="bg-gray-50">
+      <div
+        // className="bg-gray-50"
+        className={`${storedTheme === "light" ? "bg-gray-50" : "bg-gray-800"}`}
+      >
         <main>
           {/* Pricing section */}
           <div>
-            <div className="relative bg-gray-50">
+            <div
+              // className="relative bg-gray-50"
+              className={`${
+                storedTheme === "light"
+                  ? "relative bg-gray-50"
+                  : "relative bg-gray-800"
+              }`}
+            >
               {/* Overlapping background */}
               <div
                 aria-hidden="true"
-                className="hidden absolute bg-gray-50 w-full h-6 bottom-0 lg:block"
+                className="hidden absolute w-full h-6 bottom-0 lg:block"
               />
 
               <div className="relative max-w-2xl mx-auto pt-16 px-4 text-center sm:pt-32 sm:px-6 lg:max-w-7xl lg:px-8">
-                <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl">
+                <h2
+                  // className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl"
+                  className={`${
+                    storedTheme === "light"
+                      ? "text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl"
+                      : "text-4xl font-extrabold tracking-tight text-gray-50 sm:text-6xl"
+                  }`}
+                >
                   <span className="block lg:inline">
                     {t("pricing_section.pricing_section_title_st_half")}
                   </span>
@@ -412,7 +430,14 @@ const LandingPage = ({ handleSelectPackage }) => {
                       >
                         {plan.title}
                       </h3>
-                      <p className="mt-2 text-sm text-gray-500">
+                      <p
+                        // className="mt-2 text-sm text-gray-500"
+                        className={`${
+                          storedTheme === "light"
+                            ? "mt-2 text-sm text-gray-500"
+                            : "mt-2 text-sm text-white"
+                        }`}
+                      >
                         {plan.description}
                       </p>
                     </div>
@@ -595,7 +620,14 @@ const LandingPage = ({ handleSelectPackage }) => {
               </h2>
 
               <div className="mt-24 max-w-7xl mx-auto px-8">
-                <div className="w-full border-t border-gray-200 flex items-stretch">
+                <div
+                  // className="w-full border-t border-gray-200 flex items-stretch"
+                  className={`${
+                    storedTheme === "light"
+                      ? "w-full border-t border-gray-200 flex items-stretch"
+                      : "w-full border-t border-gray-800 flex items-stretch"
+                  }`}
+                >
                   <div className="-mt-px w-1/4 py-6 pr-4 flex items-end">
                     <h3 className="mt-auto text-sm font-bold text-gray-900">
                       Catered for business
@@ -642,13 +674,32 @@ const LandingPage = ({ handleSelectPackage }) => {
                   >
                     <div className="w-1/4 pr-4" />
                     <div className="w-1/4 px-4">
-                      <div className="w-full h-full bg-white rounded-lg shadow" />
+                      <div
+                        // className="w-full h-full bg-white rounded-lg shadow"
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full h-full bg-white rounded-lg shadow"
+                            : "w-full h-full bg-gray-900 rounded-lg shadow"
+                        }`}
+                      />
                     </div>
                     <div className="w-1/4 px-4">
-                      <div className="w-full h-full bg-white rounded-lg shadow-md" />
+                      <div
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full h-full bg-white rounded-lg shadow"
+                            : "w-full h-full bg-gray-900 rounded-lg shadow"
+                        }`}
+                      />
                     </div>
                     <div className="w-1/4 pl-4">
-                      <div className="w-full h-full bg-white rounded-lg shadow" />
+                      <div
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full h-full bg-white rounded-lg shadow"
+                            : "w-full h-full bg-gray-900 rounded-lg shadow"
+                        }`}
+                      />
                     </div>
                   </div>
 
@@ -668,7 +719,14 @@ const LandingPage = ({ handleSelectPackage }) => {
                         ))}
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-100">
+                    <tbody
+                      // className="divide-y divide-gray-100"
+                      className={`${
+                        storedTheme === "light"
+                          ? "divide-y divide-gray-100"
+                          : "divide-y divide-gray-100"
+                      }`}
+                    >
                       {features.map((feature) => (
                         <tr key={feature.title}>
                           <th
@@ -693,7 +751,7 @@ const LandingPage = ({ handleSelectPackage }) => {
                                     className={classNames(
                                       tier.featured
                                         ? "text-indigo-600"
-                                        : "text-gray-900",
+                                        : "text-gray-600",
                                       "text-sm font-medium"
                                     )}
                                   >
@@ -733,7 +791,7 @@ const LandingPage = ({ handleSelectPackage }) => {
                   >
                     <div className="w-1/4 pr-4" />
                     <div className="w-1/4 px-4">
-                      <div className="w-full h-full rounded-lg ring-1 ring-black ring-opacity-5" />
+                      <div className="w-full h-full rounded-lg ring-1 ring-black ring-opacity-5 bg-red" />
                     </div>
                     <div className="w-1/4 px-4">
                       <div className="w-full h-full rounded-lg ring-2 ring-indigo-600 ring-opacity-100" />
@@ -756,13 +814,32 @@ const LandingPage = ({ handleSelectPackage }) => {
                   >
                     <div className="w-1/4 pr-4" />
                     <div className="w-1/4 px-4">
-                      <div className="w-full h-full bg-white rounded-lg shadow" />
+                      <div
+                        // className="w-full h-full bg-white rounded-lg shadow"
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full h-full bg-white rounded-lg shadow"
+                            : "w-full h-full bg-gray-900 rounded-lg shadow"
+                        }`}
+                      />
                     </div>
                     <div className="w-1/4 px-4">
-                      <div className="w-full h-full bg-white rounded-lg shadow-md" />
+                      <div
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full h-full bg-white rounded-lg shadow"
+                            : "w-full h-full bg-gray-900 rounded-lg shadow"
+                        }`}
+                      />
                     </div>
                     <div className="w-1/4 pl-4">
-                      <div className="w-full h-full bg-white rounded-lg shadow" />
+                      <div
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full h-full bg-white rounded-lg shadow"
+                            : "w-full h-full bg-gray-900 rounded-lg shadow"
+                        }`}
+                      />
                     </div>
                   </div>
 
@@ -847,10 +924,15 @@ const LandingPage = ({ handleSelectPackage }) => {
           {/* Logo cloud */}
           <div className="max-w-2xl mx-auto py-8 px-4 sm:px-6 lg:max-w-7xl lg:py-32 lg:px-8"></div>
 
+          {/* Chart section */}
+          <div>
+            <LandingPageChart />
+          </div>
+
           {/* FAQs */}
           <section
             aria-labelledby="faq-heading"
-            className="bg-gradient-to-b from-gray-900 via-fuchsia-800 to-gray-900"
+            className="bg-gradient-to-b from-gray-800 via-fuchsia-800 to-gray-800"
           >
             <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
               <div className="max-w-2xl lg:mx-auto lg:text-center">

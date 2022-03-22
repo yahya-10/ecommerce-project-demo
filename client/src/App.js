@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { ProductsExample } from "./ProductsExample";
 
 import { useToken } from "./custom_hooks/useToken";
+import { useThemeHandler } from "./custom_hooks/useThemeHandler";
 import { isLoggedIn } from "./utils";
 
 import Header from "./component/header/Header";
@@ -33,7 +34,7 @@ const App = () => {
   const [listItems, setListItems] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState();
-  // const [theme, setTheme] = useState("light");
+  const [storedTheme, setTheme] = useThemeHandler("theme");
 
   const { token, setToken } = useToken();
 
@@ -93,14 +94,19 @@ const App = () => {
         RemoveItemFromList={handleRemoveItemFromList}
         listItems={listItems}
         isLoggedIn={isLoggedIn}
-        // theme={theme}
-        // setTheme={setTheme}
+        storedTheme={storedTheme}
+        setTheme={setTheme}
       />
       <Routes>
         <Route
           exact
           path="/"
-          element={<LandingPage handleSelectPackage={handleSelectedPackage} />}
+          element={
+            <LandingPage
+              handleSelectPackage={handleSelectedPackage}
+              storedTheme={storedTheme}
+            />
+          }
         />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route
@@ -157,7 +163,7 @@ const App = () => {
           />
         </Route>
       </Routes>
-      <Footer />
+      <Footer storedTheme={storedTheme} />
     </div>
   );
 };

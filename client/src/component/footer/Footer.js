@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import comunikcrmLogo from "../../assets/comunikcrm.png";
 
-const Footer = () => {
+const Footer = ({ storedTheme }) => {
   const { t } = useTranslation();
 
   const footerNavigation = {
@@ -49,7 +49,10 @@ const Footer = () => {
   };
 
   return (
-    <footer aria-labelledby="footer-heading">
+    <footer
+      aria-labelledby="footer-heading"
+      className={`${storedTheme === "light" ? "bg-gray-50" : "bg-gray-800"}`}
+    >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -57,7 +60,14 @@ const Footer = () => {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
             <img className="h-10" src={comunikcrmLogo} alt="Company name" />
-            <p className="text-gray-500 text-base">
+            <p
+              // className="text-gray-500 text-base"
+              className={`${
+                storedTheme === "light"
+                  ? "text-base text-gray-500"
+                  : "text-base text-gray-200"
+              }`}
+            >
               {t("footer.footer_slogan")}
             </p>
             <div className="flex space-x-6">
@@ -77,15 +87,27 @@ const Footer = () => {
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold tracking-wider uppercase text-gray-900">
+                <h3
+                  // className="text-sm font-semibold tracking-wider uppercase text-gray-900"
+                  className={`${
+                    storedTheme === "light"
+                      ? "text-sm font-semibold tracking-wider uppercase text-gray-900"
+                      : "text-sm font-semibold tracking-wider uppercase text-gray-400"
+                  }`}
+                >
                   Solutions
                 </h3>
-                <ul role="list" className="mt-4 space-y-4">
+                <ul className="mt-4 space-y-4">
                   {footerNavigation.solutions.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-base text-gray-500 hover:text-gray-900"
+                        // className="text-base text-gray-500 hover:text-gray-900"
+                        className={`${
+                          storedTheme === "light"
+                            ? "text-base text-gray-500 hover:text-gray-900"
+                            : "text-base text-gray-100 hover:text-gray-400"
+                        }`}
                       >
                         {item.name}
                       </a>
@@ -94,15 +116,25 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold tracking-wider uppercase text-gray-900">
+                <h3
+                  className={`${
+                    storedTheme === "light"
+                      ? "text-sm font-semibold tracking-wider uppercase text-gray-900"
+                      : "text-sm font-semibold tracking-wider uppercase text-gray-400"
+                  }`}
+                >
                   Support
                 </h3>
-                <ul role="list" className="mt-4 space-y-4">
+                <ul className="mt-4 space-y-4">
                   {footerNavigation.support.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-base text-gray-500 hover:text-gray-900"
+                        className={`${
+                          storedTheme === "light"
+                            ? "text-base text-gray-500 hover:text-gray-900"
+                            : "text-base text-gray-100 hover:text-gray-400"
+                        }`}
                       >
                         {item.name}
                       </a>
@@ -113,15 +145,25 @@ const Footer = () => {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold tracking-wider uppercase text-gray-900">
+                <h3
+                  className={`${
+                    storedTheme === "light"
+                      ? "text-sm font-semibold tracking-wider uppercase text-gray-900"
+                      : "text-sm font-semibold tracking-wider uppercase text-gray-400"
+                  }`}
+                >
                   Company
                 </h3>
-                <ul role="list" className="mt-4 space-y-4">
+                <ul className="mt-4 space-y-4">
                   {footerNavigation.company.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-base text-gray-500 hover:text-gray-900"
+                        className={`${
+                          storedTheme === "light"
+                            ? "text-base text-gray-500 hover:text-gray-900"
+                            : "text-base text-gray-100 hover:text-gray-400"
+                        }`}
                       >
                         {item.name}
                       </a>
@@ -130,15 +172,25 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold tracking-wider uppercase text-gray-900">
+                <h3
+                  className={`${
+                    storedTheme === "light"
+                      ? "text-sm font-semibold tracking-wider uppercase text-gray-900"
+                      : "text-sm font-semibold tracking-wider uppercase text-gray-400"
+                  }`}
+                >
                   Legal
                 </h3>
-                <ul role="list" className="mt-4 space-y-4">
+                <ul className="mt-4 space-y-4">
                   {footerNavigation.legal.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-base text-gray-500 hover:text-gray-900"
+                        className={`${
+                          storedTheme === "light"
+                            ? "text-base text-gray-500 hover:text-gray-900"
+                            : "text-base text-gray-100 hover:text-gray-400"
+                        }`}
                       >
                         {item.name}
                       </a>

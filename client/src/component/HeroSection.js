@@ -4,11 +4,18 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-const HeroSection = () => {
+const HeroSection = ({ storedTheme }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="relative bg-gray-50 overflow-hidden py-3">
+    <div
+      // className="relative bg-gray-50 overflow-hidden py-3"
+      className={`${
+        storedTheme === "light"
+          ? "relative bg-gray-50 overflow-hidden py-5"
+          : "relative bg-gray-800 overflow-hidden py-5"
+      }`}
+    >
       <div
         className="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full"
         aria-hidden="true"
@@ -67,7 +74,14 @@ const HeroSection = () => {
               },
             }}
           >
-            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+            <h1
+              // className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
+              className={`${
+                storedTheme === "light"
+                  ? "text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
+                  : "text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl"
+              }`}
+            >
               <span className="block xl:inline">
                 {t("hero_section.main_title_st_half")}
               </span>{" "}
@@ -91,8 +105,13 @@ const HeroSection = () => {
               </div>
               <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                 <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+                  href="/"
+                  className={`${
+                    storedTheme === "light"
+                      ? "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+                      : "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-50 bg-gray-600 hover:bg-gray-500 md:py-4 md:text-lg md:px-10"
+                  }`}
+                  // className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
                 >
                   Live demo
                 </a>

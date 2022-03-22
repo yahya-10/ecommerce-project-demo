@@ -9,7 +9,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const LangDropDown = () => {
+const LangDropDown = ({ storedTheme }) => {
   const lang = localStorage.getItem("i18nextLng");
 
   return (
@@ -30,7 +30,13 @@ const LangDropDown = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-transparent ring-1 ring-black ring-opacity-5 focus:outline-none cursor-pointer">
+        <Menu.Items
+          className={`${
+            storedTheme === "light"
+              ? "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-transparent ring-1 ring-black ring-opacity-5 focus:outline-none cursor-pointer"
+              : "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gray-400 ring-1 ring-black ring-opacity-5 focus:outline-none cursor-pointer"
+          }`}
+        >
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
