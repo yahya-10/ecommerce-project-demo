@@ -23,6 +23,7 @@ import Checkout from "./checkout/Checkout";
 import UserProfile from "./component/user_profile/UserProfile";
 import UserValidationPage from "./component/user_profile/UserValidationPage";
 import SuccessfullPayment from "./checkout/SuccessfullPayment";
+// import UserHistory from "./component/user_profile/UserHistory";
 
 /**
  *
@@ -148,9 +149,17 @@ const App = () => {
           <Route
             path="/profile"
             exact
-            element={<UserProfile selectedPackage={selectedPackage} />}
+            element={
+              <UserProfile
+                selectedPackage={selectedPackage}
+                storedTheme={storedTheme}
+              />
+            }
           />
         </Route>
+        {/* <Route path="/profile/history" exact element={<PrivateRoute />}>
+          <Route path="/profile/history" exact element={<UserHistory />} />
+        </Route> */}
         <Route path="/validation-stage" exact element={<PrivateRoute />}>
           <Route
             path="/validation-stage"

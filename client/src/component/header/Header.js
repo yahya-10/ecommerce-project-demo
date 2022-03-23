@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.png";
-// import { useThemeHandler } from "../../custom_hooks/useThemeHandler";
 import LangDropDown from "./LangDropDown";
 
 import { Popover, Transition } from "@headlessui/react";
@@ -11,6 +10,8 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 // import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
+import { avatarCreator } from "../../utils/CreateAvatar";
+import { getRondomColor } from "../../utils/GetRandomColor";
 
 /**
  * @public
@@ -179,11 +180,15 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                       <Link to="/profile">
                         <span className="inline-block relative">
                           <img
-                            className="h-12 w-12 rounded-full"
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            className="h-10 w-10 rounded-full"
+                            src={avatarCreator(
+                              500,
+                              "Yahya Akermi",
+                              getRondomColor()
+                            )}
                             alt=""
                           />
-                          <span className="absolute top-0 right-0 block h-4 w-4 rounded-full ring-2 ring-white bg-green-400" />
+                          <span className="absolute top-0 right-0 block h-3 w-3 rounded-full ring-2 ring-white bg-green-400" />
                         </span>
                       </Link>
                     </div>

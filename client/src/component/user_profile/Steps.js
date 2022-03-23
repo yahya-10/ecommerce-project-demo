@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 import { useTranslation } from "react-i18next";
 
@@ -8,7 +8,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Steps = ({ stage }) => {
+const Steps = ({ stage, storedTheme }) => {
   const { t } = useTranslation();
 
   const steps = [
@@ -35,13 +35,20 @@ const Steps = ({ stage }) => {
   ];
 
   return (
-    <div className="lg:border-t lg:border-b lg:border-gray-200">
+    <div
+      // className="lg:border-t lg:border-b lg:border-gray-200"
+      className={`${
+        storedTheme === "light"
+          ? "lg:border-t lg:border-b lg:border-gray-200"
+          : "lg:border-t lg:border-b lg:border-gray-600 bg-gray-800"
+      }`}
+    >
       <nav
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         aria-label="Progress"
       >
         <ol
-          role="list"
+          // role="list"
           className="rounded-md overflow-hidden lg:flex lg:border-l lg:border-r lg:border-gray-200 lg:rounded-none"
         >
           {steps.map((step, stepIdx) => (

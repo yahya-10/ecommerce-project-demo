@@ -13,27 +13,22 @@ import * as Yup from "yup";
 
 import SelectedSubscription from "./SelectedSubscription";
 import Steps from "./Steps";
-// import WithScroll from "../../HOC/WithScroll";
+import UserHistory from "./UserHistory";
 
 /**
  * @private
  * in the profile user should fill a form of the pruchase order.
  */
 
-// const user = {
-//   name: "Tom Cook",
-//   imageUrl:
-//     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-// };
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const UserProfile = ({ selectedPackage }) => {
+const UserProfile = ({ selectedPackage, storedTheme }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [disableFields, setDisableFields] = useState(false);
+  const [view, setView] = useState("Dashboard");
 
   const { t } = useTranslation();
 
@@ -60,11 +55,15 @@ const UserProfile = ({ selectedPackage }) => {
     },
     {
       name: t("user_form.history"),
-      // href: "/user-profile/history",
+      // href: "/profile/history",
       icon: CalendarIcon,
-      current: true,
+      current: false,
     },
   ];
+
+  const changeViewHandler = (viewSpot) => {
+    setView(viewSpot);
+  };
 
   // Reset the inputs and enable the form fields
   const handleReset = () => {
@@ -101,12 +100,14 @@ const UserProfile = ({ selectedPackage }) => {
     fontSize: "2 rem",
   };
 
-  // console.log("SelectedSubs", selectedPackage);
+  // console.log("userProfile", view);
 
   return (
-    <>
+    <div
+      className={`${storedTheme === "light" ? "bg-gray-50" : "bg-gray-900"}`}
+    >
       <div className="mb-5">
-        <Steps stage={"02"} />
+        <Steps storedTheme={storedTheme} stage={"02"} />
       </div>
       <div className="h-full flex">
         <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -212,7 +213,7 @@ const UserProfile = ({ selectedPackage }) => {
         <div className="hidden lg:flex lg:flex-shrink-0">
           <div className="flex flex-col w-64">
             {/* Sidebar component, swap this element with another sidebar if you like */}
-            <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-100">
+            <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-200">
               <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
                 <nav className="mt-5 flex-1" aria-label="Sidebar">
                   <div className="px-2 space-y-1">
@@ -220,19 +221,18 @@ const UserProfile = ({ selectedPackage }) => {
                       <a
                         key={item.name}
                         href={item.href}
+                        onClick={() => changeViewHandler(item.name)}
                         className={classNames(
-                          item.current
-                            ? "bg-gray-200 text-gray-900"
-                            : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                          "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                          item.name === view
+                            ? "bg-yellow-500 text-gray-50"
+                            : "text-gray-800 bg-gray-50 hover:bg-yellow-500 hover:text-gray-900",
+                          "group flex items-center px-2 py-2 text-sm font-medium rounded-md cursor-pointer"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
                         <item.icon
                           className={classNames(
-                            item.current
-                              ? "text-gray-500"
-                              : "text-gray-400 group-hover:text-gray-500",
+                            item.current ? "text-zinc-900" : "text-zinc-900",
                             "mr-3 flex-shrink-0 h-6 w-6"
                           )}
                           aria-hidden="true"
@@ -248,7 +248,7 @@ const UserProfile = ({ selectedPackage }) => {
                 </nav>
               </div>
               <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-                <a href="#" className="flex-shrink-0 w-full group block">
+                <a href="/" className="flex-shrink-0 w-full group block">
                   <div className="flex items-center">
                     <div>
                       <img
@@ -287,332 +287,450 @@ const UserProfile = ({ selectedPackage }) => {
             </div>
           </div>
           {/* Form  */}
-          <form
-            onSubmit={formik.handleSubmit}
-            className="space-y-8 divide-y divide-gray-200 ml-5 mr-5 mt-5"
-            id="submit"
-          >
-            <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
-              <div>
+          {view === "Dashboard" ? (
+            <form
+              onSubmit={formik.handleSubmit}
+              className={`${
+                storedTheme === "light"
+                  ? "space-y-8 divide-y divide-gray-200 ml-5 mr-5 mt-5"
+                  : "space-y-8 divide-y divide-gray-700 ml-5 mr-5 mt-5"
+              }`}
+              id="submit"
+            >
+              <div
+                className={`${
+                  storedTheme === "light"
+                    ? "space-y-8 divide-y divide-gray-200 sm:space-y-5"
+                    : "space-y-8 divide-y divide-gray-700 sm:space-y-5"
+                }`}
+              >
                 <div>
-                  <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    {/* Business */}
-                    {t("user_form.form_top_header_title")}
-                  </h3>
-                  <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                    {t("user_form.form_top_header_under_title")}
-                  </p>
-                </div>
-
-                <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="companyname"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                  <div>
+                    <h3
+                      className={`"text-lg leading-6 font-medium" ${
+                        storedTheme === "light"
+                          ? "text-gray-900"
+                          : "text-gray-50"
+                      }`}
                     >
-                      {t("user_form.form_company_name")}
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <div className="max-w-lg flex rounded-md shadow-sm">
-                        <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-                          workcation.com/
-                        </span>
-                        <input
-                          type="text"
-                          name="companyName"
-                          id="company-name"
-                          autoComplete="companyname"
+                      {/* Business */}
+                      {t("user_form.form_top_header_title")}
+                    </h3>
+                    <p
+                      className={`"mt-1 max-w-2xl text-sm " ${
+                        storedTheme === "light"
+                          ? "text-gray-500"
+                          : "text-gray-400"
+                      }`}
+                    >
+                      {t("user_form.form_top_header_under_title")}
+                    </p>
+                  </div>
+
+                  <div
+                    className={`${
+                      storedTheme === "light"
+                        ? "mt-6 sm:mt-5 space-y-6 sm:space-y-5"
+                        : "mt-6 sm:mt-5 space-y-6 sm:space-y-5 divide-gray-700"
+                    }`}
+                  >
+                    <div
+                      className={`${
+                        storedTheme === "light"
+                          ? "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
+                          : "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-700 sm:pt-5"
+                      }`}
+                    >
+                      <label
+                        htmlFor="companyname"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2 " ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {t("user_form.form_company_name")}
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <div className="max-w-lg flex rounded-md shadow-sm">
+                          <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                            workcation.com/
+                          </span>
+                          <input
+                            type="text"
+                            name="companyName"
+                            id="company-name"
+                            autoComplete="companyname"
+                            disabled={disableFields}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.companyName}
+                            className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                          />
+                          {formik.touched.companyName &&
+                          formik.errors.companyName ? (
+                            <div style={styles}>
+                              {formik.errors.companyName}
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`${
+                        storedTheme === "light"
+                          ? "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
+                          : "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-700 sm:pt-5"
+                      }`}
+                    >
+                      <label
+                        htmlFor="about"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2 " ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {t("user_form.form_about")}
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <textarea
+                          id="about"
+                          name="about"
+                          rows={3}
                           disabled={disableFields}
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
-                          value={formik.values.companyName}
-                          className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                          value={formik.values.about}
+                          className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                         />
-                        {formik.touched.companyName &&
-                        formik.errors.companyName ? (
-                          <div style={styles}>{formik.errors.companyName}</div>
+                        {formik.touched.about && formik.errors.about ? (
+                          <div style={styles}>{formik.errors.about}</div>
+                        ) : null}
+                        <p
+                          className={`"mt-2 text-sm  " ${
+                            storedTheme === "light"
+                              ? "text-gray-500"
+                              : "text-gray-400"
+                          }`}
+                        >
+                          {t("user_form.form_about_desc")}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+                  <div>
+                    <h3
+                      className={`"text-lg leading-6 font-medium   " ${
+                        storedTheme === "light"
+                          ? "text-gray-900"
+                          : "text-gray-50"
+                      }`}
+                    >
+                      {t("user_form.form_mid_header_title")}
+                    </h3>
+                    <p
+                      className={`"mt-1 max-w-2xl text-sm " ${
+                        storedTheme === "light"
+                          ? "text-gray-500"
+                          : "text-gray-400"
+                      }`}
+                    >
+                      {t("user_form.form_mid_header_under_title")}
+                    </p>
+                  </div>
+                  <div
+                    className={`${
+                      storedTheme === "light"
+                        ? "space-y-6 sm:space-y-5"
+                        : "space-y-6 sm:space-y-5 divide-gray-700"
+                    }`}
+                  >
+                    <div
+                      className={`${
+                        storedTheme === "light"
+                          ? "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
+                          : "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-700 sm:pt-5"
+                      }`}
+                    >
+                      <label
+                        htmlFor="first-name"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {t("user_form.form_st_name")}
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <input
+                          type="text"
+                          name="firstName"
+                          id="first-name"
+                          autoComplete="given-name"
+                          disabled={disableFields}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.firstName}
+                          className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                        />
+                        {formik.touched.firstName && formik.errors.firstName ? (
+                          <div style={styles}>{formik.errors.firstName}</div>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                      <label
+                        htmlFor="last-name"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {t("user_form.form_last_name")}
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <input
+                          type="text"
+                          name="lastName"
+                          id="last-name"
+                          autoComplete="family-name"
+                          disabled={disableFields}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.lastName}
+                          className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                        />
+                        {formik.touched.lastName && formik.errors.lastName ? (
+                          <div style={styles}>{formik.errors.lastName}</div>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                      <label
+                        htmlFor="email"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {t("email")}
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <input
+                          id="email"
+                          name="emailAddress"
+                          type="email"
+                          autoComplete="email"
+                          disabled={disableFields}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.emailAddress}
+                          className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                        />
+                        {formik.touched.emailAddress &&
+                        formik.errors.emailAddress ? (
+                          <div style={styles}>{formik.errors.emailAddress}</div>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                      <label
+                        htmlFor="country"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {t("user_form.form_country")}
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <select
+                          id="country"
+                          name="country"
+                          autoComplete="country-name"
+                          disabled={disableFields}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.country}
+                          className="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                        >
+                          <option>United States</option>
+                          <option>Canada</option>
+                          <option>France</option>
+                          <option>Tunisia</option>
+                          <option>Ivory Coast</option>
+                          <option>China</option>
+                        </select>
+                        {formik.touched.country && formik.errors.country ? (
+                          <p style={styles}>{formik.errors.country}</p>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                      <label
+                        htmlFor="street-address"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {t("user_form.form_str_address")}
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <input
+                          type="text"
+                          name="streetAddress"
+                          id="street-address"
+                          autoComplete="street-address"
+                          disabled={disableFields}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.streetAddress}
+                          className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                        />
+                        {formik.touched.streetAddress &&
+                        formik.errors.streetAddress ? (
+                          <div style={styles}>
+                            {formik.errors.streetAddress}
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                      <label
+                        htmlFor="city"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {t("user_form.form_city")}
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <input
+                          type="text"
+                          name="city"
+                          id="city"
+                          autoComplete="address-level2"
+                          disabled={disableFields}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.city}
+                          className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                        />
+                        {formik.touched.city && formik.errors.city ? (
+                          <div style={styles}>{formik.errors.city}</div>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                      <label
+                        htmlFor="region"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {t("user_form.form_state")}
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <input
+                          type="text"
+                          name="state"
+                          id="state"
+                          autoComplete="address-level1"
+                          disabled={disableFields}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.state}
+                          className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                        />
+                        {formik.touched.state && formik.errors.state ? (
+                          <div style={styles}>{formik.errors.state}</div>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                      <label
+                        htmlFor="postal-code"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {t("user_form.form_zip")}
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <input
+                          type="text"
+                          name="zip"
+                          id="zip"
+                          autoComplete="postal-code"
+                          disabled={disableFields}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.zip}
+                          className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                        />
+                        {formik.touched.zip && formik.errors.zip ? (
+                          <div style={styles}>{formik.errors.zip}</div>
                         ) : null}
                       </div>
                     </div>
                   </div>
-
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="about"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                </div>
+                <div className="pt-5">
+                  <div className="flex justify-end">
+                    <button
+                      type="button"
+                      className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={handleReset}
                     >
-                      {t("user_form.form_about")}
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <textarea
-                        id="about"
-                        name="about"
-                        rows={3}
-                        disabled={disableFields}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.about}
-                        className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
-                      />
-                      {formik.touched.about && formik.errors.about ? (
-                        <div style={styles}>{formik.errors.about}</div>
-                      ) : null}
-                      <p className="mt-2 text-sm text-gray-500">
-                        {t("user_form.form_about_desc")}
-                      </p>
-                    </div>
+                      {t("user_form.form_reset")}
+                    </button>
+                    <button
+                      id="validate-btn"
+                      type="submit"
+                      className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                      {t("user_form.form_validate")}
+                    </button>
                   </div>
                 </div>
+                {toggle && (
+                  <SelectedSubscription
+                    selectedPackage={selectedPackage}
+                    data={formik.values}
+                  />
+                )}
               </div>
-
-              <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-                <div>
-                  <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    {t("user_form.form_mid_header_title")}
-                  </h3>
-                  <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                    {t("user_form.form_mid_header_under_title")}
-                  </p>
-                </div>
-                <div className="space-y-6 sm:space-y-5">
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="first-name"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                    >
-                      {t("user_form.form_st_name")}
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <input
-                        type="text"
-                        name="firstName"
-                        id="first-name"
-                        autoComplete="given-name"
-                        disabled={disableFields}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.firstName}
-                        className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {formik.touched.firstName && formik.errors.firstName ? (
-                        <div style={styles}>{formik.errors.firstName}</div>
-                      ) : null}
-                    </div>
-                  </div>
-
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="last-name"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                    >
-                      {t("user_form.form_last_name")}
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <input
-                        type="text"
-                        name="lastName"
-                        id="last-name"
-                        autoComplete="family-name"
-                        disabled={disableFields}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.lastName}
-                        className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {formik.touched.lastName && formik.errors.lastName ? (
-                        <div style={styles}>{formik.errors.lastName}</div>
-                      ) : null}
-                    </div>
-                  </div>
-
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                    >
-                      {t("email")}
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <input
-                        id="email"
-                        name="emailAddress"
-                        type="email"
-                        autoComplete="email"
-                        disabled={disableFields}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.emailAddress}
-                        className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {formik.touched.emailAddress &&
-                      formik.errors.emailAddress ? (
-                        <div style={styles}>{formik.errors.emailAddress}</div>
-                      ) : null}
-                    </div>
-                  </div>
-
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="country"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                    >
-                      {t("user_form.form_country")}
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <select
-                        id="country"
-                        name="country"
-                        autoComplete="country-name"
-                        disabled={disableFields}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.country}
-                        className="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                      >
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>France</option>
-                        <option>Tunisia</option>
-                        <option>Ivory Coast</option>
-                        <option>China</option>
-                      </select>
-                      {formik.touched.country && formik.errors.country ? (
-                        <p style={styles}>{formik.errors.country}</p>
-                      ) : null}
-                    </div>
-                  </div>
-
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="street-address"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                    >
-                      {t("user_form.form_str_address")}
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <input
-                        type="text"
-                        name="streetAddress"
-                        id="street-address"
-                        autoComplete="street-address"
-                        disabled={disableFields}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.streetAddress}
-                        className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {formik.touched.streetAddress &&
-                      formik.errors.streetAddress ? (
-                        <div style={styles}>{formik.errors.streetAddress}</div>
-                      ) : null}
-                    </div>
-                  </div>
-
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="city"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                    >
-                      {t("user_form.form_city")}
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <input
-                        type="text"
-                        name="city"
-                        id="city"
-                        autoComplete="address-level2"
-                        disabled={disableFields}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.city}
-                        className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {formik.touched.city && formik.errors.city ? (
-                        <div style={styles}>{formik.errors.city}</div>
-                      ) : null}
-                    </div>
-                  </div>
-
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="region"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                    >
-                      {t("user_form.form_state")}
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <input
-                        type="text"
-                        name="state"
-                        id="state"
-                        autoComplete="address-level1"
-                        disabled={disableFields}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.state}
-                        className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {formik.touched.state && formik.errors.state ? (
-                        <div style={styles}>{formik.errors.state}</div>
-                      ) : null}
-                    </div>
-                  </div>
-
-                  <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                    <label
-                      htmlFor="postal-code"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                    >
-                      {t("user_form.form_zip")}
-                    </label>
-                    <div className="mt-1 sm:mt-0 sm:col-span-2">
-                      <input
-                        type="text"
-                        name="zip"
-                        id="zip"
-                        autoComplete="postal-code"
-                        disabled={disableFields}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.zip}
-                        className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {formik.touched.zip && formik.errors.zip ? (
-                        <div style={styles}>{formik.errors.zip}</div>
-                      ) : null}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="pt-5">
-                <div className="flex justify-end">
-                  <button
-                    type="button"
-                    className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={handleReset}
-                  >
-                    {t("user_form.form_reset")}
-                  </button>
-                  <button
-                    id="validate-btn"
-                    type="submit"
-                    className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    {t("user_form.form_validate")}
-                  </button>
-                </div>
-              </div>
-              {toggle && (
-                <SelectedSubscription
-                  selectedPackage={selectedPackage}
-                  data={formik.values}
-                />
-              )}
-            </div>
-          </form>
+            </form>
+          ) : (
+            <UserHistory />
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
