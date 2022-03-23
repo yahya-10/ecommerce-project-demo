@@ -66,6 +66,10 @@
     "title_6": "Virements bancaires gratuits",
     "title_7": "Carte de débit professionnelle"
   },
+  "chart": {
+    "title": "Commerce moderne. Simplifié.",
+    "desc": "Pour un Business intelligent et une entreprise moderne, Comunik.VoIP vous ouvre les yeux sur ce qui se passe dans la téléphonie de votre entreprise."
+  },
   "faq": {
     "faq_primary_title": "Questions fréquemment posées",
     "faq_under_primary_title": "Vous ne trouvez pas la réponse que vous cherchez ? Contactez notre équipe d'assistance à la clientèle.",
@@ -110,7 +114,8 @@
     "form_zip": "Code postale",
     "form_reset": "Réinitialiser ",
     "form_validate": "Validez",
-    "navigation": "Tableau de board"
+    "navigation": "Tableau de board",
+    "history": "Historique"
   },
   "sum_section": {
     "modal_msg_title": "Sélectionnez un package",

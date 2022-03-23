@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
+import { useTranslation } from "react-i18next";
 
 ChartJS.register(
   CategoryScale,
@@ -28,13 +29,26 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Number of customers between 2020 & 2021",
+      text: " VoIP purchases between 2020 & 2021",
       color: "white",
     },
   },
 };
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
+const labels = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 export const data = {
   labels,
@@ -53,16 +67,19 @@ export const data = {
 };
 // console.log(options.plugins.legend);
 const LandingPageChart = () => {
+  const { t } = useTranslation();
   return (
     <div className="bg-gray-800">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:justify-between">
         <div className="max-w-xl">
           <h2 className="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight lg:text-6xl">
-            Pricing Plans
+            {/* Modern Commerce. Simplified. */}
+            {t("chart.title")}
           </h2>
           <p className="mt-5 text-xl text-gray-400">
-            Start building for free, then add a site plan to go live. Account
-            plans unlock additional features.
+            {/* For a smart business and a modern company, Comunik.VoIP opens your
+            eyes to what is going on in your company's telephony. */}
+            {t("chart.desc")}
           </p>
         </div>
         <div className="w-full">

@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
 
-import WithScroll from "../../HOC/WithScroll";
+// import WithScroll from "../../HOC/WithScroll";
 import Hero from "../../assets/hero.png";
 
 /**
@@ -26,7 +26,7 @@ const registerUser = async (userData) => {
   }).then((data) => data.json());
 };
 
-const Register = ({ setToken, handleAddNewUser }) => {
+const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
@@ -85,14 +85,32 @@ const Register = ({ setToken, handleAddNewUser }) => {
 
   return (
     <>
-      <div className="min-h-full flex bg-gray-50">
+      <div
+        className={`${
+          storedTheme === "light"
+            ? "min-h-full flex bg-gray-50"
+            : "min-h-full flex bg-gray-800"
+        }`}
+      >
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
-              <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+              <h2
+                className={`${
+                  storedTheme === "light"
+                    ? "mt-6 text-3xl font-extrabold text-gray-900"
+                    : "mt-6 text-3xl font-extrabold text-gray-50"
+                }`}
+              >
                 {t("signup.signup_title")}
               </h2>
-              <p className="mt-2 text-sm text-gray-600">
+              <p
+                className={`${
+                  storedTheme === "light"
+                    ? "mt-2 text-sm text-gray-600"
+                    : "mt-2 text-sm text-gray-200"
+                }`}
+              >
                 {t("login.or")}{" "}
                 <Link
                   to="/login"
@@ -106,15 +124,25 @@ const Register = ({ setToken, handleAddNewUser }) => {
             <div className="mt-8">
               <div>
                 <div>
-                  <p className="text-sm font-medium text-gray-700">
+                  <p
+                    className={`${
+                      storedTheme === "light"
+                        ? "text-sm font-medium text-gray-700"
+                        : "text-sm font-medium text-gray-200"
+                    }`}
+                  >
                     {t("signup.signup_with")}
                   </p>
 
                   <div className="mt-1 grid grid-cols-3 gap-3">
                     <div>
                       <a
-                        href="#"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        href="/"
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                            : "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-gray-300 text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        }`}
                       >
                         <span className="sr-only">Sign in with Facebook</span>
                         <motion.svg
@@ -138,8 +166,12 @@ const Register = ({ setToken, handleAddNewUser }) => {
 
                     <div>
                       <a
-                        href="#"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        href="/"
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                            : "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-gray-300 text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        }`}
                       >
                         <span className="sr-only">Sign in with Twitter</span>
                         <motion.svg
@@ -159,8 +191,12 @@ const Register = ({ setToken, handleAddNewUser }) => {
 
                     <div>
                       <a
-                        href="#"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        href="/"
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                            : "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-gray-300 text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        }`}
                       >
                         <span className="sr-only">Sign in with GitHub</span>
                         <motion.svg
@@ -208,7 +244,11 @@ const Register = ({ setToken, handleAddNewUser }) => {
                   <div>
                     <label
                       htmlFor="fullname"
-                      className="block text-sm font-medium text-gray-700"
+                      className={`${
+                        storedTheme === "light"
+                          ? "block text-sm font-medium text-gray-700"
+                          : "block text-sm font-medium text-gray-200"
+                      }`}
                     >
                       {t("signup.full_name")}
                     </label>
@@ -223,7 +263,11 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         onBlur={formik.handleBlur}
                         autoComplete="fullName"
                         required
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className={`${
+                          storedTheme === "light"
+                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        }`}
                       />
                     </div>
                     {formik.touched.fullName && formik.errors.fullName ? (
@@ -233,7 +277,11 @@ const Register = ({ setToken, handleAddNewUser }) => {
                   <div>
                     <label
                       htmlFor="companyname"
-                      className="block text-sm font-medium text-gray-700"
+                      className={`${
+                        storedTheme === "light"
+                          ? "block text-sm font-medium text-gray-700"
+                          : "block text-sm font-medium text-gray-200"
+                      }`}
                     >
                       {t("signup.company_name")}
                     </label>
@@ -248,7 +296,11 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         onBlur={formik.handleBlur}
                         autoComplete=""
                         required
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className={`${
+                          storedTheme === "light"
+                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        }`}
                       />
                     </div>
                     {formik.touched.companyName && formik.errors.companyName ? (
@@ -260,7 +312,11 @@ const Register = ({ setToken, handleAddNewUser }) => {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700"
+                      className={`${
+                        storedTheme === "light"
+                          ? "block text-sm font-medium text-gray-700"
+                          : "block text-sm font-medium text-gray-200"
+                      }`}
                     >
                       {t("login.email")}
                     </label>
@@ -275,7 +331,11 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         onBlur={formik.handleBlur}
                         autoComplete="email"
                         required
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className={`${
+                          storedTheme === "light"
+                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        }`}
                       />
                     </div>
                     {formik.touched.email && formik.errors.email ? (
@@ -286,7 +346,11 @@ const Register = ({ setToken, handleAddNewUser }) => {
                   <div className="space-y-1">
                     <label
                       htmlFor="password"
-                      className="block text-sm font-medium text-gray-700"
+                      className={`${
+                        storedTheme === "light"
+                          ? "block text-sm font-medium text-gray-700"
+                          : "block text-sm font-medium text-gray-200"
+                      }`}
                     >
                       {t("login.password")}
                     </label>
@@ -301,7 +365,11 @@ const Register = ({ setToken, handleAddNewUser }) => {
                         onBlur={formik.handleBlur}
                         autoComplete="current-password"
                         required
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className={`${
+                          storedTheme === "light"
+                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        }`}
                       />
                     </div>
                     {formik.touched.password && formik.errors.password ? (

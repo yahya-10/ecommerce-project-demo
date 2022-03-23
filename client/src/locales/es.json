@@ -66,6 +66,10 @@
     "title_6": "Transferencias bancarias gratuitas",
     "title_7": "Tarjeta de débito comercial"
   },
+  "chart": {
+    "title": "El comercio moderno. Simplificado.",
+    "desc": "Para un negocio inteligente y una empresa moderna, Comunik.VoIP le abre los ojos a lo que ocurre en la telefonía de su empresa."
+  },
   "faq": {
     "faq_primary_title": "Preguntas frecuentes",
     "faq_under_primary_title": "¿No encuentra la respuesta que busca? Póngase en contacto con nuestro equipo de atención al cliente.",
@@ -111,7 +115,8 @@
     "form_zip": "Código postal",
     "form_reset": "Reset",
     "form_validate": "Validar",
-    "navigation": "Tablero de mandos"
+    "navigation": "Tablero de mandos",
+    "history": "Historia"
   },
   "sum_section": {
     "modal_msg_title": "Seleccione un paquete",

@@ -13,7 +13,7 @@ import * as Yup from "yup";
 
 import SelectedSubscription from "./SelectedSubscription";
 import Steps from "./Steps";
-import WithScroll from "../../HOC/WithScroll";
+// import WithScroll from "../../HOC/WithScroll";
 
 /**
  * @private
@@ -54,8 +54,14 @@ const UserProfile = ({ selectedPackage }) => {
   const navigation = [
     {
       name: t("user_form.navigation"),
-      href: "#",
+      // href: "#",
       icon: HomeIcon,
+      current: true,
+    },
+    {
+      name: t("user_form.history"),
+      // href: "/user-profile/history",
+      icon: CalendarIcon,
       current: true,
     },
   ];
@@ -170,7 +176,7 @@ const UserProfile = ({ selectedPackage }) => {
                           className={classNames(
                             item.current
                               ? "bg-gray-100 text-gray-900"
-                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer",
                             "group flex items-center px-2 py-2 text-base font-medium rounded-md"
                           )}
                           aria-current={item.current ? "page" : undefined}

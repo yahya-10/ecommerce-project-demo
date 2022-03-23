@@ -431,11 +431,11 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                         {plan.title}
                       </h3>
                       <p
-                        // className="mt-2 text-sm text-gray-500"
+                        // className="mt-2 text-sm text-gray-500 dark:text-gray-50"
                         className={`${
                           storedTheme === "light"
                             ? "mt-2 text-sm text-gray-500"
-                            : "mt-2 text-sm text-white"
+                            : "mt-2 text-sm text-gray-50"
                         }`}
                       >
                         {plan.description}
@@ -932,7 +932,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
           {/* FAQs */}
           <section
             aria-labelledby="faq-heading"
-            className="bg-gradient-to-b from-gray-800 via-fuchsia-800 to-gray-800"
+            className="bg-gradient-to-b from-gray-800 via-fuchsia-800 to-fuchsia-900"
           >
             <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
               <div className="max-w-2xl lg:mx-auto lg:text-center">

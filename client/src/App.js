@@ -108,11 +108,18 @@ const App = () => {
             />
           }
         />
-        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route
+          path="/login"
+          element={<Login setToken={setToken} storedTheme={storedTheme} />}
+        />
         <Route
           path="/register"
           element={
-            <Register handleAddNewUser={handleAddNewUser} setToken={setToken} />
+            <Register
+              handleAddNewUser={handleAddNewUser}
+              setToken={setToken}
+              storedTheme={storedTheme}
+            />
           }
         />
         <Route path="/contact" element={<Contact />} />

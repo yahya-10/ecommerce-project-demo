@@ -28,7 +28,7 @@ const loginUser = async (credentials) => {
   }).then((data) => data.json());
 };
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, storedTheme }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
@@ -82,14 +82,35 @@ const Login = ({ setToken }) => {
 
   return (
     <>
-      <div className="min-h-full flex bg-gray-50">
+      <div
+        // className="min-h-full flex dark:bg-gray-800 bg-gray-50"
+        className={`${
+          storedTheme === "light"
+            ? "min-h-full flex bg-gray-50"
+            : "min-h-full flex bg-gray-800"
+        }`}
+      >
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
-              <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+              <h2
+                // className="mt-6 text-3xl font-extrabold text-gray-900"
+                className={`${
+                  storedTheme === "light"
+                    ? "mt-6 text-3xl font-extrabold text-gray-900"
+                    : "mt-6 text-3xl font-extrabold text-gray-50"
+                }`}
+              >
                 {t("login.login_title")}
               </h2>
-              <p className="mt-2 text-sm text-gray-600">
+              <p
+                // className="mt-2 text-sm text-gray-600"
+                className={`${
+                  storedTheme === "light"
+                    ? "mt-2 text-sm text-gray-600"
+                    : "mt-2 text-sm text-gray-200"
+                }`}
+              >
                 {t("login.or")}{" "}
                 <Link
                   to="/register"
@@ -103,7 +124,14 @@ const Login = ({ setToken }) => {
             <div className="mt-8">
               <div>
                 <div>
-                  <p className="text-sm font-medium text-gray-700">
+                  <p
+                    // className="text-sm font-medium text-gray-700"
+                    className={`${
+                      storedTheme === "light"
+                        ? "text-sm font-medium text-gray-700"
+                        : "text-sm font-medium text-gray-200"
+                    }`}
+                  >
                     {t("login.sign_with")}
                   </p>
 
@@ -111,7 +139,12 @@ const Login = ({ setToken }) => {
                     <div>
                       <a
                         href="/"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        // className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                            : "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-gray-300 text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        }`}
                       >
                         <span className="sr-only">Sign in with Facebook</span>
                         <motion.svg
@@ -136,7 +169,12 @@ const Login = ({ setToken }) => {
                     <div>
                       <a
                         href="/"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        // className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                            : "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-gray-300 text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        }`}
                       >
                         <span className="sr-only">Sign in with Twitter</span>
                         <motion.svg
@@ -157,7 +195,12 @@ const Login = ({ setToken }) => {
                     <div>
                       <a
                         href="/"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        // className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        className={`${
+                          storedTheme === "light"
+                            ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                            : "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-gray-300 text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        }`}
                       >
                         <span className="sr-only">Sign in with GitHub</span>
                         <motion.svg
@@ -205,7 +248,12 @@ const Login = ({ setToken }) => {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700"
+                      // className="block text-sm font-medium text-gray-700"
+                      className={`${
+                        storedTheme === "light"
+                          ? "block text-sm font-medium text-gray-700"
+                          : "block text-sm font-medium text-gray-200"
+                      }`}
                     >
                       {t("login.email")}
                     </label>
@@ -220,7 +268,12 @@ const Login = ({ setToken }) => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         required
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        // className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className={`${
+                          storedTheme === "light"
+                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        }`}
                       />
                     </div>
                     {formik.touched.email && formik.errors.email ? (
@@ -231,7 +284,12 @@ const Login = ({ setToken }) => {
                   <div className="space-y-1">
                     <label
                       htmlFor="password"
-                      className="block text-sm font-medium text-gray-700"
+                      // className="block text-sm font-medium text-gray-700"
+                      className={`${
+                        storedTheme === "light"
+                          ? "block text-sm font-medium text-gray-700"
+                          : "block text-sm font-medium text-gray-200"
+                      }`}
                     >
                       {t("login.password")}
                     </label>
@@ -246,7 +304,12 @@ const Login = ({ setToken }) => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         required
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        // className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className={`${
+                          storedTheme === "light"
+                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        }`}
                       />
                       {showingPwd ? (
                         <EyeIcon
@@ -277,7 +340,12 @@ const Login = ({ setToken }) => {
                       />
                       <label
                         htmlFor="remember-me"
-                        className="ml-2 block text-sm text-gray-900"
+                        // className="ml-2 block text-sm text-gray-900"
+                        className={`${
+                          storedTheme === "light"
+                            ? "ml-2 block text-sm text-gray-900"
+                            : "ml-2 block text-sm text-gray-200"
+                        }`}
                       >
                         {t("login.remember_me")}
                       </label>
