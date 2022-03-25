@@ -7,7 +7,7 @@ import LangDropDown from "./LangDropDown";
 
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { MoonIcon, SunIcon } from "@heroicons/react/solid";
+// import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 // import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
 import { avatarCreator } from "../../utils/CreateAvatar";
@@ -203,7 +203,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                     </span>
                   )}
                   <LangDropDown storedTheme={storedTheme} />
-                  {storedTheme === "dark" ? (
+                  {/* {storedTheme === "dark" ? (
                     <SunIcon
                       style={{ color: "#fcec05" }}
                       className="h-6 w-6 ml-3"
@@ -217,7 +217,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                       aria-hidden="true"
                       onClick={() => setTheme("dark")}
                     />
-                  )}
+                  )} */}
 
                   {/* Shopping cart icon */}
                   {/* <div className="inline-flex rounded-md shadow">
@@ -275,7 +275,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                           </a>
                         ))}
                         <LangDropDown />
-                        <MoonIcon className="h-6 w-6" aria-hidden="true" />
+                        {/* <MoonIcon className="h-6 w-6" aria-hidden="true" /> */}
                       </nav>
                     </div>
                   </div>

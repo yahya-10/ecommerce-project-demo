@@ -174,19 +174,20 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
                         <a
                           key={item.name}
                           href={item.href}
+                          onClick={() => changeViewHandler(item.name)}
                           className={classNames(
-                            item.current
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer",
-                            "group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                            item.name === view
+                              ? "bg-yellow-500 text-gray-50"
+                              : "text-gray-800 bg-gray-50 hover:bg-yellow-500 hover:text-gray-900",
+                            "group flex items-center px-2 py-2 text-sm font-medium rounded-md cursor-pointer"
                           )}
                           aria-current={item.current ? "page" : undefined}
                         >
                           <item.icon
                             className={classNames(
                               item.current
-                                ? "text-gray-500"
-                                : "text-gray-400 group-hover:text-gray-500",
+                                ? "text-zinc-900"
+                                : "text-zinc-900 group-hover:text-gray-500",
                               "mr-4 h-6 w-6"
                             )}
                             aria-hidden="true"
@@ -287,7 +288,7 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
             </div>
           </div>
           {/* Form  */}
-          {view === "Dashboard" ? (
+          {view === t("user_form.navigation") ? (
             <form
               onSubmit={formik.handleSubmit}
               className={`${

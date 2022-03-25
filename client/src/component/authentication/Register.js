@@ -83,6 +83,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
     },
   };
 
+  // console.log(email);
   return (
     <>
       <div

@@ -1,155 +1,114 @@
 import React from "react";
+import { MailIcon, PhoneIcon } from "@heroicons/react/solid";
+import cmkVoip from "../../assets/comunik-voip.png";
+import cmkContact from "../../assets/comunik-contact.png";
+import cmkSales from "../../assets/comunik-sales.png";
 
-const transactions = [
+const people = [
   {
-    id: "AAPS0L",
-    company: "Chase & Co.",
-    share: "CAC",
-    commission: "+$4.37",
-    price: "$3,509.00",
-    quantity: "12.00",
-    netAmount: "$4,397.00",
+    name: "Scale package",
+    title: "Regional Paradigm Technician",
+    role: "Admin",
+    isValid: true,
+    email: "y.akermi@comunikmail.com",
+    telephone: "+21628202633",
+    imageUrl: cmkVoip,
   },
   {
-    id: "AAJK0L",
-    company: "Telecom",
-    share: "CAC",
-    commission: "+$4.37",
-    price: "$3,509.00",
-    quantity: "12.00",
-    netAmount: "$4,397.00",
+    name: "Growth package",
+    title: "Regional Paradigm Technician",
+    role: "Admin",
+    isValid: false,
+    email: "y.akermi@comunikmail.com",
+    telephone: "+21628202633",
+    imageUrl: cmkContact,
   },
   {
-    id: "AANB0L",
-    company: "STB Banking",
-    share: "CAC",
-    commission: "+$4.37",
-    price: "$3,509.00",
-    quantity: "12.00",
-    netAmount: "$4,397.00",
+    name: "Starter package",
+    title: "Regional Paradigm Technician",
+    role: "Admin",
+    isValid: true,
+    email: "y.akermi@comunikmail.com",
+    telephone: "+21628202633",
+    imageUrl: cmkSales,
   },
   {
-    id: "AAMP0L",
-    company: "Uber",
-    share: "CAC",
-    commission: "+$4.37",
-    price: "$3,509.00",
-    quantity: "12.00",
-    netAmount: "$4,397.00",
+    name: "Scale package",
+    title: "Regional Paradigm Technician",
+    role: "Admin",
+    isValid: false,
+    email: "y.akermi@comunikmail.com",
+    telephone: "+21628202633",
+    imageUrl: cmkVoip,
   },
 ];
 
 const TransactionsTable = () => {
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="sm:flex sm:items-center">
-        <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-900">Transactions</h1>
-          <p className="mt-2 text-sm text-gray-700">
-            A table of placeholder stock market data that does not make any
-            sense.
-          </p>
-        </div>
-      </div>
-      <div className="mt-8 flex flex-col">
-        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-300">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
-                    >
-                      Transaction ID
-                    </th>
-                    <th
-                      scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Company
-                    </th>
-                    <th
-                      scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Share
-                    </th>
-                    <th
-                      scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Commision
-                    </th>
-                    <th
-                      scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Price
-                    </th>
-                    <th
-                      scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Quantity
-                    </th>
-                    <th
-                      scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Net amount
-                    </th>
-                    <th
-                      scope="col"
-                      className="relative whitespace-nowrap py-3.5 pl-3 pr-4 sm:pr-6"
-                    >
-                      <span className="sr-only">Edit</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 bg-white">
-                  {transactions.map((transaction) => (
-                    <tr key={transaction.id}>
-                      <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6">
-                        {transaction.id}
-                      </td>
-                      <td className="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
-                        {transaction.company}
-                      </td>
-                      <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-                        {transaction.share}
-                      </td>
-                      <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                        {transaction.commission}
-                      </td>
-                      <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                        {transaction.price}
-                      </td>
-                      <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                        {transaction.quantity}
-                      </td>
-                      <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                        {transaction.netAmount}
-                      </td>
-                      <td className="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a
-                          href="/profile"
-                          className="text-indigo-600 hover:text-indigo-900"
-                        >
-                          Edit
-                          <span className="sr-only">, {transaction.id}</span>
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+    <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {people.map((person, i) => (
+        <li
+          key={i}
+          className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200"
+        >
+          <div className="w-full flex items-center justify-between p-6 space-x-6">
+            <div className="flex-1 truncate">
+              <div className="flex items-center space-x-3">
+                <h3 className="text-gray-900 text-sm font-medium truncate">
+                  {person.name}
+                </h3>
+                <span
+                  className={`"flex-shrink-0 inline-block px-2 py-0.5 ${
+                    person.isValid
+                      ? "text-green-800 bg-green-100"
+                      : "text-red-800 bg-red-100"
+                  } text-xs font-medium rounded-full"`}
+                >
+                  {person.isValid ? "Valid" : "Expired"}
+                </span>
+              </div>
+              <p className="mt-1 text-gray-500 text-sm truncate">
+                {person.title}
+              </p>
+            </div>
+            <img
+              className="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"
+              src={person.imageUrl}
+              alt=""
+            />
+          </div>
+          <div>
+            <div className="-mt-px flex divide-x divide-gray-200">
+              <div className="w-0 flex-1 flex">
+                <a
+                  href={`mailto:${person.email}`}
+                  className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
+                >
+                  <MailIcon
+                    className="w-5 h-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  <span className="ml-3">Contact Sales</span>
+                </a>
+              </div>
+              <div className="-ml-px w-0 flex-1 flex">
+                <a
+                  href={`tel:${person.telephone}`}
+                  onClick={() => console.log(person.telephone)}
+                  className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
+                >
+                  <PhoneIcon
+                    className="w-5 h-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  <span className="ml-3">Call Support</span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </li>
+      ))}
+    </ul>
   );
 };
 
