@@ -13,7 +13,7 @@ const UserHistory = () => {
     <div className="mx-3 my-3">
       <TransactionsTable />
       <div>
-        <div className="flex flex-row px-3 py-4 w-1/2">
+        <div className="flex flex-row px-3 py-4">
           <div className={displayPieChart ? "text-red-400" : "text-gray-400"}>
             <ChartPieIcon
               onClick={() => setDisplayPiChart(true)}

@@ -166,13 +166,10 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                   {isLoggedIn() ? (
                     <div className="flex items-center space-x-4 lg:space-x-6">
-                      <span
-                        className="inline-flex rounded-md shadow"
-                        onClick={logOut}
-                      >
+                      <span className="inline-flex shadow" onClick={logOut}>
                         <Link
                           to="/login"
-                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-white bg-indigo-500 hover:bg-indigo-600"
                         >
                           {t("header.log_out")}
                         </Link>
@@ -193,10 +190,10 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                       </Link>
                     </div>
                   ) : (
-                    <span className="inline-flex rounded-md shadow">
+                    <span className="inline-flex shadow">
                       <Link
                         to="/login"
-                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-white bg-indigo-500 hover:bg-indigo-600"
                       >
                         {t("header.log_in")}
                       </Link>
@@ -282,10 +279,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                   <div className="py-6 px-5 space-y-6">
                     {isLoggedIn() ? (
                       <div className="flex items-center space-x-4 lg:space-x-6">
-                        <span
-                          className="inline-flex rounded-md shadow"
-                          onClick={logOut}
-                        >
+                        <span className="inline-flex shadow" onClick={logOut}>
                           <Link
                             to="/login"
                             className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
@@ -302,7 +296,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                         </Link>
                       </div>
                     ) : (
-                      <span className="inline-flex rounded-md shadow">
+                      <span className="inline-flex shadow">
                         <Link
                           to="/login"
                           className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"

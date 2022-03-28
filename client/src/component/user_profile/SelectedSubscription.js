@@ -11,41 +11,6 @@ import { ShoppingCartIcon } from "@heroicons/react/solid";
  * This component
  */
 
-// const features = [
-//   {
-//     name: "List view",
-//     description:
-//       "Nunc a, lacinia sed risus neque, arcu, rhoncus. Id mauris justo facilisis aliquam platea vestibulum condimentum morbi.",
-//     icon: ViewListIcon,
-//   },
-//   {
-//     name: "Boards",
-//     description:
-//       "Purus lobortis volutpat posuere id integer nunc tellus. Non mauris malesuada feugiat massa mi pellentesque cum est. Pharetra a varius urna rhoncus, tempor rutrum.",
-//     icon: ViewBoardsIcon,
-//   },
-//   {
-//     name: "Calendar",
-//     description:
-//       "Purus lobortis volutpat posuere id integer nunc tellus. Non mauris malesuada feugiat massa mi pellentesque cum est. Pharetra a varius urna rhoncus, tempor rutrum.",
-//     icon: CalendarIcon,
-//   },
-//   {
-//     name: "Teams",
-//     description:
-//       "Tincidunt sollicitudin interdum nunc sit risus at bibendum vitae. Urna, quam ut sit justo non, consectetur et varius.",
-//     icon: UsersIcon,
-//   },
-// ];
-// const checklist = [
-//   "Unlimited projects",
-//   "No per user fees",
-//   "Unlimited storage",
-//   "24/7 support",
-//   "Cancel any time",
-//   "14 days free",
-// ];
-
 const SelectedSubscription = ({ data, selectedPackage }) => {
   const { t } = useTranslation();
 
@@ -228,9 +193,9 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
                   </ul>
                   <Link
                     to="/validation-stage"
-                    className="w-full bg-white border border-transparent rounded-md py-4 px-8 flex items-center justify-center text-lg leading-6 font-medium text-cyan-700 hover:bg-cyan-50 md:px-10"
+                    className="w-full bg-white border border-transparent py-4 px-8 flex items-center justify-center text-lg leading-6 font-medium text-cyan-700 hover:bg-cyan-50 md:px-10"
                   >
-                    <span className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
+                    <span className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-indigo-600 bg-white hover:bg-gray-50">
                       <ShoppingCartIcon
                         className="flex-shrink-0 h-6 w-6"
                         aria-hidden="true"

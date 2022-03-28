@@ -97,7 +97,7 @@ const HeroSection = ({ storedTheme }) => {
             <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
               <div className="rounded-md shadow">
                 <Link
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 cursor-pointer"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 cursor-pointer"
                   to="/register"
                 >
                   Get started
@@ -108,8 +108,8 @@ const HeroSection = ({ storedTheme }) => {
                   href="/"
                   className={`${
                     storedTheme === "light"
-                      ? "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
-                      : "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-50 bg-gray-600 hover:bg-gray-500 md:py-4 md:text-lg md:px-10"
+                      ? "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+                      : "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium text-gray-50 bg-gray-600 hover:bg-gray-500 md:py-4 md:text-lg md:px-10"
                   }`}
                   // className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
                 >
