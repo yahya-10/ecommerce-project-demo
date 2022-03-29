@@ -15,6 +15,7 @@ export const options = {
       text: "Number of SDA's",
     },
   },
+  maintainAspectRatio: false,
 };
 
 export const data = {
@@ -46,7 +47,7 @@ export const data = {
 };
 
 const UserConsumptionBarChart = () => {
-  return <Pie data={data} options={options} />;
+  return <Pie data={data} options={options} width={10} height={5} />;
 };
 
 export default UserConsumptionBarChart;

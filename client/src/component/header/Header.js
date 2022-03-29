@@ -140,7 +140,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                       />
                     </Link>
                     <div className="-mr-2 flex items-center md:hidden">
-                      <Popover.Button className="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                      <Popover.Button className="bg-gray-50 p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                         <span className="sr-only">Open main menu</span>
                         <MenuIcon className="h-6 w-6" aria-hidden="true" />
                       </Popover.Button>
@@ -252,7 +252,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                   <div className="pt-5 pb-6 px-5">
                     <div className="flex items-center space-between">
                       <div className="-mr-2">
-                        <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <Popover.Button className="bg-white p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                           <span className="sr-only">Close menu</span>
                           <XIcon className="h-6 w-6" aria-hidden="true" />
                         </Popover.Button>
@@ -264,7 +264,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                           <a
                             key={item.name}
                             href={item.href}
-                            className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                            className="-m-3 p-3 flex items-center hover:bg-gray-50"
                           >
                             <span className="ml-3 text-base font-medium text-gray-900">
                               {item.name}
@@ -282,7 +282,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                         <span className="inline-flex shadow" onClick={logOut}>
                           <Link
                             to="/login"
-                            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
+                            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-white bg-indigo-500 hover:bg-indigo-600"
                           >
                             {t("header.log_out")}
                           </Link>
@@ -299,7 +299,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
                       <span className="inline-flex shadow">
                         <Link
                           to="/login"
-                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-white bg-indigo-500 hover:bg-indigo-600"
                         >
                           {t("header.log_in")}
                         </Link>

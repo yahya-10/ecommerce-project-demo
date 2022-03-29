@@ -22,6 +22,7 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: "top",
@@ -59,7 +60,7 @@ export const data = {
   ],
 };
 const UserConsumptionChart = () => {
-  return <Bar options={options} data={data} />;
+  return <Bar options={options} data={data} width={10} height={5} />;
 };
 
 export default UserConsumptionChart;

@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect, useRef } from "react";
 
 import { Dialog, Transition } from "@headlessui/react";
 import {
@@ -24,6 +24,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
 const UserProfile = ({ selectedPackage, storedTheme }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -31,6 +33,7 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
   const [view, setView] = useState("Dashboard");
 
   const { t } = useTranslation();
+  const myRef = useRef();
 
   const requiredMessage = "This field is required";
   const validationSchema = Yup.object({
@@ -70,6 +73,8 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
     setToggle(false);
     setDisableFields(false);
   };
+
+  const executeScroll = () => scrollToRef(myRef);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -179,7 +184,7 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
                             item.name === view
                               ? "bg-yellow-500 text-gray-50"
                               : "text-gray-800 bg-gray-50 hover:bg-yellow-500 hover:text-gray-900",
-                            "group flex items-center px-2 py-2 text-sm font-medium rounded-md cursor-pointer"
+                            "group flex items-center px-2 py-2 text-sm font-medium rounded cursor-pointer"
                           )}
                           aria-current={item.current ? "page" : undefined}
                         >
@@ -227,7 +232,7 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
                           item.name === view
                             ? "bg-yellow-500 text-gray-50"
                             : "text-gray-800 bg-gray-50 hover:bg-yellow-500 hover:text-gray-900",
-                          "group flex items-center px-2 py-2 text-sm font-medium rounded-md cursor-pointer"
+                          "group flex items-center px-2 py-2 text-sm font-medium cursor-pointer"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
@@ -712,18 +717,21 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
                     <button
                       id="validate-btn"
                       type="submit"
+                      onClick={executeScroll}
                       className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       {t("user_form.form_validate")}
                     </button>
                   </div>
                 </div>
-                {toggle && (
-                  <SelectedSubscription
-                    selectedPackage={selectedPackage}
-                    data={formik.values}
-                  />
-                )}
+                <div ref={myRef}>
+                  {toggle && (
+                    <SelectedSubscription
+                      selectedPackage={selectedPackage}
+                      data={formik.values}
+                    />
+                  )}
+                </div>
               </div>
             </form>
           ) : (

@@ -90,7 +90,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
                         </dd>
                       </div>
 
-                      <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      {/* <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt className="text-sm font-medium text-gray-500">
                           Attachments
                         </dt>
@@ -136,7 +136,7 @@ const SelectedSubscription = ({ data, selectedPackage }) => {
                             </li>
                           </ul>
                         </dd>
-                      </div>
+                      </div> */}
                     </dl>
                   </div>
                 </div>

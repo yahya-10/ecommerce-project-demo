@@ -27,11 +27,11 @@ const registerUser = async (userData) => {
 };
 
 const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
-  const [fullName, setFullName] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [fullName, setFullName] = useState();
+  const [companyName, setCompanyName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [error, setError] = useState();
 
   const requiredMessage = "This field is required";
   const validationSchema = Yup.object({
@@ -68,7 +68,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
       });
       setToken(token);
       navigate("/profile");
-      window.location.reload();
+      // window.location.reload();
     },
     validationSchema: validationSchema,
   });
@@ -83,7 +83,12 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
     },
   };
 
-  // console.log(email);
+  console.table({
+    fullName: formik.values.fullName,
+    companyName: formik.values.companyName,
+    email: formik.values.email,
+    password: formik.values.password,
+  });
   return (
     <>
       <div
@@ -266,8 +271,8 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                         required
                         className={`${
                           storedTheme === "light"
-                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            : "appearance-none block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         }`}
                       />
                     </div>
@@ -299,8 +304,8 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                         required
                         className={`${
                           storedTheme === "light"
-                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            : "appearance-none block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         }`}
                       />
                     </div>
@@ -334,8 +339,8 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                         required
                         className={`${
                           storedTheme === "light"
-                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            : "appearance-none block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         }`}
                       />
                     </div>
@@ -368,8 +373,8 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                         required
                         className={`${
                           storedTheme === "light"
-                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            : "appearance-none block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         }`}
                       />
                     </div>
