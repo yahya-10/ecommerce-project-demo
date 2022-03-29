@@ -1,17 +1,17 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 
 import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.png";
 import LangDropDown from "./LangDropDown";
+import { avatarCreator } from "../../utils/CreateAvatar";
+import { getRondomColor } from "../../utils/GetRandomColor";
 
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 // import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 // import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
-import { avatarCreator } from "../../utils/CreateAvatar";
-import { getRondomColor } from "../../utils/GetRandomColor";
+import { Link } from "react-router-dom";
 
 /**
  * @public

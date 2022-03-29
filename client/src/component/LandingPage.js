@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";

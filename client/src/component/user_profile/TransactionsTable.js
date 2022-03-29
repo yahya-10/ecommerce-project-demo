@@ -1,5 +1,7 @@
 import React from "react";
+
 import { MailIcon, PhoneIcon } from "@heroicons/react/solid";
+
 import cmkVoip from "../../assets/comunik-voip.png";
 import cmkContact from "../../assets/comunik-contact.png";
 import cmkSales from "../../assets/comunik-sales.png";

@@ -1,7 +1,4 @@
-// import { useState } from "react";
-
 import { useTranslation } from "react-i18next";
-
 import { CheckIcon } from "@heroicons/react/solid";
 
 function classNames(...classes) {

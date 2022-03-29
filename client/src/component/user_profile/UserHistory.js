@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+
+import UserConsumptionBarChart from "../charts/UserConsumptionBarChart";
 import UserConsumptionChart from "../charts/UserConsumptionChart";
 import TransactionsTable from "./TransactionsTable";
 
 import { ChartPieIcon, ChartBarIcon } from "@heroicons/react/solid";
-import UserConsumptionBarChart from "../charts/UserConsumptionBarChart";
 
 const UserHistory = () => {
   const [displayPieChart, setDisplayPiChart] = useState(false);

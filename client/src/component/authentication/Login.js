@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
-
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
+
 import LoginSVG from "../../assets/loginSVG.png";
-import WithScroll from "../../HOC/WithScroll";
 
 /**
  *

@@ -1,7 +1,6 @@
 import React from "react";
 
 import { useTranslation } from "react-i18next";
-
 import { UsersIcon } from "@heroicons/react/outline";
 
 const StatsSection = () => {

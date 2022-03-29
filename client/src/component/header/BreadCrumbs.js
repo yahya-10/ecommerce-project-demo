@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-
 import { ChevronRightIcon, HomeIcon } from "@heroicons/react/solid";
 
 const pages = [
@@ -10,7 +9,6 @@ const pages = [
 ];
 
 const BreadCrumbs = () => {
-
   //The problem here is to update the path on navigating from page to page
   /*const extractPathName = () => {
     const pathName = window.location.pathname;

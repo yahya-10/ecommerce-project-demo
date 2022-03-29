@@ -57,10 +57,7 @@ const TeamSection = () => {
             </p>
           </div>
           <div className="lg:col-span-2">
-            <ul
-              role="list"
-              className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
-            >
+            <ul className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8">
               {people.map((person, i) => (
                 <li key={i}>
                   <div className="flex items-center space-x-4 lg:space-x-6">

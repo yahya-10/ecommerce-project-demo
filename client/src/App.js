@@ -3,11 +3,9 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { ProductsExample } from "./ProductsExample";
-
 import { useToken } from "./custom_hooks/useToken";
 import { useThemeHandler } from "./custom_hooks/useThemeHandler";
 import { isLoggedIn } from "./utils";
-
 import Header from "./component/header/Header";
 import LandingPage from "./component/LandingPage";
 import Login from "./component/authentication/Login";
@@ -23,7 +21,6 @@ import Checkout from "./checkout/Checkout";
 import UserProfile from "./component/user_profile/UserProfile";
 import UserValidationPage from "./component/user_profile/UserValidationPage";
 import SuccessfullPayment from "./checkout/SuccessfullPayment";
-// import UserHistory from "./component/user_profile/UserHistory";
 
 /**
  *
@@ -157,9 +154,6 @@ const App = () => {
             }
           />
         </Route>
-        {/* <Route path="/profile/history" exact element={<PrivateRoute />}>
-          <Route path="/profile/history" exact element={<UserHistory />} />
-        </Route> */}
         <Route path="/validation-stage" exact element={<PrivateRoute />}>
           <Route
             path="/validation-stage"
