@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { BrowserRouter } from "react-router-dom";
-import axios from "axios";
 import "./utils/i18n";
 
 import App from "./App";

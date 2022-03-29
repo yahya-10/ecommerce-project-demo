@@ -10,18 +10,25 @@ const stripe = require("stripe")(
 
 const app = express();
 
-// Prevent form cross-origin blocking
+/**
+ * Middleware that enables cross-origin resourse sharing
+ */
 app.use(cors());
 
-// Parse the data
+/**
+ * Middleware that parses the request body before handlers
+ */
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const tokGen = new tokenGenerator();
 
-// Route that enables the user to login
+/**
+ * User login Endpoint
+ */
 app.use("/login", cors(), (req, res) => {
   try {
     res.send({
+      //Generate unique token to verify user's identity
       token: tokGen.generate(),
     });
   } catch (error) {
@@ -29,7 +36,9 @@ app.use("/login", cors(), (req, res) => {
   }
 });
 
-// Route that enables the user to register
+/**
+ * First time User registration Endpoint
+ */
 app.use("/register", cors(), (req, res) => {
   try {
     res.send({
@@ -40,9 +49,12 @@ app.use("/register", cors(), (req, res) => {
   }
 });
 
-// Payment route
+/**
+ * Payment Endpoint
+ */
 app.post("/payment", async (req, res) => {
   const { email } = req.body;
+  //Collect payment from customers
   const paymentIntent = await stripe.paymentIntents.create({
     amount: 5000,
     currency: "USD",
@@ -50,14 +62,17 @@ app.post("/payment", async (req, res) => {
     metadata: {
       integration_check: "accept_a_payment",
     },
-    // usage: "on_session",
   });
 
+  //Send the "client_secret" to react to finish payment
   res.json({
     client_secret: paymentIntent["client_secret"],
   });
 });
 
+/**
+ * Create the web server at the specified port.
+ */
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

@@ -8,7 +8,7 @@ import TeamSection from "./TeamSection";
 
 const AboutPage = () => {
   const { t } = useTranslation();
-
+  console.log("about page rendered");
   return (
     <div className="">
       <main
@@ -71,7 +71,7 @@ const AboutPage = () => {
                 </div>
                 <div className="rounded-md shadow ml-4">
                   <a
-                    href="#"
+                    href="/"
                     className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                   >
                     {t("about_page.learn_more_btn")}

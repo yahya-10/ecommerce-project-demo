@@ -194,7 +194,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
       ],
     },
   ];
-  // console.log(storedTheme);
+  console.log("Landing page render");
   return (
     <>
       <div>
