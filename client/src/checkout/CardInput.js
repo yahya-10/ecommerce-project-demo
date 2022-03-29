@@ -7,6 +7,9 @@ import { CardElement } from "@stripe/react-stripe-js";
  * @returns Component
  */
 
+/**
+ * Styling options
+ */
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {

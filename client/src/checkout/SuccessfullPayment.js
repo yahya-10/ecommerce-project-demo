@@ -4,6 +4,11 @@ import Notification from "./Notification";
 
 import ReactToPrint from "react-to-print";
 
+/**
+ *
+ * @returns Static component with an invoice of the last Purchase.
+ */
+
 const SuccessfullPayment = () => {
   const projects = [
     {
@@ -33,6 +38,7 @@ const SuccessfullPayment = () => {
               <time dateTime="2022-08-31">August 31, 2022</time>.
             </p>
           </div>
+          {/* Enable the customer to download the invoice on his device. */}
           <ReactToPrint
             trigger={() => {
               return (

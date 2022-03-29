@@ -28,12 +28,18 @@ const Checkout = () => {
   const elements = useElements();
   const navigate = useNavigate();
 
+  /**
+   * Payment Submit handler
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    //Change the text of the button to tell that the payment is on action.
     setIsLoading(true);
 
     // Disable form submission until Stripe.js has loaded.
     if (!stripe || !elements) return;
+
+    //Inputs controllers.
     if (!email) {
       setError({ emailError: "This field is required" });
       return;
@@ -44,10 +50,12 @@ const Checkout = () => {
       setError("");
     }
 
+    //Fetch custom payment API.
     const response = await axios.post("http://localhost:5000/payment", {
       email: email,
     });
 
+    //client_secret object with all the information needed.
     const clientSecret = response.data["client_secret"];
 
     const result = await stripe.confirmCardPayment(clientSecret, {
@@ -72,6 +80,7 @@ const Checkout = () => {
   return (
     <>
       <Steps stage={"04"} />
+      {/* Payment Form */}
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form onSubmit={handleSubmit} className="space-y-6">
