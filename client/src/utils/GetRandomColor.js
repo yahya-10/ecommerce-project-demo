@@ -1,3 +1,8 @@
+/**
+ *
+ * Create a random color and returns it in a hex code
+ */
+
 export const getRondomColor = () => {
   const letters = "0123456789ABCDEF";
   let color = "#";

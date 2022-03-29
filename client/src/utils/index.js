@@ -4,6 +4,10 @@
  *
  */
 
+/**
+ * Checks if the token exists in the browser
+ * then returns true else returns false
+ */
 export const isLoggedIn = () => {
   if (sessionStorage.getItem("token")) {
     return true;
@@ -11,6 +15,9 @@ export const isLoggedIn = () => {
   return false;
 };
 
+/**
+ * Remove the existant token from the browser.
+ */
 export const logOut = () => {
   sessionStorage.removeItem("token");
   window.location.reload();

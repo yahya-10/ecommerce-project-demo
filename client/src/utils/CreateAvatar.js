@@ -1,3 +1,14 @@
+/**
+ *
+ * @param {*} name String: Should return only the first letter from
+ *                  the first & the last name.
+ *
+ * @param {*} size String: Size of the letters inside the avatar.
+ *
+ * @param {*} color String: This randomly generated color will be the background color of the
+ *                  Avatar
+ */
+
 const getInitials = (name) => {
   let initials;
   const nameSplit = name.split(" ");
@@ -12,6 +23,7 @@ const getInitials = (name) => {
   return initials.toUpperCase();
 };
 
+//Create the Avatar.
 export const avatarCreator = (size, name, color) => {
   if (name == null) return;
   name = getInitials(name);

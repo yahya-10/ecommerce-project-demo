@@ -7,6 +7,10 @@ import translationEN from "../locales/en.json";
 import translationES from "../locales/es.json";
 import translationFR from "../locales/fr.json";
 
+/**
+ * i18next library setup.
+ */
+
 const resources = {
   en: {
     translation: translationEN,
