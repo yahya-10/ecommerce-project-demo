@@ -26,7 +26,7 @@ const loginUser = async (credentials) => {
   }).then((data) => data.json());
 };
 
-const Login = ({ setToken, storedTheme }) => {
+const Login = ({ setToken, storedTheme, setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
@@ -61,7 +61,7 @@ const Login = ({ setToken, storedTheme }) => {
         password,
       });
       setToken(token);
-
+      setIsAuthenticated(true);
       navigate(`/profile`);
       // window.location.reload();
     },

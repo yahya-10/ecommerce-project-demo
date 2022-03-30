@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 
 import { isLoggedIn, logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.png";
@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
  * this function
  */
 
-const Header = ({ storedTheme, setTheme }) => {
+const Header = ({ storedTheme, isAuthenticated }) => {
   const { t } = useTranslation();
 
   const navigation = [
@@ -29,9 +29,6 @@ const Header = ({ storedTheme, setTheme }) => {
     { name: t("header.nav_about_us"), href: "/about" },
     { name: t("header.nav_support"), href: "/contact" },
   ];
-
-  console.log(isLoggedIn());
-
   return (
     <div>
       <div
@@ -164,7 +161,7 @@ const Header = ({ storedTheme, setTheme }) => {
                   ))}
                 </div>
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-                  {isLoggedIn() ? (
+                  {isAuthenticated ? (
                     <div className="flex items-center space-x-4 lg:space-x-6">
                       <span className="inline-flex shadow" onClick={logOut}>
                         <Link

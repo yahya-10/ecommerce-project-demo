@@ -33,6 +33,7 @@ const App = () => {
   const [users, setUsers] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState();
   const [storedTheme, setTheme] = useThemeHandler("theme");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const { token, setToken } = useToken();
 
@@ -87,9 +88,9 @@ const App = () => {
         AddItemToList={handleAddItemToList}
         RemoveItemFromList={handleRemoveItemFromList}
         listItems={listItems}
-        // LoggedIn={LoggedIn}
         storedTheme={storedTheme}
         setTheme={setTheme}
+        isAuthenticated={isAuthenticated}
       />
       <Routes>
         <Route
@@ -104,7 +105,13 @@ const App = () => {
         />
         <Route
           path="/login"
-          element={<Login setToken={setToken} storedTheme={storedTheme} />}
+          element={
+            <Login
+              setToken={setToken}
+              storedTheme={storedTheme}
+              setIsAuthenticated={setIsAuthenticated}
+            />
+          }
         />
         <Route
           path="/register"
