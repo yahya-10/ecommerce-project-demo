@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { Routes, Route } from "react-router-dom";
 
 import { ProductsExample } from "./ProductsExample";
 import { useToken } from "./custom_hooks/useToken";
 import { useThemeHandler } from "./custom_hooks/useThemeHandler";
-import { isLoggedIn } from "./utils";
+// import { LoggedIn } from "./utils";
 import Header from "./component/header/Header";
 import LandingPage from "./component/LandingPage";
 import Login from "./component/authentication/Login";
@@ -16,7 +16,7 @@ import ProductsList from "./component/products/ProductsList";
 import AboutPage from "./component/about_page/AboutPage";
 import CartList from "./component/header/CartList";
 import SolutionsPage from "./component/solution_page/SolutionsPage";
-import PrivateRoute from "./routes/PrivateRoute";
+import PrivateRoute from "./helpers/PrivateRoute";
 import Checkout from "./checkout/Checkout";
 import UserProfile from "./component/user_profile/UserProfile";
 import UserValidationPage from "./component/user_profile/UserValidationPage";
@@ -80,10 +80,6 @@ const App = () => {
   //Clear cart
   const clearCart = () => setListItems([]);
 
-  useEffect(() => {
-    isLoggedIn();
-  }, []);
-
   // console.log("App.js", selectedPackage);
   return (
     <div>
@@ -91,7 +87,7 @@ const App = () => {
         AddItemToList={handleAddItemToList}
         RemoveItemFromList={handleRemoveItemFromList}
         listItems={listItems}
-        isLoggedIn={isLoggedIn}
+        // LoggedIn={LoggedIn}
         storedTheme={storedTheme}
         setTheme={setTheme}
       />

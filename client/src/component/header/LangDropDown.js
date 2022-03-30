@@ -4,6 +4,13 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import i18n from "i18next";
 
+/**
+ *
+ * Displays the drop down of languages.
+ * Select le suited language and store it in localStorage
+ *
+ */
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-import { logOut } from "../../utils";
+import { isLoggedIn, logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.png";
 import LangDropDown from "./LangDropDown";
 import { avatarCreator } from "../../utils/CreateAvatar";
@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
  * this function
  */
 
-const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
+const Header = ({ storedTheme, setTheme }) => {
   const { t } = useTranslation();
 
   const navigation = [
@@ -30,7 +30,7 @@ const Header = ({ isLoggedIn, storedTheme, setTheme }) => {
     { name: t("header.nav_support"), href: "/contact" },
   ];
 
-  // console.log(storedTheme);
+  console.log(isLoggedIn());
 
   return (
     <div>

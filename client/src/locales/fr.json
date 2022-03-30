@@ -117,6 +117,10 @@
     "navigation": "Tableau de board",
     "history": "Historique"
   },
+  "user_history": {
+    "contact": "Contact Sales",
+    "call": "Support Téléphonique"
+  },
   "sum_section": {
     "modal_msg_title": "Sélectionnez un package",
     "modal_msg_desc": "Vous devez d'abord choisir un paquet dans notre collection.",

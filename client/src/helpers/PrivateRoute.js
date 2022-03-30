@@ -13,7 +13,7 @@ import { isLoggedIn } from "../utils";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   /**
-   * It checks first if the token exist in the user's browser to decide the right
+   * It checks first if the token exist in the user's browser to navigate to the right
    * path.
    */
   return isLoggedIn() ? <Outlet /> : <Navigate to="/login" />;

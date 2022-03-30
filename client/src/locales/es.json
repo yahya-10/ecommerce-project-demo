@@ -118,6 +118,10 @@
     "navigation": "Tablero de mandos",
     "history": "Historia"
   },
+  "user_history": {
+    "contact": "Contacto de ventas",
+    "call": "Llamar a soporte técnico"
+  },
   "sum_section": {
     "modal_msg_title": "Seleccione un paquete",
     "modal_msg_desc": "Primero debe seleccionar un paquete de nuestra colección.",

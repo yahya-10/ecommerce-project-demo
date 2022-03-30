@@ -117,6 +117,10 @@
     "navigation": "Dashboard",
     "history": "History"
   },
+  "user_history": {
+    "contact": "Contact Sales",
+    "call": "Call Support"
+  },
   "sum_section": {
     "modal_msg_title": "Select a package",
     "modal_msg_desc": "You should select a package from our collection first.",

@@ -1,51 +1,54 @@
 import React from "react";
 
 import { MailIcon, PhoneIcon } from "@heroicons/react/solid";
+import { useTranslation } from "react-i18next";
 
 import cmkVoip from "../../assets/comunik-voip.png";
 import cmkContact from "../../assets/comunik-contact.png";
 import cmkSales from "../../assets/comunik-sales.png";
 
-const people = [
-  {
-    name: "Scale package",
-    title: "Regional Paradigm Technician",
-    role: "Admin",
-    isValid: true,
-    email: "y.akermi@comunikmail.com",
-    telephone: "+21628202633",
-    imageUrl: cmkVoip,
-  },
-  {
-    name: "Growth package",
-    title: "Regional Paradigm Technician",
-    role: "Admin",
-    isValid: false,
-    email: "y.akermi@comunikmail.com",
-    telephone: "+21628202633",
-    imageUrl: cmkContact,
-  },
-  {
-    name: "Starter package",
-    title: "Regional Paradigm Technician",
-    role: "Admin",
-    isValid: true,
-    email: "y.akermi@comunikmail.com",
-    telephone: "+21628202633",
-    imageUrl: cmkSales,
-  },
-  {
-    name: "Scale package",
-    title: "Regional Paradigm Technician",
-    role: "Admin",
-    isValid: false,
-    email: "y.akermi@comunikmail.com",
-    telephone: "+21628202633",
-    imageUrl: cmkVoip,
-  },
-];
-
 const TransactionsTable = () => {
+  const { t } = useTranslation();
+
+  const people = [
+    {
+      name: "Scale package",
+      title: "Regional Paradigm Technician",
+      role: "Admin",
+      isValid: true,
+      email: "y.akermi@comunikmail.com",
+      telephone: "+21625887546",
+      imageUrl: cmkVoip,
+    },
+    {
+      name: "Growth package",
+      title: "Regional Paradigm Technician",
+      role: "Admin",
+      isValid: false,
+      email: "y.akermi@comunikmail.com",
+      telephone: "+21625887546",
+      imageUrl: cmkContact,
+    },
+    {
+      name: "Starter package",
+      title: "Regional Paradigm Technician",
+      role: "Admin",
+      isValid: true,
+      email: "y.akermi@comunikmail.com",
+      telephone: "+21625887546",
+      imageUrl: cmkSales,
+    },
+    {
+      name: "Scale package",
+      title: "Regional Paradigm Technician",
+      role: "Admin",
+      isValid: false,
+      email: "y.akermi@comunikmail.com",
+      telephone: "+21625887546",
+      imageUrl: cmkVoip,
+    },
+  ];
+
   return (
     <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {people.map((person, i) => (
@@ -90,20 +93,19 @@ const TransactionsTable = () => {
                     className="w-5 h-5 text-gray-400"
                     aria-hidden="true"
                   />
-                  <span className="ml-3">Contact Sales</span>
+                  <span className="ml-3">{t("user_history.contact")}</span>
                 </a>
               </div>
               <div className="-ml-px w-0 flex-1 flex">
                 <a
                   href={`tel:${person.telephone}`}
-                  onClick={() => console.log(person.telephone)}
                   className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
                 >
                   <PhoneIcon
                     className="w-5 h-5 text-gray-400"
                     aria-hidden="true"
                   />
-                  <span className="ml-3">Call Support</span>
+                  <span className="ml-3">{t("user_history.call")}</span>
                 </a>
               </div>
             </div>
