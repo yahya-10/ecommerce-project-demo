@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -33,7 +33,7 @@ const App = () => {
   const [users, setUsers] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState();
   const [storedTheme, setTheme] = useThemeHandler("theme");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
 
   const { token, setToken } = useToken();
 
@@ -78,10 +78,20 @@ const App = () => {
     setSelectedPackage(subscription);
   };
 
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      setIsAuth(true);
+    }
+  }, []);
+
   //Clear cart
   const clearCart = () => setListItems([]);
 
-  // console.log("App.js", selectedPackage);
+  // console.log(
+  //   "app.js",
+  //   Object.values(sessionStorage.getItem("token") || null).length
+  // );
+
   return (
     <div>
       <Header
@@ -90,7 +100,7 @@ const App = () => {
         listItems={listItems}
         storedTheme={storedTheme}
         setTheme={setTheme}
-        isAuthenticated={isAuthenticated}
+        isAuth={isAuth}
       />
       <Routes>
         <Route
@@ -105,13 +115,7 @@ const App = () => {
         />
         <Route
           path="/login"
-          element={
-            <Login
-              setToken={setToken}
-              storedTheme={storedTheme}
-              setIsAuthenticated={setIsAuthenticated}
-            />
-          }
+          element={<Login setToken={setToken} storedTheme={storedTheme} />}
         />
         <Route
           path="/register"
@@ -143,7 +147,11 @@ const App = () => {
           element={<CartList listItems={listItems} />}
         />
         <Route path="/checkout" exact element={<PrivateRoute />}>
-          <Route path="/checkout" exact element={<Checkout />} />
+          <Route
+            path="/checkout"
+            exact
+            element={<Checkout storedTheme={storedTheme} />}
+          />
         </Route>
         <Route path="/profile" exact element={<PrivateRoute />}>
           <Route
@@ -153,6 +161,7 @@ const App = () => {
               <UserProfile
                 selectedPackage={selectedPackage}
                 storedTheme={storedTheme}
+                setIsAuth={setIsAuth}
               />
             }
           />
@@ -161,7 +170,7 @@ const App = () => {
           <Route
             path="/validation-stage"
             exact
-            element={<UserValidationPage />}
+            element={<UserValidationPage storedTheme={storedTheme} />}
           />
         </Route>
         <Route

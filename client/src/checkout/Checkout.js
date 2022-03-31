@@ -14,7 +14,7 @@ import Steps from "../component/user_profile/Steps";
  *
  */
 
-const Checkout = () => {
+const Checkout = ({ storedTheme }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState({
@@ -78,11 +78,11 @@ const Checkout = () => {
   };
 
   return (
-    <>
+    <div className={`${storedTheme === "light" ? "bg-white" : "bg-gray-900"}`}>
       <Steps stage={"04"} />
       {/* Payment Form */}
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="bg-cyan-600 py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form onSubmit={handleSubmit} className="space-y-6">
             <label
               htmlFor="fullname"
@@ -133,7 +133,7 @@ const Checkout = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

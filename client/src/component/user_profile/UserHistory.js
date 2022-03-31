@@ -6,13 +6,13 @@ import TransactionsTable from "./TransactionsTable";
 
 import { ChartPieIcon, ChartBarIcon } from "@heroicons/react/solid";
 
-const UserHistory = () => {
+const UserHistory = ({ storedTheme }) => {
   const [displayPieChart, setDisplayPiChart] = useState(false);
 
   console.log("userHistory", displayPieChart);
   return (
     <div className="mx-3 my-3">
-      <TransactionsTable />
+      <TransactionsTable storedTheme={storedTheme} />
       <div>
         <div className="flex flex-row px-3 py-4">
           <div className="flex flex-column">

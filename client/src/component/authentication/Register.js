@@ -31,7 +31,6 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
   const [companyName, setCompanyName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [error, setError] = useState();
 
   const requiredMessage = "This field is required";
   const validationSchema = Yup.object({
@@ -83,12 +82,12 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
     },
   };
 
-  console.table({
-    fullName: formik.values.fullName,
-    companyName: formik.values.companyName,
-    email: formik.values.email,
-    password: formik.values.password,
-  });
+  // console.table({
+  //   fullName: formik.values.fullName,
+  //   companyName: formik.values.companyName,
+  //   email: formik.values.email,
+  //   password: formik.values.password,
+  // });
   return (
     <>
       <div

@@ -8,7 +8,7 @@ import { getRondomColor } from "../../utils/GetRandomColor";
 
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-// import { MoonIcon, SunIcon } from "@heroicons/react/solid";
+import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 // import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
  * this function
  */
 
-const Header = ({ storedTheme, isAuthenticated }) => {
+const Header = ({ storedTheme, setTheme, isAuth }) => {
   const { t } = useTranslation();
 
   const navigation = [
@@ -29,6 +29,9 @@ const Header = ({ storedTheme, isAuthenticated }) => {
     { name: t("header.nav_about_us"), href: "/about" },
     { name: t("header.nav_support"), href: "/contact" },
   ];
+
+  console.log(isAuth);
+
   return (
     <div>
       <div
@@ -64,7 +67,6 @@ const Header = ({ storedTheme, isAuthenticated }) => {
                     y={0}
                     width={4}
                     height={4}
-                    // className="text-gray-200"
                     className={`${
                       storedTheme === "light"
                         ? "text-gray-200"
@@ -149,7 +151,6 @@ const Header = ({ storedTheme, isAuthenticated }) => {
                     <Link
                       key={item.name}
                       to={item.href}
-                      // className="font-medium text-gray-500 hover:text-gray-900"
                       className={`${
                         storedTheme === "light"
                           ? "font-medium text-gray-500 hover:text-gray-900"
@@ -161,7 +162,7 @@ const Header = ({ storedTheme, isAuthenticated }) => {
                   ))}
                 </div>
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-                  {isAuthenticated ? (
+                  {isAuth ? (
                     <div className="flex items-center space-x-4 lg:space-x-6">
                       <span className="inline-flex shadow" onClick={logOut}>
                         <Link
@@ -197,7 +198,7 @@ const Header = ({ storedTheme, isAuthenticated }) => {
                     </span>
                   )}
                   <LangDropDown storedTheme={storedTheme} />
-                  {/* {storedTheme === "dark" ? (
+                  {storedTheme === "dark" ? (
                     <SunIcon
                       style={{ color: "#fcec05" }}
                       className="h-6 w-6 ml-3"
@@ -211,7 +212,7 @@ const Header = ({ storedTheme, isAuthenticated }) => {
                       aria-hidden="true"
                       onClick={() => setTheme("dark")}
                     />
-                  )} */}
+                  )}
 
                   {/* Shopping cart icon */}
                   {/* <div className="inline-flex rounded-md shadow">
@@ -269,12 +270,26 @@ const Header = ({ storedTheme, isAuthenticated }) => {
                           </a>
                         ))}
                         <LangDropDown />
-                        {/* <MoonIcon className="h-6 w-6" aria-hidden="true" /> */}
+                        {storedTheme === "dark" ? (
+                          <SunIcon
+                            style={{ color: "#fcec05" }}
+                            className="h-6 w-6 ml-3"
+                            aria-hidden="true"
+                            onClick={() => setTheme("light")}
+                          />
+                        ) : (
+                          <MoonIcon
+                            style={{ color: "#2b313b" }}
+                            className="h-6 w-6 ml-3"
+                            aria-hidden="true"
+                            onClick={() => setTheme("dark")}
+                          />
+                        )}
                       </nav>
                     </div>
                   </div>
                   <div className="py-6 px-5 space-y-6">
-                    {isLoggedIn() ? (
+                    {isAuth ? (
                       <div className="flex items-center space-x-4 lg:space-x-6">
                         <span className="inline-flex shadow" onClick={logOut}>
                           <Link
@@ -286,8 +301,12 @@ const Header = ({ storedTheme, isAuthenticated }) => {
                         </span>
                         <Link to="/profile">
                           <img
-                            className="w-16 h-16 rounded-full lg:w-12 lg:h-12"
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            className="w-12 h-12 rounded-full lg:w-12 lg:h-12"
+                            src={avatarCreator(
+                              500,
+                              "Yahya Akermi",
+                              getRondomColor()
+                            )}
                             alt="spacex"
                           />
                         </Link>

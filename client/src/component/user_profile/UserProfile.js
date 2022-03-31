@@ -26,7 +26,7 @@ function classNames(...classes) {
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-const UserProfile = ({ selectedPackage, storedTheme }) => {
+const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [disableFields, setDisableFields] = useState(false);
@@ -78,6 +78,9 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (sessionStorage.getItem("token")) {
+      setIsAuth(true);
+    }
   }, []);
 
   const formik = useFormik({
@@ -106,6 +109,10 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
   };
 
   // console.log("userProfile", view);
+  // console.log(
+  //   "userProfile.js",
+  //   Object.values(sessionStorage.getItem("token") || null).length
+  // );
 
   return (
     <div
@@ -219,7 +226,14 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
         <div className="hidden lg:flex lg:flex-shrink-0">
           <div className="flex flex-col w-64">
             {/* Sidebar component, swap this element with another sidebar if you like */}
-            <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-200">
+            <div
+              // className="flex-1 flex flex-col min-h-0 border-r border-gray-50 bg-gray-300"
+              className={`flex-1 flex flex-col min-h-0 border-r ${
+                storedTheme === "light"
+                  ? "border-gray-200 bg-gray-100"
+                  : "border-gray-500 bg-gray-600"
+              }`}
+            >
               <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
                 <nav className="mt-5 flex-1" aria-label="Sidebar">
                   <div className="px-2 space-y-1">
@@ -729,13 +743,14 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
                     <SelectedSubscription
                       selectedPackage={selectedPackage}
                       data={formik.values}
+                      storedTheme={storedTheme}
                     />
                   )}
                 </div>
               </div>
             </form>
           ) : (
-            <UserHistory />
+            <UserHistory storedTheme={storedTheme} />
           )}
         </div>
       </div>

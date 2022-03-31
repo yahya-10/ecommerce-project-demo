@@ -26,10 +26,9 @@ const loginUser = async (credentials) => {
   }).then((data) => data.json());
 };
 
-const Login = ({ setToken, storedTheme, setIsAuthenticated }) => {
+const Login = ({ setToken, storedTheme }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState({});
   const [showingPwd, setShowingPwd] = useState(false);
 
   const requiredMessage = "This field is required";
@@ -42,11 +41,11 @@ const Login = ({ setToken, storedTheme, setIsAuthenticated }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const isAuth = sessionStorage.getItem("token");
-    if (isAuth && isAuth !== "undefined") {
+    const isAuthenticated = sessionStorage.getItem("token");
+    if (isAuthenticated && isAuthenticated !== "undefined") {
       navigate(`/`);
     }
-  }, []);
+  });
 
   const { t } = useTranslation();
 
@@ -61,7 +60,6 @@ const Login = ({ setToken, storedTheme, setIsAuthenticated }) => {
         password,
       });
       setToken(token);
-      setIsAuthenticated(true);
       navigate(`/profile`);
       // window.location.reload();
     },

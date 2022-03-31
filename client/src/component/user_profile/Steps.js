@@ -34,11 +34,11 @@ const Steps = ({ stage, storedTheme }) => {
   return (
     <div
       className="lg:border-t lg:border-b lg:border-gray-200"
-      // className={`${
+      // className={`"${
       //   storedTheme === "light"
       //     ? "lg:border-t lg:border-b lg:border-gray-200"
-      //     : "lg:border-t lg:border-b lg:border-gray-600 bg-gray-800"
-      // }`}
+      //     : "lg:border-t lg:border-b lg:border-gray-600"
+      // }"`}
     >
       <nav
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"

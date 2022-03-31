@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const UserValidationPage = () => {
+const UserValidationPage = ({ storedTheme }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -14,9 +14,12 @@ const UserValidationPage = () => {
   }, []);
 
   return (
-    <>
+    <div className={`${storedTheme === "light" ? "bg-white" : "bg-gray-900"}`}>
       <Steps stage={"03"} />
-      <div className="bg-white">
+      <div
+        // className="bg-red-200"
+        className={`${storedTheme === "light" ? "bg-white" : "bg-gray-900"}`}
+      >
         <main className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl mx-auto py-16 sm:py-24">
             <motion.div
@@ -40,7 +43,7 @@ const UserValidationPage = () => {
               <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
                 {t("validation_section.validation_greeting")}
               </p>
-              <h1 className="mt-2 text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
+              <h1 className="mt-2 text-4xl font-extrabold text-green-600 tracking-tight sm:text-5xl">
                 {t("validation_section.validation_header")}
               </h1>
               <p className="mt-2 text-lg text-gray-500">
@@ -70,7 +73,7 @@ const UserValidationPage = () => {
           </div>
         </main>
       </div>
-    </>
+    </div>
   );
 };
 
