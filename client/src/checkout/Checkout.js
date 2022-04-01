@@ -82,7 +82,7 @@ const Checkout = ({ storedTheme }) => {
       <Steps stage={"04"} />
       {/* Payment Form */}
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-cyan-600 py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="bg-gradient-to-b from-blue-500 to-gray-500 py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form onSubmit={handleSubmit} className="space-y-6">
             <label
               htmlFor="fullname"
@@ -125,7 +125,12 @@ const Checkout = ({ storedTheme }) => {
             </div>
             {error && <p style={{ color: "red" }}>{error.paymentError}</p>}
             <button
-              className=" mt-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              // className="mt-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className={`"${
+                isLoading
+                  ? "mt-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium shadow-sm text-white bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  : "mt-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              }"`}
               disabled={!stripe}
             >
               {isLoading ? "processing..." : "Submit"}

@@ -14,6 +14,8 @@ import * as Yup from "yup";
 import SelectedSubscription from "./SelectedSubscription";
 import Steps from "./Steps";
 import UserHistory from "./UserHistory";
+import comunikcrmLogo from "../../assets/comunikcrm.png";
+import cmkWhiteLogo from "../../assets/cmk-white-logo.png";
 
 /**
  * @private
@@ -148,7 +150,14 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white focus:outline-none">
+              <div
+                // className="relative flex-1 flex flex-col max-w-xs w-full bg-black focus:outline-none"
+                className={`${
+                  storedTheme === "light"
+                    ? "relative flex-1 flex flex-col max-w-xs w-full bg-white focus:outline-none"
+                    : "relative flex-1 flex flex-col max-w-xs w-full bg-black focus:outline-none"
+                }`}
+              >
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -176,8 +185,10 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                   <div className="flex-shrink-0 flex items-center px-4">
                     <img
                       className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-logo-pink-500-mark-gray-900-text.svg"
-                      alt="Workflow"
+                      src={
+                        storedTheme === "light" ? comunikcrmLogo : cmkWhiteLogo
+                      }
+                      alt="comunikcrm"
                     />
                   </div>
                   <nav aria-label="Sidebar" className="mt-5">
@@ -293,7 +304,14 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
         </div>
         <div className="flex flex-col min-w-0 flex-1 overflow-hidden">
           <div className="lg:hidden">
-            <div className="flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5">
+            <div
+              // className="flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5"
+              className={`${
+                storedTheme === "light"
+                  ? "flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5"
+                  : "flex items-center justify-between bg-gray-800 border-b border-gray-800 px-4 py-1.5"
+              }`}
+            >
               <div>
                 <button
                   type="button"

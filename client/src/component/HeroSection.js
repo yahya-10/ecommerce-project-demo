@@ -9,7 +9,6 @@ const HeroSection = ({ storedTheme }) => {
 
   return (
     <div
-      // className="relative bg-gray-50 overflow-hidden py-3"
       className={`${
         storedTheme === "light"
           ? "relative bg-gray-50 overflow-hidden py-5"
@@ -75,7 +74,6 @@ const HeroSection = ({ storedTheme }) => {
             }}
           >
             <h1
-              // className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
               className={`${
                 storedTheme === "light"
                   ? "text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
@@ -111,7 +109,6 @@ const HeroSection = ({ storedTheme }) => {
                       ? "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
                       : "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium text-gray-50 bg-gray-600 hover:bg-gray-500 md:py-4 md:text-lg md:px-10"
                   }`}
-                  // className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
                 >
                   Live demo
                 </a>

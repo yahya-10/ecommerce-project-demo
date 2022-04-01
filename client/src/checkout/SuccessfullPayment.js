@@ -9,7 +9,7 @@ import ReactToPrint from "react-to-print";
  * @returns Static component with an invoice of the last Purchase.
  */
 
-const SuccessfullPayment = () => {
+const SuccessfullPayment = ({ storedTheme }) => {
   const projects = [
     {
       id: 1,
@@ -25,14 +25,23 @@ const SuccessfullPayment = () => {
 
   // console.log("successfull payment comp");
   return (
-    <>
+    <div className={`${storedTheme === "light" ? "bg-white" : "bg-gray-900"}`}>
       <Steps stage={"05"} />
       <Notification />
       <div id="printable-area" className="mt-5 px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
-            <h1 className="text-xl font-semibold text-gray-900">Invoice</h1>
-            <p className="mt-2 text-sm text-gray-700">
+            <h1
+              // className="text-xl font-semibold text-gray-900"
+              className={`${
+                storedTheme === "light"
+                  ? "text-xl font-semibold text-gray-900"
+                  : "text-xl font-semibold text-gray-50"
+              }`}
+            >
+              Invoice
+            </h1>
+            <p className="mt-2 text-sm text-gray-500">
               For work completed from{" "}
               <time dateTime="2022-08-01">August 1, 2022</time> to{" "}
               <time dateTime="2022-08-31">August 31, 2022</time>.
@@ -66,25 +75,25 @@ const SuccessfullPayment = () => {
               <tr>
                 <th
                   scope="col"
-                  className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 md:pl-0"
+                  className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-600 sm:pl-6 md:pl-0"
                 >
                   Purchases
                 </th>
                 <th
                   scope="col"
-                  className="hidden py-3.5 px-3 text-right text-sm font-semibold text-gray-900 sm:table-cell"
+                  className="hidden py-3.5 px-3 text-right text-sm font-semibold text-gray-600 sm:table-cell"
                 >
                   Hours
                 </th>
                 <th
                   scope="col"
-                  className="hidden py-3.5 px-3 text-right text-sm font-semibold text-gray-900 sm:table-cell"
+                  className="hidden py-3.5 px-3 text-right text-sm font-semibold text-gray-600 sm:table-cell"
                 >
                   Rate
                 </th>
                 <th
                   scope="col"
-                  className="py-3.5 pl-3 pr-4 text-right text-sm font-semibold text-gray-900 sm:pr-6 md:pr-0"
+                  className="py-3.5 pl-3 pr-4 text-right text-sm font-semibold text-gray-600 sm:pr-6 md:pr-0"
                 >
                   Price
                 </th>
@@ -94,7 +103,14 @@ const SuccessfullPayment = () => {
               {projects.map((project) => (
                 <tr key={project.id} className="border-b border-gray-200">
                   <td className="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
-                    <div className="font-medium text-gray-900">
+                    <div
+                      // className="font-medium text-gray-900"
+                      className={`${
+                        storedTheme === "light"
+                          ? "font-medium text-gray-900"
+                          : "font-medium text-gray-50"
+                      }`}
+                    >
                       {project.name}
                     </div>
                     <div className="mt-0.5 text-gray-500 sm:hidden">
@@ -154,17 +170,34 @@ const SuccessfullPayment = () => {
                 <th
                   scope="row"
                   colSpan={3}
-                  className="hidden pl-6 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 sm:table-cell md:pl-0"
+                  // className="hidden pl-6 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 sm:table-cell md:pl-0"
+                  className={`${
+                    storedTheme === "light"
+                      ? "hidden pl-6 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 sm:table-cell md:pl-0"
+                      : "hidden pl-6 pr-3 pt-4 text-right text-sm font-semibold text-gray-50 sm:table-cell md:pl-0"
+                  }`}
                 >
                   Total
                 </th>
                 <th
                   scope="row"
-                  className="pl-4 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 sm:hidden"
+                  // className="pl-4 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 sm:hidden"
+                  className={`${
+                    storedTheme === "light"
+                      ? "pl-4 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 sm:hidden"
+                      : "pl-4 pr-3 pt-4 text-left text-sm font-semibold text-gray-50 sm:hidden"
+                  }`}
                 >
                   Total
                 </th>
-                <td className="pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-900 sm:pr-6 md:pr-0">
+                <td
+                  // className="pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-900 sm:pr-6 md:pr-0"
+                  className={`${
+                    storedTheme === "light"
+                      ? "pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-900 sm:pr-6 md:pr-0"
+                      : "pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-50 sm:pr-6 md:pr-0"
+                  }`}
+                >
                   $4,485.00
                 </td>
               </tr>
@@ -172,7 +205,7 @@ const SuccessfullPayment = () => {
           </table>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

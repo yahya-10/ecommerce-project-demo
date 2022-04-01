@@ -1,7 +1,8 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { Fragment } from "react";
 
-import { isLoggedIn, logOut } from "../../utils";
+import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.png";
+import cmkWhiteLogo from "../../assets/cmk-white-logo.png";
 import LangDropDown from "./LangDropDown";
 import { avatarCreator } from "../../utils/CreateAvatar";
 import { getRondomColor } from "../../utils/GetRandomColor";
@@ -134,12 +135,23 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                       <span className="sr-only">Workflow</span>
                       <img
                         className="h-8 w-auto sm:h-10"
-                        src={comunikcrmLogo}
+                        src={
+                          storedTheme === "light"
+                            ? comunikcrmLogo
+                            : cmkWhiteLogo
+                        }
                         alt="comunik_logo"
                       />
                     </Link>
                     <div className="-mr-2 flex items-center md:hidden">
-                      <Popover.Button className="bg-gray-50 p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                      <Popover.Button
+                        // className="bg-gray-50 p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                        className={`${
+                          storedTheme === "light"
+                            ? "bg-gray-50 p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                            : "bg-gray-700 p-2 inline-flex items-center justify-center text-gray-50 hover:text-gray-100 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                        }`}
+                      >
                         <span className="sr-only">Open main menu</span>
                         <MenuIcon className="h-6 w-6" aria-hidden="true" />
                       </Popover.Button>
@@ -246,11 +258,25 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                 focus
                 className=" top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
               >
-                <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+                <div
+                  // className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50"
+                  className={`${
+                    storedTheme === "light"
+                      ? "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50"
+                      : "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gray-700 divide-y-2 divide-gray-800"
+                  }`}
+                >
                   <div className="pt-5 pb-6 px-5">
                     <div className="flex items-center space-between">
                       <div className="-mr-2">
-                        <Popover.Button className="bg-white p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <Popover.Button
+                          // className="bg-white p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                          className={`${
+                            storedTheme === "light"
+                              ? "bg-white p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                              : "bg-gray-700 p-2 inline-flex items-center justify-center text-gray-50 hover:text-gray-100 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                          }`}
+                        >
                           <span className="sr-only">Close menu</span>
                           <XIcon className="h-6 w-6" aria-hidden="true" />
                         </Popover.Button>

@@ -35,7 +35,7 @@ const App = () => {
   const [storedTheme, setTheme] = useThemeHandler("theme");
   const [isAuth, setIsAuth] = useState(false);
 
-  const { token, setToken } = useToken();
+  const { setToken } = useToken();
 
   const handleAddNewUser = (newUser) => {
     setUsers([...users, { ...newUser, id: Date.now() }]);
@@ -181,7 +181,7 @@ const App = () => {
           <Route
             path="/checkout/successfull_payment"
             exact
-            element={<SuccessfullPayment />}
+            element={<SuccessfullPayment storedTheme={storedTheme} />}
           />
         </Route>
       </Routes>
