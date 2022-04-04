@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 
 import { Elements } from "@stripe/react-stripe-js";
@@ -6,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./utils/i18n";
 
 import App from "./App";
+import Loader from "./utils/loader/Loader";
 import "./index.css";
 import "@stripe/stripe-js";
 
@@ -20,10 +22,12 @@ const stripePromise = loadStripe(
 );
 
 ReactDOM.render(
-  <Elements stripe={stripePromise}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Elements>,
+  <Suspense fallback={<Loader />}>
+    <Elements stripe={stripePromise}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Elements>
+  </Suspense>,
   document.getElementById("root")
 );

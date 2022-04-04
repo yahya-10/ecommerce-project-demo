@@ -248,7 +248,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                 >
                   <div>
                     <label
-                      htmlFor="fullname"
+                      htmlFor="fullName"
                       className={`${
                         storedTheme === "light"
                           ? "block text-sm font-medium text-gray-700"
@@ -281,7 +281,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                   </div>
                   <div>
                     <label
-                      htmlFor="companyname"
+                      htmlFor="companyName"
                       className={`${
                         storedTheme === "light"
                           ? "block text-sm font-medium text-gray-700"

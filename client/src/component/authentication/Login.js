@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { motion } from "framer-motion";
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 
-import LoginSVG from "../../assets/loginSVG.png";
+import LoginSVG from "../../assets/loginSVG.avif";
 
 /**
  *
@@ -40,7 +40,7 @@ const Login = ({ setToken, storedTheme }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     const isAuthenticated = sessionStorage.getItem("token");
     if (isAuthenticated && isAuthenticated !== "undefined") {
       navigate(`/`);
@@ -75,6 +75,8 @@ const Login = ({ setToken, storedTheme }) => {
       },
     },
   };
+
+  console.log("login.js", "login comp rendered");
 
   return (
     <>
@@ -268,7 +270,7 @@ const Login = ({ setToken, storedTheme }) => {
                         className={`${
                           storedTheme === "light"
                             ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-200 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         }`}
                       />
                     </div>
@@ -304,7 +306,7 @@ const Login = ({ setToken, storedTheme }) => {
                         className={`${
                           storedTheme === "light"
                             ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-200 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         }`}
                       />
                       {showingPwd ? (
@@ -387,7 +389,9 @@ const Login = ({ setToken, storedTheme }) => {
             style={{ maxWidth: "100%" }}
             className="absolute inset-0 h-full w-full object-cover"
             src={LoginSVG}
-            alt=""
+            alt="loginBanner"
+            height={1200}
+            width={947}
           />
         </motion.div>
       </div>

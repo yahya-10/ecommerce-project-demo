@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 
 import { logOut } from "../../utils";
-import comunikcrmLogo from "../../assets/comunikcrm.png";
-import cmkWhiteLogo from "../../assets/cmk-white-logo.png";
+import comunikcrmLogo from "../../assets/comunikcrm.avif";
+import cmkWhiteLogo from "../../assets/cmk-white-logo.avif";
 import LangDropDown from "./LangDropDown";
 import { avatarCreator } from "../../utils/CreateAvatar";
 import { getRondomColor } from "../../utils/GetRandomColor";
@@ -141,6 +141,8 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                             : cmkWhiteLogo
                         }
                         alt="comunik_logo"
+                        width="640"
+                        height="360"
                       />
                     </Link>
                     <div className="-mr-2 flex items-center md:hidden">
@@ -179,12 +181,12 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                       <span className="inline-flex shadow" onClick={logOut}>
                         <Link
                           to="/login"
-                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-white bg-indigo-500 hover:bg-indigo-600"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
                         >
                           {t("header.log_out")}
                         </Link>
                       </span>
-                      <Link to="/profile">
+                      <Link to="/profile" aria-label="profile ariaLabel">
                         <span className="inline-block relative">
                           <img
                             className="h-10 w-10 rounded-full"
@@ -203,7 +205,7 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                     <span className="inline-flex shadow">
                       <Link
                         to="/login"
-                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-white bg-indigo-500 hover:bg-indigo-600"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
                       >
                         {t("header.log_in")}
                       </Link>
@@ -320,12 +322,12 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                         <span className="inline-flex shadow" onClick={logOut}>
                           <Link
                             to="/login"
-                            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-white bg-indigo-500 hover:bg-indigo-600"
+                            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
                           >
                             {t("header.log_out")}
                           </Link>
                         </span>
-                        <Link to="/profile">
+                        <Link to="/profile" aria-label="profile ariaLabel">
                           <img
                             className="w-12 h-12 rounded-full lg:w-12 lg:h-12"
                             src={avatarCreator(
@@ -341,7 +343,7 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                       <span className="inline-flex shadow">
                         <Link
                           to="/login"
-                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-white bg-indigo-500 hover:bg-indigo-600"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
                         >
                           {t("header.log_in")}
                         </Link>

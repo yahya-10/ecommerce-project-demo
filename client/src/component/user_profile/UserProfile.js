@@ -14,8 +14,8 @@ import * as Yup from "yup";
 import SelectedSubscription from "./SelectedSubscription";
 import Steps from "./Steps";
 import UserHistory from "./UserHistory";
-import comunikcrmLogo from "../../assets/comunikcrm.png";
-import cmkWhiteLogo from "../../assets/cmk-white-logo.png";
+import comunikcrmLogo from "../../assets/comunikcrm.avif";
+import cmkWhiteLogo from "../../assets/cmk-white-logo.avif";
 
 /**
  * @private
@@ -54,13 +54,11 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
   const navigation = [
     {
       name: t("user_form.navigation"),
-      // href: "#",
       icon: HomeIcon,
       current: true,
     },
     {
       name: t("user_form.history"),
-      // href: "/profile/history",
       icon: CalendarIcon,
       current: false,
     },
@@ -83,7 +81,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
     if (sessionStorage.getItem("token")) {
       setIsAuth(true);
     }
-  }, []);
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -194,9 +192,9 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                   <nav aria-label="Sidebar" className="mt-5">
                     <div className="px-2 space-y-1">
                       {navigation.map((item) => (
-                        <a
+                        <p
                           key={item.name}
-                          href={item.href}
+                          // href={item.href}
                           onClick={() => changeViewHandler(item.name)}
                           className={classNames(
                             item.name === view
@@ -216,7 +214,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </p>
                       ))}
                     </div>
                     <hr
@@ -249,9 +247,9 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                 <nav className="mt-5 flex-1" aria-label="Sidebar">
                   <div className="px-2 space-y-1">
                     {navigation.map((item) => (
-                      <a
+                      <p
                         key={item.name}
-                        href={item.href}
+                        // href={item.href}
                         onClick={() => changeViewHandler(item.name)}
                         className={classNames(
                           item.name === view
@@ -269,7 +267,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                           aria-hidden="true"
                         />
                         {item.name}
-                      </a>
+                      </p>
                     ))}
                   </div>
                   <hr
@@ -380,7 +378,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                       }`}
                     >
                       <label
-                        htmlFor="companyname"
+                        htmlFor="companyName"
                         className={`"block text-sm font-medium sm:mt-px sm:pt-2 " ${
                           storedTheme === "light"
                             ? "text-gray-700"
@@ -397,7 +395,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                           <input
                             type="text"
                             name="companyName"
-                            id="company-name"
+                            id="companyName"
                             autoComplete="companyname"
                             disabled={disableFields}
                             onChange={formik.handleChange}
@@ -680,7 +678,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
 
                     <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                       <label
-                        htmlFor="region"
+                        htmlFor="state"
                         className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
                           storedTheme === "light"
                             ? "text-gray-700"
@@ -709,7 +707,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
 
                     <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                       <label
-                        htmlFor="postal-code"
+                        htmlFor="zip"
                         className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
                           storedTheme === "light"
                             ? "text-gray-700"

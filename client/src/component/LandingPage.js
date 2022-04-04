@@ -240,7 +240,14 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                     {t("pricing_section.pricing_section_title_nd_half")}
                   </span>
                 </h2>
-                <p className="mt-4 text-xl text-indigo-600">
+                <p
+                  // className="mt-4 text-xl text-indigo-600"
+                  className={`${
+                    storedTheme === "light"
+                      ? "mt-4 text-xl text-indigo-600"
+                      : "mt-4 text-xl text-gray-200"
+                  }`}
+                >
                   {t("pricing_section.pricing_section_under_title")}
                 </p>
               </div>
@@ -424,9 +431,13 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                     >
                       <h3
                         className={classNames(
-                          plan.featured ? "text-indigo-600" : "text-gray-900",
+                          plan.featured ? "text-indigo-600" : "text-white",
                           "text-sm font-bold"
                         )}
+                        // Comparison titles NOT changing color on toggling light/dark mode
+                        // className={`"${
+                        //   plan.featured ? "text-indigo-600" : "text-white"
+                        // }"`}
                       >
                         {plan.title}
                       </h3>
@@ -441,7 +452,14 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                         {plan.description}
                       </p>
                     </div>
-                    <h4 className="mt-10 text-sm font-bold text-gray-900">
+                    <h4
+                      // className="mt-10 text-sm font-bold text-gray-900"
+                      className={`${
+                        storedTheme === "light"
+                          ? "mt-10 text-sm font-bold text-gray-900"
+                          : "mt-10 text-sm font-bold text-gray-50"
+                      }`}
+                    >
                       Catered for business
                     </h4>
 
@@ -532,7 +550,14 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                       </div>
                     </div>
 
-                    <h4 className="mt-10 text-sm font-bold text-gray-900">
+                    <h4
+                      // className="mt-10 text-sm font-bold text-gray-900"
+                      className={`${
+                        storedTheme === "light"
+                          ? "mt-10 text-sm font-bold text-gray-900"
+                          : "mt-10 text-sm font-bold text-gray-50"
+                      }`}
+                    >
                       Other perks
                     </h4>
 
@@ -621,7 +646,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
 
               <div className="mt-24 max-w-7xl mx-auto px-8">
                 <div
-                  // className="w-full border-t border-gray-200 flex items-stretch"
                   className={`${
                     storedTheme === "light"
                       ? "w-full border-t border-gray-200 flex items-stretch"
@@ -629,7 +653,13 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                   }`}
                 >
                   <div className="-mt-px w-1/4 py-6 pr-4 flex items-end">
-                    <h3 className="mt-auto text-sm font-bold text-gray-900">
+                    <h3
+                      className={`${
+                        storedTheme === "light"
+                          ? "mt-auto text-sm font-bold text-gray-900"
+                          : "mt-auto text-sm font-bold text-gray-50"
+                      }`}
+                    >
                       Catered for business
                     </h3>
                   </div>
@@ -652,7 +682,13 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                       >
                         <p
                           className={classNames(
-                            plan.featured ? "text-indigo-600" : "text-gray-900",
+                            plan.featured
+                              ? "text-indigo-600"
+                              : `${
+                                  storedTheme === "light"
+                                    ? "text-gray-900"
+                                    : "text-white"
+                                }`,
                             "text-sm font-bold"
                           )}
                         >
@@ -675,7 +711,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                     <div className="w-1/4 pr-4" />
                     <div className="w-1/4 px-4">
                       <div
-                        // className="w-full h-full bg-white rounded-lg shadow"
                         className={`${
                           storedTheme === "light"
                             ? "w-full h-full bg-white rounded-lg shadow"
@@ -720,7 +755,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                       </tr>
                     </thead>
                     <tbody
-                      // className="divide-y divide-gray-100"
                       className={`${
                         storedTheme === "light"
                           ? "divide-y divide-gray-100"
@@ -731,7 +765,12 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                         <tr key={feature.title}>
                           <th
                             scope="row"
-                            className="w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-600"
+                            // className="w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-600"
+                            className={`${
+                              storedTheme === "light"
+                                ? "w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-600"
+                                : "w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-300"
+                            }`}
                           >
                             {feature.title}
                           </th>
@@ -802,7 +841,14 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                   </div>
                 </div>
 
-                <h3 className="mt-10 text-sm font-bold text-gray-900">
+                <h3
+                  // className="mt-10 text-sm font-bold text-gray-900"
+                  className={`${
+                    storedTheme === "light"
+                      ? "mt-10 text-sm font-bold text-gray-900"
+                      : "mt-10 text-sm font-bold text-gray-50"
+                  }`}
+                >
                   Other perks
                 </h3>
 
@@ -862,7 +908,12 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                         <tr key={perk.title}>
                           <th
                             scope="row"
-                            className="w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-600"
+                            // className="w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-600"
+                            className={`${
+                              storedTheme === "light"
+                                ? "w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-600"
+                                : "w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-300"
+                            }`}
                           >
                             {perk.title}
                           </th>

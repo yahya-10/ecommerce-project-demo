@@ -2,7 +2,7 @@ import React from "react";
 
 import { useTranslation } from "react-i18next";
 
-import comunikcrmLogo from "../../assets/comunikcrm.png";
+import comunikcrmLogo from "../../assets/comunikcrm.avif";
 
 const Footer = ({ storedTheme }) => {
   const { t } = useTranslation();
@@ -60,7 +60,13 @@ const Footer = ({ storedTheme }) => {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
-            <img className="h-10" src={comunikcrmLogo} alt="Company name" />
+            <img
+              className="h-10"
+              src={comunikcrmLogo}
+              alt="Company name"
+              width="153"
+              height="40"
+            />
             <p
               // className="text-gray-500 text-base"
               className={`${

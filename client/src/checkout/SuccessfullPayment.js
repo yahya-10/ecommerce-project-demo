@@ -32,7 +32,6 @@ const SuccessfullPayment = ({ storedTheme }) => {
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
             <h1
-              // className="text-xl font-semibold text-gray-900"
               className={`${
                 storedTheme === "light"
                   ? "text-xl font-semibold text-gray-900"
@@ -170,7 +169,6 @@ const SuccessfullPayment = ({ storedTheme }) => {
                 <th
                   scope="row"
                   colSpan={3}
-                  // className="hidden pl-6 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 sm:table-cell md:pl-0"
                   className={`${
                     storedTheme === "light"
                       ? "hidden pl-6 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 sm:table-cell md:pl-0"
@@ -181,7 +179,6 @@ const SuccessfullPayment = ({ storedTheme }) => {
                 </th>
                 <th
                   scope="row"
-                  // className="pl-4 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 sm:hidden"
                   className={`${
                     storedTheme === "light"
                       ? "pl-4 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 sm:hidden"
@@ -191,7 +188,6 @@ const SuccessfullPayment = ({ storedTheme }) => {
                   Total
                 </th>
                 <td
-                  // className="pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-900 sm:pr-6 md:pr-0"
                   className={`${
                     storedTheme === "light"
                       ? "pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-900 sm:pr-6 md:pr-0"

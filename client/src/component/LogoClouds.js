@@ -26,6 +26,8 @@ const LogoClouds = () => {
               <img
                 className="h-12"
                 src="https://tailwindui.com/img/logos/tuple-logo-indigo-300.svg"
+                width="158"
+                height="48"
                 alt="Tuple"
               />
             </motion.div>
@@ -36,6 +38,8 @@ const LogoClouds = () => {
               <img
                 className="h-12"
                 src="https://tailwindui.com/img/logos/mirage-logo-indigo-300.svg"
+                width="158"
+                height="48"
                 alt="Mirage"
               />
             </motion.div>
@@ -46,6 +50,8 @@ const LogoClouds = () => {
               <img
                 className="h-12"
                 src="https://tailwindui.com/img/logos/statickit-logo-indigo-300.svg"
+                width="158"
+                height="48"
                 alt="StaticKit"
               />
             </motion.div>
@@ -56,6 +62,8 @@ const LogoClouds = () => {
               <img
                 className="h-12"
                 src="https://tailwindui.com/img/logos/transistor-logo-indigo-300.svg"
+                width="158"
+                height="48"
                 alt="Transistor"
               />
             </motion.div>
@@ -66,6 +74,8 @@ const LogoClouds = () => {
               <img
                 className="h-12"
                 src="https://tailwindui.com/img/logos/workcation-logo-indigo-300.svg"
+                width="158"
+                height="48"
                 alt="Workcation"
               />
             </motion.div>
