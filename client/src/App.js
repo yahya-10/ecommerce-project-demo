@@ -1,39 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy } from "react";
 
 import { Routes, Route } from "react-router-dom";
 
 import { ProductsExample } from "./ProductsExample";
 import { useToken } from "./custom_hooks/useToken";
 import { useThemeHandler } from "./custom_hooks/useThemeHandler";
-// import { LoggedIn } from "./utils";
 
-const Header = React.lazy(() => import("./component/header/Header"));
-const LandingPage = React.lazy(() => import("./component/LandingPage"));
-const Login = React.lazy(() => import("./component/authentication/Login"));
-const Register = React.lazy(() =>
-  import("./component/authentication/Register")
-);
-const Footer = React.lazy(() => import("./component/footer/Footer"));
-const Contact = React.lazy(() => import("./component/Contact"));
-const ProductsList = React.lazy(() =>
-  import("./component/products/ProductsList")
-);
-const AboutPage = React.lazy(() => import("./component/about_page/AboutPage"));
-const CartList = React.lazy(() => import("./component/header/CartList"));
-const SolutionsPage = React.lazy(() =>
+const Header = lazy(() => import("./component/header/Header"));
+const LandingPage = lazy(() => import("./component/LandingPage"));
+const Login = lazy(() => import("./component/authentication/Login"));
+const Register = lazy(() => import("./component/authentication/Register"));
+const Footer = lazy(() => import("./component/footer/Footer"));
+const Contact = lazy(() => import("./component/Contact"));
+const ProductsList = lazy(() => import("./component/products/ProductsList"));
+const AboutPage = lazy(() => import("./component/about_page/AboutPage"));
+const CartList = lazy(() => import("./component/header/CartList"));
+const SolutionsPage = lazy(() =>
   import("./component/solution_page/SolutionsPage")
 );
-const Checkout = React.lazy(() => import("./checkout/Checkout"));
-const PrivateRoute = React.lazy(() => import("./helpers/PrivateRoute"));
-const UserProfile = React.lazy(() =>
-  import("./component/user_profile/UserProfile")
-);
-const UserValidationPage = React.lazy(() =>
+const Checkout = lazy(() => import("./checkout/Checkout"));
+const PrivateRoute = lazy(() => import("./helpers/PrivateRoute"));
+const UserProfile = lazy(() => import("./component/user_profile/UserProfile"));
+const UserValidationPage = lazy(() =>
   import("./component/user_profile/UserValidationPage")
 );
-const SuccessfullPayment = React.lazy(() =>
-  import("./checkout/SuccessfullPayment")
-);
+const SuccessfullPayment = lazy(() => import("./checkout/SuccessfullPayment"));
 
 /**
  *
@@ -99,11 +90,6 @@ const App = () => {
 
   //Clear cart
   const clearCart = () => setListItems([]);
-
-  // console.log(
-  //   "app.js",
-  //   Object.values(sessionStorage.getItem("token") || null).length
-  // );
 
   return (
     <div>

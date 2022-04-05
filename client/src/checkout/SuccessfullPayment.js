@@ -103,7 +103,6 @@ const SuccessfullPayment = ({ storedTheme }) => {
                 <tr key={project.id} className="border-b border-gray-200">
                   <td className="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
                     <div
-                      // className="font-medium text-gray-900"
                       className={`${
                         storedTheme === "light"
                           ? "font-medium text-gray-900"

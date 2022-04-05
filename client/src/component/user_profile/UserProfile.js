@@ -29,12 +29,13 @@ function classNames(...classes) {
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
+  const { t } = useTranslation();
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [disableFields, setDisableFields] = useState(false);
-  const [view, setView] = useState("Dashboard");
+  const [view, setView] = useState(t("user_form.navigation"));
 
-  const { t } = useTranslation();
   const myRef = useRef();
 
   const requiredMessage = "This field is required";
@@ -74,10 +75,11 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
     setDisableFields(false);
   };
 
+  // Scroll down automatically on submitting  the form.
   const executeScroll = () => scrollToRef(myRef);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     if (sessionStorage.getItem("token")) {
       setIsAuth(true);
     }
@@ -107,12 +109,6 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
     color: "red",
     fontSize: "2 rem",
   };
-
-  // console.log("userProfile", view);
-  // console.log(
-  //   "userProfile.js",
-  //   Object.values(sessionStorage.getItem("token") || null).length
-  // );
 
   return (
     <div
@@ -149,7 +145,6 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
               leaveTo="-translate-x-full"
             >
               <div
-                // className="relative flex-1 flex flex-col max-w-xs w-full bg-black focus:outline-none"
                 className={`${
                   storedTheme === "light"
                     ? "relative flex-1 flex flex-col max-w-xs w-full bg-white focus:outline-none"
@@ -194,7 +189,6 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                       {navigation.map((item) => (
                         <p
                           key={item.name}
-                          // href={item.href}
                           onClick={() => changeViewHandler(item.name)}
                           className={classNames(
                             item.name === view
@@ -236,7 +230,6 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
           <div className="flex flex-col w-64">
             {/* Sidebar component, swap this element with another sidebar if you like */}
             <div
-              // className="flex-1 flex flex-col min-h-0 border-r border-gray-50 bg-gray-300"
               className={`flex-1 flex flex-col min-h-0 border-r ${
                 storedTheme === "light"
                   ? "border-gray-200 bg-gray-100"
@@ -249,7 +242,6 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                     {navigation.map((item) => (
                       <p
                         key={item.name}
-                        // href={item.href}
                         onClick={() => changeViewHandler(item.name)}
                         className={classNames(
                           item.name === view
@@ -303,7 +295,6 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
         <div className="flex flex-col min-w-0 flex-1 overflow-hidden">
           <div className="lg:hidden">
             <div
-              // className="flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5"
               className={`${
                 storedTheme === "light"
                   ? "flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5"

@@ -31,7 +31,7 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
     { name: t("header.nav_support"), href: "/contact" },
   ];
 
-  console.log(isAuth);
+  // console.log(isAuth);
 
   return (
     <div>

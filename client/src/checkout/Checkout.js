@@ -70,9 +70,7 @@ const Checkout = ({ storedTheme }) => {
     if (result.error) {
       setError({ paymentError: result.error.message });
     } else if (result.paymentIntent.status === "succeeded") {
-      // alert(`${email} Transaction Succeeded`);
       navigate("/checkout/successfull_payment");
-      // console.log(result);
     }
     setIsLoading(false);
   };
@@ -125,7 +123,6 @@ const Checkout = ({ storedTheme }) => {
             </div>
             {error && <p style={{ color: "red" }}>{error.paymentError}</p>}
             <button
-              // className="mt-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               className={`"${
                 isLoading
                   ? "mt-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium shadow-sm text-white bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

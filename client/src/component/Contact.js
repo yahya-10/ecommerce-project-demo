@@ -4,12 +4,6 @@ import {
   SupportIcon,
 } from "@heroicons/react/outline";
 
-const navigation = [
-  { name: "Changelog", href: "#" },
-  { name: "About", href: "#" },
-  { name: "Partners", href: "#" },
-  { name: "News", href: "#" },
-];
 const supportLinks = [
   {
     name: "Sales",
@@ -75,7 +69,7 @@ const faqs = [
 const Contact = () => {
   return (
     <div>
-      <header className="pb-36 bg-blue-gray-800">
+      <header className="pb-36 bg-blue-gray-800 dark:bg-gray-800">
         <div className="relative inset-0">
           <img
             className="w-full h-full object-cover"
@@ -91,7 +85,7 @@ const Contact = () => {
           <h1 className="text-4xl font-extrabold tracking-tight text-blue-700 md:text-5xl lg:text-6xl">
             Support
           </h1>
-          <p className="mt-6 max-w-3xl text-xl text-blue-gray-300">
+          <p className="mt-6 max-w-3xl text-xl text-blue-gray-300 dark:text-gray-200">
             Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate
             id malesuada non. Cras aliquet purus dui laoreet diam sed lacus,
             fames. Dui, amet, nec sit pulvinar.
@@ -100,7 +94,7 @@ const Contact = () => {
       </header>
 
       <main>
-        <div className="bg-blue-gray-50">
+        <div className="bg-blue-gray-50 dark:bg-gray-800">
           {/* Cards */}
           <section
             className="-mt-32 max-w-md mx-auto relative z-10 px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8"
@@ -113,7 +107,7 @@ const Contact = () => {
               {supportLinks.map((link) => (
                 <div
                   key={link.name}
-                  className="flex flex-col bg-white rounded-2xl shadow-xl"
+                  className="flex flex-col bg-white dark:bg-indigo-700 rounded-2xl shadow-xl"
                 >
                   <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
                     <div className="absolute top-0 p-5 inline-block bg-blue-600 rounded-xl shadow-lg transform -translate-y-1/2">
@@ -122,17 +116,17 @@ const Contact = () => {
                         aria-hidden="true"
                       />
                     </div>
-                    <h3 className="text-xl font-medium text-blue-gray-900">
+                    <h3 className="text-xl font-medium text-blue-gray-900 dark:text-white">
                       {link.name}
                     </h3>
-                    <p className="mt-4 text-base text-blue-gray-500">
+                    <p className="mt-4 text-base text-blue-gray-500 dark:text-gray-200">
                       {link.description}
                     </p>
                   </div>
                   <div className="p-6 bg-blue-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
                     <a
                       href={link.href}
-                      className="text-base font-medium text-blue-700 hover:text-blue-600"
+                      className="text-base font-medium text-blue-700 hover:text-blue-600 dark:text-gray-50"
                     >
                       Contact us<span aria-hidden="true"> &rarr;</span>
                     </a>
@@ -148,7 +142,7 @@ const Contact = () => {
             aria-labelledby="faq-heading"
           >
             <h2
-              className="text-3xl font-extrabold text-blue-gray-900"
+              className="text-3xl font-extrabold text-blue-gray-900 dark:text-white"
               id="faq-heading"
             >
               Frequently asked questions
@@ -157,10 +151,10 @@ const Contact = () => {
               <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:grid-rows-2 md:gap-x-8 md:gap-y-12">
                 {faqs.map((faq) => (
                   <div key={faq.id}>
-                    <dt className="text-lg font-medium text-blue-gray-900">
+                    <dt className="text-lg font-medium text-blue-gray-900 dark:text-gray-200">
                       {faq.question}
                     </dt>
-                    <dd className="mt-2 text-base text-blue-gray-500">
+                    <dd className="mt-2 text-base text-blue-gray-500 dark:text-gray-400">
                       {faq.answer}
                     </dd>
                   </div>
@@ -171,7 +165,10 @@ const Contact = () => {
         </div>
 
         {/* CTA Section */}
-        <section className="relative bg-white" aria-labelledby="join-heading">
+        <section
+          className="relative bg-white dark:bg-gray-800"
+          aria-labelledby="join-heading"
+        >
           <div
             className="hidden absolute inset-x-0 h-1/2 bg-blue-gray-50 lg:block"
             aria-hidden="true"
@@ -280,7 +277,7 @@ const Contact = () => {
                   </p>
                   <a
                     className="block w-full py-3 px-5 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-blue-700 hover:bg-blue-gray-50 sm:inline-block sm:w-auto"
-                    href="#"
+                    href="/"
                   >
                     Explore open positions
                   </a>
@@ -333,7 +330,7 @@ const Contact = () => {
             </form>
             <p className="mt-3 text-sm text-blue-gray-500">
               We care about the protection of your data. Read our{" "}
-              <a href="#" className="font-medium underline">
+              <a href="/" className="font-medium underline">
                 Privacy Policy.
               </a>
             </p>

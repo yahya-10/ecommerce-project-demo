@@ -422,7 +422,9 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
             style={{ maxWidth: "100%" }}
             className="absolute inset-0 h-full w-full object-cover"
             src={Hero}
-            alt=""
+            height={559}
+            width={808}
+            alt="register-banner"
           />
         </motion.div>
       </div>

@@ -35,26 +35,26 @@ const AboutPage = () => {
           </div>
         </div>
       </main>
-      <div className="py-16 bg-gray-50 overflow-hidden">
+      <div className="py-16 bg-gray-50 dark:bg-gray-800 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
           <div className="text-base max-w-prose mx-auto lg:max-w-none">
             <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
               {t("about_page.about_page_transaction")}
             </h2>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {t("about_page.about_page_banner_st_title")}
             </p>
           </div>
           <div className="relative z-10 text-base max-w-prose mx-auto lg:max-w-5xl lg:mx-0 lg:pr-72">
-            <p className="text-lg text-gray-500">
+            <p className="text-lg text-gray-500 dark:text-gray-300">
               {t("about_page.about_us_section")}
             </p>
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
             <div className="relative z-10">
-              <div className="prose prose-indigo text-gray-500 mx-auto lg:max-w-none">
+              <div className="prose prose-indigo text-gray-500 dark:text-gray-300 mx-auto lg:max-w-none">
                 <div className="text-base max-w-prose mx-auto lg:max-w-none">
-                  <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                  <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                     {t("about_page.about_page_banner_nd_title")}
                   </p>
                   <p>{t("about_page.certificate_section")}</p>
@@ -102,7 +102,7 @@ const AboutPage = () => {
                       y={0}
                       width={4}
                       height={4}
-                      className="text-gray-200"
+                      className="text-gray-200 dark:text-gray-800"
                       fill="currentColor"
                     />
                   </pattern>
