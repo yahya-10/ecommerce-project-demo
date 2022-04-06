@@ -15,9 +15,6 @@ const Contact = lazy(() => import("./component/Contact"));
 const ProductsList = lazy(() => import("./component/products/ProductsList"));
 const AboutPage = lazy(() => import("./component/about_page/AboutPage"));
 const CartList = lazy(() => import("./component/header/CartList"));
-const SolutionsPage = lazy(() =>
-  import("./component/solution_page/SolutionsPage")
-);
 const Checkout = lazy(() => import("./checkout/Checkout"));
 const PrivateRoute = lazy(() => import("./helpers/PrivateRoute"));
 const UserProfile = lazy(() => import("./component/user_profile/UserProfile"));
@@ -126,7 +123,10 @@ const App = () => {
             />
           }
         />
-        <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/contact"
+          element={<Contact storedTheme={storedTheme} />}
+        />
         <Route
           path="/store"
           element={
@@ -139,8 +139,10 @@ const App = () => {
             />
           }
         />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/solutions" element={<SolutionsPage />} />
+        <Route
+          path="/about"
+          element={<AboutPage storedTheme={storedTheme} />}
+        />
         <Route
           path="/store/cart"
           element={<CartList listItems={listItems} />}
