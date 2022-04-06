@@ -72,7 +72,6 @@ const Footer = ({ storedTheme }) => {
               height="40"
             />
             <p
-              // className="text-gray-500 text-base"
               className={`${
                 storedTheme === "light"
                   ? "text-base text-gray-500"
@@ -99,7 +98,6 @@ const Footer = ({ storedTheme }) => {
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h3
-                  // className="text-sm font-semibold tracking-wider uppercase text-gray-900"
                   className={`${
                     storedTheme === "light"
                       ? "text-sm font-semibold tracking-wider uppercase text-gray-900"
@@ -113,7 +111,6 @@ const Footer = ({ storedTheme }) => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        // className="text-base text-gray-500 hover:text-gray-900"
                         className={`${
                           storedTheme === "light"
                             ? "text-base text-gray-500 hover:text-gray-900"

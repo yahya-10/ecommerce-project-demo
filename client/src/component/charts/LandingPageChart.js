@@ -74,14 +74,9 @@ const LandingPageChart = () => {
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:justify-between">
         <div className="max-w-xl">
           <h2 className="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight lg:text-6xl">
-            {/* Modern Commerce. Simplified. */}
             {t("chart.title")}
           </h2>
-          <p className="mt-5 text-xl text-gray-400">
-            {/* For a smart business and a modern company, Comunik.VoIP opens your
-            eyes to what is going on in your company's telephony. */}
-            {t("chart.desc")}
-          </p>
+          <p className="mt-5 text-xl text-gray-400">{t("chart.desc")}</p>
         </div>
         <div className="w-full">
           <div className="mt-1 relative text-gray-50">

@@ -22,6 +22,7 @@ const stripePromise = loadStripe(
 );
 
 ReactDOM.render(
+  // Suspense works well with React.lazy to improve the ux.
   <Suspense fallback={<Loader />}>
     <Elements stripe={stripePromise}>
       <BrowserRouter>

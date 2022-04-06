@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 const LogoClouds = () => {
   const { t } = useTranslation();
-  //bg-indigo-700
   return (
     <div className="bg-gradient-to-r from-indigo-500 to-indigo-800">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8">

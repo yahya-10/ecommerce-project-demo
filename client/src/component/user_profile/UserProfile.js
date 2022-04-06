@@ -26,18 +26,26 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+// Create a reference.
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
   const { t } = useTranslation();
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Show the user's summary and the selected subscription if toggle = true.
   const [toggle, setToggle] = useState(false);
+
+  // This state controls the state of the input fields
   const [disableFields, setDisableFields] = useState(false);
+
+  // Show the form view or the history panel
   const [view, setView] = useState(t("user_form.navigation"));
 
   const myRef = useRef();
 
+  // User's inputs controllers with yup.
   const requiredMessage = "This field is required";
   const validationSchema = Yup.object({
     companyName: Yup.string().required(requiredMessage),
@@ -78,6 +86,10 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
   // Scroll down automatically on submitting  the form.
   const executeScroll = () => scrollToRef(myRef);
 
+  /**
+   * After login, Checks if sessionStorage has a token & update isAuth to true.
+   * This helps updating the header.
+   */
   useEffect(() => {
     // window.scrollTo(0, 0);
     if (sessionStorage.getItem("token")) {
@@ -85,6 +97,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
     }
   });
 
+  // useFormik will return all Formik state and helpers directly.
   const formik = useFormik({
     initialValues: {
       companyName: "",
@@ -105,6 +118,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
     validationSchema: validationSchema,
   });
 
+  // Errors styles.
   const styles = {
     color: "red",
     fontSize: "2 rem",

@@ -32,6 +32,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  // User's inputs controllers with yup.
   const requiredMessage = "This field is required";
   const validationSchema = Yup.object({
     companyName: Yup.string().required(requiredMessage),
@@ -45,12 +46,14 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Prevent authenticated user from going back to login page
     const isAuth = sessionStorage.getItem("token");
     if (isAuth && isAuth !== "undefined") {
       navigate(`/`);
     }
   }, []);
 
+  // useFormik will return all Formik state and helpers directly.
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -72,6 +75,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
     validationSchema: validationSchema,
   });
 
+  // Icons motion
   const svgVariants = {
     hidden: { rotate: 360 },
     visible: {

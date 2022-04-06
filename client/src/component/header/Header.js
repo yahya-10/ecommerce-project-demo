@@ -36,7 +36,6 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
   return (
     <div>
       <div
-        // className="relative bg-gray-50 dark:bg-gray-800 transition-colors duration-300 overflow-hidden"
         className={`${
           storedTheme === "light"
             ? "relative bg-gray-50 transition-colors duration-300 overflow-hidden"
@@ -148,7 +147,6 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                     </Link>
                     <div className="-mr-2 flex items-center md:hidden">
                       <Popover.Button
-                        // className="bg-gray-50 p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                         className={`${
                           storedTheme === "light"
                             ? "bg-gray-50 p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
@@ -262,7 +260,6 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                 className=" top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
               >
                 <div
-                  // className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50"
                   className={`${
                     storedTheme === "light"
                       ? "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white transition-colors duration-300 divide-y-2 divide-gray-50"
@@ -273,7 +270,6 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                     <div className="flex items-center space-between">
                       <div className="-mr-2">
                         <Popover.Button
-                          // className="bg-white p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                           className={`${
                             storedTheme === "light"
                               ? "bg-white p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"

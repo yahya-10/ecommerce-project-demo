@@ -11,6 +11,7 @@ const SelectPackageModal = () => {
 
   const { t } = useTranslation();
 
+  // Add motion to the modal
   const dropIn = {
     hidden: {
       y: "-100vh",

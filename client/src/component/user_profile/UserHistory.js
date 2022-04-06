@@ -7,6 +7,7 @@ import TransactionsTable from "./TransactionsTable";
 import { ChartPieIcon, ChartBarIcon } from "@heroicons/react/solid";
 
 const UserHistory = ({ storedTheme }) => {
+  // Toggle between charts icons.
   const [displayPieChart, setDisplayPiChart] = useState(false);
 
   console.log("userHistory", displayPieChart);

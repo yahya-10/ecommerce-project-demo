@@ -25,7 +25,6 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
         }`}
       >
         {!selectedPackage ? (
-          // <Link to="/">select a package first</Link>
           <SelectPackageModal />
         ) : (
           <div id="selectedSubs-div">
@@ -35,7 +34,6 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
             <div className="relative max-w-7xl mx-auto lg:grid lg:grid-cols-2 lg:px-8">
               {/* Applicant information summary */}
               <div
-                // className="bg-white  sm:py-24 sm:px-6 lg:px-0 lg:pr-8"
                 className={`sm:py-24 sm:px-6 lg:px-0 lg:pr-8 ${
                   storedTheme === "light"
                     ? "bg-white transition-colors duration-300"
@@ -43,7 +41,6 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                 }`}
               >
                 <div
-                  // className="bg-white shadow overflow-hidden sm:rounded-lg"
                   className={`shadow overflow-hidden sm:rounded-lg ${
                     storedTheme === "light"
                       ? "bg-white transition-colors duration-300"
@@ -52,7 +49,6 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                 >
                   <div className="px-4 py-5 sm:px-6">
                     <h3
-                      // className="text-lg leading-6 font-medium text-gray-900"
                       className={`text-lg leading-6 font-medium ${
                         storedTheme === "light"
                           ? "text-gray-900"
@@ -72,7 +68,6 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                           {t("signup.full_name")}
                         </dt>
                         <dd
-                          // className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
                           className={`mt-1 text-sm sm:mt-0 sm:col-span-2 ${
                             storedTheme === "light"
                               ? "text-gray-900"
@@ -87,7 +82,6 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                           {t("sum_section.application_for")}
                         </dt>
                         <dd
-                          // className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
                           className={`mt-1 text-sm sm:mt-0 sm:col-span-2 ${
                             storedTheme === "light"
                               ? "text-gray-900"
@@ -102,7 +96,6 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                           {t("email")}
                         </dt>
                         <dd
-                          // className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
                           className={`mt-1 text-sm sm:mt-0 sm:col-span-2 ${
                             storedTheme === "light"
                               ? "text-gray-900"
@@ -117,7 +110,6 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                           {t("sum_section.num_of_licenses")}
                         </dt>
                         <dd
-                          // className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
                           className={`mt-1 text-sm sm:mt-0 sm:col-span-2 ${
                             storedTheme === "light"
                               ? "text-gray-900"
@@ -132,7 +124,6 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                           Address
                         </dt>
                         <dd
-                          // className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
                           className={`mt-1 text-sm sm:mt-0 sm:col-span-2 ${
                             storedTheme === "light"
                               ? "text-gray-900"
@@ -147,7 +138,6 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                           {t("user_form.form_about")}
                         </dt>
                         <dd
-                          // className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
                           className={`mt-1 text-sm sm:mt-0 sm:col-span-2 ${
                             storedTheme === "light"
                               ? "text-gray-900"

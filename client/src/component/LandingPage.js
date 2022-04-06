@@ -204,7 +204,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
         <LogoClouds />
       </div>
       <div
-        // className="bg-gray-50"
         className={`${
           storedTheme === "light"
             ? "bg-gray-50 transition-colors duration-300"
@@ -215,7 +214,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
           {/* Pricing section */}
           <div>
             <div
-              // className="relative bg-gray-50"
               className={`${
                 storedTheme === "light"
                   ? "relative bg-gray-50 transition-colors duration-300"
@@ -230,7 +228,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
 
               <div className="relative max-w-2xl mx-auto pt-16 px-4 text-center sm:pt-32 sm:px-6 lg:max-w-7xl lg:px-8">
                 <h2
-                  // className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl"
                   className={`${
                     storedTheme === "light"
                       ? "text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl"
@@ -245,7 +242,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                   </span>
                 </h2>
                 <p
-                  // className="mt-4 text-xl text-indigo-600"
                   className={`${
                     storedTheme === "light"
                       ? "mt-4 text-xl text-indigo-600"
@@ -346,7 +342,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                                   "text-sm"
                                 )}
                               >
-                                {/* {t("pricing_section.billed_yearly")} */}
                                 {!monthlyPlan
                                   ? `$${plan.priceMonthly} ${t(
                                       "pricing_section.billed_monthly"
@@ -374,7 +369,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                       </div>
                       <h4 className="sr-only">Features</h4>
                       <ul
-                        // role="list"
                         className={classNames(
                           plan.featured
                             ? "border-gray-200 divide-gray-200"
@@ -446,7 +440,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                         {plan.title}
                       </h3>
                       <p
-                        // className="mt-2 text-sm text-gray-500 dark:text-gray-50"
                         className={`${
                           storedTheme === "light"
                             ? "mt-2 text-sm text-gray-500"
@@ -457,7 +450,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                       </p>
                     </div>
                     <h4
-                      // className="mt-10 text-sm font-bold text-gray-900"
                       className={`${
                         storedTheme === "light"
                           ? "mt-10 text-sm font-bold text-gray-900"
@@ -555,7 +547,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                     </div>
 
                     <h4
-                      // className="mt-10 text-sm font-bold text-gray-900"
                       className={`${
                         storedTheme === "light"
                           ? "mt-10 text-sm font-bold text-gray-900"
@@ -769,7 +760,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                         <tr key={feature.title}>
                           <th
                             scope="row"
-                            // className="w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-600"
                             className={`${
                               storedTheme === "light"
                                 ? "w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-600"
@@ -846,7 +836,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                 </div>
 
                 <h3
-                  // className="mt-10 text-sm font-bold text-gray-900"
                   className={`${
                     storedTheme === "light"
                       ? "mt-10 text-sm font-bold text-gray-900"
@@ -865,7 +854,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                     <div className="w-1/4 pr-4" />
                     <div className="w-1/4 px-4">
                       <div
-                        // className="w-full h-full bg-white rounded-lg shadow"
                         className={`${
                           storedTheme === "light"
                             ? "w-full h-full bg-white rounded-lg shadow"
@@ -912,7 +900,6 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                         <tr key={perk.title}>
                           <th
                             scope="row"
-                            // className="w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-600"
                             className={`${
                               storedTheme === "light"
                                 ? "w-1/4 py-3 pr-4 text-left text-sm font-medium text-gray-600"

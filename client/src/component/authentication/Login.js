@@ -31,6 +31,7 @@ const Login = ({ setToken, storedTheme }) => {
   const [password, setPassword] = useState("");
   const [showingPwd, setShowingPwd] = useState(false);
 
+  // User's inputs controllers with yup.
   const requiredMessage = "This field is required";
   const validationSchema = Yup.object({
     email: Yup.string().email().required(requiredMessage),
@@ -41,6 +42,7 @@ const Login = ({ setToken, storedTheme }) => {
 
   useEffect(() => {
     // window.scrollTo(0, 0);
+    // Prevent authenticated user from going back to login page
     const isAuthenticated = sessionStorage.getItem("token");
     if (isAuthenticated && isAuthenticated !== "undefined") {
       navigate(`/`);
@@ -49,6 +51,7 @@ const Login = ({ setToken, storedTheme }) => {
 
   const { t } = useTranslation();
 
+  // useFormik will return all Formik state and helpers directly.
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -66,6 +69,7 @@ const Login = ({ setToken, storedTheme }) => {
     validationSchema: validationSchema,
   });
 
+  // Icons motion
   const svgVariants = {
     hidden: { rotate: 360 },
     visible: {
@@ -81,7 +85,6 @@ const Login = ({ setToken, storedTheme }) => {
   return (
     <>
       <div
-        // className="min-h-full flex dark:bg-gray-800 bg-gray-50"
         className={`${
           storedTheme === "light"
             ? "min-h-full flex bg-gray-50 transition-colors duration-300"
@@ -92,7 +95,6 @@ const Login = ({ setToken, storedTheme }) => {
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
               <h2
-                // className="mt-6 text-3xl font-extrabold text-gray-900"
                 className={`${
                   storedTheme === "light"
                     ? "mt-6 text-3xl font-extrabold text-gray-900"
@@ -102,7 +104,6 @@ const Login = ({ setToken, storedTheme }) => {
                 {t("login.login_title")}
               </h2>
               <p
-                // className="mt-2 text-sm text-gray-600"
                 className={`${
                   storedTheme === "light"
                     ? "mt-2 text-sm text-gray-600"
@@ -123,7 +124,6 @@ const Login = ({ setToken, storedTheme }) => {
               <div>
                 <div>
                   <p
-                    // className="text-sm font-medium text-gray-700"
                     className={`${
                       storedTheme === "light"
                         ? "text-sm font-medium text-gray-700"
@@ -137,7 +137,6 @@ const Login = ({ setToken, storedTheme }) => {
                     <div>
                       <a
                         href="/"
-                        // className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                         className={`${
                           storedTheme === "light"
                             ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white transition-colors duration-300 text-sm font-medium text-gray-500 hover:bg-gray-50"
@@ -167,7 +166,6 @@ const Login = ({ setToken, storedTheme }) => {
                     <div>
                       <a
                         href="/"
-                        // className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                         className={`${
                           storedTheme === "light"
                             ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
@@ -193,7 +191,6 @@ const Login = ({ setToken, storedTheme }) => {
                     <div>
                       <a
                         href="/"
-                        // className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                         className={`${
                           storedTheme === "light"
                             ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
@@ -246,7 +243,6 @@ const Login = ({ setToken, storedTheme }) => {
                   <div>
                     <label
                       htmlFor="email"
-                      // className="block text-sm font-medium text-gray-700"
                       className={`${
                         storedTheme === "light"
                           ? "block text-sm font-medium text-gray-700"
@@ -266,7 +262,6 @@ const Login = ({ setToken, storedTheme }) => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         required
-                        // className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         className={`${
                           storedTheme === "light"
                             ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -282,7 +277,6 @@ const Login = ({ setToken, storedTheme }) => {
                   <div className="space-y-1">
                     <label
                       htmlFor="password"
-                      // className="block text-sm font-medium text-gray-700"
                       className={`${
                         storedTheme === "light"
                           ? "block text-sm font-medium text-gray-700"
@@ -302,7 +296,6 @@ const Login = ({ setToken, storedTheme }) => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         required
-                        // className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         className={`${
                           storedTheme === "light"
                             ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -338,7 +331,6 @@ const Login = ({ setToken, storedTheme }) => {
                       />
                       <label
                         htmlFor="remember-me"
-                        // className="ml-2 block text-sm text-gray-900"
                         className={`${
                           storedTheme === "light"
                             ? "ml-2 block text-sm text-gray-900"
@@ -398,9 +390,5 @@ const Login = ({ setToken, storedTheme }) => {
     </>
   );
 };
-
-// Login.propTypes = {
-//   setToken: PropTypes.func.isRequired,
-// };
 
 export default Login;
