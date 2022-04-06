@@ -66,10 +66,16 @@ const faqs = [
   },
 ];
 
-const Contact = () => {
+const Contact = ({ storedTheme }) => {
   return (
     <div>
-      <header className="pb-36 bg-blue-gray-800 dark:bg-gray-800">
+      <header
+        className={`${
+          storedTheme === "light"
+            ? "pb-36 bg-blue-gray-800 transition-colors duration-300"
+            : "pb-36 bg-gray-800 transition-colors duration-300"
+        }`}
+      >
         <div className="relative inset-0">
           <img
             className="w-full h-full object-cover"
@@ -85,7 +91,13 @@ const Contact = () => {
           <h1 className="text-4xl font-extrabold tracking-tight text-blue-700 md:text-5xl lg:text-6xl">
             Support
           </h1>
-          <p className="mt-6 max-w-3xl text-xl text-blue-gray-300 dark:text-gray-200">
+          <p
+            className={`${
+              storedTheme === "light"
+                ? "mt-6 max-w-3xl text-xl text-blue-gray-300"
+                : "mt-6 max-w-3xl text-xl text-blue-gray-200"
+            }`}
+          >
             Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate
             id malesuada non. Cras aliquet purus dui laoreet diam sed lacus,
             fames. Dui, amet, nec sit pulvinar.
@@ -94,7 +106,11 @@ const Contact = () => {
       </header>
 
       <main>
-        <div className="bg-blue-gray-50 dark:bg-gray-800">
+        <div
+          className={`${
+            storedTheme === "light" ? "bg-blue-gray-50" : "bg-gray-800"
+          }`}
+        >
           {/* Cards */}
           <section
             className="-mt-32 max-w-md mx-auto relative z-10 px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8"
@@ -107,7 +123,11 @@ const Contact = () => {
               {supportLinks.map((link) => (
                 <div
                   key={link.name}
-                  className="flex flex-col bg-white dark:bg-indigo-700 rounded-2xl shadow-xl"
+                  className={`${
+                    storedTheme === "light"
+                      ? "flex flex-col bg-white rounded-2xl shadow-xl"
+                      : "flex flex-col bg-indigo-700 rounded-2xl shadow-xl"
+                  }`}
                 >
                   <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
                     <div className="absolute top-0 p-5 inline-block bg-blue-600 rounded-xl shadow-lg transform -translate-y-1/2">
@@ -116,17 +136,33 @@ const Contact = () => {
                         aria-hidden="true"
                       />
                     </div>
-                    <h3 className="text-xl font-medium text-blue-gray-900 dark:text-white">
+                    <h3
+                      className={`${
+                        storedTheme === "light"
+                          ? "text-xl font-medium text-blue-gray-900"
+                          : "text-xl font-medium text-white"
+                      }`}
+                    >
                       {link.name}
                     </h3>
-                    <p className="mt-4 text-base text-blue-gray-500 dark:text-gray-200">
+                    <p
+                      className={`${
+                        storedTheme === "light"
+                          ? "mt-4 text-base text-blue-gray-500"
+                          : "mt-4 text-base text-blue-gray-200"
+                      }`}
+                    >
                       {link.description}
                     </p>
                   </div>
                   <div className="p-6 bg-blue-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
                     <a
                       href={link.href}
-                      className="text-base font-medium text-blue-700 hover:text-blue-600 dark:text-gray-50"
+                      className={`${
+                        storedTheme === "light"
+                          ? "text-base font-medium text-blue-700 hover:text-blue-600"
+                          : "text-base font-medium text-gray-50 hover:text-red-200"
+                      }`}
                     >
                       Contact us<span aria-hidden="true"> &rarr;</span>
                     </a>
@@ -142,7 +178,11 @@ const Contact = () => {
             aria-labelledby="faq-heading"
           >
             <h2
-              className="text-3xl font-extrabold text-blue-gray-900 dark:text-white"
+              className={`${
+                storedTheme === "light"
+                  ? "text-3xl font-extrabold text-blue-gray-900"
+                  : "text-3xl font-extrabold text-white"
+              }`}
               id="faq-heading"
             >
               Frequently asked questions
@@ -151,10 +191,22 @@ const Contact = () => {
               <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:grid-rows-2 md:gap-x-8 md:gap-y-12">
                 {faqs.map((faq) => (
                   <div key={faq.id}>
-                    <dt className="text-lg font-medium text-blue-gray-900 dark:text-gray-200">
+                    <dt
+                      className={`${
+                        storedTheme === "light"
+                          ? "text-lg font-medium text-blue-gray-900"
+                          : "text-lg font-medium text-gray-200"
+                      }`}
+                    >
                       {faq.question}
                     </dt>
-                    <dd className="mt-2 text-base text-blue-gray-500 dark:text-gray-400">
+                    <dd
+                      className={`${
+                        storedTheme === "light"
+                          ? "mt-2 text-base text-blue-gray-500"
+                          : "mt-2 text-base text-gray-400"
+                      }`}
+                    >
                       {faq.answer}
                     </dd>
                   </div>
@@ -166,7 +218,11 @@ const Contact = () => {
 
         {/* CTA Section */}
         <section
-          className="relative bg-white dark:bg-gray-800"
+          className={`${
+            storedTheme === "light"
+              ? "relative bg-white"
+              : "relative bg-gray-800"
+          }`}
           aria-labelledby="join-heading"
         >
           <div

@@ -41,18 +41,30 @@ const people = [
   },
 ];
 
-const TeamSection = () => {
+const TeamSection = ({ storedTheme }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-white dark:bg-gray-900">
+    <div className={`${storedTheme === "light" ? "bg-white" : "bg-gray-900"}`}>
       <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
           <div className="space-y-5 sm:space-y-4">
-            <h2 className="text-3xl font-extrabold dark:text-gray-50 tracking-tight sm:text-4xl">
+            <h2
+              className={`${
+                storedTheme === "light"
+                  ? "text-3xl font-extrabold tracking-tight sm:text-4xl"
+                  : "text-3xl font-extrabold text-gray-50 tracking-tight sm:text-4xl"
+              }`}
+            >
               {t("about_page.team_section_title")}
             </h2>
-            <p className="text-xl text-gray-500 dark:text-gray-300">
+            <p
+              className={`${
+                storedTheme === "light"
+                  ? "text-xl text-gray-500"
+                  : "text-xl text-gray-300"
+              }`}
+            >
               {t("about_page.team_section_desc")}
             </p>
           </div>
@@ -68,7 +80,13 @@ const TeamSection = () => {
                       height={80}
                       width={80}
                     />
-                    <div className="font-medium text-lg dark:text-gray-200 leading-6 space-y-1">
+                    <div
+                      className={`${
+                        storedTheme === "light"
+                          ? "font-medium text-lg leading-6 space-y-1"
+                          : "font-medium text-lg text-gray-200 leading-6 space-y-1"
+                      }`}
+                    >
                       <h3>{person.name}</h3>
                       <p className="text-indigo-600">{person.role}</p>
                     </div>
