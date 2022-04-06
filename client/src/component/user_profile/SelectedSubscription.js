@@ -18,9 +18,10 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
     <>
       {/* Split brand panel */}
       <div
-        // className="relative bg-white mb-3"
         className={`relative mb-3 ${
-          storedTheme === "light" ? "bg-white" : "bg-gray-900"
+          storedTheme === "light"
+            ? "bg-white transition-colors duration-300"
+            : "bg-gray-900 transition-colors duration-300"
         }`}
       >
         {!selectedPackage ? (
@@ -36,13 +37,17 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
               <div
                 // className="bg-white  sm:py-24 sm:px-6 lg:px-0 lg:pr-8"
                 className={`sm:py-24 sm:px-6 lg:px-0 lg:pr-8 ${
-                  storedTheme === "light" ? "bg-white" : "bg-gray-800"
+                  storedTheme === "light"
+                    ? "bg-white transition-colors duration-300"
+                    : "bg-gray-800 transition-colors duration-300"
                 }`}
               >
                 <div
                   // className="bg-white shadow overflow-hidden sm:rounded-lg"
                   className={`shadow overflow-hidden sm:rounded-lg ${
-                    storedTheme === "light" ? "bg-white" : "bg-gray-800"
+                    storedTheme === "light"
+                      ? "bg-white transition-colors duration-300"
+                      : "bg-gray-800 transition-colors duration-300"
                   }`}
                 >
                   <div className="px-4 py-5 sm:px-6">

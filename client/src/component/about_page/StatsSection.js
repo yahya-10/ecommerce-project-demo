@@ -13,6 +13,8 @@ const StatsSection = () => {
           className="w-full h-full object-cover"
           src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
           alt="Support team"
+          height={551}
+          width={536}
         />
       </div>
       <div className="relative max-w-7xl mx-auto px-4 py-8 sm:py-12 sm:px-6 lg:py-16">

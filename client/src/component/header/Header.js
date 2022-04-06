@@ -36,10 +36,11 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
   return (
     <div>
       <div
+        // className="relative bg-gray-50 dark:bg-gray-800 transition-colors duration-300 overflow-hidden"
         className={`${
           storedTheme === "light"
-            ? "relative bg-gray-50 overflow-hidden"
-            : "relative bg-gray-800 overflow-hidden"
+            ? "relative bg-gray-50 transition-colors duration-300 overflow-hidden"
+            : "relative bg-gray-800 transition-colors duration-300 overflow-hidden"
         }`}
       >
         <div
@@ -175,7 +176,7 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                     </Link>
                   ))}
                 </div>
-                <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+                <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0 transition duration-300">
                   {isAuth ? (
                     <div className="flex items-center space-x-4 lg:space-x-6">
                       <span className="inline-flex shadow" onClick={logOut}>
@@ -215,14 +216,14 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                   {storedTheme === "dark" ? (
                     <SunIcon
                       style={{ color: "#fcec05" }}
-                      className="h-6 w-6 ml-3"
+                      className="h-6 w-6 ml-3 transition duration-500"
                       aria-hidden="true"
                       onClick={() => setTheme("light")}
                     />
                   ) : (
                     <MoonIcon
                       style={{ color: "#2b313b" }}
-                      className="h-6 w-6 ml-3"
+                      className="h-6 w-6 ml-3 transition duration-500"
                       aria-hidden="true"
                       onClick={() => setTheme("dark")}
                     />
@@ -264,8 +265,8 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                   // className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50"
                   className={`${
                     storedTheme === "light"
-                      ? "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50"
-                      : "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gray-700 divide-y-2 divide-gray-800"
+                      ? "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white transition-colors duration-300 divide-y-2 divide-gray-50"
+                      : "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gray-700 transition-colors duration-300 divide-y-2 divide-gray-800"
                   }`}
                 >
                   <div className="pt-5 pb-6 px-5">

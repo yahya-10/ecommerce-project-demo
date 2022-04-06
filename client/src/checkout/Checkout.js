@@ -76,7 +76,13 @@ const Checkout = ({ storedTheme }) => {
   };
 
   return (
-    <div className={`${storedTheme === "light" ? "bg-white" : "bg-gray-900"}`}>
+    <div
+      className={`${
+        storedTheme === "light"
+          ? "bg-white transition-colors duration-300"
+          : "bg-gray-900 transition-colors duration-300"
+      }`}
+    >
       <Steps stage={"04"} />
       {/* Payment Form */}
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">

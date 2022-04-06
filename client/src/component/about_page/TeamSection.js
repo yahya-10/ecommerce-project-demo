@@ -65,6 +65,8 @@ const TeamSection = () => {
                       className="w-16 h-16 rounded-full lg:w-20 lg:h-20"
                       src={person.imageUrl}
                       alt=""
+                      height={80}
+                      width={80}
                     />
                     <div className="font-medium text-lg dark:text-gray-200 leading-6 space-y-1">
                       <h3>{person.name}</h3>

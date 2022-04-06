@@ -57,8 +57,8 @@ const TransactionsTable = ({ storedTheme }) => {
           // className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200"
           className={`"col-span-1 rounded-lg shadow divide-y " ${
             storedTheme === "light"
-              ? "bg-white divide-gray-200"
-              : "bg-gray-600 divide-gray-400"
+              ? "bg-white divide-gray-200 transition-colors duration-300"
+              : "bg-gray-600 divide-gray-400 transition-colors duration-300"
           }`}
         >
           <div className="w-full flex items-center justify-between p-6 space-x-6">

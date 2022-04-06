@@ -112,7 +112,11 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
 
   return (
     <div
-      className={`${storedTheme === "light" ? "bg-gray-50" : "bg-gray-900"}`}
+      className={`${
+        storedTheme === "light"
+          ? "bg-gray-50 transition-colors duration-300"
+          : "bg-gray-900 transition-colors duration-300"
+      }`}
     >
       <div className="mb-5">
         <Steps storedTheme={storedTheme} stage={"02"} />
@@ -147,8 +151,8 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
               <div
                 className={`${
                   storedTheme === "light"
-                    ? "relative flex-1 flex flex-col max-w-xs w-full bg-white focus:outline-none"
-                    : "relative flex-1 flex flex-col max-w-xs w-full bg-black focus:outline-none"
+                    ? "relative flex-1 flex flex-col max-w-xs w-full bg-white transition-colors duration-300 focus:outline-none"
+                    : "relative flex-1 flex flex-col max-w-xs w-full bg-black transition-colors duration-300 focus:outline-none"
                 }`}
               >
                 <Transition.Child
@@ -232,8 +236,8 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
             <div
               className={`flex-1 flex flex-col min-h-0 border-r ${
                 storedTheme === "light"
-                  ? "border-gray-200 bg-gray-100"
-                  : "border-gray-500 bg-gray-600"
+                  ? "border-gray-200 bg-gray-100 transition-colors duration-300"
+                  : "border-gray-500 bg-gray-600 transition-colors duration-300"
               }`}
             >
               <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">

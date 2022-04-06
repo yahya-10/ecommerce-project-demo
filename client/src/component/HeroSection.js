@@ -11,8 +11,8 @@ const HeroSection = ({ storedTheme }) => {
     <div
       className={`${
         storedTheme === "light"
-          ? "relative bg-gray-50 overflow-hidden py-5"
-          : "relative bg-gray-800 overflow-hidden py-5"
+          ? "relative bg-gray-50 transition-colors duration-300 overflow-hidden py-5"
+          : "relative bg-gray-800 transition-colors duration-300 overflow-hidden py-5"
       }`}
     >
       <div

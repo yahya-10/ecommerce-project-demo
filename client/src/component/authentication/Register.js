@@ -93,8 +93,8 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
       <div
         className={`${
           storedTheme === "light"
-            ? "min-h-full flex bg-gray-50"
-            : "min-h-full flex bg-gray-800"
+            ? "min-h-full flex bg-gray-50 transition-colors duration-300"
+            : "min-h-full flex bg-gray-800 transition-colors duration-300"
         }`}
       >
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">

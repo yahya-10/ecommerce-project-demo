@@ -14,11 +14,21 @@ const UserValidationPage = ({ storedTheme }) => {
   }, []);
 
   return (
-    <div className={`${storedTheme === "light" ? "bg-white" : "bg-gray-900"}`}>
+    <div
+      className={`${
+        storedTheme === "light"
+          ? "bg-white transition-colors duration-300"
+          : "bg-gray-900 transition-colors duration-300"
+      }`}
+    >
       <Steps stage={"03"} />
       <div
         // className="bg-red-200"
-        className={`${storedTheme === "light" ? "bg-white" : "bg-gray-900"}`}
+        className={`${
+          storedTheme === "light"
+            ? "bg-white transition-colors duration-300"
+            : "bg-gray-900 transition-colors duration-300"
+        }`}
       >
         <main className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl mx-auto py-16 sm:py-24">

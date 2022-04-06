@@ -119,6 +119,8 @@ const AboutPage = () => {
                     src="https://tailwindui.com/img/logos/workcation-logo-indigo-600-mark-gray-800-and-indigo-600-text.svg"
                     alt="Workcation"
                     className="h-8"
+                    height={80}
+                    width={80}
                   />
                   <div className="relative text-lg text-gray-700 font-medium mt-8">
                     <svg
@@ -143,6 +145,8 @@ const AboutPage = () => {
                       className="w-12 h-12 sm:w-20 sm:h-20 rounded-full bg-indigo-300"
                       src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2.5&w=160&h=160&q=80"
                       alt=""
+                      height={3050}
+                      width={2440}
                     />
                   </div>
                   <span className="relative ml-4 text-indigo-300 font-semibold leading-6 sm:ml-24 sm:pl-1">

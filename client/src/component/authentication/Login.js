@@ -84,8 +84,8 @@ const Login = ({ setToken, storedTheme }) => {
         // className="min-h-full flex dark:bg-gray-800 bg-gray-50"
         className={`${
           storedTheme === "light"
-            ? "min-h-full flex bg-gray-50"
-            : "min-h-full flex bg-gray-800"
+            ? "min-h-full flex bg-gray-50 transition-colors duration-300"
+            : "min-h-full flex bg-gray-800 transition-colors duration-300"
         }`}
       >
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
@@ -140,8 +140,8 @@ const Login = ({ setToken, storedTheme }) => {
                         // className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                         className={`${
                           storedTheme === "light"
-                            ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-                            : "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-gray-300 text-sm font-medium text-gray-500 hover:bg-gray-50"
+                            ? "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white transition-colors duration-300 text-sm font-medium text-gray-500 hover:bg-gray-50"
+                            : "w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-gray-300 transition-colors duration-300 text-sm font-medium text-gray-500 hover:bg-gray-50"
                         }`}
                       >
                         <span className="sr-only">Sign in with Facebook</span>

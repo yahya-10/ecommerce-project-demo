@@ -25,7 +25,13 @@ const SuccessfullPayment = ({ storedTheme }) => {
 
   // console.log("successfull payment comp");
   return (
-    <div className={`${storedTheme === "light" ? "bg-white" : "bg-gray-900"}`}>
+    <div
+      className={`${
+        storedTheme === "light"
+          ? "bg-white transition-colors duration-300"
+          : "bg-gray-900 transition-colors duration-300"
+      }`}
+    >
       <Steps stage={"05"} />
       <Notification />
       <div id="printable-area" className="mt-5 px-4 sm:px-6 lg:px-8">

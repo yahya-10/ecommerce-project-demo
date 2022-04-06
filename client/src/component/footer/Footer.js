@@ -52,7 +52,11 @@ const Footer = ({ storedTheme }) => {
   return (
     <footer
       aria-labelledby="footer-heading"
-      className={`${storedTheme === "light" ? "bg-gray-50" : "bg-gray-800"}`}
+      className={`${
+        storedTheme === "light"
+          ? "bg-gray-50 transition-colors duration-300"
+          : "bg-gray-800 transition-colors duration-300"
+      }`}
     >
       <h2 id="footer-heading" className="sr-only">
         Footer

@@ -205,7 +205,11 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
       </div>
       <div
         // className="bg-gray-50"
-        className={`${storedTheme === "light" ? "bg-gray-50" : "bg-gray-800"}`}
+        className={`${
+          storedTheme === "light"
+            ? "bg-gray-50 transition-colors duration-300"
+            : "bg-gray-800 transition-colors duration-300"
+        }`}
       >
         <main>
           {/* Pricing section */}
@@ -214,8 +218,8 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
               // className="relative bg-gray-50"
               className={`${
                 storedTheme === "light"
-                  ? "relative bg-gray-50"
-                  : "relative bg-gray-800"
+                  ? "relative bg-gray-50 transition-colors duration-300"
+                  : "relative bg-gray-800 transition-colors duration-300"
               }`}
             >
               {/* Overlapping background */}
