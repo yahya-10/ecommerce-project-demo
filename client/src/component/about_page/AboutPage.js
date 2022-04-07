@@ -8,7 +8,7 @@ import TeamSection from "./TeamSection";
 
 const AboutPage = ({ storedTheme }) => {
   const { t } = useTranslation();
-  console.log("about page rendered");
+  // console.log("about page rendered");
   return (
     <div className="">
       <main

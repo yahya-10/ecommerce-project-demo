@@ -80,7 +80,7 @@ const Login = ({ setToken, storedTheme }) => {
     },
   };
 
-  console.log("login.js", "login comp rendered");
+  // console.log("login.js", "login comp rendered");
 
   return (
     <>

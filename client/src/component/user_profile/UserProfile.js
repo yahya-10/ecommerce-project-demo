@@ -45,19 +45,42 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
 
   const myRef = useRef();
 
+  // const notNull = (value) => {
+  //   if(value.length == 0){
+  //     return "Shouldn't be empty"
+  //   }
+  // }
+
   // User's inputs controllers with yup.
   const requiredMessage = "This field is required";
+  const regex = /^(?!\s*$).+/;
   const validationSchema = Yup.object({
-    companyName: Yup.string().required(requiredMessage),
-    about: Yup.string().required(requiredMessage),
-    firstName: Yup.string().required(requiredMessage),
-    lastName: Yup.string().required(requiredMessage),
+    companyName: Yup.string()
+      .matches(regex, "Shouldn't be empty")
+      .required(requiredMessage),
+    about: Yup.string()
+      .matches(regex, "Shouldn't be empty")
+      .required(requiredMessage),
+    firstName: Yup.string()
+      .matches(regex, "Shouldn't be empty")
+      .required(requiredMessage),
+    lastName: Yup.string()
+      .matches(regex, "Shouldn't be empty")
+      .required(requiredMessage),
     emailAddress: Yup.string().email().required(requiredMessage),
     country: Yup.string().required(requiredMessage),
-    streetAddress: Yup.string().required(requiredMessage),
-    city: Yup.string().required(requiredMessage),
-    state: Yup.string().required(requiredMessage),
-    zip: Yup.string().required(requiredMessage),
+    streetAddress: Yup.string()
+      .matches(regex, "Shouldn't be empty")
+      .required(requiredMessage),
+    city: Yup.string()
+      .matches(regex, "Shouldn't be empty")
+      .required(requiredMessage),
+    state: Yup.string()
+      .matches(regex, "Shouldn't be empty")
+      .required(requiredMessage),
+    zip: Yup.string()
+      .matches(regex, "Shouldn't be empty")
+      .required(requiredMessage),
   });
 
   const navigation = [

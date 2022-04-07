@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
@@ -31,9 +31,9 @@ const Checkout = ({ storedTheme }) => {
   /**
    * Payment Submit handler
    */
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    //Change the text of the button to tell that the payment is on action.
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    //Change the text of the button to tell that payment is on action.
     setIsLoading(true);
 
     // Disable form submission until Stripe.js has loaded.
@@ -55,7 +55,7 @@ const Checkout = ({ storedTheme }) => {
       email: email,
     });
 
-    //client_secret object with all the information needed.
+    //client_secret object with all the needed informations.
     const clientSecret = response.data["client_secret"];
 
     const result = await stripe.confirmCardPayment(clientSecret, {
@@ -75,6 +75,14 @@ const Checkout = ({ storedTheme }) => {
     setIsLoading(false);
   };
 
+  useEffect(() => {
+    let abortController = new AbortController();
+    // handleSubmit();
+    return () => {
+      abortController.abort();
+    };
+  });
+
   return (
     <div
       className={`${
@@ -87,10 +95,10 @@ const Checkout = ({ storedTheme }) => {
       {/* Payment Form */}
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-gradient-to-b from-blue-500 to-gray-500 py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={(evt) => handleSubmit(evt)} className="space-y-6">
             <label
               htmlFor="fullname"
-              className="mt-3 block text-sm font-medium text-gray-700"
+              className="mt-3 block text-sm font-medium text-gray-900"
             >
               Full Name
             </label>
@@ -108,7 +116,7 @@ const Checkout = ({ storedTheme }) => {
             </div>
             <label
               htmlFor="email"
-              className="mt-3 block text-sm font-medium text-gray-700"
+              className="mt-3 block text-sm font-medium text-gray-900"
             >
               Email
             </label>

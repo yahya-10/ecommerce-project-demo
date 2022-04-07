@@ -10,7 +10,7 @@ const UserHistory = ({ storedTheme }) => {
   // Toggle between charts icons.
   const [displayPieChart, setDisplayPiChart] = useState(false);
 
-  console.log("userHistory", displayPieChart);
+  // console.log("userHistory", displayPieChart);
   return (
     <div className="mx-3 my-3">
       <TransactionsTable storedTheme={storedTheme} />
