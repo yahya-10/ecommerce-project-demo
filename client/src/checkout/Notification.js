@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/outline";
 import { XIcon } from "@heroicons/react/solid";
 
-const Notification = () => {
+const Notification = ({ storedTheme }) => {
   const [show, setShow] = useState(true);
 
   return (
@@ -25,7 +25,13 @@ const Notification = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+            <div
+              className={`${
+                storedTheme === "light"
+                  ? "max-w-sm w-full bg-white transition-colors duration-300 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden"
+                  : "max-w-sm w-full bg-indigo-100 transition-colors duration-300 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden"
+              }`}
+            >
               <div className="p-4">
                 <div className="flex items-start">
                   <div className="flex-shrink-0">

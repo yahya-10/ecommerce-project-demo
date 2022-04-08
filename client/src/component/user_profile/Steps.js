@@ -31,20 +31,27 @@ const Steps = ({ stage, storedTheme }) => {
     },
   ];
 
+  // console.log(storedTheme);
+
   return (
     <div
-      className="lg:border-t lg:border-b lg:border-gray-200"
-      // className={`"${
-      //   storedTheme === "light"
-      //     ? "lg:border-t lg:border-b lg:border-gray-200"
-      //     : "lg:border-t lg:border-b lg:border-gray-600"
-      // }"`}
+      className={`${
+        storedTheme === "light"
+          ? "lg:border-t lg:border-b lg:border-gray-200"
+          : "lg:border-t lg:border-b lg:border-gray-700"
+      }`}
     >
       <nav
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         aria-label="Progress"
       >
-        <ol className="rounded-md overflow-hidden lg:flex lg:border-l lg:border-r lg:border-gray-200 lg:rounded-none">
+        <ol
+          className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+            storedTheme === "light"
+              ? "rounded-md overflow-hidden lg:flex lg:border-l lg:border-r lg:border-gray-200 lg:rounded-none"
+              : "rounded-md overflow-hidden lg:flex lg:border-l lg:border-r lg:border-gray-700 lg:rounded-none"
+          }`}
+        >
           {steps.map((step, stepIdx) => (
             <li key={step.id} className="relative overflow-hidden lg:flex-1">
               <div

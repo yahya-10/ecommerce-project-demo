@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.avif";
@@ -22,6 +22,8 @@ import { Link } from "react-router-dom";
  */
 
 const Header = ({ storedTheme, setTheme, isAuth }) => {
+  // const [showNavMenu, setShowNavMenu] = useState(false);
+
   const { t } = useTranslation();
 
   const navigation = [
@@ -31,7 +33,7 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
     { name: t("header.nav_support"), href: "/contact" },
   ];
 
-  // console.log(isAuth);
+  // console.log(showNavMenu);
 
   return (
     <div>
@@ -154,7 +156,11 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                         }`}
                       >
                         <span className="sr-only">Open main menu</span>
-                        <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                        <MenuIcon
+                          className="h-6 w-6"
+                          aria-hidden="true"
+                          // onClick={() => setShowNavMenu(!showNavMenu)}
+                        />
                       </Popover.Button>
                     </div>
                   </div>
@@ -289,27 +295,36 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                             href={item.href}
                             className="-m-3 p-3 flex items-center hover:bg-gray-50"
                           >
-                            <span className="ml-3 text-base font-medium text-gray-900">
+                            <span
+                              // className="ml-3 text-base font-medium text-gray-900"
+                              className={`${
+                                storedTheme === "light"
+                                  ? "ml-3 text-base font-medium text-gray-900"
+                                  : "ml-3 text-base font-medium text-gray-50"
+                              }`}
+                            >
                               {item.name}
                             </span>
                           </a>
                         ))}
-                        <LangDropDown />
-                        {storedTheme === "dark" ? (
-                          <SunIcon
-                            style={{ color: "#fcec05" }}
-                            className="h-6 w-6 ml-3"
-                            aria-hidden="true"
-                            onClick={() => setTheme("light")}
-                          />
-                        ) : (
-                          <MoonIcon
-                            style={{ color: "#2b313b" }}
-                            className="h-6 w-6 ml-3"
-                            aria-hidden="true"
-                            onClick={() => setTheme("dark")}
-                          />
-                        )}
+                        <div className="flex justify-center items-center">
+                          <LangDropDown />
+                          {storedTheme === "dark" ? (
+                            <SunIcon
+                              style={{ color: "#fcec05" }}
+                              className="h-6 w-6 ml-3"
+                              aria-hidden="true"
+                              onClick={() => setTheme("light")}
+                            />
+                          ) : (
+                            <MoonIcon
+                              style={{ color: "#2b313b" }}
+                              className="h-6 w-6 ml-3"
+                              aria-hidden="true"
+                              onClick={() => setTheme("dark")}
+                            />
+                          )}
+                        </div>
                       </nav>
                     </div>
                   </div>

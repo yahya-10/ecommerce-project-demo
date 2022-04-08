@@ -45,41 +45,41 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
 
   const myRef = useRef();
 
-  // const notNull = (value) => {
-  //   if(value.length == 0){
-  //     return "Shouldn't be empty"
-  //   }
-  // }
-
   // User's inputs controllers with yup.
   const requiredMessage = "This field is required";
-  const regex = /^(?!\s*$).+/;
+  const emptyFieldRegex = /^(?!\s*$).+/;
+  const phoneNumberRegex =
+    /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
+
   const validationSchema = Yup.object({
     companyName: Yup.string()
-      .matches(regex, "Shouldn't be empty")
+      .matches(emptyFieldRegex, "Shouldn't be empty")
       .required(requiredMessage),
     about: Yup.string()
-      .matches(regex, "Shouldn't be empty")
+      .matches(emptyFieldRegex, "Shouldn't be empty")
       .required(requiredMessage),
     firstName: Yup.string()
-      .matches(regex, "Shouldn't be empty")
+      .matches(emptyFieldRegex, "Shouldn't be empty")
       .required(requiredMessage),
     lastName: Yup.string()
-      .matches(regex, "Shouldn't be empty")
+      .matches(emptyFieldRegex, "Shouldn't be empty")
       .required(requiredMessage),
     emailAddress: Yup.string().email().required(requiredMessage),
+    phone: Yup.string()
+      .matches(phoneNumberRegex, "Invalid phone number")
+      .required(requiredMessage),
     country: Yup.string().required(requiredMessage),
     streetAddress: Yup.string()
-      .matches(regex, "Shouldn't be empty")
+      .matches(emptyFieldRegex, "Shouldn't be empty")
       .required(requiredMessage),
     city: Yup.string()
-      .matches(regex, "Shouldn't be empty")
+      .matches(emptyFieldRegex, "Shouldn't be empty")
       .required(requiredMessage),
     state: Yup.string()
-      .matches(regex, "Shouldn't be empty")
+      .matches(emptyFieldRegex, "Shouldn't be empty")
       .required(requiredMessage),
     zip: Yup.string()
-      .matches(regex, "Shouldn't be empty")
+      .matches(emptyFieldRegex, "Shouldn't be empty")
       .required(requiredMessage),
   });
 
@@ -128,6 +128,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
       firstName: "",
       lastName: "",
       emailAddress: "",
+      phone: "",
       country: "",
       streetAddress: "",
       city: "",
@@ -147,12 +148,14 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
     fontSize: "2 rem",
   };
 
+  // console.log("userProfile.js", storedTheme);
+
   return (
     <div
       className={`${
         storedTheme === "light"
           ? "bg-gray-50 transition-colors duration-300"
-          : "bg-gray-900 transition-colors duration-300"
+          : "bg-gray-800 transition-colors duration-300"
       }`}
     >
       <div className="mb-5">
@@ -308,27 +311,6 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                     aria-hidden="true"
                   />
                 </nav>
-              </div>
-              <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-                <a href="/" className="flex-shrink-0 w-full group block">
-                  <div className="flex items-center">
-                    <div>
-                      <img
-                        className="inline-block h-9 w-9 rounded-full"
-                        src=""
-                        alt=""
-                      />
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                        user name
-                      </p>
-                      <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
-                        View profile
-                      </p>
-                    </div>
-                  </div>
-                </a>
               </div>
             </div>
           </div>
@@ -608,6 +590,36 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                         {formik.touched.emailAddress &&
                         formik.errors.emailAddress ? (
                           <div style={styles}>{formik.errors.emailAddress}</div>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                      <label
+                        htmlFor="phone"
+                        className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+                          storedTheme === "light"
+                            ? "text-gray-700"
+                            : "text-gray-50"
+                        }`}
+                      >
+                        {/* {t("email")} */}
+                        Phone
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2">
+                        <input
+                          id="phone"
+                          name="phone"
+                          type="phone"
+                          autoComplete="phone"
+                          disabled={disableFields}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.phone}
+                          className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                        />
+                        {formik.touched.phone && formik.errors.phone ? (
+                          <div style={styles}>{formik.errors.phone}</div>
                         ) : null}
                       </div>
                     </div>

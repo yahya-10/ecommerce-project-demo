@@ -272,11 +272,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                         onBlur={formik.handleBlur}
                         autoComplete="fullName"
                         required
-                        className={`${
-                          storedTheme === "light"
-                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        }`}
+                        className="appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
                     {formik.touched.fullName && formik.errors.fullName ? (
@@ -305,11 +301,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                         onBlur={formik.handleBlur}
                         autoComplete=""
                         required
-                        className={`${
-                          storedTheme === "light"
-                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        }`}
+                        className="appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
                     {formik.touched.companyName && formik.errors.companyName ? (
@@ -340,11 +332,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                         onBlur={formik.handleBlur}
                         autoComplete="email"
                         required
-                        className={`${
-                          storedTheme === "light"
-                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        }`}
+                        className="appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
                     {formik.touched.email && formik.errors.email ? (
@@ -374,11 +362,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                         onBlur={formik.handleBlur}
                         autoComplete="current-password"
                         required
-                        className={`${
-                          storedTheme === "light"
-                            ? "appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            : "appearance-none block w-full px-3 py-2 border border-gray-800 shadow-sm bg-gray-400 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        }`}
+                        className="appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
                     {formik.touched.password && formik.errors.password ? (

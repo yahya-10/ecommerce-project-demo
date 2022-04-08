@@ -7,7 +7,7 @@ const LogoClouds = () => {
   const { t } = useTranslation();
   return (
     <div className="bg-gradient-to-r from-indigo-500 to-indigo-800">
-      <div className="max-w-7xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8 sm:justify-center">
         <h2 className="text-3xl font-extrabold text-white">
           {t("logo_cloud")}
         </h2>

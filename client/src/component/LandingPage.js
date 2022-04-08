@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 
 import { Link } from "react-router-dom";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
@@ -7,7 +7,8 @@ import { motion } from "framer-motion";
 
 import HeroSection from "./HeroSection";
 import LogoClouds from "./LogoClouds";
-import LandingPageChart from "./charts/LandingPageChart";
+
+const LandingPageChart = lazy(() => import("./charts/LandingPageChart"));
 
 /**
  * @public

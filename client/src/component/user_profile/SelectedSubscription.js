@@ -21,7 +21,7 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
         className={`relative mb-3 ${
           storedTheme === "light"
             ? "bg-white transition-colors duration-300"
-            : "bg-gray-900 transition-colors duration-300"
+            : "bg-gray-800 transition-colors duration-300"
         }`}
       >
         {!selectedPackage ? (
@@ -107,7 +107,8 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                       </div>
                       <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt className="text-sm font-medium text-gray-500">
-                          {t("sum_section.num_of_licenses")}
+                          {/* {t("sum_section.num_of_licenses")} */}
+                          Phone
                         </dt>
                         <dd
                           className={`mt-1 text-sm sm:mt-0 sm:col-span-2 ${
@@ -116,7 +117,7 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                               : "text-gray-200"
                           }`}
                         >
-                          80
+                          {data.phone}
                         </dd>
                       </div>
                       <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
