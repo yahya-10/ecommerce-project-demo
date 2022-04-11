@@ -277,7 +277,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
               className={`flex-1 flex flex-col min-h-0 border-r ${
                 storedTheme === "light"
                   ? "border-gray-200 bg-gray-100 transition-colors duration-300"
-                  : "border-gray-500 bg-gray-600 transition-colors duration-300"
+                  : "border-gray-500 bg-gray-700 transition-colors duration-300"
               }`}
             >
               <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">

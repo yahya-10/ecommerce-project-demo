@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -348,7 +348,6 @@ const Login = ({ setToken, storedTheme }) => {
                       </Link>
                     </div>
                   </div>
-
                   <div>
                     <button
                       type="submit"

@@ -132,7 +132,12 @@ const AboutPage = ({ storedTheme }) => {
                       y={0}
                       width={4}
                       height={4}
-                      className="text-gray-200 dark:text-gray-800"
+                      // className="text-gray-200 dark:text-gray-800"
+                      className={`${
+                        storedTheme === "light"
+                          ? "text-gray-200"
+                          : "text-gray-700"
+                      }`}
                       fill="currentColor"
                     />
                   </pattern>

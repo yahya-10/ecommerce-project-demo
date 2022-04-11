@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 
 import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.avif";
@@ -21,9 +21,7 @@ import { Link } from "react-router-dom";
  * this function
  */
 
-const Header = ({ storedTheme, setTheme, isAuth }) => {
-  // const [showNavMenu, setShowNavMenu] = useState(false);
-
+const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
   const { t } = useTranslation();
 
   const navigation = [
@@ -73,7 +71,7 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                     className={`${
                       storedTheme === "light"
                         ? "text-gray-200"
-                        : "text-gray-800"
+                        : "text-gray-700"
                     }`}
                     fill="currentColor"
                   />
@@ -109,7 +107,7 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                     className={`${
                       storedTheme === "light"
                         ? "text-gray-200"
-                        : "text-gray-800"
+                        : "text-gray-700"
                     }`}
                     fill="currentColor"
                   />
@@ -237,14 +235,14 @@ const Header = ({ storedTheme, setTheme, isAuth }) => {
                   {/* <div className="inline-flex rounded-md shadow">
                     <Link
                       to="/store/cart"
-                      className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
-                    >
-                      <span className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
-                        <ShoppingCartIcon
-                          className="flex-shrink-0 h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      </span> */}
+                      className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-indigo-600 bg-white hover:bg-gray-50"
+                    > */}
+                  {/* <span className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"> */}
+                  {/* <ShoppingCartIcon
+                        className="flex-shrink-0 h-5 w-5"
+                        aria-hidden="true"
+                      /> */}
+                  {/* </span> */}
                   {/* Display the number of items in the cart */}
                   {/* <span>{listItems.length}</span>
                     </Link>

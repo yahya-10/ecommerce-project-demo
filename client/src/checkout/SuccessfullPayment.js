@@ -1,8 +1,8 @@
-import { useRef } from "react";
 import Steps from "../component/user_profile/Steps";
 import Notification from "./Notification";
 
-import ReactToPrint from "react-to-print";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 /**
  *
@@ -21,9 +21,16 @@ const SuccessfullPayment = ({ storedTheme }) => {
     // More projects...
   ];
 
-  let componentRef = useRef();
+  const doc = new jsPDF();
 
-  // console.log("successfull payment comp");
+  const save = () => {
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+    doc.autoTable({ html: "#invoice-field" });
+    doc.save(`invoice-${today.toISOString()}.pdf`);
+  };
+
+  // console.log("successfull payment comp", <Invoice />);
   return (
     <div
       className={`${
@@ -52,30 +59,22 @@ const SuccessfullPayment = ({ storedTheme }) => {
               <time dateTime="2022-08-31">August 31, 2022</time>.
             </p>
           </div>
-          {/* Enable the customer to download the invoice on his device. */}
-          <ReactToPrint
-            trigger={() => {
-              return (
-                <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                  <button
-                    type="button"
-                    className="inline-flex items-center justify-center border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-                  >
-                    {/* <a href="#" download="Invoice.pdf"> */}
-                    Download
-                    {/* </a> */}
-                  </button>
-                </div>
-              );
-            }}
-            content={() => componentRef}
-          />
+          <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+            <button
+              type="button"
+              onClick={save}
+              className="inline-flex items-center justify-center border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+            >
+              Download
+            </button>
+          </div>
         </div>
         <div className="-mx-4 mt-8 flex flex-col sm:-mx-6 md:mx-0">
           <table
-            ref={(el) => (componentRef = el)}
+            id="invoice-field"
             className="min-w-full divide-y divide-gray-300"
           >
+            {/* <Invoice />  */}
             <thead>
               <tr>
                 <th
