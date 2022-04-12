@@ -90,14 +90,16 @@ const App = () => {
 
   return (
     <div>
-      <Header
-        AddItemToList={handleAddItemToList}
-        RemoveItemFromList={handleRemoveItemFromList}
-        listItems={listItems}
-        storedTheme={storedTheme}
-        setTheme={setTheme}
-        isAuth={isAuth}
-      />
+      <div>
+        <Header
+          AddItemToList={handleAddItemToList}
+          RemoveItemFromList={handleRemoveItemFromList}
+          listItems={listItems}
+          storedTheme={storedTheme}
+          setTheme={setTheme}
+          isAuth={isAuth}
+        />
+      </div>
       <Routes>
         <Route
           exact

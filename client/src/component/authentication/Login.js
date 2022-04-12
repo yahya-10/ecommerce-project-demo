@@ -27,8 +27,8 @@ const loginUser = async (credentials) => {
 };
 
 const Login = ({ setToken, storedTheme }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email] = useState("");
+  const [password] = useState("");
   const [showingPwd, setShowingPwd] = useState(false);
 
   // User's inputs controllers with yup.

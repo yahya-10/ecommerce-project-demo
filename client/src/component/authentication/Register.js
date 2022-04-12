@@ -27,10 +27,10 @@ const registerUser = async (userData) => {
 };
 
 const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
-  const [fullName, setFullName] = useState();
-  const [companyName, setCompanyName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [fullName] = useState();
+  const [companyName] = useState();
+  const [email] = useState();
+  const [password] = useState();
 
   // User's inputs controllers with yup.
   const requiredMessage = "This field is required";
@@ -51,7 +51,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
     if (isAuth && isAuth !== "undefined") {
       navigate(`/`);
     }
-  }, []);
+  });
 
   // useFormik will return all Formik state and helpers directly.
   const formik = useFormik({

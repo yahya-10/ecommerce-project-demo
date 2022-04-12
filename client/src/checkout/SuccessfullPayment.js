@@ -21,13 +21,28 @@ const SuccessfullPayment = ({ storedTheme }) => {
     // More projects...
   ];
 
+  // Initiate a new reference from the jspdf library
   const doc = new jsPDF();
 
+  // Get the exact time of the download
+  var currentdate = new Date();
+  var exactTime =
+    currentdate.getDate() +
+    "-" +
+    (currentdate.getMonth() + 1) +
+    "-" +
+    currentdate.getFullYear() +
+    "_" +
+    currentdate.getHours() +
+    ":" +
+    currentdate.getMinutes() +
+    ":" +
+    currentdate.getSeconds();
+
+  // Convert html table to pdf and downloading handler.
   const save = () => {
-    const timeElapsed = Date.now();
-    const today = new Date(timeElapsed);
     doc.autoTable({ html: "#invoice-field" });
-    doc.save(`invoice-${today.toISOString()}.pdf`);
+    doc.save(`invoice-${exactTime}.pdf`);
   };
 
   // console.log("successfull payment comp", <Invoice />);

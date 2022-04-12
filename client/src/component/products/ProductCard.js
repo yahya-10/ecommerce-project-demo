@@ -36,19 +36,17 @@ const ProductCard = ({
     setShowCart(true);
   };
 
-  {
-    if (showCart) {
-      return (
-        <CartModal
-          products={listItems}
-          addItemToList={addItemToList}
-          removeItemFromList={removeItemFromList}
-          clearCart={clearCart}
-          show={showCart}
-          setOpen={setShowCart}
-        />
-      );
-    }
+  if (showCart) {
+    return (
+      <CartModal
+        products={listItems}
+        addItemToList={addItemToList}
+        removeItemFromList={removeItemFromList}
+        clearCart={clearCart}
+        show={showCart}
+        setOpen={setShowCart}
+      />
+    );
   }
 
   // console.log(listItems);
@@ -69,9 +67,6 @@ const ProductCard = ({
         onClick={() => {
           addItemToList(product);
           handleShowCart();
-          {
-            /*handleCart(product);*/
-          }
         }}
       >
         Buy Now

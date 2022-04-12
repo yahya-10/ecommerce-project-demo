@@ -71,10 +71,7 @@ const CartModal = ({
 
                     <div className="mt-8">
                       <div className="flow-root">
-                        <ul
-                          role="list"
-                          className="-my-6 divide-y divide-gray-200"
-                        >
+                        <ul className="-my-6 divide-y divide-gray-200">
                           {products.map((product, i) => (
                             <li key={i} className="flex py-6">
                               {console.log(product)}

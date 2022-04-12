@@ -86,6 +86,7 @@ const Footer = ({ storedTheme }) => {
                   key={item.name}
                   href={item.href}
                   target="_blank"
+                  rel="noreferrer"
                   className="text-gray-400 hover:text-blue-800"
                 >
                   <span className="sr-only">{item.name}</span>
