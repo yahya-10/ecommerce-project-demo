@@ -3,10 +3,10 @@ const cors = require("cors");
 const tokenGenerator = require("uuid-token-generator");
 require("dotenv").config();
 const bodyParser = require("body-parser");
-// const stripe = require("stripe")(process.env.STRIPE_KEY);
-const stripe = require("stripe")(
-  `sk_test_51ISLrtEXKHL1myveQ8KgiE0l01ycxXpvWqixDUiRKJlZxedvq8SqPokQUNiiivhZZxEKvtfwfZSCSO7RVdMI5BeT000E9AV1mQ`
-);
+const stripe = require("stripe")(process.env.STRIPE_KEY);
+// const stripe = require("stripe")(
+//   `sk_test_51ISLrtEXKHL1myveQ8KgiE0l01ycxXpvWqixDUiRKJlZxedvq8SqPokQUNiiivhZZxEKvtfwfZSCSO7RVdMI5BeT000E9AV1mQ`
+// );
 
 const app = express();
 

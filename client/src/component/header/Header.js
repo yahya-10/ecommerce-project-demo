@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.avif";
@@ -24,6 +24,8 @@ import { Link } from "react-router-dom";
 const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
   const { t } = useTranslation();
 
+  const [small, setSmall] = useState(false);
+
   const navigation = [
     { name: t("header.nav_solution"), href: "/" },
     { name: t("header.nav_store"), href: "/store" },
@@ -31,7 +33,16 @@ const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
     { name: t("header.nav_support"), href: "/contact" },
   ];
 
-  // console.log(showNavMenu);
+  useEffect(() => {
+    if (typeof window != undefined) {
+      window.addEventListener("scroll", () => {
+        setSmall(window.pageYOffset > 200);
+      });
+    }
+  }, []);
+
+  // console.log("header.js");
+  // console.log(small);
 
   return (
     <div>
@@ -291,7 +302,12 @@ const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
                           <a
                             key={item.name}
                             href={item.href}
-                            className="-m-3 p-3 flex items-center hover:bg-gray-50"
+                            // className="-m-3 p-3 flex items-center hover:bg-gray-50"
+                            className={`${
+                              storedTheme === "light"
+                                ? "-m-3 p-3 flex items-center hover:bg-gray-50"
+                                : "-m-3 p-3 flex items-center hover:bg-gray-600"
+                            }`}
                           >
                             <span
                               // className="ml-3 text-base font-medium text-gray-900"

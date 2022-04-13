@@ -29,7 +29,7 @@ const loginUser = async (credentials) => {
 const Login = ({ setToken, storedTheme }) => {
   const [email] = useState("");
   const [password] = useState("");
-  const [showingPwd, setShowingPwd] = useState(false);
+  const [showPwd, setShowPwd] = useState(false);
 
   // User's inputs controllers with yup.
   const requiredMessage = "This field is required";
@@ -281,11 +281,11 @@ const Login = ({ setToken, storedTheme }) => {
                     >
                       {t("login.password")}
                     </label>
-                    <div className="mt-1">
+                    <div className="flex items-end mt-1">
                       <input
                         id="password"
                         name="password"
-                        type={showingPwd ? "text" : "password"}
+                        type={showPwd ? "text" : "password"}
                         data-testid="password"
                         autoComplete="current-password"
                         value={formik.values.password}
@@ -294,17 +294,17 @@ const Login = ({ setToken, storedTheme }) => {
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
-                      {showingPwd ? (
+                      {showPwd ? (
                         <EyeIcon
-                          className="ml-2 -mr-0.5 h-4 w-4"
+                          className="ml-0 -mr-0.5 h-4 w-4"
                           aria-hidden="true"
-                          onClick={() => setShowingPwd(false)}
+                          onClick={() => setShowPwd(false)}
                         />
                       ) : (
                         <EyeOffIcon
-                          className="ml-2 -mr-0.5 h-4 w-4"
+                          className="ml-0 -mr-0.5 h-4 w-4"
                           aria-hidden="true"
-                          onClick={() => setShowingPwd(true)}
+                          onClick={() => setShowPwd(true)}
                         />
                       )}
                     </div>
@@ -314,7 +314,7 @@ const Login = ({ setToken, storedTheme }) => {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                       <input
                         id="remember-me"
                         name="remember-me"
@@ -331,7 +331,7 @@ const Login = ({ setToken, storedTheme }) => {
                       >
                         {t("login.remember_me")}
                       </label>
-                    </div>
+                    </div> */}
 
                     <div className="text-sm">
                       <a

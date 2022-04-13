@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
+import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 
 // import WithScroll from "../../HOC/WithScroll";
 import Hero from "../../assets/hero.png";
@@ -31,6 +32,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
   const [companyName] = useState();
   const [email] = useState();
   const [password] = useState();
+  const [showPwd, setShowPwd] = useState(false);
 
   // User's inputs controllers with yup.
   const requiredMessage = "This field is required";
@@ -45,7 +47,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     // Prevent authenticated user from going back to login page
     const isAuth = sessionStorage.getItem("token");
     if (isAuth && isAuth !== "undefined") {
@@ -351,11 +353,11 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                     >
                       {t("login.password")}
                     </label>
-                    <div className="mt-1">
+                    <div className="flex items-end mt-1">
                       <input
                         id="password"
                         name="password"
-                        type="password"
+                        type={showPwd ? "text" : "password"}
                         data-testid="password"
                         value={formik.values.password}
                         onChange={formik.handleChange}
@@ -364,13 +366,26 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
+                      {showPwd ? (
+                        <EyeIcon
+                          className="ml-0 -mr-0.5 h-4 w-4"
+                          aria-hidden="true"
+                          onClick={() => setShowPwd(false)}
+                        />
+                      ) : (
+                        <EyeOffIcon
+                          className="ml-0 -mr-0.5 h-4 w-4"
+                          aria-hidden="true"
+                          onClick={() => setShowPwd(true)}
+                        />
+                      )}
                     </div>
                     {formik.touched.password && formik.errors.password ? (
                       <h6 style={{ color: "red" }}>{formik.errors.password}</h6>
                     ) : null}
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  {/* <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <input
                         id="remember-me"
@@ -385,7 +400,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
                         {t("login.remember_me")}
                       </label>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div>
                     <button

@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, useRef } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 
 import { Dialog, Transition } from "@headlessui/react";
 import {
@@ -37,7 +37,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
   // Show the user's summary and the selected subscription if toggle = true.
   const [toggle, setToggle] = useState(false);
 
-  // This state controls the state of the input fields
+  // This state controls if the form inputs are enabled or disabled.
   const [disableFields, setDisableFields] = useState(false);
 
   // Show the form view or the history panel
@@ -96,6 +96,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
     },
   ];
 
+  // Change the displayed content (Form / History-grid)
   const changeViewHandler = (viewSpot) => {
     setView(viewSpot);
   };
@@ -148,7 +149,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
     fontSize: "2 rem",
   };
 
-  // console.log("userProfile.js", storedTheme);
+  console.log("userProfile.js");
 
   return (
     <div

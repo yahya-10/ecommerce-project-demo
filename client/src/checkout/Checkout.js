@@ -22,7 +22,7 @@ const Checkout = ({ storedTheme }) => {
     emailError: "",
     paymentError: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -34,7 +34,6 @@ const Checkout = ({ storedTheme }) => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     //Change the text of the button to tell that payment is on action.
-    setIsLoading(true);
 
     // Disable form submission until Stripe.js has loaded.
     if (!stripe || !elements) return;
@@ -49,6 +48,8 @@ const Checkout = ({ storedTheme }) => {
     } else {
       setError("");
     }
+
+    setIsProcessing(true);
 
     //Fetch custom payment API.
     const response = await axios.post("http://localhost:5000/payment", {
@@ -72,7 +73,7 @@ const Checkout = ({ storedTheme }) => {
     } else if (result.paymentIntent.status === "succeeded") {
       navigate("/checkout/successfull_payment");
     }
-    setIsLoading(false);
+    setIsProcessing(false);
   };
 
   useEffect(() => {
@@ -93,8 +94,8 @@ const Checkout = ({ storedTheme }) => {
     >
       <Steps storedTheme={storedTheme} stage={"04"} />
       {/* Payment Form */}
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-gradient-to-b from-blue-500 to-gray-500 py-8 px-4 shadow sm:rounded-lg sm:px-10">
+      <div className="mt-8 pb-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white py-8 px-4 shadow-md shadow-gray-500 sm:rounded-lg sm:px-10 border border-gray-200">
           <form onSubmit={(evt) => handleSubmit(evt)} className="space-y-6">
             <label
               htmlFor="fullname"
@@ -138,13 +139,13 @@ const Checkout = ({ storedTheme }) => {
             {error && <p style={{ color: "red" }}>{error.paymentError}</p>}
             <button
               className={`"${
-                isLoading
+                isProcessing
                   ? "mt-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium shadow-sm text-white bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   : "mt-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               }"`}
               disabled={!stripe}
             >
-              {isLoading ? "processing..." : "Submit"}
+              {isProcessing ? "processing..." : "Submit"}
             </button>
           </form>
         </div>

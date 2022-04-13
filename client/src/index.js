@@ -16,10 +16,10 @@ import "@stripe/stripe-js";
  * -`Elements` a stripe wrapper gives access to all the stripe object in every part of the application.
  */
 
-// const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_KEY}`);
-const stripePromise = loadStripe(
-  `pk_test_51ISLrtEXKHL1myveddk8qi9zjGfZIGQKNQFxxTPpJonoe2yWyE6wqf6WKUW1ajR2eNr3WiFdHaDKLAfVylaiDsrv00HOOnLeO1`
-);
+const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_KEY}`);
+// const stripePromise = loadStripe(
+//   `pk_test_51ISLrtEXKHL1myveddk8qi9zjGfZIGQKNQFxxTPpJonoe2yWyE6wqf6WKUW1ajR2eNr3WiFdHaDKLAfVylaiDsrv00HOOnLeO1`
+// );
 
 ReactDOM.render(
   // Suspense works well with React.lazy to improve the ux.

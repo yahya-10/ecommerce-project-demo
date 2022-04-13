@@ -18,7 +18,20 @@ const SuccessfullPayment = ({ storedTheme }) => {
       rate: "$75.00",
       price: "$900.00",
     },
-    // More projects...
+    {
+      id: 2,
+      name: "New Advertising",
+      hours: "16.0",
+      rate: "$75.00",
+      price: "$900.00",
+    },
+    {
+      id: 3,
+      name: "Advertising Campaign",
+      hours: "10.0",
+      rate: "$75.00",
+      price: "$900.00",
+    },
   ];
 
   // Initiate a new reference from the jspdf library
