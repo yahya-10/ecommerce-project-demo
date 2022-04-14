@@ -84,6 +84,8 @@ const Checkout = ({ storedTheme }) => {
     };
   });
 
+  // console.log("checkout.js RENDERED");
+
   return (
     <div
       className={`${

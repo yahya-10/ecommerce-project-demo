@@ -39,6 +39,7 @@ const Login = ({ setToken, storedTheme }) => {
   });
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     // window.scrollTo(0, 0);
@@ -48,8 +49,6 @@ const Login = ({ setToken, storedTheme }) => {
       navigate(`/`);
     }
   });
-
-  const { t } = useTranslation();
 
   // useFormik will return all Formik state and helpers directly.
   const formik = useFormik({
@@ -80,7 +79,9 @@ const Login = ({ setToken, storedTheme }) => {
     },
   };
 
-  // console.log("login.js", "login comp rendered");
+  // const countRef = useRef(0);
+
+  console.log("login.js", formik.values.email);
 
   return (
     <>
@@ -260,6 +261,8 @@ const Login = ({ setToken, storedTheme }) => {
                         autoComplete="email"
                         value={formik.values.email}
                         onChange={formik.handleChange}
+                        // value={email}
+                        // onChange={handleChange}
                         onBlur={formik.handleBlur}
                         required
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -314,25 +317,6 @@ const Login = ({ setToken, storedTheme }) => {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    {/* <div className="flex items-center">
-                      <input
-                        id="remember-me"
-                        name="remember-me"
-                        type="checkbox"
-                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                      />
-                      <label
-                        htmlFor="remember-me"
-                        className={`${
-                          storedTheme === "light"
-                            ? "ml-2 block text-sm text-gray-900"
-                            : "ml-2 block text-sm text-gray-200"
-                        }`}
-                      >
-                        {t("login.remember_me")}
-                      </label>
-                    </div> */}
-
                     <div className="text-sm">
                       <a
                         href="/"

@@ -149,7 +149,9 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
     fontSize: "2 rem",
   };
 
-  console.log("userProfile.js");
+  // const renderCount = useRef(0);
+  // console.log("userProfile.js RENDERED", renderCount.current++);
+  console.log(formik.values.companyName);
 
   return (
     <div
@@ -476,7 +478,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                 <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
                   <div>
                     <h3
-                      className={`"text-lg leading-6 font-medium   " ${
+                      className={`"text-lg leading-6 font-medium " ${
                         storedTheme === "light"
                           ? "text-gray-900"
                           : "text-gray-50"
@@ -611,13 +613,14 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
                         <input
                           id="phone"
                           name="phone"
-                          type="phone"
-                          autoComplete="phone"
+                          type="text"
+                          // autoComplete="phone"
                           disabled={disableFields}
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
                           value={formik.values.phone}
                           className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                          // className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-16 sm:text-sm border-gray-300 rounded-md"
                         />
                         {formik.touched.phone && formik.errors.phone ? (
                           <div style={styles}>{formik.errors.phone}</div>

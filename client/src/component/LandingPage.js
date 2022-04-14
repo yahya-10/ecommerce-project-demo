@@ -461,7 +461,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                     </h4>
 
                     <div className="mt-6 relative">
-                      {/* Fake card background */}
+                      {/* Fake Card background */}
                       <div
                         aria-hidden="true"
                         className="hidden absolute inset-0 pointer-events-none sm:block"
@@ -531,7 +531,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                         </dl>
                       </div>
 
-                      {/* Fake card border */}
+                      {/* Fake Card border */}
                       <div
                         aria-hidden="true"
                         className="hidden absolute inset-0 pointer-events-none sm:block"
@@ -558,7 +558,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                     </h4>
 
                     <div className="mt-6 relative">
-                      {/* Fake card background */}
+                      {/* Fake Card background */}
                       <div
                         aria-hidden="true"
                         className="hidden absolute inset-0 pointer-events-none sm:block"
@@ -612,7 +612,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                         </dl>
                       </div>
 
-                      {/* Fake card border */}
+                      {/* Fake Card border */}
                       <div
                         aria-hidden="true"
                         className="hidden absolute inset-0 pointer-events-none sm:block"
@@ -699,7 +699,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                 </div>
 
                 <div className="relative">
-                  {/* Fake card backgrounds */}
+                  {/* Fake Card backgrounds */}
                   <div
                     className="absolute inset-0 flex items-stretch pointer-events-none"
                     aria-hidden="true"
@@ -818,7 +818,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                     </tbody>
                   </table>
 
-                  {/* Fake card borders */}
+                  {/* Fake Card borders */}
                   <div
                     className="absolute inset-0 flex items-stretch pointer-events-none"
                     aria-hidden="true"
@@ -847,7 +847,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                 </h3>
 
                 <div className="mt-6 relative">
-                  {/* Fake card backgrounds */}
+                  {/* Fake Card backgrounds */}
                   <div
                     className="absolute inset-0 flex items-stretch pointer-events-none"
                     aria-hidden="true"
@@ -943,7 +943,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                     </tbody>
                   </table>
 
-                  {/* Fake card borders */}
+                  {/* Fake Card borders */}
                   <div
                     className="absolute inset-0 flex items-stretch pointer-events-none"
                     aria-hidden="true"

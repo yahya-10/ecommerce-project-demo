@@ -88,6 +88,8 @@ const App = () => {
   //Clear cart
   const clearCart = () => setListItems([]);
 
+  // console.log("app.js RENDERED");
+
   return (
     <div>
       <div>
