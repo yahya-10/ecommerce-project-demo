@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -8,7 +8,12 @@ import TeamSection from "./TeamSection";
 
 const AboutPage = ({ storedTheme }) => {
   const { t } = useTranslation();
-  // console.log("about page rendered");
+
+  useEffect(() => {
+    console.log("USEEFFECT about component mounted");
+  });
+
+  console.log("about page rendered");
   return (
     <div className="">
       <main

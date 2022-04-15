@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { ProductsExample } from "./ProductsExample";
 import { useToken } from "./custom_hooks/useToken";
 import { useThemeHandler } from "./custom_hooks/useThemeHandler";
+import BackToTopButton from "./component/BackToTopButton";
 
 const Header = lazy(() => import("./component/header/Header"));
 const LandingPage = lazy(() => import("./component/LandingPage"));
@@ -190,6 +191,7 @@ const App = () => {
           />
         </Route>
       </Routes>
+      <BackToTopButton />
       <Footer storedTheme={storedTheme} />
     </div>
   );

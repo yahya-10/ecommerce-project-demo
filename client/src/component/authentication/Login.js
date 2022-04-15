@@ -48,6 +48,7 @@ const Login = ({ setToken, storedTheme }) => {
     if (isAuthenticated && isAuthenticated !== "undefined") {
       navigate(`/`);
     }
+    // console.log("login component mounted");
   });
 
   // useFormik will return all Formik state and helpers directly.
@@ -81,7 +82,7 @@ const Login = ({ setToken, storedTheme }) => {
 
   // const countRef = useRef(0);
 
-  console.log("login.js", formik.values.email);
+  // console.log("login.js", formik.values.email);
 
   return (
     <>
