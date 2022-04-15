@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 
 import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.avif";
@@ -24,23 +24,12 @@ import { Link } from "react-router-dom";
 const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
   const { t } = useTranslation();
 
-  const [small, setSmall] = useState(false);
-
   const navigation = [
     { name: t("header.nav_solution"), href: "/" },
     { name: t("header.nav_store"), href: "/store" },
     { name: t("header.nav_about_us"), href: "/about" },
     { name: t("header.nav_support"), href: "/contact" },
   ];
-
-  useEffect(() => {
-    if (typeof window != undefined) {
-      window.addEventListener("scroll", () => {
-        setSmall(window.pageYOffset > 200);
-      });
-    }
-  }, []);
-
   // console.log("header.js");
   // console.log(small);
 
