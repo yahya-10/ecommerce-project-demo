@@ -1,6 +1,7 @@
 import React, { useState, useEffect, lazy } from "react";
-
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { ProductsExample } from "./ProductsExample";
 import { useToken } from "./custom_hooks/useToken";
@@ -81,7 +82,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (sessionStorage.getItem("token")) {
+    if (sessionStorage.getItem("user")) {
       setIsAuth(true);
     }
   }, []);
@@ -193,6 +194,7 @@ const App = () => {
       </Routes>
       <BackToTopButton />
       <Footer storedTheme={storedTheme} />
+      <ToastContainer />
     </div>
   );
 };

@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
+import { toast } from "react-toastify";
 
-// import WithScroll from "../../HOC/WithScroll";
+import { register, reset } from "../../features/auth/authSlice";
+
 import Hero from "../../assets/hero.png";
 
 /**
@@ -15,17 +17,6 @@ import Hero from "../../assets/hero.png";
  * @param {*} userData
  * @returns Give acces to a new user
  */
-
-// Call the login user API
-const registerUser = async (userData) => {
-  return fetch("http://localhost:5000/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  }).then((data) => data.json());
-};
 
 const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
   const [fullName] = useState();
@@ -43,17 +34,25 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
     password: Yup.string().required(requiredMessage).min(8).max(12),
   });
 
+  const { user, isLoggedIn, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
-    // Prevent authenticated user from going back to login page
-    const isAuth = sessionStorage.getItem("token");
-    if (isAuth && isAuth !== "undefined") {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess || user) {
       navigate(`/`);
     }
-  });
+
+    dispatch(reset());
+  }, [isError, message, navigate, isSuccess, user, dispatch]);
 
   // useFormik will return all Formik state and helpers directly.
   const formik = useFormik({
@@ -64,12 +63,14 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
       password: "",
     },
     onSubmit: async () => {
-      const token = await registerUser({
-        fullName,
-        companyName,
-        email,
-        password,
-      });
+      const token = dispatch(
+        register({
+          fullName,
+          companyName,
+          email,
+          password,
+        })
+      );
       setToken(token);
       navigate("/profile");
       // window.location.reload();
@@ -94,6 +95,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
   //   email: formik.values.email,
   //   password: formik.values.password,
   // });
+  console.log("register.js", isLoggedIn);
   return (
     <>
       <div

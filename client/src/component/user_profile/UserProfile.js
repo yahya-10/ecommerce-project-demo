@@ -116,7 +116,7 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
    */
   useEffect(() => {
     // window.scrollTo(0, 0);
-    if (sessionStorage.getItem("token")) {
+    if (sessionStorage.getItem("user")) {
       setIsAuth(true);
     }
   });

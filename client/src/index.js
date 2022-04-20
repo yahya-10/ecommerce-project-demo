@@ -4,10 +4,12 @@ import ReactDOM from "react-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 import "./utils/i18n";
 
 import App from "./App";
 import Loader from "./utils/loader/Loader";
+import store from "./features/store";
 import "./index.css";
 import "@stripe/stripe-js";
 
@@ -24,11 +26,13 @@ const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_KEY}`);
 ReactDOM.render(
   // Suspense works well with React.lazy to improve the ux.
   <Suspense fallback={<Loader />}>
-    <Elements stripe={stripePromise}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Elements>
+    <Provider store={store}>
+      <Elements stripe={stripePromise}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Elements>
+    </Provider>
   </Suspense>,
   document.getElementById("root")
 );

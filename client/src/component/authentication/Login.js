@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -64,7 +65,6 @@ const Login = ({ setToken, storedTheme }) => {
       });
       setToken(token);
       navigate(`/profile`);
-      // window.location.reload();
     },
     validationSchema: validationSchema,
   });

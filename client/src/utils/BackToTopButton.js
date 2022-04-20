@@ -35,7 +35,6 @@ const BackToTopButton = () => {
     width: "50px",
     height: "50px",
     fontSize: "50px",
-    // color: "#ff9b69",
     color: "#fa4605",
   };
 
