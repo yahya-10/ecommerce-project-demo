@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
+import { toast } from "react-toastify";
 
+import { login, reset } from "../../features/auth/authSlice";
 import LoginSVG from "../../assets/loginSVG.avif";
 
 /**
@@ -17,15 +18,15 @@ import LoginSVG from "../../assets/loginSVG.avif";
  */
 
 // Call the login user API
-const loginUser = async (credentials) => {
-  return fetch("http://localhost:5000/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-};
+// const loginUser = async (credentials) => {
+//   return fetch("http://localhost:5000/login", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(credentials),
+//   }).then((data) => data.json());
+// };
 
 const Login = ({ setToken, storedTheme }) => {
   const [email] = useState("");
@@ -39,18 +40,29 @@ const Login = ({ setToken, storedTheme }) => {
     password: Yup.string().required(requiredMessage).min(8).max(12),
   });
 
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
-    // Prevent authenticated user from going back to login page
-    const isAuthenticated = sessionStorage.getItem("token");
-    if (isAuthenticated && isAuthenticated !== "undefined") {
-      navigate(`/`);
+    if (isError) {
+      toast.error(message);
     }
+
+    if (user || isSuccess) {
+      navigate("/profile");
+    }
+    // Prevent authenticated user from going back to login page
+    // const isAuthenticated = sessionStorage.getItem("user");
+    // if (isAuthenticated && isAuthenticated !== "undefined") {
+    //   navigate(`/`);
+    // }
     // console.log("login component mounted");
-  });
+  }, [navigate, user, isSuccess, isError, message]);
 
   // useFormik will return all Formik state and helpers directly.
   const formik = useFormik({
@@ -59,10 +71,12 @@ const Login = ({ setToken, storedTheme }) => {
       password: "",
     },
     onSubmit: async () => {
-      const token = await loginUser({
-        email,
-        password,
-      });
+      const token = dispatch(
+        login({
+          email,
+          password,
+        })
+      );
       setToken(token);
       navigate(`/profile`);
     },

@@ -48,8 +48,13 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
     }
 
     if (isSuccess || user) {
-      navigate(`/`);
+      navigate(`/profile`);
     }
+    // Prevent authenticated user from going back to login page
+    // const isAuth = sessionStorage.getItem("user");
+    // if (isAuth && isAuth !== "undefined") {
+    //   navigate(`/`);
+    // }
 
     dispatch(reset());
   }, [isError, message, navigate, isSuccess, user, dispatch]);

@@ -1,18 +1,19 @@
 import React, { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { logOut } from "../../utils";
 import comunikcrmLogo from "../../assets/comunikcrm.avif";
 import cmkWhiteLogo from "../../assets/cmk-white-logo.avif";
 import LangDropDown from "./LangDropDown";
 import { avatarCreator } from "../../utils/CreateAvatar";
 import { getRondomColor } from "../../utils/GetRandomColor";
+import { reset, logout } from "../../features/auth/authSlice";
 
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 // import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /**
  * @public
@@ -23,6 +24,10 @@ import { Link } from "react-router-dom";
 
 const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isSuccess } = useSelector((state) => state.auth);
 
   const navigation = [
     { name: t("header.nav_solution"), href: "/" },
@@ -30,6 +35,12 @@ const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
     { name: t("header.nav_about_us"), href: "/about" },
     { name: t("header.nav_support"), href: "/contact" },
   ];
+
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
   // console.log("header.js");
   // console.log(small);
 
@@ -179,9 +190,9 @@ const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
                   ))}
                 </div>
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0 transition duration-300">
-                  {isAuth ? (
+                  {user || isSuccess ? (
                     <div className="flex items-center space-x-4 lg:space-x-6">
-                      <span className="inline-flex shadow" onClick={logOut}>
+                      <span className="inline-flex shadow" onClick={onLogout}>
                         <Link
                           to="/login"
                           className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
@@ -332,9 +343,9 @@ const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
                     </div>
                   </div>
                   <div className="py-6 px-5 space-y-6">
-                    {isAuth ? (
+                    {user || isSuccess ? (
                       <div className="flex items-center space-x-4 lg:space-x-6">
-                        <span className="inline-flex shadow" onClick={logOut}>
+                        <span className="inline-flex shadow" onClick={onLogout}>
                           <Link
                             to="/login"
                             className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"

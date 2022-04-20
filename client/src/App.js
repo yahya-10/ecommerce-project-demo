@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { ProductsExample } from "./ProductsExample";
-import { useToken } from "./custom_hooks/useToken";
+// import { useToken } from "./custom_hooks/useToken";
 import { useThemeHandler } from "./custom_hooks/useThemeHandler";
 import BackToTopButton from "./utils/BackToTopButton";
 
@@ -38,7 +38,7 @@ const App = () => {
   const [storedTheme, setTheme] = useThemeHandler("theme");
   const [isAuth, setIsAuth] = useState(false);
 
-  const { setToken } = useToken();
+  // const { setToken } = useToken();
 
   const handleAddNewUser = (newUser) => {
     setUsers([...users, { ...newUser, id: Date.now() }]);
@@ -81,11 +81,11 @@ const App = () => {
     setSelectedPackage(subscription);
   };
 
-  useEffect(() => {
-    if (sessionStorage.getItem("user")) {
-      setIsAuth(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (sessionStorage.getItem("user")) {
+  //     setIsAuth(true);
+  //   }
+  // }, []);
 
   //Clear cart
   const clearCart = () => setListItems([]);
@@ -117,14 +117,18 @@ const App = () => {
         />
         <Route
           path="/login"
-          element={<Login setToken={setToken} storedTheme={storedTheme} />}
+          element={
+            <Login //setToken={setToken}
+              storedTheme={storedTheme}
+            />
+          }
         />
         <Route
           path="/register"
           element={
             <Register
               handleAddNewUser={handleAddNewUser}
-              setToken={setToken}
+              // setToken={setToken}
               storedTheme={storedTheme}
             />
           }
