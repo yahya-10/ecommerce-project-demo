@@ -6,7 +6,8 @@ const BackToTopButton = () => {
 
   // Scroll up button won't appear until you start scrolling down.
   useEffect(() => {
-    let abortController = new AbortController();
+    // let abortController = new AbortController();
+    let isMounted = true;
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
         setBackToTopButton(true);
@@ -15,7 +16,8 @@ const BackToTopButton = () => {
       }
     });
     return () => {
-      abortController.abort();
+      // abortController.abort();
+      isMounted = false;
     };
   });
 

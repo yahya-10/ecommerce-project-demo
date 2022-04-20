@@ -1,8 +1,10 @@
+import { useEffect } from "react";
+
 import Steps from "../component/user_profile/Steps";
-import Notification from "./Notification";
 
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { toast } from "react-toastify";
 
 /**
  *
@@ -33,6 +35,10 @@ const SuccessfullPayment = ({ storedTheme }) => {
       price: "$900.00",
     },
   ];
+
+  useEffect(() => {
+    toast("Thanks for your business");
+  });
 
   // Initiate a new reference from the jspdf library
   const doc = new jsPDF();
@@ -68,7 +74,6 @@ const SuccessfullPayment = ({ storedTheme }) => {
       }`}
     >
       <Steps storedTheme={storedTheme} stage={"05"} />
-      <Notification storedTheme={storedTheme} />
       <div id="printable-area" className="mt-5 px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">

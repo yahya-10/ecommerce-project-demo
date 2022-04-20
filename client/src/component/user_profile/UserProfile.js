@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useRef } from "react";
+import React, { Fragment, useState, useRef } from "react";
 
 import { Dialog, Transition } from "@headlessui/react";
 import {
@@ -29,7 +29,7 @@ function classNames(...classes) {
 // Create a reference.
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
+const UserProfile = ({ selectedPackage, storedTheme }) => {
   const { t } = useTranslation();
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -114,12 +114,6 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
    * After login, Checks if sessionStorage has a token & update isAuth to true.
    * This helps updating the header.
    */
-  useEffect(() => {
-    // window.scrollTo(0, 0);
-    if (sessionStorage.getItem("user")) {
-      setIsAuth(true);
-    }
-  });
 
   // useFormik will return all Formik state and helpers directly.
   const formik = useFormik({
@@ -148,10 +142,6 @@ const UserProfile = ({ selectedPackage, storedTheme, setIsAuth }) => {
     color: "red",
     fontSize: "2 rem",
   };
-
-  // const renderCount = useRef(0);
-  // console.log("userProfile.js RENDERED", renderCount.current++);
-  console.log(formik.values.companyName);
 
   return (
     <div

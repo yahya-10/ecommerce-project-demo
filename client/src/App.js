@@ -1,10 +1,9 @@
-import React, { useState, useEffect, lazy } from "react";
+import React, { useState, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { ProductsExample } from "./ProductsExample";
-// import { useToken } from "./custom_hooks/useToken";
 import { useThemeHandler } from "./custom_hooks/useThemeHandler";
 import BackToTopButton from "./utils/BackToTopButton";
 
@@ -33,16 +32,8 @@ const SuccessfullPayment = lazy(() => import("./checkout/SuccessfullPayment"));
 
 const App = () => {
   const [listItems, setListItems] = useState([]);
-  const [users, setUsers] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState();
   const [storedTheme, setTheme] = useThemeHandler("theme");
-  const [isAuth, setIsAuth] = useState(false);
-
-  // const { setToken } = useToken();
-
-  const handleAddNewUser = (newUser) => {
-    setUsers([...users, { ...newUser, id: Date.now() }]);
-  };
 
   //Add item to the list and increment the quantity
   const handleAddItemToList = (product) => {
@@ -81,12 +72,6 @@ const App = () => {
     setSelectedPackage(subscription);
   };
 
-  // useEffect(() => {
-  //   if (sessionStorage.getItem("user")) {
-  //     setIsAuth(true);
-  //   }
-  // }, []);
-
   //Clear cart
   const clearCart = () => setListItems([]);
 
@@ -101,7 +86,6 @@ const App = () => {
           listItems={listItems}
           storedTheme={storedTheme}
           setTheme={setTheme}
-          isAuth={isAuth}
         />
       </div>
       <Routes>
@@ -115,23 +99,10 @@ const App = () => {
             />
           }
         />
-        <Route
-          path="/login"
-          element={
-            <Login //setToken={setToken}
-              storedTheme={storedTheme}
-            />
-          }
-        />
+        <Route path="/login" element={<Login storedTheme={storedTheme} />} />
         <Route
           path="/register"
-          element={
-            <Register
-              handleAddNewUser={handleAddNewUser}
-              // setToken={setToken}
-              storedTheme={storedTheme}
-            />
-          }
+          element={<Register storedTheme={storedTheme} />}
         />
         <Route
           path="/contact"
@@ -172,7 +143,6 @@ const App = () => {
               <UserProfile
                 selectedPackage={selectedPackage}
                 storedTheme={storedTheme}
-                setIsAuth={setIsAuth}
               />
             }
           />

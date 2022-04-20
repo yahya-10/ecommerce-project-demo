@@ -22,12 +22,12 @@ import { Link, useNavigate } from "react-router-dom";
  * this function
  */
 
-const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
+const Header = ({ storedTheme, setTheme, listItems }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isSuccess } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   const navigation = [
     { name: t("header.nav_solution"), href: "/" },
@@ -36,13 +36,12 @@ const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
     { name: t("header.nav_support"), href: "/contact" },
   ];
 
+  // Handle logout the user and reset the store.
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
     navigate("/");
   };
-  // console.log("header.js");
-  // console.log(small);
 
   return (
     <div>
@@ -190,7 +189,7 @@ const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
                   ))}
                 </div>
                 <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0 transition duration-300">
-                  {user || isSuccess ? (
+                  {user ? (
                     <div className="flex items-center space-x-4 lg:space-x-6">
                       <span className="inline-flex shadow" onClick={onLogout}>
                         <Link
@@ -343,7 +342,7 @@ const Header = ({ storedTheme, setTheme, isAuth, listItems }) => {
                     </div>
                   </div>
                   <div className="py-6 px-5 space-y-6">
-                    {user || isSuccess ? (
+                    {user ? (
                       <div className="flex items-center space-x-4 lg:space-x-6">
                         <span className="inline-flex shadow" onClick={onLogout}>
                           <Link

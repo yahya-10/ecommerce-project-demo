@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { register, reset } from "../../features/auth/authSlice";
 
 import Hero from "../../assets/hero.png";
+import Spinner from "../../utils/spinner/Spinner";
 
 /**
  *
@@ -18,7 +19,7 @@ import Hero from "../../assets/hero.png";
  * @returns Give acces to a new user
  */
 
-const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
+const Register = ({ storedTheme }) => {
   const [fullName] = useState();
   const [companyName] = useState();
   const [email] = useState();
@@ -34,7 +35,8 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
     password: Yup.string().required(requiredMessage).min(8).max(12),
   });
 
-  const { user, isLoggedIn, isError, isSuccess, message } = useSelector(
+  // Importing and destructuring the state to the component
+  const { user, isError, isSuccess, message, isLoading } = useSelector(
     (state) => state.auth
   );
 
@@ -43,6 +45,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // In case of error, it'll display the error message
     if (isError) {
       toast.error(message);
     }
@@ -50,11 +53,6 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
     if (isSuccess || user) {
       navigate(`/profile`);
     }
-    // Prevent authenticated user from going back to login page
-    // const isAuth = sessionStorage.getItem("user");
-    // if (isAuth && isAuth !== "undefined") {
-    //   navigate(`/`);
-    // }
 
     dispatch(reset());
   }, [isError, message, navigate, isSuccess, user, dispatch]);
@@ -68,7 +66,7 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
       password: "",
     },
     onSubmit: async () => {
-      const token = dispatch(
+      dispatch(
         register({
           fullName,
           companyName,
@@ -76,7 +74,6 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
           password,
         })
       );
-      setToken(token);
       navigate("/profile");
       // window.location.reload();
     },
@@ -94,13 +91,10 @@ const Register = ({ setToken, handleAddNewUser, storedTheme }) => {
     },
   };
 
-  // console.table({
-  //   fullName: formik.values.fullName,
-  //   companyName: formik.values.companyName,
-  //   email: formik.values.email,
-  //   password: formik.values.password,
-  // });
-  console.log("register.js", isLoggedIn);
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <>
       <div

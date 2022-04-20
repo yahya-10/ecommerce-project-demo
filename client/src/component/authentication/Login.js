@@ -17,18 +17,7 @@ import LoginSVG from "../../assets/loginSVG.avif";
  * @returns Access to dashboard via token
  */
 
-// Call the login user API
-// const loginUser = async (credentials) => {
-//   return fetch("http://localhost:5000/login", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(credentials),
-//   }).then((data) => data.json());
-// };
-
-const Login = ({ setToken, storedTheme }) => {
+const Login = ({ storedTheme }) => {
   const [email] = useState("");
   const [password] = useState("");
   const [showPwd, setShowPwd] = useState(false);
@@ -40,7 +29,7 @@ const Login = ({ setToken, storedTheme }) => {
     password: Yup.string().required(requiredMessage).min(8).max(12),
   });
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
@@ -56,13 +45,9 @@ const Login = ({ setToken, storedTheme }) => {
     if (user || isSuccess) {
       navigate("/profile");
     }
-    // Prevent authenticated user from going back to login page
-    // const isAuthenticated = sessionStorage.getItem("user");
-    // if (isAuthenticated && isAuthenticated !== "undefined") {
-    //   navigate(`/`);
-    // }
-    // console.log("login component mounted");
-  }, [navigate, user, isSuccess, isError, message]);
+
+    dispatch(reset());
+  }, [navigate, user, isSuccess, isError, message, dispatch]);
 
   // useFormik will return all Formik state and helpers directly.
   const formik = useFormik({
@@ -71,13 +56,12 @@ const Login = ({ setToken, storedTheme }) => {
       password: "",
     },
     onSubmit: async () => {
-      const token = dispatch(
+      dispatch(
         login({
           email,
           password,
         })
       );
-      setToken(token);
       navigate(`/profile`);
     },
     validationSchema: validationSchema,

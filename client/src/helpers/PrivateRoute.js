@@ -12,12 +12,12 @@ import { useSelector } from "react-redux";
  */
 
 const PrivateRoute = ({ component: Component, isAuth, ...rest }) => {
-  const { user, isSuccess } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   /**
    * It checks first if the token exist in the user's browser to navigate to the right
    * path.
    */
-  return user || isSuccess ? <Outlet /> : <Navigate to="/login" />;
+  return user ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;
