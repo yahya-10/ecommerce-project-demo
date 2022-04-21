@@ -22,13 +22,14 @@ const Login = ({ storedTheme }) => {
   const [password] = useState("");
   const [showPwd, setShowPwd] = useState(false);
 
-  // User's inputs controllers with yup.
+  // User's inputs validator with yup.
   const requiredMessage = "This field is required";
   const validationSchema = Yup.object({
     email: Yup.string().email().required(requiredMessage),
     password: Yup.string().required(requiredMessage).min(8).max(12),
   });
 
+  // States from redux store
   const { user, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
@@ -80,7 +81,7 @@ const Login = ({ storedTheme }) => {
 
   // const countRef = useRef(0);
 
-  // console.log("login.js", formik.values.email);
+  console.log("login.js", formik.values.email);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useRef } from "react";
-
+import { useSelector } from "react-redux";
 import { Dialog, Transition } from "@headlessui/react";
 import {
   CalendarIcon,
@@ -31,7 +31,6 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const UserProfile = ({ selectedPackage, storedTheme }) => {
   const { t } = useTranslation();
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Show the user's summary and the selected subscription if toggle = true.
@@ -44,6 +43,8 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
   const [view, setView] = useState(t("user_form.navigation"));
 
   const myRef = useRef();
+
+  const { subscription } = useSelector((state) => state.cart);
 
   // User's inputs controllers with yup.
   const requiredMessage = "This field is required";
@@ -142,6 +143,8 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
     color: "red",
     fontSize: "2 rem",
   };
+
+  // console.log(subscription);
 
   return (
     <div
@@ -795,7 +798,7 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
                 <div ref={myRef}>
                   {toggle && (
                     <SelectedSubscription
-                      selectedPackage={selectedPackage}
+                      subscription={subscription}
                       data={formik.values}
                       storedTheme={storedTheme}
                     />

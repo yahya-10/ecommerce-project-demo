@@ -10,7 +10,7 @@ import { ShoppingCartIcon } from "@heroicons/react/solid";
  * This component
  */
 
-const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
+const SelectedSubscription = ({ data, subscription, storedTheme }) => {
   const { t } = useTranslation();
 
   // console.log("SelectedSubs", selectedPackage);
@@ -24,7 +24,7 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
             : "bg-gray-800 transition-colors duration-300"
         }`}
       >
-        {!selectedPackage ? (
+        {!subscription ? (
           <SelectPackageModal />
         ) : (
           <div id="selectedSubs-div">
@@ -88,7 +88,7 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                               : "text-gray-200"
                           }`}
                         >
-                          {selectedPackage.title}
+                          {subscription.map((el) => el.title)}
                         </dd>
                       </div>
                       <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -160,7 +160,7 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                     <p className="relative grid grid-cols-2">
                       <span className="flex flex-col text-center">
                         <span className="text-5xl font-extrabold text-white tracking-tight">
-                          ${selectedPackage.priceMonthly}
+                          ${subscription.map((el) => el.priceMonthly)}
                         </span>
                         <span className="mt-2 text-base font-medium text-cyan-100">
                           Setup fee
@@ -189,18 +189,20 @@ const SelectedSubscription = ({ data, selectedPackage, storedTheme }) => {
                     </p>
                   </div>
                   <ul className="rounded overflow-hidden grid gap-px sm:grid-cols-2">
-                    {selectedPackage.mainFeatures.map((item, i) => (
-                      <li
-                        key={i}
-                        className="bg-cyan-700 bg-opacity-50 py-4 px-4 flex items-center text-base text-white"
-                      >
-                        <CheckIcon
-                          className="h-6 w-6 text-cyan-200"
-                          aria-hidden="true"
-                        />
-                        <span className="ml-3">{item.value}</span>
-                      </li>
-                    ))}
+                    {subscription.map((element) =>
+                      element.mainFeatures.map((item, i) => (
+                        <li
+                          key={i}
+                          className="bg-cyan-700 bg-opacity-50 py-4 px-4 flex items-center text-base text-white"
+                        >
+                          <CheckIcon
+                            className="h-6 w-6 text-cyan-200"
+                            aria-hidden="true"
+                          />
+                          <span className="ml-3">{item.value}</span>
+                        </li>
+                      ))
+                    )}
                   </ul>
                   <Link
                     to="/validation-stage"

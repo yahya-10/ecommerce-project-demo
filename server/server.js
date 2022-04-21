@@ -26,6 +26,7 @@ const tokGen = new tokenGenerator();
 app.use("/login", cors(), (req, res) => {
   try {
     res.send({
+      email: req.body.email,
       //Generate unique token to verify user's identity
       token: tokGen.generate(),
     });
@@ -40,6 +41,9 @@ app.use("/login", cors(), (req, res) => {
 app.use("/register", cors(), (req, res) => {
   try {
     res.send({
+      fullName: req.body.fullName,
+      companyName: req.body.companyName,
+      email: req.body.email,
       token: tokGen.generate(),
     });
   } catch (error) {

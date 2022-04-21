@@ -1,10 +1,11 @@
 import { useState, useEffect, lazy } from "react";
-
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
+import { selectSubscription } from "../features/subscriptions/subscriptionSlice";
 import HeroSection from "./HeroSection";
 import LogoClouds from "./LogoClouds";
 
@@ -21,6 +22,12 @@ function classNames(...classes) {
 
 const LandingPage = ({ handleSelectPackage, storedTheme }) => {
   const [monthlyPlan, setMonthlyPlan] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const handleAddSubscription = (product) => {
+    dispatch(selectSubscription(product));
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -355,7 +362,7 @@ const LandingPage = ({ handleSelectPackage, storedTheme }) => {
                           </div>
                           <Link
                             to="/profile"
-                            onClick={() => handleSelectPackage(plan)}
+                            onClick={() => handleAddSubscription(plan)}
                             className={classNames(
                               plan.featured
                                 ? "bg-indigo-600 text-white hover:bg-indigo-700"
