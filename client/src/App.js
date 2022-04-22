@@ -32,7 +32,6 @@ const SuccessfullPayment = lazy(() => import("./checkout/SuccessfullPayment"));
 
 const App = () => {
   const [listItems, setListItems] = useState([]);
-  const [selectedPackage, setSelectedPackage] = useState();
   const [storedTheme, setTheme] = useThemeHandler("theme");
 
   //Add item to the list and increment the quantity
@@ -67,11 +66,6 @@ const App = () => {
     }
   };
 
-  //Pass the selected package to the user profile
-  const handleSelectedPackage = (subscription) => {
-    setSelectedPackage(subscription);
-  };
-
   //Clear cart
   const clearCart = () => setListItems([]);
 
@@ -92,12 +86,7 @@ const App = () => {
         <Route
           exact
           path="/"
-          element={
-            <LandingPage
-              handleSelectPackage={handleSelectedPackage}
-              storedTheme={storedTheme}
-            />
-          }
+          element={<LandingPage storedTheme={storedTheme} />}
         />
         <Route path="/login" element={<Login storedTheme={storedTheme} />} />
         <Route
@@ -139,12 +128,7 @@ const App = () => {
           <Route
             path="/profile"
             exact
-            element={
-              <UserProfile
-                selectedPackage={selectedPackage}
-                storedTheme={storedTheme}
-              />
-            }
+            element={<UserProfile storedTheme={storedTheme} />}
           />
         </Route>
         <Route path="/validation-stage" exact element={<PrivateRoute />}>

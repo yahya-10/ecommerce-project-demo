@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  subscription: [],
+  subscription: null,
 };
 
 const subscriptionSlice = createSlice({
@@ -9,7 +9,7 @@ const subscriptionSlice = createSlice({
   initialState,
   reducers: {
     selectSubscription: (state, action) => {
-      state.subscription.push(action.payload);
+      state.subscription = action.payload;
     },
   },
 });

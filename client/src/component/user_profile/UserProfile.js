@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment, useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Dialog, Transition } from "@headlessui/react";
 import {
@@ -10,6 +10,7 @@ import {
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 import SelectedSubscription from "./SelectedSubscription";
 import Steps from "./Steps";
@@ -29,7 +30,7 @@ function classNames(...classes) {
 // Create a reference.
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-const UserProfile = ({ selectedPackage, storedTheme }) => {
+const UserProfile = ({ storedTheme }) => {
   const { t } = useTranslation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -45,6 +46,13 @@ const UserProfile = ({ selectedPackage, storedTheme }) => {
   const myRef = useRef();
 
   const { subscription } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (user) {
+      toast.success("welcome aboard", { position: "top-left" });
+    }
+  }, [user]);
 
   // User's inputs controllers with yup.
   const requiredMessage = "This field is required";

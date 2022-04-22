@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { useSelector } from "react-redux";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -22,7 +22,11 @@ const Checkout = ({ storedTheme }) => {
     emailError: "",
     paymentError: "",
   });
+
+  // This state handles the "Process" button behavior.
   const [isProcessing, setIsProcessing] = useState(false);
+
+  const { subscription } = useSelector((state) => state.cart);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -54,6 +58,7 @@ const Checkout = ({ storedTheme }) => {
     //Fetch custom payment API.
     const response = await axios.post("http://localhost:5000/payment", {
       email: email,
+      amount: subscription.priceYearly,
     });
 
     //client_secret object with all the needed informations.
@@ -64,6 +69,7 @@ const Checkout = ({ storedTheme }) => {
         card: elements.getElement(CardElement),
         billing_details: {
           email: email,
+          // amount: subscription.priceMonthly,
         },
       },
     });
@@ -78,13 +84,12 @@ const Checkout = ({ storedTheme }) => {
 
   useEffect(() => {
     let abortController = new AbortController();
-    // handleSubmit();
     return () => {
       abortController.abort();
     };
   });
 
-  // console.log("checkout.js RENDERED");
+  // console.log("checkout.js", subscription.priceMonthly.toString());
 
   return (
     <div

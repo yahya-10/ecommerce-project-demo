@@ -88,7 +88,8 @@ const SelectedSubscription = ({ data, subscription, storedTheme }) => {
                               : "text-gray-200"
                           }`}
                         >
-                          {subscription.map((el) => el.title)}
+                          {/* {subscription.map((el) => el.title)} */}
+                          {subscription.title}
                         </dd>
                       </div>
                       <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -160,7 +161,7 @@ const SelectedSubscription = ({ data, subscription, storedTheme }) => {
                     <p className="relative grid grid-cols-2">
                       <span className="flex flex-col text-center">
                         <span className="text-5xl font-extrabold text-white tracking-tight">
-                          ${subscription.map((el) => el.priceMonthly)}
+                          ${subscription.priceMonthly}
                         </span>
                         <span className="mt-2 text-base font-medium text-cyan-100">
                           Setup fee
@@ -189,7 +190,7 @@ const SelectedSubscription = ({ data, subscription, storedTheme }) => {
                     </p>
                   </div>
                   <ul className="rounded overflow-hidden grid gap-px sm:grid-cols-2">
-                    {subscription.map((element) =>
+                    {/* {subscription.map((element) =>
                       element.mainFeatures.map((item, i) => (
                         <li
                           key={i}
@@ -202,7 +203,19 @@ const SelectedSubscription = ({ data, subscription, storedTheme }) => {
                           <span className="ml-3">{item.value}</span>
                         </li>
                       ))
-                    )}
+                    )} */}
+                    {subscription.mainFeatures.map((item, i) => (
+                      <li
+                        key={i}
+                        className="bg-cyan-700 bg-opacity-50 py-4 px-4 flex items-center text-base text-white"
+                      >
+                        <CheckIcon
+                          className="h-6 w-6 text-cyan-200"
+                          aria-hidden="true"
+                        />
+                        <span className="ml-3">{item.value}</span>
+                      </li>
+                    ))}
                   </ul>
                   <Link
                     to="/validation-stage"

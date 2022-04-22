@@ -20,11 +20,12 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const LandingPage = ({ handleSelectPackage, storedTheme }) => {
+const LandingPage = ({ storedTheme }) => {
   const [monthlyPlan, setMonthlyPlan] = useState(false);
 
   const dispatch = useDispatch();
 
+  // Add the selected package to redux state
   const handleAddSubscription = (product) => {
     dispatch(selectSubscription(product));
   };

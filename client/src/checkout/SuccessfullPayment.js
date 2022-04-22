@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import Steps from "../component/user_profile/Steps";
 
@@ -12,32 +13,20 @@ import { toast } from "react-toastify";
  */
 
 const SuccessfullPayment = ({ storedTheme }) => {
+  const { subscription } = useSelector((state) => state.cart);
+
   const projects = [
     {
       id: 1,
-      name: "New Advertising Campaign",
+      name: subscription.title,
       hours: "12.0",
       rate: "$75.00",
-      price: "$900.00",
-    },
-    {
-      id: 2,
-      name: "New Advertising",
-      hours: "16.0",
-      rate: "$75.00",
-      price: "$900.00",
-    },
-    {
-      id: 3,
-      name: "Advertising Campaign",
-      hours: "10.0",
-      rate: "$75.00",
-      price: "$900.00",
+      price: subscription.priceMonthly,
     },
   ];
 
   useEffect(() => {
-    toast("Thanks for your business");
+    toast.success("Thanks for your business", { position: "bottom-right" });
   });
 
   // Initiate a new reference from the jspdf library
