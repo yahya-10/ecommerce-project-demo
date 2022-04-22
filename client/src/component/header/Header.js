@@ -84,11 +84,7 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                         }`}
                       >
                         <span className="sr-only">Open main menu</span>
-                        <MenuIcon
-                          className="h-6 w-6"
-                          aria-hidden="true"
-                          // onClick={() => setShowNavMenu(!showNavMenu)}
-                        />
+                        <MenuIcon className="h-6 w-6" aria-hidden="true" />
                       </Popover.Button>
                     </div>
                   </div>
@@ -221,7 +217,6 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                           <a
                             key={item.name}
                             href={item.href}
-                            // className="-m-3 p-3 flex items-center hover:bg-gray-50"
                             className={`${
                               storedTheme === "light"
                                 ? "-m-3 p-3 flex items-center hover:bg-gray-50"
@@ -229,7 +224,6 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                             }`}
                           >
                             <span
-                              // className="ml-3 text-base font-medium text-gray-900"
                               className={`${
                                 storedTheme === "light"
                                   ? "ml-3 text-base font-medium text-gray-900"

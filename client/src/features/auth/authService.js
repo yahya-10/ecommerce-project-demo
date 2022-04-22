@@ -27,6 +27,7 @@ const login = async (credentials) => {
 // Log out user
 const logout = async () => {
   sessionStorage.removeItem("user");
+  window.location.reload();
 };
 
 const authService = {

@@ -42,6 +42,7 @@ const LandingPage = ({ storedTheme }) => {
       featured: false,
       description: t("plans.starter_plan_desc"),
       priceMonthly: 5,
+      tax: 5.0,
       priceYearly: 56,
       mainFeatures: [
         { id: 1, value: t("plans.starter_value_1") },
@@ -58,6 +59,7 @@ const LandingPage = ({ storedTheme }) => {
       featured: true,
       description: t("plans.scale_plan_desc"),
       priceMonthly: 19,
+      tax: 10.0,
       priceYearly: 220,
       mainFeatures: [
         { id: 1, value: t("plans.scale_value_1") },
@@ -74,6 +76,7 @@ const LandingPage = ({ storedTheme }) => {
       featured: false,
       description: t("plans.growth_plan_desc"),
       priceMonthly: 12,
+      tax: 8.0,
       priceYearly: 140,
       mainFeatures: [
         { id: 1, value: t("plans.growth_value_1") },

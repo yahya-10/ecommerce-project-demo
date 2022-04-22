@@ -149,7 +149,7 @@ const SuccessfullPayment = ({ storedTheme }) => {
                     {project.rate}
                   </td>
                   <td className="py-4 pl-3 pr-4 text-right text-sm text-gray-500 sm:pr-6 md:pr-0">
-                    {project.price}
+                    ${project.price}
                   </td>
                 </tr>
               ))}
@@ -170,7 +170,7 @@ const SuccessfullPayment = ({ storedTheme }) => {
                   Subtotal
                 </th>
                 <td className="pl-3 pr-4 pt-6 text-right text-sm text-gray-500 sm:pr-6 md:pr-0">
-                  $3,900.00
+                  ${subscription.priceMonthly}
                 </td>
               </tr>
               <tr>
@@ -188,7 +188,7 @@ const SuccessfullPayment = ({ storedTheme }) => {
                   Tax
                 </th>
                 <td className="pl-3 pr-4 pt-4 text-right text-sm text-gray-500 sm:pr-6 md:pr-0">
-                  $585.00
+                  ${subscription.tax}
                 </td>
               </tr>
               <tr>
@@ -220,7 +220,7 @@ const SuccessfullPayment = ({ storedTheme }) => {
                       : "pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-50 sm:pr-6 md:pr-0"
                   }`}
                 >
-                  $4,485.00
+                  ${subscription.priceMonthly + subscription.tax}
                 </td>
               </tr>
             </tfoot>
