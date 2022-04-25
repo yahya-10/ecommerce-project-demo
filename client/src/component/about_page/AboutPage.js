@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 import StatsSection from "./StatsSection";
 import TeamSection from "./TeamSection";
@@ -15,7 +16,11 @@ const AboutPage = ({ storedTheme }) => {
 
   console.log("about page rendered");
   return (
-    <div className="">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <main
         className="min-h-full bg-cover bg-top sm:bg-top"
         style={{
@@ -206,7 +211,7 @@ const AboutPage = ({ storedTheme }) => {
 
       {/* Teams section */}
       <TeamSection storedTheme={storedTheme} />
-    </div>
+    </motion.div>
   );
 };
 

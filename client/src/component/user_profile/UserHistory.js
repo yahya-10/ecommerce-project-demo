@@ -5,6 +5,7 @@ import UserConsumptionChart from "../charts/UserConsumptionChart";
 import TransactionsTable from "./TransactionsTable";
 
 import { ChartPieIcon, ChartBarIcon } from "@heroicons/react/solid";
+import { motion } from "framer-motion";
 
 const UserHistory = ({ storedTheme }) => {
   // Toggle between charts icons.
@@ -12,7 +13,12 @@ const UserHistory = ({ storedTheme }) => {
 
   // console.log("userHistory", displayPieChart);
   return (
-    <div className="mx-3 my-3">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="mx-3 my-3"
+    >
       <TransactionsTable storedTheme={storedTheme} />
       <div>
         <div className="flex flex-row px-3 py-4">
@@ -43,7 +49,7 @@ const UserHistory = ({ storedTheme }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

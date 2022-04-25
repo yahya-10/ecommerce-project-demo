@@ -10,6 +10,7 @@ import {
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
+import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 
 import SelectedSubscription from "./SelectedSubscription";
@@ -155,7 +156,10 @@ const UserProfile = ({ storedTheme }) => {
   // console.log(subscription);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className={`${
         storedTheme === "light"
           ? "bg-gray-50 transition-colors duration-300"
@@ -351,7 +355,10 @@ const UserProfile = ({ storedTheme }) => {
               }`}
               id="submit"
             >
-              <div
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 className={`${
                   storedTheme === "light"
                     ? "space-y-8 divide-y divide-gray-200 sm:space-y-5"
@@ -812,14 +819,14 @@ const UserProfile = ({ storedTheme }) => {
                     />
                   )}
                 </div>
-              </div>
+              </motion.div>
             </form>
           ) : (
             <UserHistory storedTheme={storedTheme} />
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

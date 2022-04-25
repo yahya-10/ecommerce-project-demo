@@ -5,6 +5,7 @@ import CartModal from "./CartModal";
 
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { EyeIcon } from "@heroicons/react/solid";
+import { motion } from "framer-motion";
 
 const ProductCard = ({
   product,
@@ -51,7 +52,14 @@ const ProductCard = ({
 
   // console.log(listItems);
   return (
-    <div key={product.id} href={product.href} className="group">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      key={product.id}
+      href={product.href}
+      className="group"
+    >
       <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
         <img
           src={product.imageSrc}
@@ -80,7 +88,7 @@ const ProductCard = ({
         Details
         <EyeIcon className="ml-2 -mr-0.5 h-4 w-4" aria-hidden="true" />
       </button>
-    </div>
+    </motion.div>
   );
 };
 

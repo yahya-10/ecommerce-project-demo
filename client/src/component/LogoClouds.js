@@ -11,15 +11,15 @@ const LogoClouds = () => {
         <h2 className="text-3xl font-extrabold text-white">
           {t("logo_cloud")}
         </h2>
-        <motion.div
-          initial={{ x: "-100vw" }}
-          transition={{ delay: 0.8 }}
-          animate={{ x: 0 }}
+        <div
+          // initial={{ x: "-100vw" }}
+          // transition={{ delay: 0.8 }}
+          // animate={{ x: 0 }}
           className="flow-root mt-8 lg:mt-10"
         >
           <div className="-mt-4 -ml-8 flex flex-wrap justify-between lg:-ml-4">
-            <motion.div
-              whileHover={{ scale: 1.2 }}
+            <div
+              // whileHover={{ scale: 1.2 }}
               className="mt-4 ml-8 flex flex-grow flex-shrink-0 lg:flex-grow-0 lg:ml-4"
             >
               <img
@@ -29,9 +29,9 @@ const LogoClouds = () => {
                 height="48"
                 alt="Tuple"
               />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.2 }}
+            </div>
+            <div
+              // whileHover={{ scale: 1.2 }}
               className="mt-4 ml-8 flex flex-grow flex-shrink-0 lg:flex-grow-0 lg:ml-4"
             >
               <img
@@ -41,9 +41,9 @@ const LogoClouds = () => {
                 height="48"
                 alt="Mirage"
               />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.2 }}
+            </div>
+            <div
+              // whileHover={{ scale: 1.2 }}
               className="mt-4 ml-8 flex flex-grow flex-shrink-0 lg:flex-grow-0 lg:ml-4"
             >
               <img
@@ -53,9 +53,9 @@ const LogoClouds = () => {
                 height="48"
                 alt="StaticKit"
               />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.2 }}
+            </div>
+            <div
+              // whileHover={{ scale: 1.2 }}
               className="mt-4 ml-8 flex flex-grow flex-shrink-0 lg:flex-grow-0 lg:ml-4"
             >
               <img
@@ -65,9 +65,9 @@ const LogoClouds = () => {
                 height="48"
                 alt="Transistor"
               />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.2 }}
+            </div>
+            <div
+              // whileHover={{ scale: 1.2 }}
               className="mt-4 ml-8 flex flex-grow flex-shrink-0 lg:flex-grow-0 lg:ml-4"
             >
               <img
@@ -77,9 +77,9 @@ const LogoClouds = () => {
                 height="48"
                 alt="Workcation"
               />
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

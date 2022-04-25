@@ -3,6 +3,7 @@ import {
   PhoneIcon,
   SupportIcon,
 } from "@heroicons/react/outline";
+import { motion } from "framer-motion";
 
 const supportLinks = [
   {
@@ -78,7 +79,11 @@ const faqs = [
 
 const Contact = ({ storedTheme }) => {
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <header
         className={`${
           storedTheme === "light"
@@ -404,7 +409,7 @@ const Contact = ({ storedTheme }) => {
           </div>
         </section>
       </main>
-    </div>
+    </motion.div>
   );
 };
 

@@ -14,7 +14,10 @@ const UserValidationPage = ({ storedTheme }) => {
   }, []);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className={`${
         storedTheme === "light"
           ? "bg-white transition-colors duration-300"
@@ -82,7 +85,7 @@ const UserValidationPage = ({ storedTheme }) => {
           </div>
         </main>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

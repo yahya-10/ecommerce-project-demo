@@ -6,9 +6,9 @@ import Steps from "../component/user_profile/Steps";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 /**
- *
  * @returns Static component with an invoice of the last Purchase.
  */
 
@@ -55,7 +55,10 @@ const SuccessfullPayment = ({ storedTheme }) => {
 
   // console.log("successfull payment comp", <Invoice />);
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className={`${
         storedTheme === "light"
           ? "bg-white transition-colors duration-300"
@@ -227,7 +230,7 @@ const SuccessfullPayment = ({ storedTheme }) => {
           </table>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

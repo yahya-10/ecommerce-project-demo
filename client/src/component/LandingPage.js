@@ -208,7 +208,11 @@ const LandingPage = ({ storedTheme }) => {
   ];
   // console.log("Landing page render");
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div>
         <HeroSection storedTheme={storedTheme} />
       </div>
@@ -1016,7 +1020,7 @@ const LandingPage = ({ storedTheme }) => {
           </section>
         </main>
       </div>
-    </>
+    </motion.div>
   );
 };
 

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 import CardInput from "./CardInput";
 import Steps from "../component/user_profile/Steps";
@@ -58,7 +59,7 @@ const Checkout = ({ storedTheme }) => {
     //Fetch custom payment API.
     const response = await axios.post("http://localhost:5000/payment", {
       email: email,
-      amount: subscription.priceYearly,
+      amount: subscription.priceMonthly,
     });
 
     //client_secret object with all the needed informations.
@@ -92,7 +93,10 @@ const Checkout = ({ storedTheme }) => {
   // console.log("checkout.js", subscription.priceMonthly.toString());
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className={`${
         storedTheme === "light"
           ? "bg-white transition-colors duration-300"
@@ -157,7 +161,7 @@ const Checkout = ({ storedTheme }) => {
           </form>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

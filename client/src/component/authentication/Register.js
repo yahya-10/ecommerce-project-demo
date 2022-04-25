@@ -96,7 +96,11 @@ const Register = ({ storedTheme }) => {
   }
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div
         className={`${
           storedTheme === "light"
@@ -432,7 +436,7 @@ const Register = ({ storedTheme }) => {
           />
         </motion.div>
       </div>
-    </>
+    </motion.div>
   );
 };
 

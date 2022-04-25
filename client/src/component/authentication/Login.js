@@ -84,7 +84,11 @@ const Login = ({ storedTheme }) => {
   // console.log("login.js", formik.values.email);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div
         className={`${
           storedTheme === "light"
@@ -362,7 +366,7 @@ const Login = ({ storedTheme }) => {
           />
         </motion.div>
       </div>
-    </>
+    </motion.div>
   );
 };
 

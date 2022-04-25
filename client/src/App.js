@@ -1,5 +1,6 @@
 import React, { useState, lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -33,6 +34,8 @@ const SuccessfullPayment = lazy(() => import("./checkout/SuccessfullPayment"));
 const App = () => {
   const [listItems, setListItems] = useState([]);
   const [storedTheme, setTheme] = useThemeHandler("theme");
+
+  const location = useLocation();
 
   //Add item to the list and increment the quantity
   const handleAddItemToList = (product) => {
@@ -82,74 +85,76 @@ const App = () => {
           setTheme={setTheme}
         />
       </div>
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={<LandingPage storedTheme={storedTheme} />}
-        />
-        <Route path="/login" element={<Login storedTheme={storedTheme} />} />
-        <Route
-          path="/register"
-          element={<Register storedTheme={storedTheme} />}
-        />
-        <Route
-          path="/contact"
-          element={<Contact storedTheme={storedTheme} />}
-        />
-        <Route
-          path="/store"
-          element={
-            <ProductsList
-              ProductsExample={ProductsExample}
-              listItems={listItems}
-              addItemToList={handleAddItemToList}
-              removeItemFromList={handleRemoveItemFromList}
-              clearCart={clearCart}
+      <AnimatePresence>
+        <Routes location={location} key={location.pathname}>
+          <Route
+            exact
+            path="/"
+            element={<LandingPage storedTheme={storedTheme} />}
+          />
+          <Route path="/login" element={<Login storedTheme={storedTheme} />} />
+          <Route
+            path="/register"
+            element={<Register storedTheme={storedTheme} />}
+          />
+          <Route
+            path="/contact"
+            element={<Contact storedTheme={storedTheme} />}
+          />
+          <Route
+            path="/store"
+            element={
+              <ProductsList
+                ProductsExample={ProductsExample}
+                listItems={listItems}
+                addItemToList={handleAddItemToList}
+                removeItemFromList={handleRemoveItemFromList}
+                clearCart={clearCart}
+              />
+            }
+          />
+          <Route
+            path="/about"
+            element={<AboutPage storedTheme={storedTheme} />}
+          />
+          <Route
+            path="/store/cart"
+            element={<CartList listItems={listItems} />}
+          />
+          <Route path="/checkout" exact element={<PrivateRoute />}>
+            <Route
+              path="/checkout"
+              exact
+              element={<Checkout storedTheme={storedTheme} />}
             />
-          }
-        />
-        <Route
-          path="/about"
-          element={<AboutPage storedTheme={storedTheme} />}
-        />
-        <Route
-          path="/store/cart"
-          element={<CartList listItems={listItems} />}
-        />
-        <Route path="/checkout" exact element={<PrivateRoute />}>
-          <Route
-            path="/checkout"
-            exact
-            element={<Checkout storedTheme={storedTheme} />}
-          />
-        </Route>
-        <Route path="/profile" exact element={<PrivateRoute />}>
-          <Route
-            path="/profile"
-            exact
-            element={<UserProfile storedTheme={storedTheme} />}
-          />
-        </Route>
-        <Route path="/validation-stage" exact element={<PrivateRoute />}>
-          <Route
-            path="/validation-stage"
-            exact
-            element={<UserValidationPage storedTheme={storedTheme} />}
-          />
-        </Route>
-        <Route
-          path="/checkout/successfull_payment"
-          exact
-          element={<PrivateRoute />}
-        >
+          </Route>
+          <Route path="/profile" exact element={<PrivateRoute />}>
+            <Route
+              path="/profile"
+              exact
+              element={<UserProfile storedTheme={storedTheme} />}
+            />
+          </Route>
+          <Route path="/validation-stage" exact element={<PrivateRoute />}>
+            <Route
+              path="/validation-stage"
+              exact
+              element={<UserValidationPage storedTheme={storedTheme} />}
+            />
+          </Route>
           <Route
             path="/checkout/successfull_payment"
             exact
-            element={<SuccessfullPayment storedTheme={storedTheme} />}
-          />
-        </Route>
-      </Routes>
+            element={<PrivateRoute />}
+          >
+            <Route
+              path="/checkout/successfull_payment"
+              exact
+              element={<SuccessfullPayment storedTheme={storedTheme} />}
+            />
+          </Route>
+        </Routes>
+      </AnimatePresence>
       <BackToTopButton />
       <Footer storedTheme={storedTheme} />
       <ToastContainer />
