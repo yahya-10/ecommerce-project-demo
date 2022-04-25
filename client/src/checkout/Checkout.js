@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 
 import CardInput from "./CardInput";
 import Steps from "../component/user_profile/Steps";
+import PaymentDetails from "./PaymentDetails";
 
 /**
  *@private
@@ -144,6 +145,7 @@ const Checkout = ({ storedTheme }) => {
               />
               {error && <p style={{ color: "red" }}>{error.emailError}</p>}
             </div>
+            <PaymentDetails />
             <div className="mt-3">
               <CardInput />
             </div>

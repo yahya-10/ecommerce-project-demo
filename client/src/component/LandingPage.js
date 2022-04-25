@@ -52,6 +52,7 @@ const LandingPage = ({ storedTheme }) => {
         { id: 5, value: t("plans.starter_value_5") },
         { id: 6, value: t("plans.starter_value_6") },
       ],
+      bgColor: "bg-green-500",
     },
     {
       id: 21,
@@ -69,6 +70,7 @@ const LandingPage = ({ storedTheme }) => {
         { id: 5, value: t("plans.scale_value_5") },
         { id: 6, value: t("plans.scale_value_6") },
       ],
+      bgColor: "bg-yellow-500",
     },
     {
       id: 22,
@@ -86,6 +88,7 @@ const LandingPage = ({ storedTheme }) => {
         { id: 5, value: t("plans.growth_value_5") },
         { id: 6, value: t("plans.growth_value_6") },
       ],
+      bgColor: "bg-pink-500",
     },
   ];
 
