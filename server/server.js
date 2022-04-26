@@ -55,11 +55,11 @@ app.use("/register", cors(), (req, res) => {
  * Payment Endpoint
  */
 app.post("/payment", async (req, res) => {
-  const { email, amount } = req.body;
+  const { email } = req.body;
   // console.log("req.body", req.body.amount);
   //Collect payment from customers
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 2000,
+    amount: "2000",
     currency: "USD",
     receipt_email: email,
     metadata: {
@@ -70,6 +70,7 @@ app.post("/payment", async (req, res) => {
   //Send the "client_secret" to react to finish payment
   res.json({
     client_secret: paymentIntent["client_secret"],
+    // amount,
   });
 });
 

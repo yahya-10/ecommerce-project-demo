@@ -32,7 +32,7 @@ const PaymentDetails = () => {
               <p className="text-gray-500">Include ${subscription.tax} Tax</p>
             </div>
             <div className="flex-shrink-0 pr-2">
-              ${subscription.priceMonthly + subscription.tax}
+              ${(subscription.priceMonthly + subscription.tax) * 100}
             </div>
           </div>
         </li>

@@ -57,10 +57,14 @@ const Checkout = ({ storedTheme }) => {
 
     setIsProcessing(true);
 
+    const amountToPay = () => {
+      return (subscription.priceMonthly + subscription.tax) * 100;
+    };
+
     //Fetch custom payment API.
     const response = await axios.post("http://localhost:5000/payment", {
       email: email,
-      amount: subscription.priceMonthly,
+      amount: amountToPay,
     });
 
     //client_secret object with all the needed informations.
@@ -91,7 +95,7 @@ const Checkout = ({ storedTheme }) => {
     };
   });
 
-  // console.log("checkout.js", subscription.priceMonthly.toString());
+  console.log("checkout.js", subscription.priceMonthly * 100);
 
   return (
     <motion.div
