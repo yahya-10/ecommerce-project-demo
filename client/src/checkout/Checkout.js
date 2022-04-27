@@ -95,7 +95,7 @@ const Checkout = ({ storedTheme }) => {
     };
   });
 
-  console.log("checkout.js", subscription.priceMonthly * 100);
+  // console.log("checkout.js", subscription.priceMonthly * 100);
 
   return (
     <motion.div

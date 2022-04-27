@@ -9,7 +9,7 @@ import { useThemeHandler } from "./custom_hooks/useThemeHandler";
 import BackToTopButton from "./utils/BackToTopButton";
 
 const Header = lazy(() => import("./component/header/Header"));
-const LandingPage = lazy(() => import("./component/LandingPage"));
+const LandingPage = lazy(() => import("./component/landing_page/LandingPage"));
 const Login = lazy(() => import("./component/authentication/Login"));
 const Register = lazy(() => import("./component/authentication/Register"));
 const Footer = lazy(() => import("./component/footer/Footer"));

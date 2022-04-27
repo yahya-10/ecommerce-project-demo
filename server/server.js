@@ -23,7 +23,7 @@ const tokGen = new tokenGenerator();
 /**
  * User login Endpoint
  */
-app.use("/login", cors(), (req, res) => {
+app.post("/login", cors(), (req, res) => {
   try {
     res.send({
       email: req.body.email,
@@ -38,14 +38,16 @@ app.use("/login", cors(), (req, res) => {
 /**
  * First time User registration Endpoint
  */
-app.use("/register", cors(), (req, res) => {
+app.post("/register", cors(), (req, res) => {
+  const { fullName, companyName, email, password } = req.body;
   try {
+    // if ((fullName && companyName && email && password) !== "") {
     res.send({
-      fullName: req.body.fullName,
-      companyName: req.body.companyName,
-      email: req.body.email,
+      // message: "Succeed",
+      // credentials: [fullName, companyName, email],
       token: tokGen.generate(),
     });
+    // }
   } catch (error) {
     console.error(error);
   }
@@ -55,13 +57,14 @@ app.use("/register", cors(), (req, res) => {
  * Payment Endpoint
  */
 app.post("/payment", async (req, res) => {
-  const { email } = req.body;
-  // console.log("req.body", req.body.amount);
+  // const { email, amount } = req.body;
+
+  // if ((email || amount) === "") return res.status(401).json("Bad request.");
   //Collect payment from customers
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: "2000",
+    amount: 2000,
     currency: "USD",
-    receipt_email: email,
+    receipt_email: req.body.email,
     metadata: {
       integration_check: "accept_a_payment",
     },
@@ -69,8 +72,8 @@ app.post("/payment", async (req, res) => {
 
   //Send the "client_secret" to react to finish payment
   res.json({
-    client_secret: paymentIntent["client_secret"],
-    // amount,
+    client_secret: paymentIntent.client_secret,
+    // payment_intent: paymentIntent,
   });
 });
 
