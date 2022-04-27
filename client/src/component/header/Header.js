@@ -144,14 +144,14 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                   {storedTheme === "dark" ? (
                     <SunIcon
                       style={{ color: "#fcec05" }}
-                      className="h-6 w-6 ml-3 transition duration-500"
+                      className="h-6 w-6 ml-3 transition duration-500 cursor-pointer"
                       aria-hidden="true"
                       onClick={() => setTheme("light")}
                     />
                   ) : (
                     <MoonIcon
                       style={{ color: "#2b313b" }}
-                      className="h-6 w-6 ml-3 transition duration-500"
+                      className="h-6 w-6 ml-3 transition duration-500 cursor-pointer"
                       aria-hidden="true"
                       onClick={() => setTheme("dark")}
                     />
@@ -197,7 +197,7 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                   }`}
                 >
                   <div className="pt-5 pb-6 px-5">
-                    <div className="flex items-center space-between">
+                    <div className="flex items-center space-between float-right">
                       <div className="-mr-2">
                         <Popover.Button
                           className={`${
