@@ -73,7 +73,7 @@ const faqs = [
 /**
  *
  * Create modals for each card!! """TRY TO USE ONE MODAL""" with dynamic content
- * to avoid the use of multiple modal and logic!!!
+ * to avoid the use of multiple modals and logic!!!
  *
  */
 

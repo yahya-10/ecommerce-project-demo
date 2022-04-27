@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -12,10 +12,10 @@ function classNames(...classes) {
 }
 
 const PricingCardsSection = ({ monthlyPlan }) => {
-  //   const [monthlyPlan, setMonthlyPlan] = useState(false);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
+  // Add the selected package to redux state
   const handleAddSubscription = (product) => {
     dispatch(selectSubscription(product));
   };
