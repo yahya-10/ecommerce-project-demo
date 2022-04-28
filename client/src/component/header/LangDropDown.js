@@ -39,8 +39,8 @@ const LangDropDown = ({ storedTheme }) => {
         <Menu.Items
           className={`${
             storedTheme === "light"
-              ? "origin-top-right absolute right-0 mt-2 w-56 shadow-lg bg-transparent ring-1 ring-black ring-opacity-5 focus:outline-none cursor-pointer"
-              : "origin-top-right absolute right-0 mt-2 w-56 shadow-lg bg-gray-400 ring-1 ring-black ring-opacity-5 focus:outline-none cursor-pointer"
+              ? "origin-top-right absolute mt-2 w-56 shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none cursor-pointer"
+              : "origin-top-right absolute mt-2 w-56 shadow-lg bg-gray-400 ring-1 ring-black ring-opacity-5 focus:outline-none cursor-pointer"
           }`}
         >
           <div className="py-1">

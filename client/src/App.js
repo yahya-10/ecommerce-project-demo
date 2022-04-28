@@ -9,19 +9,19 @@ import { useThemeHandler } from "./custom_hooks/useThemeHandler";
 import BackToTopButton from "./utils/BackToTopButton";
 
 const Header = lazy(() => import("./component/header/Header"));
-const LandingPage = lazy(() => import("./component/landing_page/LandingPage"));
+const LandingPage = lazy(() => import("./pages/landing_page/LandingPage"));
 const Login = lazy(() => import("./component/authentication/Login"));
 const Register = lazy(() => import("./component/authentication/Register"));
 const Footer = lazy(() => import("./component/footer/Footer"));
-const Contact = lazy(() => import("./component/Contact"));
+const Contact = lazy(() => import("./pages/Contact"));
 const ProductsList = lazy(() => import("./component/products/ProductsList"));
-const AboutPage = lazy(() => import("./component/about_page/AboutPage"));
+const AboutPage = lazy(() => import("./pages/about_page/AboutPage"));
 const CartList = lazy(() => import("./component/header/CartList"));
 const Checkout = lazy(() => import("./checkout/Checkout"));
 const PrivateRoute = lazy(() => import("./helpers/PrivateRoute"));
-const UserProfile = lazy(() => import("./component/user_profile/UserProfile"));
+const UserProfile = lazy(() => import("./pages/user_profile/UserProfile"));
 const UserValidationPage = lazy(() =>
-  import("./component/user_profile/UserValidationPage")
+  import("./pages/user_profile/UserValidationPage")
 );
 const SuccessfullPayment = lazy(() => import("./checkout/SuccessfullPayment"));
 

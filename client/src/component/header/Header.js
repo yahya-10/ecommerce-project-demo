@@ -1,4 +1,10 @@
 import React, { Fragment } from "react";
+import { Popover, Transition } from "@headlessui/react";
+import { MenuIcon } from "@heroicons/react/outline";
+import { MoonIcon, SunIcon } from "@heroicons/react/solid";
+// import { ShoppingCartIcon } from "@heroicons/react/solid";
+import { useTranslation } from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import comunikcrmLogo from "../../assets/comunikcrm.avif";
@@ -7,13 +13,6 @@ import LangDropDown from "./LangDropDown";
 import { avatarCreator } from "../../utils/CreateAvatar";
 import { getRondomColor } from "../../utils/GetRandomColor";
 import { reset, logout } from "../../features/auth/authSlice";
-
-import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { MoonIcon, SunIcon } from "@heroicons/react/solid";
-// import { ShoppingCartIcon } from "@heroicons/react/solid";
-import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
 
 /**
  * @public
@@ -40,7 +39,7 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -185,19 +184,19 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Popover.Panel
+              {/* <Popover.Panel
                 focus
                 className=" top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+              > */}
+              <div
+                className={`${
+                  storedTheme === "light"
+                    ? "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white transition-colors duration-300 divide-y-2 divide-gray-50"
+                    : "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gray-700 transition-colors duration-300 divide-y-2 divide-gray-800"
+                }`}
               >
-                <div
-                  className={`${
-                    storedTheme === "light"
-                      ? "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white transition-colors duration-300 divide-y-2 divide-gray-50"
-                      : "rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gray-700 transition-colors duration-300 divide-y-2 divide-gray-800"
-                  }`}
-                >
-                  <div className="pt-5 pb-6 px-5">
-                    <div className="flex items-center space-between float-right">
+                <div className="pt-5 pb-6 px-5">
+                  {/* <div className="flex items-center space-between float-right">
                       <div className="-mr-2">
                         <Popover.Button
                           className={`${
@@ -210,87 +209,87 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                           <XIcon className="h-6 w-6" aria-hidden="true" />
                         </Popover.Button>
                       </div>
-                    </div>
-                    <div className="mt-6">
-                      <nav className="grid gap-y-8">
-                        {navigation.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
+                    </div> */}
+                  <div className="mt-6">
+                    <nav className="grid gap-y-8">
+                      {navigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className={`${
+                            storedTheme === "light"
+                              ? "-m-3 p-3 flex items-center hover:bg-gray-50"
+                              : "-m-3 p-3 flex items-center hover:bg-gray-600"
+                          }`}
+                        >
+                          <span
                             className={`${
                               storedTheme === "light"
-                                ? "-m-3 p-3 flex items-center hover:bg-gray-50"
-                                : "-m-3 p-3 flex items-center hover:bg-gray-600"
+                                ? "ml-3 text-base font-medium text-gray-900"
+                                : "ml-3 text-base font-medium text-gray-50"
                             }`}
                           >
-                            <span
-                              className={`${
-                                storedTheme === "light"
-                                  ? "ml-3 text-base font-medium text-gray-900"
-                                  : "ml-3 text-base font-medium text-gray-50"
-                              }`}
-                            >
-                              {item.name}
-                            </span>
-                          </a>
-                        ))}
-                        <div className="flex justify-center items-center">
-                          <LangDropDown />
-                          {storedTheme === "dark" ? (
-                            <SunIcon
-                              style={{ color: "#fcec05" }}
-                              className="h-6 w-6 ml-3"
-                              aria-hidden="true"
-                              onClick={() => setTheme("light")}
-                            />
-                          ) : (
-                            <MoonIcon
-                              style={{ color: "#2b313b" }}
-                              className="h-6 w-6 ml-3"
-                              aria-hidden="true"
-                              onClick={() => setTheme("dark")}
-                            />
-                          )}
-                        </div>
-                      </nav>
-                    </div>
-                  </div>
-                  <div className="py-6 px-5 space-y-6">
-                    {user ? (
-                      <div className="flex items-center space-x-4 lg:space-x-6">
-                        <span className="inline-flex shadow" onClick={onLogout}>
-                          <Link
-                            to="/login"
-                            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
-                          >
-                            {t("header.log_out")}
-                          </Link>
-                        </span>
-                        <Link to="/profile" aria-label="profile ariaLabel">
-                          <img
-                            className="w-12 h-12 rounded-full lg:w-12 lg:h-12"
-                            src={avatarCreator(
-                              500,
-                              "Yahya Akermi",
-                              getRondomColor()
-                            )}
-                            alt="spacex"
+                            {item.name}
+                          </span>
+                        </a>
+                      ))}
+                      <div className="flex justify-center items-center">
+                        <LangDropDown />
+                        {storedTheme === "dark" ? (
+                          <SunIcon
+                            style={{ color: "#fcec05" }}
+                            className="h-6 w-6 ml-3"
+                            aria-hidden="true"
+                            onClick={() => setTheme("light")}
                           />
-                        </Link>
+                        ) : (
+                          <MoonIcon
+                            style={{ color: "#2b313b" }}
+                            className="h-6 w-6 ml-3"
+                            aria-hidden="true"
+                            onClick={() => setTheme("dark")}
+                          />
+                        )}
                       </div>
-                    ) : (
-                      <span className="inline-flex shadow">
+                    </nav>
+                  </div>
+                </div>
+                <div className="py-6 px-5 space-y-6">
+                  {user ? (
+                    <div className="flex items-center space-x-4 lg:space-x-6">
+                      <span className="inline-flex shadow" onClick={onLogout}>
                         <Link
                           to="/login"
                           className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
                         >
-                          {t("header.log_in")}
+                          {t("header.log_out")}
                         </Link>
                       </span>
-                    )}
-                  </div>
+                      <Link to="/profile" aria-label="profile ariaLabel">
+                        <img
+                          className="w-12 h-12 rounded-full lg:w-12 lg:h-12"
+                          src={avatarCreator(
+                            500,
+                            "Yahya Akermi",
+                            getRondomColor()
+                          )}
+                          alt="spacex"
+                        />
+                      </Link>
+                    </div>
+                  ) : (
+                    <span className="inline-flex shadow">
+                      <Link
+                        to="/login"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
+                      >
+                        {t("header.log_in")}
+                      </Link>
+                    </span>
+                  )}
                 </div>
-              </Popover.Panel>
+              </div>
+              {/* </Popover.Panel> */}
             </Transition>
           </Popover>
         </div>

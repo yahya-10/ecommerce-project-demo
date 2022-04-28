@@ -110,7 +110,7 @@ const Contact = ({ storedTheme }) => {
             className={`${
               storedTheme === "light"
                 ? "mt-6 max-w-3xl text-xl text-blue-gray-300"
-                : "mt-6 max-w-3xl text-xl text-blue-gray-200"
+                : "mt-6 max-w-3xl text-xl text-gray-50"
             }`}
           >
             Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate

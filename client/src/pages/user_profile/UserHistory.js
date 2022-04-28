@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import UserConsumptionBarChart from "../charts/UserConsumptionBarChart";
-import UserConsumptionChart from "../charts/UserConsumptionChart";
+import UserConsumptionBarChart from "../../component/charts/UserConsumptionBarChart";
+import UserConsumptionChart from "../../component/charts/UserConsumptionChart";
 import TransactionsTable from "./TransactionsTable";
 
 import { ChartPieIcon, ChartBarIcon } from "@heroicons/react/solid";

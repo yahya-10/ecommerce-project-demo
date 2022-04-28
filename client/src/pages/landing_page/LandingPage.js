@@ -8,7 +8,9 @@ import LogoClouds from "./LogoClouds";
 import PricingCardsSection from "./PricingCardsSection";
 import ComparisonSection from "./ComparisonSection";
 
-const LandingPageChart = lazy(() => import("../charts/LandingPageChart"));
+const LandingPageChart = lazy(() =>
+  import("../../component/charts/LandingPageChart")
+);
 
 /**
  * @public
