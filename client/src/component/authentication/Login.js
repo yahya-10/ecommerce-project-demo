@@ -288,7 +288,7 @@ const Login = ({ storedTheme }) => {
                     >
                       {t("login.password")}
                     </label>
-                    <div className="flex items-end mt-1">
+                    <div className="relative flex items-end mt-1">
                       <input
                         id="password"
                         name="password"
@@ -303,13 +303,14 @@ const Login = ({ storedTheme }) => {
                       />
                       {showPwd ? (
                         <EyeIcon
-                          className="ml-0 -mr-0.5 h-4 w-4"
+                          className="h-4 w-4 absolute right-2 align-center top-2"
                           aria-hidden="true"
                           onClick={() => setShowPwd(false)}
                         />
                       ) : (
                         <EyeOffIcon
-                          className="ml-0 -mr-0.5 h-4 w-4"
+                          className="h-4 w-4 absolute right-2 align-center top-2"
+                          //  ml-0 -mr-0.5  z-9999
                           aria-hidden="true"
                           onClick={() => setShowPwd(true)}
                         />

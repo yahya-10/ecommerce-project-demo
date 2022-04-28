@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import Steps from "../component/user_profile/Steps";
+import Steps from "../pages/user_profile/Steps";
 
 import jsPDF from "jspdf";
 import "jspdf-autotable";

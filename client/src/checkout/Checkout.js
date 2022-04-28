@@ -6,7 +6,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 
 import CardInput from "./CardInput";
-import Steps from "../component/user_profile/Steps";
+import Steps from "../pages/user_profile/Steps";
 import PaymentDetails from "./PaymentDetails";
 
 /**
