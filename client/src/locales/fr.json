@@ -163,6 +163,12 @@
     "team_section_desc": "Une équipe de leaders passionnés et inspirés apportent chacun leur propre énergie et expertise à comunik - des raisons qui nous aident finalement à atteindre des niveaux de réussite plus élevés."
   },
 
+  "contact_page": {
+    "support": "Que vous ayez une question sur les fonctionnalités, les essais, les prix, que vous ayez besoin d'une démonstration ou autre chose, notre équipe est prête à répondre à toutes vos questions.",
+    "jobs_section": "Chez Comunik, nous jouons pour gagner. Chaque jour apporte un nouveau défi. Chaque jour apporte une opportunité d'apprendre et de grandir. Chaque jour apporte une nouvelle chance d'impressionner nos clients. Nous travaillons dur mais nous nous amusons aussi beaucoup.",
+    "newsLetter": "Inscrivez-vous pour recevoir des mises à jour par courriel sur les annonces de nouveaux produits, les idées de cadeaux, les promotions spéciales, les ventes et plus encore. "
+  },
+
   "footer": {
     "footer_slogan": "Rendre le monde meilleur en construisant des hiérarchies élégantes.",
     "footer_marketing": "Marketing",

@@ -77,6 +77,10 @@ const PricingCardsSection = ({ monthlyPlan }) => {
     },
   ];
 
+  const y = -20;
+
+  const styles = `translateY(${y}px)`;
+
   return (
     <div>
       {/* Cards */}
@@ -91,8 +95,9 @@ const PricingCardsSection = ({ monthlyPlan }) => {
           {plans.map((plan) => (
             <motion.div
               whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.2 },
+                // scale: 1.05,
+                transform: styles,
+                transition: { duration: 0.25 },
               }}
               key={plan.title}
               className={classNames(

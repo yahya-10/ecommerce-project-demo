@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 import StatsSection from "./StatsSection";
 import TeamSection from "./TeamSection";
+import Client from "../../assets/client.png";
 
 const AboutPage = ({ storedTheme }) => {
   const { t } = useTranslation();
@@ -188,7 +189,8 @@ const AboutPage = ({ storedTheme }) => {
                   <div className="relative rounded-full border-2 border-white sm:absolute sm:top-0 sm:transform sm:-translate-y-1/2">
                     <img
                       className="w-12 h-12 sm:w-20 sm:h-20 rounded-full bg-indigo-300"
-                      src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2.5&w=160&h=160&q=80"
+                      // src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2.5&w=160&h=160&q=80"
+                      src={Client}
                       alt=""
                       height={3050}
                       width={2440}
@@ -196,9 +198,9 @@ const AboutPage = ({ storedTheme }) => {
                   </div>
                   <span className="relative ml-4 text-indigo-300 font-semibold leading-6 sm:ml-24 sm:pl-1">
                     <p className="text-white font-semibold sm:inline">
-                      Judith Black
+                      Tunisie Telecom
                     </p>{" "}
-                    <p className="sm:inline">CEO at Workcation</p>
+                    {/* <p className="sm:inline">CEO at Workcation</p> */}
                   </span>
                 </cite>
               </blockquote>

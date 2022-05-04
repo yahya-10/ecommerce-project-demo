@@ -1,9 +1,13 @@
+import { useState } from "react";
+
 import {
   NewspaperIcon,
   PhoneIcon,
   SupportIcon,
 } from "@heroicons/react/outline";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 const supportLinks = [
   {
@@ -78,6 +82,18 @@ const faqs = [
  */
 
 const Contact = ({ storedTheme }) => {
+  const [message, setMessage] = useState("Notify Me");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setMessage("Subscribed!");
+    setTimeout(() => {
+      setMessage("Notify Me");
+    }, 3000);
+  };
+
+  const { t } = useTranslation();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -113,9 +129,7 @@ const Contact = ({ storedTheme }) => {
                 : "mt-6 max-w-3xl text-xl text-gray-50"
             }`}
           >
-            Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate
-            id malesuada non. Cras aliquet purus dui laoreet diam sed lacus,
-            fames. Dui, amet, nec sit pulvinar.
+            {t("contact_page.support")}
           </p>
         </div>
       </header>
@@ -343,13 +357,13 @@ const Contact = ({ storedTheme }) => {
                     Join our team
                   </h2>
                   <p className="text-lg text-white">
-                    Varius facilisi mauris sed sit. Non sed et duis dui leo,
-                    vulputate id malesuada non. Cras aliquet purus dui laoreet
-                    diam sed lacus, fames.
+                    {t("contact_page.jobs_section")}
                   </p>
                   <a
                     className="block w-full py-3 px-5 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-blue-700 hover:bg-blue-gray-50 sm:inline-block sm:w-auto"
-                    href="/"
+                    href="https://www.linkedin.com/company/comunikcrm/mycompany/"
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     Explore open positions
                   </a>
@@ -372,9 +386,8 @@ const Contact = ({ storedTheme }) => {
               Sign up for our newsletter
             </h2>
             <p className="mt-3 max-w-3xl text-lg text-blue-gray-500">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              Lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat.
+              {/* Sign up to receive email updates on new product announcements, gift ideas, special promotions, sales and more.  */}
+              {t("contact_page.newsLetter")}
             </p>
           </div>
           <div className="mt-8 lg:mt-0 lg:ml-8">
@@ -393,10 +406,16 @@ const Contact = ({ storedTheme }) => {
               />
               <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                 <button
-                  type="submit"
-                  className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  // type="submit"
+                  onClick={submitHandler}
+                  // className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className={`w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white ${
+                    message === "Subscribed!"
+                      ? "bg-green-700"
+                      : "bg-blue-600 hover:bg-blue-700"
+                  } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300`}
                 >
-                  Notify me
+                  {message}
                 </button>
               </div>
             </form>

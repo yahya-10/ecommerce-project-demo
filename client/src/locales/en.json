@@ -163,6 +163,12 @@
     "team_section_desc": "A passionate, inspired team of leaders each bring their own energy and expertise to comunik — reasons that ultimately help us achieve higher levels of success."
   },
 
+  "contact_page": {
+    "support": "Whether you have a question about functionality, testing, pricing, need a demonstration or anything else, our team is ready to answer all your questions.",
+    "jobs_section": "At Comunik, we play to win. Every day brings a new challenge. Every day brings an opportunity to learn and grow. Every day brings another chance to wow our customers. We work hard but we play hard too.",
+    "newsLetter": "Sign up to receive email updates on new product announcements, gift ideas, special promotions, sales and more. "
+  },
+
   "footer": {
     "footer_slogan": "Making the world a better place through constructing elegant hierarchies.",
     "footer_marketing": "Marketing",

@@ -34,7 +34,7 @@ const StatsSection = () => {
             quia aspernatur deserunt voluptatibus.
           </p>
           <div className="mt-8 overflow-hidden">
-            <dl className="-mx-8 -mt-8 flex flex-wrap">
+            <dl className="-mx-8 -mt-8 flex">
               <div className="flex flex-col px-8 pt-8">
                 <dt className="order-2 text-base font-medium text-white">
                   Delivery
@@ -45,7 +45,7 @@ const StatsSection = () => {
               </div>
               <div className="flex flex-col px-8 pt-8">
                 <dt className="order-2 text-base font-medium text-white">
-                  Pepperoni
+                  Satisfaction
                 </dt>
                 <dd className="order-1 text-2xl font-extrabold text-indigo-600 sm:text-3xl">
                   99.9%
@@ -53,10 +53,18 @@ const StatsSection = () => {
               </div>
               <div className="flex flex-col px-8 pt-8">
                 <dt className="order-2 text-base font-medium text-white">
-                  Calories
+                  Customers
                 </dt>
                 <dd className="order-1 text-2xl font-extrabold text-indigo-600 sm:text-3xl">
-                  100k+
+                  100+
+                </dd>
+              </div>
+              <div className="flex flex-col px-8 pt-8">
+                <dt className="order-2 text-base font-medium text-white">
+                  Years
+                </dt>
+                <dd className="order-1 text-2xl font-extrabold text-indigo-600 sm:text-3xl">
+                  13+
                 </dd>
               </div>
             </dl>
