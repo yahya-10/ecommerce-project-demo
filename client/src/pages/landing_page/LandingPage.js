@@ -7,6 +7,7 @@ import HeroSection from "./HeroSection";
 import LogoClouds from "./LogoClouds";
 import PricingCardsSection from "./PricingCardsSection";
 import ComparisonSection from "./ComparisonSection";
+import ContactSalesBtn from "./contact_sales_btn/ContactSalesBtn";
 
 const LandingPageChart = lazy(() =>
   import("../../component/charts/LandingPageChart")
@@ -523,9 +524,13 @@ const LandingPage = ({ storedTheme }) => {
               <ComparisonSection storedTheme={storedTheme} />
             </section>
           </div>
+          {/* <div className="flex justify-center px-6"> */}
+          <div className="max-w-2xl mx-auto py-8 px-4 sm:px-6 lg:max-w-7xl lg:py-32 lg:px-8 content-center">
+            <ContactSalesBtn />
+          </div>
 
           {/* Logo cloud */}
-          <div className="max-w-2xl mx-auto py-8 px-4 sm:px-6 lg:max-w-7xl lg:py-32 lg:px-8"></div>
+          {/* <div className="max-w-2xl mx-auto py-8 px-4 sm:px-6 lg:max-w-7xl lg:py-32 lg:px-8"></div> */}
 
           {/* Chart section */}
           <div>

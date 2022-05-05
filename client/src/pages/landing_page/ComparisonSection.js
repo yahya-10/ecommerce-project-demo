@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
+// import ContactSalesBtn from "./contact_sales_btn/ContactSalesBtn";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -491,6 +492,7 @@ const ComparisonSection = ({ storedTheme }) => {
           </div>
         </div>
       </div>
+      {/* <ContactSalesBtn /> */}
     </div>
   );
 };

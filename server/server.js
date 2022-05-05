@@ -24,9 +24,10 @@ const tokGen = new tokenGenerator();
  * User login Endpoint
  */
 app.post("/login", cors(), (req, res) => {
+  const { email } = req.body;
   try {
     res.send({
-      email: req.body.email,
+      email: "the.mandalorian@gmail.com",
       //Generate unique token to verify user's identity
       token: tokGen.generate(),
     });
@@ -39,7 +40,7 @@ app.post("/login", cors(), (req, res) => {
  * First time User registration Endpoint
  */
 app.post("/register", cors(), (req, res) => {
-  const { fullName, companyName, email, password } = req.body;
+  // const { fullName, companyName, email, password } = req.body;
   try {
     // if ((fullName && companyName && email && password) !== "") {
     res.send({

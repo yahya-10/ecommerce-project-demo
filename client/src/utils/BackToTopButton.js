@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ArrowCircleUpIcon } from "@heroicons/react/solid";
+// import { ArrowCircleUpIcon } from "@heroicons/react/solid";
+import { ChevronDoubleUpIcon } from "@heroicons/react/outline";
 
 const BackToTopButton = () => {
   const [backToTopButton, setBackToTopButton] = useState(false);
@@ -34,19 +35,19 @@ const BackToTopButton = () => {
     position: "fixed",
     bottom: "50px",
     right: "50px",
-    width: "50px",
-    height: "50px",
+    // width: "50px",
+    // height: "50px",
     fontSize: "50px",
     color: "blue",
   };
 
   return (
-    <div>
+    <div className="cursor-pointer">
       {backToTopButton && (
-        <ArrowCircleUpIcon
+        <ChevronDoubleUpIcon
           style={styles}
           onClick={scrollUp}
-          className="hidden lg:block md:block"
+          className="h-6 w-6 hidden lg:block md:block"
         />
       )}
     </div>

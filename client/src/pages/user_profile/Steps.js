@@ -46,7 +46,7 @@ const Steps = ({ stage, storedTheme }) => {
         aria-label="Progress"
       >
         <ol
-          className={`"block text-sm font-medium sm:mt-px sm:pt-2" ${
+          className={`"block text-sm font-medium  sm:pt-2" ${
             storedTheme === "light"
               ? "rounded-md overflow-hidden lg:flex lg:border-l lg:border-r lg:border-gray-200 lg:rounded-none"
               : "rounded-md overflow-hidden lg:flex lg:border-l lg:border-r lg:border-gray-700 lg:rounded-none"

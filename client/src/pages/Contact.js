@@ -7,7 +7,6 @@ import {
 } from "@heroicons/react/outline";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
 
 const supportLinks = [
   {

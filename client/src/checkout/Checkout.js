@@ -37,6 +37,11 @@ const Checkout = ({ storedTheme }) => {
   /**
    * Payment Submit handler
    */
+
+  const amountToPay = () => {
+    return (subscription.priceMonthly + subscription.tax) * 100;
+  };
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     //Change the text of the button to tell that payment is on action.
@@ -56,10 +61,6 @@ const Checkout = ({ storedTheme }) => {
     }
 
     setIsProcessing(true);
-
-    const amountToPay = () => {
-      return (subscription.priceMonthly + subscription.tax) * 100;
-    };
 
     //Fetch custom payment API.
     const response = await axios.post("http://localhost:5000/payment", {
@@ -88,6 +89,7 @@ const Checkout = ({ storedTheme }) => {
     setIsProcessing(false);
   };
 
+  // This aborts the fetch request.
   useEffect(() => {
     let abortController = new AbortController();
     return () => {

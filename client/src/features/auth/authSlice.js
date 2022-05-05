@@ -41,7 +41,6 @@ export const logout = createAsyncThunk("auth/logout", async () => {
 });
 
 const initialState = {
-  // isLoggedIn: false,
   user: user ? user : null,
   isLoading: false,
   isSuccess: false,
@@ -54,7 +53,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => {
-      // state.isLoggedIn = false;
       state.isLoading = false;
       state.isSuccess = false;
       state.isError = false;
@@ -69,7 +67,6 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        // state.isLoggedIn = true;
         state.user = action.payload;
       })
       .addCase(register.rejected, (state, action) => {
@@ -77,7 +74,6 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
-        // state.isLoggedIn = false;
       })
       .addCase(login.pending, (state) => {
         state.isLoading = true;
