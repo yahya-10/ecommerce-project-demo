@@ -20,12 +20,10 @@ const LangDropDown = ({ storedTheme }) => {
 
   return (
     <Menu as="div" className="relative inline-block ml-3 text-left">
-      <div>
-        <Menu.Button className="inline-flex items-center px-4 py-2 shadow border border-transparent text-base font-medium text-indigo-600 bg-white hover:bg-gray-50">
-          {lang}
-          <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-        </Menu.Button>
-      </div>
+      <Menu.Button className="inline-flex items-center px-4 py-2 shadow border border-transparent text-base font-medium text-indigo-600 bg-white hover:bg-gray-50">
+        {lang}
+        <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+      </Menu.Button>
 
       <Transition
         as={Fragment}

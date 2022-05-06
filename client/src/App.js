@@ -1,4 +1,4 @@
-import React, { useState, lazy } from "react";
+import React, { useState, lazy, Fragment } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { ToastContainer } from "react-toastify";
@@ -75,7 +75,7 @@ const App = () => {
   // console.log("app.js RENDERED");
 
   return (
-    <div>
+    <Fragment>
       <div>
         <Header
           AddItemToList={handleAddItemToList}
@@ -158,7 +158,7 @@ const App = () => {
       <BackToTopButton />
       <Footer storedTheme={storedTheme} />
       <ToastContainer />
-    </div>
+    </Fragment>
   );
 };
 

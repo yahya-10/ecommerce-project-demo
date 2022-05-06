@@ -110,32 +110,30 @@ const Register = ({ storedTheme }) => {
       >
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
-            <div>
-              <h2
-                className={`${
-                  storedTheme === "light"
-                    ? "mt-6 text-3xl font-extrabold text-gray-900"
-                    : "mt-6 text-3xl font-extrabold text-gray-50"
-                }`}
+            <h2
+              className={`${
+                storedTheme === "light"
+                  ? "mt-6 text-3xl font-extrabold text-gray-900"
+                  : "mt-6 text-3xl font-extrabold text-gray-50"
+              }`}
+            >
+              {t("signup.signup_title")}
+            </h2>
+            <p
+              className={`${
+                storedTheme === "light"
+                  ? "mt-2 text-sm text-gray-600"
+                  : "mt-2 text-sm text-gray-200"
+              }`}
+            >
+              {t("login.or")}{" "}
+              <Link
+                to="/login"
+                className="font-medium text-indigo-600 hover:text-indigo-500"
               >
-                {t("signup.signup_title")}
-              </h2>
-              <p
-                className={`${
-                  storedTheme === "light"
-                    ? "mt-2 text-sm text-gray-600"
-                    : "mt-2 text-sm text-gray-200"
-                }`}
-              >
-                {t("login.or")}{" "}
-                <Link
-                  to="/login"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  {t("signup.login_redirect")}
-                </Link>
-              </p>
-            </div>
+                {t("signup.login_redirect")}
+              </Link>
+            </p>
 
             <div className="mt-8">
               <div>

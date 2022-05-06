@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { BadgeCheckIcon } from "@heroicons/react/solid";
 
@@ -10,7 +10,7 @@ const PaymentDetails = () => {
   const { subscription } = useSelector((state) => state.cart);
 
   return (
-    <div>
+    <Fragment>
       <ul className="mt-3 grid grid-cols-1 gap-5 sm:gap-6">
         <li key={subscription.title} className="col-span-1 flex shadow-sm">
           <div
@@ -37,7 +37,7 @@ const PaymentDetails = () => {
           </div>
         </li>
       </ul>
-    </div>
+    </Fragment>
   );
 };
 

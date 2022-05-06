@@ -43,7 +43,7 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
   };
 
   return (
-    <div>
+    <Fragment>
       <div
         className={`${
           storedTheme === "light"
@@ -294,7 +294,7 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
           </Popover>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

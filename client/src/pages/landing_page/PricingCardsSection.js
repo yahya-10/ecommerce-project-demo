@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -82,7 +82,7 @@ const PricingCardsSection = ({ monthlyPlan }) => {
   const styles = `translateY(${y}px)`;
 
   return (
-    <div>
+    <Fragment>
       {/* Cards */}
       <div className="relative mt-8 max-w-2xl mx-auto px-4 pb-8 sm:mt-12 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-0">
         {/* Decorative background */}
@@ -203,7 +203,7 @@ const PricingCardsSection = ({ monthlyPlan }) => {
           ))}
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
