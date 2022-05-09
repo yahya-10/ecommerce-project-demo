@@ -56,73 +56,65 @@ const ProductDetailsSlide = ({ show, setOpen, product }) => {
                 </Transition.Child>
                 <div className="h-full overflow-y-auto bg-white p-8">
                   <div className="space-y-6 pb-16">
-                    <div>
-                      <div className="aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg">
-                        <img
-                          src={product.imageSrc}
-                          alt=""
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="mt-4 flex items-start justify-between">
-                        <div>
-                          <h2 className="text-lg font-medium text-gray-900">
-                            <span className="sr-only">Details for </span>
-                            {product.name}
-                          </h2>
-                          <p className="text-sm font-medium text-gray-500">
-                            3.9 MB
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          className="ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-white text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        >
-                          <HeartIcon className="h-6 w-6" aria-hidden="true" />
-                          <span className="sr-only">Favorite</span>
-                        </button>
-                      </div>
+                    <div className="aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg">
+                      <img
+                        src={product.imageSrc}
+                        alt=""
+                        className="object-cover"
+                      />
                     </div>
-                    <div>
-                      <h3 className="font-medium text-gray-900">Information</h3>
-                      <dl className="mt-2 divide-y divide-gray-200 border-t border-b border-gray-200">
-                        <div className="flex justify-between py-3 text-sm font-medium">
-                          <dt className="text-gray-500">Manufacturer</dt>
-                          <dd className="text-gray-900">
-                            {product.manufacturer}
-                          </dd>
-                        </div>
-                        <div className="flex justify-between py-3 text-sm font-medium">
-                          <dt className="text-gray-500">Created</dt>
-                          <dd className="text-gray-900">June 8, 2020</dd>
-                        </div>
-                        <div className="flex justify-between py-3 text-sm font-medium">
-                          <dt className="text-gray-500">Last modified</dt>
-                          <dd className="text-gray-900">June 8, 2020</dd>
-                        </div>
-                        <div className="flex justify-between py-3 text-sm font-medium">
-                          <dt className="text-gray-500">Dimensions</dt>
-                          <dd className="text-gray-900">4032 x 3024</dd>
-                        </div>
-                        <div className="flex justify-between py-3 text-sm font-medium">
-                          <dt className="text-gray-500">Resolution</dt>
-                          <dd className="text-gray-900">72 x 72</dd>
-                        </div>
-                      </dl>
+                    <div className="mt-4 flex items-start justify-between">
+                      <h2 className="text-lg font-medium text-gray-900">
+                        <span className="sr-only">Details for </span>
+                        {product.name}
+                      </h2>
+                      <p className="text-sm font-medium text-gray-500">
+                        3.9 MB
+                      </p>
+                      <button
+                        type="button"
+                        className="ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-white text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      >
+                        <HeartIcon className="h-6 w-6" aria-hidden="true" />
+                        <span className="sr-only">Favorite</span>
+                      </button>
                     </div>
-                    <div>
-                      <h3 className="font-medium text-gray-900">Description</h3>
-                      <div className="mt-2 flex items-center justify-between">
-                        <p className="text-sm italic text-gray-500">
-                          {product.description}
-                        </p>
-                        <button
-                          type="button"
-                          className="-mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        >
-                          <span className="sr-only">Add description</span>
-                        </button>
+                    <h3 className="font-medium text-gray-900">Information</h3>
+                    <dl className="mt-2 divide-y divide-gray-200 border-t border-b border-gray-200">
+                      <div className="flex justify-between py-3 text-sm font-medium">
+                        <dt className="text-gray-500">Manufacturer</dt>
+                        <dd className="text-gray-900">
+                          {product.manufacturer}
+                        </dd>
                       </div>
+                      <div className="flex justify-between py-3 text-sm font-medium">
+                        <dt className="text-gray-500">Created</dt>
+                        <dd className="text-gray-900">June 8, 2020</dd>
+                      </div>
+                      <div className="flex justify-between py-3 text-sm font-medium">
+                        <dt className="text-gray-500">Last modified</dt>
+                        <dd className="text-gray-900">June 8, 2020</dd>
+                      </div>
+                      <div className="flex justify-between py-3 text-sm font-medium">
+                        <dt className="text-gray-500">Dimensions</dt>
+                        <dd className="text-gray-900">4032 x 3024</dd>
+                      </div>
+                      <div className="flex justify-between py-3 text-sm font-medium">
+                        <dt className="text-gray-500">Resolution</dt>
+                        <dd className="text-gray-900">72 x 72</dd>
+                      </div>
+                    </dl>
+                    <h3 className="font-medium text-gray-900">Description</h3>
+                    <div className="mt-2 flex items-center justify-between">
+                      <p className="text-sm italic text-gray-500">
+                        {product.description}
+                      </p>
+                      <button
+                        type="button"
+                        className="-mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      >
+                        <span className="sr-only">Add description</span>
+                      </button>
                     </div>
                     <div className="flex">
                       <button

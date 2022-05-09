@@ -130,6 +130,7 @@ const UserProfile = ({ storedTheme }) => {
     initialValues: {
       companyName: "",
       about: "",
+      fileUpload: "",
       firstName: "",
       lastName: "",
       emailAddress: "",
@@ -153,7 +154,12 @@ const UserProfile = ({ storedTheme }) => {
     fontSize: "2 rem",
   };
 
-  // console.log(subscription);
+  const getOrigin = (url) => {
+    const trimmed = url.split("//");
+    return trimmed[trimmed.length - 1];
+  };
+
+  // console.log(formik.values.fileUpload);
 
   return (
     <motion.div
@@ -366,144 +372,183 @@ const UserProfile = ({ storedTheme }) => {
                 }`}
               >
                 <div>
-                  <div>
-                    <h3
-                      className={`"text-lg leading-6 font-medium" ${
+                  <h3
+                    className={`"text-lg leading-6 font-medium" ${
+                      storedTheme === "light" ? "text-gray-900" : "text-gray-50"
+                    }`}
+                  >
+                    {/* Business */}
+                    {t("user_form.form_top_header_title")}
+                  </h3>
+                  <p
+                    className={`"mt-1 max-w-2xl text-sm " ${
+                      storedTheme === "light"
+                        ? "text-gray-500"
+                        : "text-gray-400"
+                    }`}
+                  >
+                    {t("user_form.form_top_header_under_title")}
+                  </p>
+                </div>
+
+                <div
+                  className={`${
+                    storedTheme === "light"
+                      ? "mt-6 sm:mt-5 space-y-6 sm:space-y-5"
+                      : "mt-6 sm:mt-5 space-y-6 sm:space-y-5 divide-gray-700"
+                  }`}
+                >
+                  <div
+                    className={`${
+                      storedTheme === "light"
+                        ? "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
+                        : "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-700 sm:pt-5"
+                    }`}
+                  >
+                    <label
+                      htmlFor="companyName"
+                      className={`"block text-sm font-medium sm:mt-px sm:pt-2 " ${
                         storedTheme === "light"
-                          ? "text-gray-900"
+                          ? "text-gray-700"
                           : "text-gray-50"
                       }`}
                     >
-                      {/* Business */}
-                      {t("user_form.form_top_header_title")}
-                    </h3>
-                    <p
-                      className={`"mt-1 max-w-2xl text-sm " ${
-                        storedTheme === "light"
-                          ? "text-gray-500"
-                          : "text-gray-400"
-                      }`}
-                    >
-                      {t("user_form.form_top_header_under_title")}
-                    </p>
+                      {t("user_form.form_company_name")}
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <div className="max-w-lg flex rounded-md shadow-sm">
+                        <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                          workcation.com/
+                        </span>
+                        <input
+                          type="text"
+                          name="companyName"
+                          id="companyName"
+                          autoComplete="companyname"
+                          disabled={disableFields}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.companyName}
+                          className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                        />
+                        {formik.touched.companyName &&
+                        formik.errors.companyName ? (
+                          <div style={styles}>{formik.errors.companyName}</div>
+                        ) : null}
+                      </div>
+                    </div>
                   </div>
 
                   <div
                     className={`${
                       storedTheme === "light"
-                        ? "mt-6 sm:mt-5 space-y-6 sm:space-y-5"
-                        : "mt-6 sm:mt-5 space-y-6 sm:space-y-5 divide-gray-700"
+                        ? "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
+                        : "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-700 sm:pt-5"
                     }`}
                   >
-                    <div
-                      className={`${
+                    <label
+                      htmlFor="about"
+                      className={`"block text-sm font-medium sm:mt-px sm:pt-2 " ${
                         storedTheme === "light"
-                          ? "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
-                          : "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-700 sm:pt-5"
+                          ? "text-gray-700"
+                          : "text-gray-50"
                       }`}
                     >
-                      <label
-                        htmlFor="companyName"
-                        className={`"block text-sm font-medium sm:mt-px sm:pt-2 " ${
+                      {t("user_form.form_about")}
+                    </label>
+                    <div className="mt-1 sm:mt-0 sm:col-span-2">
+                      <textarea
+                        id="about"
+                        name="about"
+                        rows={3}
+                        disabled={disableFields}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.about}
+                        className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
+                      />
+                      {formik.touched.about && formik.errors.about ? (
+                        <div style={styles}>{formik.errors.about}</div>
+                      ) : null}
+                      <p
+                        className={`"mt-2 text-sm  " ${
                           storedTheme === "light"
-                            ? "text-gray-700"
-                            : "text-gray-50"
+                            ? "text-gray-500"
+                            : "text-gray-400"
                         }`}
                       >
-                        {t("user_form.form_company_name")}
-                      </label>
-                      <div className="mt-1 sm:mt-0 sm:col-span-2">
-                        <div className="max-w-lg flex rounded-md shadow-sm">
-                          <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-                            workcation.com/
-                          </span>
-                          <input
-                            type="text"
-                            name="companyName"
-                            id="companyName"
-                            autoComplete="companyname"
-                            disabled={disableFields}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.companyName}
-                            className="flex-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
-                          />
-                          {formik.touched.companyName &&
-                          formik.errors.companyName ? (
-                            <div style={styles}>
-                              {formik.errors.companyName}
-                            </div>
-                          ) : null}
-                        </div>
-                      </div>
+                        {t("user_form.form_about_desc")}
+                      </p>
                     </div>
-
-                    <div
-                      className={`${
-                        storedTheme === "light"
-                          ? "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
-                          : "sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-700 sm:pt-5"
-                      }`}
-                    >
-                      <label
-                        htmlFor="about"
-                        className={`"block text-sm font-medium sm:mt-px sm:pt-2 " ${
-                          storedTheme === "light"
-                            ? "text-gray-700"
-                            : "text-gray-50"
-                        }`}
-                      >
-                        {t("user_form.form_about")}
-                      </label>
-                      <div className="mt-1 sm:mt-0 sm:col-span-2">
-                        <textarea
-                          id="about"
-                          name="about"
-                          rows={3}
-                          disabled={disableFields}
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.about}
-                          className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
-                        />
-                        {formik.touched.about && formik.errors.about ? (
-                          <div style={styles}>{formik.errors.about}</div>
-                        ) : null}
-                        <p
-                          className={`"mt-2 text-sm  " ${
-                            storedTheme === "light"
-                              ? "text-gray-500"
-                              : "text-gray-400"
-                          }`}
+                  </div>
+                  {/* UPLOAD FILE */}
+                  {/* TO DO: upload the kbis file!!! it's MONDATORY!! */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Kbis
+                    </label>
+                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                      <div className="space-y-1 text-center">
+                        <svg
+                          className="mx-auto h-12 w-12 text-gray-400"
+                          stroke="currentColor"
+                          fill="none"
+                          viewBox="0 0 48 48"
+                          aria-hidden="true"
                         >
-                          {t("user_form.form_about_desc")}
+                          <path
+                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <div className="flex text-sm text-gray-600">
+                          <label
+                            htmlFor="file-upload"
+                            className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                          >
+                            <span>Upload a file</span>
+                            <input
+                              id="file-upload"
+                              name="fileUpload"
+                              type="file"
+                              className="sr-only"
+                              onChange={formik.handleChange}
+                              disabled={disableFields}
+                              value={formik.values.fileUpload}
+                            />
+                          </label>
+                          <p className="pl-1">or drag and drop</p>
+                        </div>
+                        <p className="text-xs text-gray-500">
+                          {formik.values.fileUpload !== ""
+                            ? getOrigin(formik.values.fileUpload)
+                            : "PDF up to 5MB"}
                         </p>
                       </div>
                     </div>
                   </div>
+                  {/* UPLOAD FILE */}
                 </div>
 
                 <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-                  <div>
-                    <h3
-                      className={`"text-lg leading-6 font-medium " ${
-                        storedTheme === "light"
-                          ? "text-gray-900"
-                          : "text-gray-50"
-                      }`}
-                    >
-                      {t("user_form.form_mid_header_title")}
-                    </h3>
-                    <p
-                      className={`"mt-1 max-w-2xl text-sm " ${
-                        storedTheme === "light"
-                          ? "text-gray-500"
-                          : "text-gray-400"
-                      }`}
-                    >
-                      {t("user_form.form_mid_header_under_title")}
-                    </p>
-                  </div>
+                  <h3
+                    className={`"text-lg leading-6 font-medium " ${
+                      storedTheme === "light" ? "text-gray-900" : "text-gray-50"
+                    }`}
+                  >
+                    {t("user_form.form_mid_header_title")}
+                  </h3>
+                  <p
+                    className={`"mt-1 max-w-2xl text-sm " ${
+                      storedTheme === "light"
+                        ? "text-gray-500"
+                        : "text-gray-400"
+                    }`}
+                  >
+                    {t("user_form.form_mid_header_under_title")}
+                  </p>
                   <div
                     className={`${
                       storedTheme === "light"

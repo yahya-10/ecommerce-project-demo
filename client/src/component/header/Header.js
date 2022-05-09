@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon } from "@heroicons/react/outline";
+import { MenuIcon, LoginIcon, LogoutIcon } from "@heroicons/react/outline";
 import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 // import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
@@ -109,15 +109,16 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                       <span className="inline-flex shadow" onClick={onLogout}>
                         <Link
                           to="/login"
-                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-indigo-500 bg-transparent"
                         >
-                          {t("header.log_out")}
+                          {/* {t("header.log_out")} */}
+                          <LogoutIcon className="h-6 w-6" />
                         </Link>
                       </span>
-                      <Link to="/profile" aria-label="profile ariaLabel">
+                      {/* <Link to="/profile" aria-label="profile ariaLabel">
                         <span className="inline-block relative">
                           <img
-                            className="h-10 w-10 rounded-full"
+                            className="h-8 w-8 rounded-full"
                             src={avatarCreator(
                               500,
                               "Yahya Akermi",
@@ -127,15 +128,16 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                           />
                           <span className="absolute top-0 right-0 block h-3 w-3 rounded-full ring-2 ring-white bg-green-400" />
                         </span>
-                      </Link>
+                      </Link> */}
                     </div>
                   ) : (
                     <span className="inline-flex shadow">
                       <Link
                         to="/login"
-                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-indigo-500 bg-transparent"
                       >
-                        {t("header.log_in")}
+                        {/* {t("header.log_in")} */}
+                        <LoginIcon className="h-6 w-6" />
                       </Link>
                     </span>
                   )}

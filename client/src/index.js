@@ -10,6 +10,7 @@ import "./utils/i18n";
 import App from "./App";
 import Loader from "./utils/loader/Loader";
 import store from "./features/store";
+import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 import "@stripe/stripe-js";
 
@@ -36,3 +37,5 @@ ReactDOM.render(
   </Suspense>,
   document.getElementById("root")
 );
+
+serviceWorker.register();

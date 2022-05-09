@@ -1,9 +1,14 @@
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import SelectPackageModal from "./SelectPackageModal";
 
 import { useTranslation } from "react-i18next";
-import { CheckIcon, PlusIcon } from "@heroicons/react/outline";
+import {
+  CheckIcon,
+  PlusIcon,
+  DocumentTextIcon,
+} from "@heroicons/react/outline";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 
 /**
@@ -13,9 +18,9 @@ import { ShoppingCartIcon } from "@heroicons/react/solid";
 const SelectedSubscription = ({ data, subscription, storedTheme }) => {
   const { t } = useTranslation();
 
-  // console.log("SelectedSubs", selectedPackage);
+  console.log("SelectedSubs", data);
   return (
-    <>
+    <Fragment>
       {/* Split brand panel */}
       <div
         className={`relative mb-3 ${
@@ -149,6 +154,23 @@ const SelectedSubscription = ({ data, subscription, storedTheme }) => {
                           {data.about}
                         </dd>
                       </div>
+                      {/*  */}
+                      <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className="text-sm font-medium text-gray-500">
+                          Attachements
+                        </dt>
+                        <dd
+                          className={`flex flex-row mt-1 text-sm sm:mt-0 sm:col-span-2 ${
+                            storedTheme === "light"
+                              ? "text-gray-900"
+                              : "text-gray-200"
+                          }`}
+                        >
+                          <DocumentTextIcon className="h-5 w-5" />
+                          {data.fileUpload}
+                        </dd>
+                      </div>
+                      {/*  */}
                     </dl>
                   </div>
                 </div>
@@ -177,33 +199,17 @@ const SelectedSubscription = ({ data, subscription, storedTheme }) => {
                           aria-hidden="true"
                         />
                       </span>
-                      <span>
-                        <span className="flex flex-col text-center">
-                          <span className="text-5xl font-extrabold text-white tracking-tight">
-                            $4
-                          </span>
-                          <span className="mt-2 text-base font-medium text-cyan-100">
-                            Per month
-                          </span>
+                      <span className="flex flex-col text-center">
+                        <span className="text-5xl font-extrabold text-white tracking-tight">
+                          $4
+                        </span>
+                        <span className="mt-2 text-base font-medium text-cyan-100">
+                          Per month
                         </span>
                       </span>
                     </p>
                   </div>
                   <ul className="rounded overflow-hidden grid gap-px sm:grid-cols-2">
-                    {/* {subscription.map((element) =>
-                      element.mainFeatures.map((item, i) => (
-                        <li
-                          key={i}
-                          className="bg-cyan-700 bg-opacity-50 py-4 px-4 flex items-center text-base text-white"
-                        >
-                          <CheckIcon
-                            className="h-6 w-6 text-cyan-200"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-3">{item.value}</span>
-                        </li>
-                      ))
-                    )} */}
                     {subscription.mainFeatures.map((item, i) => (
                       <li
                         key={i}
@@ -235,7 +241,7 @@ const SelectedSubscription = ({ data, subscription, storedTheme }) => {
           </div>
         )}
       </div>
-    </>
+    </Fragment>
   );
 };
 

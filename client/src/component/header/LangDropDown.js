@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+// import { ChevronDownIcon } from "@heroicons/react/solid";
+import { GlobeIcon } from "@heroicons/react/outline";
 import i18n from "i18next";
 
 /**
@@ -19,10 +20,19 @@ const LangDropDown = ({ storedTheme }) => {
   const lang = localStorage.getItem("i18nextLng");
 
   return (
-    <Menu as="div" className="relative inline-block ml-3 text-left">
-      <Menu.Button className="inline-flex items-center px-4 py-2 shadow border border-transparent text-base font-medium text-indigo-600 bg-white hover:bg-gray-50">
+    <Menu as="div" className="relative inline-block px-4 text-left">
+      <Menu.Button
+        // className={
+        //   storedTheme === "light"
+        //     ? "inline-flex items-center px-4 py-2 shadow border border-transparent text-base font-medium text-indigo-600 bg-white hover:bg-gray-50 transition duration-300"
+        //     : "inline-flex items-center px-4 py-2 shadow border border-transparent text-base font-medium text-indigo-600 bg-gray-800 transition duration-300"
+        // }
+        className={`inline-flex items-center px-4 py-2 shadow border border-transparent text-base font-medium text-indigo-600 ${
+          storedTheme === "light" ? "bg-white" : "bg-gray-800"
+        } transition duration-300`}
+      >
         {lang}
-        <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+        <GlobeIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
       </Menu.Button>
 
       <Transition

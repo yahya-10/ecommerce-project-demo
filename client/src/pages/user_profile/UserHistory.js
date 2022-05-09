@@ -7,6 +7,12 @@ import TransactionsTable from "./TransactionsTable";
 import { ChartPieIcon, ChartBarIcon } from "@heroicons/react/solid";
 import { motion } from "framer-motion";
 
+/**
+ * TO DO: Add a calendar like feature for the user
+ * to schedule a training and onboarding
+ * (Delay of a week after approval of profile and payment).
+ */
+
 const UserHistory = ({ storedTheme }) => {
   // Toggle between charts icons.
   const [displayPieChart, setDisplayPiChart] = useState(false);

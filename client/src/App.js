@@ -76,15 +76,13 @@ const App = () => {
 
   return (
     <Fragment>
-      <div>
-        <Header
-          AddItemToList={handleAddItemToList}
-          RemoveItemFromList={handleRemoveItemFromList}
-          listItems={listItems}
-          storedTheme={storedTheme}
-          setTheme={setTheme}
-        />
-      </div>
+      <Header
+        AddItemToList={handleAddItemToList}
+        RemoveItemFromList={handleRemoveItemFromList}
+        listItems={listItems}
+        storedTheme={storedTheme}
+        setTheme={setTheme}
+      />
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route
