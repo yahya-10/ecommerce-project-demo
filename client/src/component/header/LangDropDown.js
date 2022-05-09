@@ -22,11 +22,6 @@ const LangDropDown = ({ storedTheme }) => {
   return (
     <Menu as="div" className="relative inline-block px-4 text-left">
       <Menu.Button
-        // className={
-        //   storedTheme === "light"
-        //     ? "inline-flex items-center px-4 py-2 shadow border border-transparent text-base font-medium text-indigo-600 bg-white hover:bg-gray-50 transition duration-300"
-        //     : "inline-flex items-center px-4 py-2 shadow border border-transparent text-base font-medium text-indigo-600 bg-gray-800 transition duration-300"
-        // }
         className={`inline-flex items-center px-4 py-2 shadow border border-transparent text-base font-medium text-indigo-600 ${
           storedTheme === "light" ? "bg-white" : "bg-gray-800"
         } transition duration-300`}

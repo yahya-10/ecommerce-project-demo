@@ -235,8 +235,8 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                           </span>
                         </a>
                       ))}
-                      <div className="flex justify-center items-center">
-                        <LangDropDown />
+                      {/* <div className="flex justify-center items-center">
+                        <LangDropDown storedTheme={storedTheme} />
                         {storedTheme === "dark" ? (
                           <SunIcon
                             style={{ color: "#fcec05" }}
@@ -252,7 +252,7 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                             onClick={() => setTheme("dark")}
                           />
                         )}
-                      </div>
+                      </div> */}
                     </nav>
                   </div>
                 </div>
@@ -264,7 +264,8 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                           to="/login"
                           className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
                         >
-                          {t("header.log_out")}
+                          {/* {t("header.log_out")} */}
+                          <LogoutIcon className="h-6 w-6" />
                         </Link>
                       </span>
                       <Link to="/profile" aria-label="profile ariaLabel">
@@ -285,10 +286,29 @@ const Header = ({ storedTheme, setTheme, listItems }) => {
                         to="/login"
                         className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium text-gray-900 bg-indigo-500 hover:bg-indigo-600"
                       >
-                        {t("header.log_in")}
+                        {/* {t("header.log_in")} */}
+                        <LoginIcon className="h-6 w-6" />
                       </Link>
                     </span>
                   )}
+                  <div className="flex justify-center items-center">
+                    <LangDropDown storedTheme={storedTheme} />
+                    {storedTheme === "dark" ? (
+                      <SunIcon
+                        style={{ color: "#fcec05" }}
+                        className="h-6 w-6 ml-3"
+                        aria-hidden="true"
+                        onClick={() => setTheme("light")}
+                      />
+                    ) : (
+                      <MoonIcon
+                        style={{ color: "#2b313b" }}
+                        className="h-6 w-6 ml-3"
+                        aria-hidden="true"
+                        onClick={() => setTheme("dark")}
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
               {/* </Popover.Panel> */}
